@@ -1,7 +1,28 @@
-# Squad: ignore runtime state (logs, inbox, sessions)
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor / IDE
+.idea/
+*.swp
+*.swo
+*~
+
+# Squad / AI agent state
 .squad/orchestration-log/
 .squad/log/
 .squad/decisions/inbox/
 .squad/sessions/
+
+.ai-team/
+
 # Squad: SubSquad activation file (local to this machine)
 .squad-workstream
+
+# Node (if tooling is added)
+node_modules/
+package-lock.json
+
+# Logs
+*.log

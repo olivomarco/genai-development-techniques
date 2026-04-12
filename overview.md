@@ -146,12 +146,3 @@ Each technique has a dedicated deep-dive document following a consistent templat
 ### Cross-Cutting
 
 - [Context Engineering](techniques/context-engineering.md) — The practice of structuring project context via rules files across an 8-layer model.
-
-### Supporting Documents
-
-- [Research Scope](research-scope.md) — Full technique inventory, taxonomy, and comparison dimensions.
-- [comparisons/spec-driven-vs-multi-agent.md](comparisons/spec-driven-vs-multi-agent.md) — Category comparison.
-- [comparisons/solo-dev-vs-team.md](comparisons/solo-dev-vs-team.md) — Scale comparison.
-- [comparisons/open-source-vs-commercial.md](comparisons/open-source-vs-commercial.md) — Licensing comparison.
-- [appendix/tools-landscape.md](appendix/tools-landscape.md) — Tier 2 tools reference (Cursor, Claude Code, Copilot, Aider, Cline, OpenHands, SWE-Agent).
-- [appendix/glossary.md](appendix/glossary.md) — Terms: SDD, MCP, SOP, RPI, HITL, AFK, etc.

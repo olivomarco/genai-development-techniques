@@ -47,15 +47,6 @@ A comprehensive, evidence-based comparison of techniques, methodologies, and fra
 
 ---
 
-## Supporting Documents
-
-- [Research Scope](research-scope.md) — Full technique inventory, taxonomy, and comparison dimensions
-- [comparisons/](comparisons/) — Category comparisons (spec-driven vs. multi-agent, solo vs. team, open source vs. commercial)
-- [appendix/tools-landscape.md](appendix/tools-landscape.md) — Tier 2 tools reference (Cursor, Claude Code, Copilot, Aider, Cline, etc.)
-- [appendix/glossary.md](appendix/glossary.md) — Terminology reference
-
----
-
 **Audience:** Developers, tech leads, and engineering managers evaluating structured approaches to AI-assisted development.
 
-**What this is not:** A ranking. Each technique serves different needs. The [Decision Guide](overview.md#3-decision-guide) in the overview helps match techniques to situations.
+**What this is not:** A ranking. Each technique serves different needs. The [Decision Guide](overview.md#4-decision-guide) in the overview helps match techniques to situations.

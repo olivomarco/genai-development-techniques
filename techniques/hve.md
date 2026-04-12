@@ -14,6 +14,19 @@
 | Stars / Popularity | 919 stars, 141 forks, 54 contributors |
 | Supported Tools    | GitHub Copilot (VS Code extension and CLI) |
 
+## Compatible Coding Agents
+
+| Agent | Support |
+|-------|--------|
+| GitHub Copilot (VS Code) | ✅ Primary — ships as a VS Code extension with 49 agents and 102 instructions |
+| GitHub Copilot Coding Agent (github.com) | ⚠️ Partial — instruction files are readable but the RPI workflow requires interactive phase switching |
+| Claude Code | ❌ Not supported — tightly coupled to Copilot ecosystem |
+| Cursor | ❌ Not supported |
+| OpenAI Codex (CLI) | ❌ Not supported |
+| Windsurf | ❌ Not supported |
+| Gemini CLI | ❌ Not supported |
+| Roo Code | ❌ Not supported |
+
 ## Overview
 
 Hypervelocity Engineering (HVE) is Microsoft's enterprise methodology and tooling framework for AI-native application development. Created by the ISE (Industry Solutions Engineering) team — the same group that shipped 140+ AI solutions in two years — HVE provides a structured approach to integrating AI agents across the entire software development lifecycle.

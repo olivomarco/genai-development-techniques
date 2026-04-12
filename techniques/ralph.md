@@ -14,6 +14,22 @@
 | Stars / Popularity | No single repo — community forks: [ralph-claude-code](https://github.com/frankbria/ralph-claude-code) (364 stars), [ralph-orchestrator](https://github.com/mikeyobrien/ralph-orchestrator); VentureBeat coverage; BetterStack YouTube (60K views) |
 | Supported Tools    | Tool-agnostic: Claude Code, Copilot CLI, Cursor, Codex, OpenCode, or any AI coding CLI that doesn't cap tool calls |
 
+## Compatible Coding Agents
+
+Ralph is tool-agnostic by design — it works with any AI coding CLI that supports autonomous tool use.
+
+| Agent | Support |
+|-------|--------|
+| GitHub Copilot (VS Code) | ⚠️ Not typical — Ralph is a CLI loop pattern, not an IDE workflow |
+| GitHub Copilot (CLI) | ✅ Supported |
+| GitHub Copilot Coding Agent (github.com) | ❌ Not applicable — requires local bash loop execution |
+| Claude Code | ✅ Primary — the original and most common choice |
+| OpenAI Codex (CLI) | ✅ Supported |
+| Cursor | ✅ Supported (CLI/agent mode) |
+| Gemini CLI | ✅ Supported |
+| Roo Code | ✅ Supported (if CLI mode available) |
+| Windsurf | ⚠️ Not typical — Ralph targets CLI-based tools |
+
 ## Overview
 
 Ralph is a development methodology — not a tool or framework — for running AI coding agents autonomously across multiple context windows. Named after Ralph Wiggum from *The Simpsons* (the character who never stops trying despite constant mistakes), it captures a core philosophy: keep going, learn from failures, iterate.

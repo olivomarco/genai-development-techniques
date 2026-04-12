@@ -14,6 +14,21 @@
 | Stars / Popularity | No dedicated repo — the practice permeates every major AI development framework |
 | Supported Tools    | All: Claude Code (CLAUDE.md), Cursor (.cursorrules), GitHub Copilot (copilot-instructions.md), Gemini, and any tool supporting context/rules files |
 
+## Compatible Coding Agents
+
+Context engineering is a universal practice — any agent that supports rules files or system-level instructions benefits from it.
+
+| Agent | Support |
+|-------|--------|
+| GitHub Copilot (VS Code) | ✅ via `copilot-instructions.md` and `.github/instructions/` |
+| GitHub Copilot Coding Agent (github.com) | ✅ via `copilot-instructions.md` |
+| Claude Code | ✅ via `CLAUDE.md` and `.claude/rules/` |
+| Cursor | ✅ via `.cursorrules` and `.cursor/rules/` |
+| Windsurf | ✅ via rules files |
+| OpenAI Codex (CLI) | ✅ via `AGENTS.md` |
+| Gemini CLI | ✅ via `.gemini/` |
+| Roo Code | ✅ via `.roo/` rules |
+
 ## Overview
 
 Context engineering is the practice of structuring, curating, and managing the information that fills an AI model's context window during development. It has replaced "prompt engineering" as the core skill for AI-assisted software development. The shift is significant: prompt engineering focuses on crafting individual prompts; context engineering focuses on building systems that consistently deliver the right information to the right agent at the right time.

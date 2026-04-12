@@ -14,6 +14,19 @@
 | Stars / Popularity | ~44,400 stars · 5,300+ forks · 1,800+ commits |
 | Supported Tools    | Claude Code, Cursor, Windsurf; cross-platform agent support in V6 |
 
+## Compatible Coding Agents
+
+| Agent | Support |
+|-------|--------|
+| GitHub Copilot (VS Code) | ✅ Supported (V6) |
+| GitHub Copilot Coding Agent (github.com) | ❌ Not supported — interactive workflow requires human-driven sessions |
+| Claude Code | ✅ Primary |
+| Cursor | ✅ Primary |
+| Windsurf | ✅ Primary |
+| OpenAI Codex (CLI) | ⚠️ Community — via V6 cross-platform agent support |
+| Gemini CLI | ⚠️ Community — via V6 cross-platform agent support |
+| Roo Code | ⚠️ Community — via V6 cross-platform agent support |
+
 ## Overview
 
 BMAD is a comprehensive AI-driven agile development framework that simulates an entire software development team using specialized AI agents. Where most AI coding tools produce linear output from a single agent, BMAD provides a suite of named agents — each with distinct roles, commands, and artifact outputs — that guide developers through a structured agile process from analysis to deployment.

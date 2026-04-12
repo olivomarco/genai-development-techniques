@@ -14,6 +14,19 @@
 | Stars / Popularity | ~51,100 stars · 4,300+ forks · 1,835+ commits |
 | Supported Tools    | Claude Code (primary), OpenCode; community ports for Cursor and others |
 
+## Compatible Coding Agents
+
+| Agent | Support |
+|-------|--------|
+| GitHub Copilot (VS Code) | ❌ Not natively supported |
+| GitHub Copilot Coding Agent (github.com) | ❌ Not supported |
+| Claude Code | ✅ Primary — built on native Claude Code features (sub-agents, slash commands, hooks) |
+| Cursor | ⚠️ Community port available |
+| OpenAI Codex (CLI) | ❌ Not natively supported |
+| Windsurf | ❌ Not natively supported |
+| Gemini CLI | ❌ Not natively supported |
+| Roo Code | ❌ Not natively supported |
+
 ## Overview
 
 GSD is a lightweight, spec-driven development system that addresses one of the most persistent problems in AI-assisted coding: context rot — the gradual degradation of AI output quality as context windows fill up during long sessions. Rather than building a heavy framework, GSD is constructed entirely from native Claude Code features: roughly 50 Markdown files, a Node.js CLI helper, and a set of hooks that together orchestrate a complete software development lifecycle.

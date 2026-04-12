@@ -14,6 +14,23 @@
 | Stars / Popularity | 50K+ GitHub stars (one of the most starred AI agent projects) |
 | Supported Tools    | Standalone Python framework; supports multiple LLM providers (OpenAI, Anthropic, etc.) |
 
+## Compatible Coding Agents
+
+MetaGPT is a standalone Python framework with its own multi-agent runtime — it does not integrate with IDE-based or CLI-based coding agents.
+
+| Agent | Support |
+|-------|--------|
+| GitHub Copilot (VS Code) | ❌ Not applicable |
+| GitHub Copilot Coding Agent (github.com) | ❌ Not applicable |
+| Claude Code | ❌ Not applicable — MetaGPT has its own agent system |
+| Cursor | ❌ Not applicable |
+| OpenAI Codex (CLI) | ❌ Not applicable |
+| Windsurf | ❌ Not applicable |
+| Gemini CLI | ❌ Not applicable |
+| Roo Code | ❌ Not applicable |
+
+MetaGPT uses LLM APIs directly (OpenAI, Anthropic, etc.) and can be configured to use different models for different agent roles.
+
 ## Overview
 
 MetaGPT is an open-source multi-agent framework that simulates a software company by assigning GPT-based agents to distinct roles — Product Manager, Architect, Engineer, and QA — that collaborate through Standardized Operating Procedures (SOPs). Its foundational philosophy is captured in three words: **Code = SOP(Team).**

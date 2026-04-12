@@ -14,6 +14,19 @@
 | Stars / Popularity | GitHub-backed; growing community adoption |
 | Supported Tools    | GitHub Copilot, Claude Code, Gemini CLI, Cursor, Windsurf |
 
+## Compatible Coding Agents
+
+| Agent | Support |
+|-------|--------|
+| GitHub Copilot (VS Code) | ✅ Supported — pre-baked prompts included |
+| GitHub Copilot Coding Agent (github.com) | ⚠️ Partial — spec files are readable but the workflow is interactive |
+| Claude Code | ✅ Supported — pre-baked prompts included |
+| Cursor | ✅ Supported — pre-baked prompts included |
+| Windsurf | ✅ Supported — pre-baked prompts included |
+| Gemini CLI | ✅ Supported — pre-baked prompts included |
+| OpenAI Codex (CLI) | ⚠️ Not explicitly listed but spec files are agent-agnostic Markdown |
+| Roo Code | ⚠️ Not explicitly listed but spec files are agent-agnostic Markdown |
+
 ## Overview
 
 Spec Kit is GitHub's official open-source toolkit for spec-driven development (SDD). It provides a structured process for describing software projects in a way AI coding tools can interpret — bridging the gap between human intent and AI-generated code through explicit specifications written before code is written.

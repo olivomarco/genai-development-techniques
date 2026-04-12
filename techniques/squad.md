@@ -14,6 +14,19 @@
 | Stars / Popularity | Active development · 1,454+ commits · Microsoft backing |
 | Supported Tools    | GitHub Copilot (CLI and VS Code) |
 
+## Compatible Coding Agents
+
+| Agent | Support |
+|-------|--------|
+| GitHub Copilot (VS Code) | ✅ Primary — native CLI and VS Code integration |
+| GitHub Copilot Coding Agent (github.com) | ✅ Supported — can be added as a team member (@copilot) |
+| Claude Code | ❌ Not supported — tightly coupled to Copilot ecosystem |
+| Cursor | ❌ Not supported |
+| OpenAI Codex (CLI) | ❌ Not supported |
+| Windsurf | ❌ Not supported |
+| Gemini CLI | ❌ Not supported |
+| Roo Code | ❌ Not supported |
+
 ## Overview
 
 Squad is an AI agent orchestration system that creates a persistent, coordinated team of AI agents working within your repository. Created by Brady Gaster at Microsoft, it shifts AI-assisted development from "one brain talking to one brain" to a multi-agent architecture where specialized agents — frontend, backend, testing, documentation — work in parallel with explicit roles, clear boundaries, and written coordination.

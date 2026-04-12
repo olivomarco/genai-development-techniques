@@ -38,7 +38,7 @@ All scores are derived from the research findings. Where a technique spans a ran
 
 Frameworks with GitHub repositories — star growth over time:
 
-[![Star History Chart](https://api.star-history.com/svg?repos=gsd-build/get-shit-done,bmad-code-org/BMAD-METHOD,github/spec-kit,bradygaster/squad,microsoft/hve-core,FoundationAgents/MetaGPT&type=Date)](https://star-history.com/#gsd-build/get-shit-done&bmad-code-org/BMAD-METHOD&github/spec-kit&bradygaster/squad&microsoft/hve-core&FoundationAgents/MetaGPT&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=gsd-build/get-shit-done,bmad-code-org/BMAD-METHOD,github/spec-kit,bradygaster/squad,microsoft/hve-core,FoundationAgents/MetaGPT&type=timeline)](https://star-history.com/#gsd-build/get-shit-done&bmad-code-org/BMAD-METHOD&github/spec-kit&bradygaster/squad&microsoft/hve-core&FoundationAgents/MetaGPT&timeline)
 
 *Ralph and Context Engineering are not included — Ralph is a technique (no central repo), and Context Engineering is a cross-tool practice.*
 

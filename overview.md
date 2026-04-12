@@ -6,7 +6,7 @@
 
 The landscape of AI-assisted software development has matured dramatically by April 2026. What began as raw prompting and "vibe coding" has evolved into a rich ecosystem of structured methodologies, multi-agent frameworks, and enterprise-grade workflows — all designed to make AI coding agents more predictable, productive, and safe at scale. The core shift is philosophical: developers are no longer asking "can AI write code?" but "how do I *direct* AI to write the *right* code, reliably, every time?" The answer, across every technique studied, is some form of specification-first thinking combined with disciplined context engineering.
 
-Eight distinct approaches have emerged as Tier 1 techniques, spanning four categories. **Spec-driven development** (GSD, Spec Kit) focuses on defining exactly what you want before the AI builds it. **Multi-agent orchestration** (Squad, BMAD, MetaGPT) simulates development teams with specialized AI agents working in parallel. **Autonomous iteration** (Ralph) takes the radical approach of running AI agents in a bash loop overnight, using tests as backpressure. **Enterprise AI-native SDLC** (HVE) brings constraint-based governance and validated artifacts to the development lifecycle. Underneath them all sits **context engineering** — the cross-cutting discipline of curating what information fills the AI's context window.
+Seven distinct approaches have emerged as Tier 1 techniques, spanning four categories. **Spec-driven development** (GSD, Spec Kit) focuses on defining exactly what you want before the AI builds it. **Multi-agent orchestration** (Squad, BMAD) simulates development teams with specialized AI agents working in parallel. **Autonomous iteration** (Ralph) takes the radical approach of running AI agents in a bash loop overnight, using tests as backpressure. **Enterprise AI-native SDLC** (HVE) brings constraint-based governance and validated artifacts to the development lifecycle. Underneath them all sits **context engineering** — the cross-cutting discipline of curating what information fills the AI's context window.
 
 The choice between these approaches is not about which is "best" — it's about matching the technique to your situation. A solo developer prototyping a weekend project has fundamentally different needs than an enterprise team shipping regulated software with audit requirements. This document provides the data and decision frameworks to make that match.
 
@@ -16,21 +16,21 @@ The choice between these approaches is not about which is "best" — it's about 
 
 All scores are derived from the research findings. Where a technique spans a range, the most representative value is used.
 
-| Dimension | GSD | BMAD | Spec Kit | Squad | Ralph | HVE | MetaGPT | Context Engineering |
-|-----------|-----|------|----------|-------|-------|-----|---------|---------------------|
-| **Approach** | Spec-Driven | Multi-Agent | Spec-Driven | Multi-Agent | Autonomous Iteration | Enterprise SDLC | Multi-Agent | Practice |
-| **Human Control** | Semi-autonomous | HITL | HITL | Semi-autonomous | AFK / HITL | Phased | Semi-autonomous | HITL |
-| **Setup Complexity** | Minutes | Hours | Minutes | Hours | Minutes | Hours–Days | Hours | Minutes |
-| **Tool Compatibility** | Multi-tool (Claude Code primary, community ports) | Multi-tool (Claude Code, Cursor, Windsurf) | Multi-tool (Copilot, Claude Code, Gemini CLI, Cursor) | Single-tool (GitHub Copilot) | Tool-agnostic (any AI CLI) | Single-tool (GitHub Copilot) | Tool-agnostic (API-based) | Tool-agnostic (all tools) |
-| **Scale** | Solo–Small team | Solo–Enterprise | Solo–Small team | Small team–Enterprise | Solo | Large team–Enterprise | Small team | Solo–Enterprise |
-| **Predictability** | High | High | Medium–High | Medium | Low–Medium | High | Medium | Varies by implementation |
-| **Context Management** | Fresh agent per task; waves for parallelism | Agent personas + structured workflows | Spec files as context anchor | Charter files + decision ledger + history | Fresh context each loop iteration; git as memory | Clear context between RPI phases; research docs persist in files | SOP-driven context per role | Rules files layered by scope (8-layer model) |
-| **Quality Gates** | Moderate (verification per phase) | Comprehensive (QA agent, readiness checks, retros) | Moderate (analyze + checklist commands) | Moderate (reviewer rejection protocol, ceremonies) | Basic (tests/linting as backpressure) | Comprehensive (validated artifacts, lint/build/test, review phase) | Moderate (QA role in SOP pipeline) | None (practice, not a system) |
-| **Governance** | Light | Moderate | Light | Moderate (decisions ledger, reviewer lockout) | None | Heavy (constraint-based, audit trails, policy-as-code) | Light | None |
-| **Learning Curve** | Medium | High | Low–Medium | Medium–High | Low | High | Medium–High | Low |
-| **Ecosystem Maturity** | Established (51K stars, active community) | Established (44K stars, Discord, docs site) | Growing (GitHub-backed, v0.6.0) | Growing (Microsoft employee project, SDK + CLI) | Growing (official plugin, community forks, VentureBeat coverage) | Established (Microsoft ISE, 23 releases, Learn hub) | Established (academic origins, large community) | Established (cross-tool standard practice) |
-| **Cost** | Free (API costs for AI tool) | Free (API costs for AI tool) | Free (API costs for AI tool) | Free (API costs for Copilot sub) | Free (API costs — can be high for long loops) | Free (Copilot subscription) | Free (API costs) | Free |
-| **Open Source** | Yes (MIT) | Partial (open source, trademark on name) | Yes (GitHub official) | Yes (MIT) | Yes (technique is open; plugin is official) | Yes (MIT) | Yes (open source) | Yes (community-driven) |
+| Dimension | GSD | BMAD | Spec Kit | Squad | Ralph | HVE | Context Engineering |
+|-----------|-----|------|----------|-------|-------|-----|---------------------|
+| **Approach** | Spec-Driven | Multi-Agent | Spec-Driven | Multi-Agent | Autonomous Iteration | Enterprise SDLC | Practice |
+| **Human Control** | Semi-autonomous | HITL | HITL | Semi-autonomous | AFK / HITL | Phased | HITL |
+| **Setup Complexity** | Minutes | Hours | Minutes | Hours | Minutes | Hours–Days | Minutes |
+| **Tool Compatibility** | Multi-tool (Claude Code primary, community ports) | Multi-tool (Claude Code, Cursor, Windsurf) | Multi-tool (Copilot, Claude Code, Gemini CLI, Cursor) | Single-tool (GitHub Copilot) | Tool-agnostic (any AI CLI) | Single-tool (GitHub Copilot) | Tool-agnostic (all tools) |
+| **Scale** | Solo–Small team | Solo–Enterprise | Solo–Small team | Small team–Enterprise | Solo | Large team–Enterprise | Solo–Enterprise |
+| **Predictability** | High | High | Medium–High | Medium | Low–Medium | High | Varies by implementation |
+| **Context Management** | Fresh agent per task; waves for parallelism | Agent personas + structured workflows | Spec files as context anchor | Charter files + decision ledger + history | Fresh context each loop iteration; git as memory | Clear context between RPI phases; research docs persist in files | Rules files layered by scope (8-layer model) |
+| **Quality Gates** | Moderate (verification per phase) | Comprehensive (QA agent, readiness checks, retros) | Moderate (analyze + checklist commands) | Moderate (reviewer rejection protocol, ceremonies) | Basic (tests/linting as backpressure) | Comprehensive (validated artifacts, lint/build/test, review phase) | None (practice, not a system) |
+| **Governance** | Light | Moderate | Light | Moderate (decisions ledger, reviewer lockout) | None | Heavy (constraint-based, audit trails, policy-as-code) | None |
+| **Learning Curve** | Medium | High | Low–Medium | Medium–High | Low | High | Low |
+| **Ecosystem Maturity** | Established (51K stars, active community) | Established (44K stars, Discord, docs site) | Growing (GitHub-backed, v0.6.0) | Growing (Microsoft employee project, SDK + CLI) | Growing (official plugin, community forks, VentureBeat coverage) | Established (Microsoft ISE, 23 releases, Learn hub) | Established (cross-tool standard practice) |
+| **Cost** | Free (API costs for AI tool) | Free (API costs for AI tool) | Free (API costs for AI tool) | Free (API costs for Copilot sub) | Free (API costs — can be high for long loops) | Free (Copilot subscription) | Free |
+| **Open Source** | Yes (MIT) | Partial (open source, trademark on name) | Yes (GitHub official) | Yes (MIT) | Yes (technique is open; plugin is official) | Yes (MIT) | Yes (community-driven) |
 
 ---
 
@@ -38,7 +38,7 @@ All scores are derived from the research findings. Where a technique spans a ran
 
 Frameworks with GitHub repositories — star growth over time:
 
-[![Star History Chart](https://api.star-history.com/svg?repos=gsd-build/get-shit-done,bmad-code-org/BMAD-METHOD,github/spec-kit,bradygaster/squad,microsoft/hve-core,FoundationAgents/MetaGPT&type=timeline)](https://star-history.com/#gsd-build/get-shit-done&bmad-code-org/BMAD-METHOD&github/spec-kit&bradygaster/squad&microsoft/hve-core&FoundationAgents/MetaGPT&timeline)
+[![Star History Chart](https://api.star-history.com/svg?repos=gsd-build/get-shit-done,bmad-code-org/BMAD-METHOD,github/spec-kit,bradygaster/squad,microsoft/hve-core&type=timeline)](https://star-history.com/#gsd-build/get-shit-done&bmad-code-org/BMAD-METHOD&github/spec-kit&bradygaster/squad&microsoft/hve-core&timeline)
 
 *Ralph and Context Engineering are not included — Ralph is a technique (no central repo), and Context Engineering is a cross-tool practice.*
 
@@ -54,7 +54,6 @@ Frameworks with GitHub repositories — star growth over time:
 | GitHub-backed spec-driven development | **Spec Kit** | GitHub's official SDD toolkit. Works with Copilot, Claude Code, Gemini CLI. Minimal footprint, strong institutional backing. |
 | Parallel multi-agent orchestration with persistent memory | **Squad** | Named agents with charters, shared decisions, ceremonies, and Ralph-style work monitoring. Conway's Law for AI teams. |
 | Enterprise governance and audit trails | **HVE** | Microsoft ISE's constraint-based RPI workflow with 49 agents, validated artifacts, and policy-as-code. Built for regulated environments. |
-| An academic/SOP-driven approach with full company simulation | **MetaGPT** | Software company simulation via standardized operating procedures. PM → Architect → Engineer → QA pipeline. |
 | To improve any AI tool's output without adopting a framework | **Context Engineering** | Rules files (.cursorrules, CLAUDE.md, copilot-instructions.md) work everywhere. Start here before committing to a framework. |
 | To run AI agents overnight on mechanical tasks | **Ralph** | AFK mode with max iteration cap. Y Combinator teams shipped 6+ repos overnight for $297 in API costs. |
 | Tool-agnostic methodology that works with any AI CLI | **Ralph** or **Context Engineering** | Ralph works with any CLI that doesn't cap tool calls. Context engineering practices apply to every tool. |
@@ -67,9 +66,9 @@ Frameworks with GitHub repositories — star growth over time:
 
 Spec-driven development (SDD) is the most intuitive response to the chaos of unstructured AI coding: write down what you want before the AI builds it. **GSD** is the community champion — 51K GitHub stars, a 6-step slash-command workflow, and a "Lean Orchestrator" that spawns fresh agents per task to avoid context rot. It was built for Claude Code but has community ports for other tools. **Spec Kit** is GitHub's official entry — a lighter-weight toolkit that organizes projects around `.specify/` directories with specs, plans, and tasks. Where GSD is opinionated and comprehensive, Spec Kit is minimal and agent-agnostic. Both share the conviction that disciplined specification prevents the "AI assumed what I wanted" failure mode.
 
-### Multi-Agent Orchestration — Squad, BMAD, MetaGPT
+### Multi-Agent Orchestration — Squad, BMAD
 
-Multi-agent systems simulate development teams where each AI agent has a specialized role. **BMAD** is the heavyweight — 44K stars, 12+ named agent personas (PM, Architect, Dev, QA), scale-adaptive intelligence, and an extensible module ecosystem. It's the closest to a full agile shop simulation. **Squad** takes a different approach: a coordinator spawns named agents in parallel, with persistent memory (charters, decisions, history files) and structured ceremonies. It's tightly integrated with GitHub Copilot and includes a built-in work monitor (Ralph) for continuous pipeline management. **MetaGPT** comes from the academic side — it codifies software development as standardized operating procedures (SOPs), with the philosophy "Code = SOP(Team)." All three prove that structuring AI collaboration produces better results than a single AI working alone, though they trade simplicity for coordination overhead.
+Multi-agent systems simulate development teams where each AI agent has a specialized role. **BMAD** is the heavyweight — 44K stars, 12+ named agent personas (PM, Architect, Dev, QA), scale-adaptive intelligence, and an extensible module ecosystem. It's the closest to a full agile shop simulation. **Squad** takes a different approach: a coordinator spawns named agents in parallel, with persistent memory (charters, decisions, history files) and structured ceremonies. It's tightly integrated with GitHub Copilot and includes a built-in work monitor (Ralph) for continuous pipeline management. Both prove that structuring AI collaboration produces better results than a single AI working alone, though they trade simplicity for coordination overhead.
 
 ### Autonomous Iteration — Ralph
 
@@ -116,8 +115,6 @@ Context engineering is not a framework — it's the foundational practice that e
   ◄── Low predictability ───────────────────────── High predictability ─────►
 ```
 
-*MetaGPT sits between Squad and BMAD on this spectrum — SOP-driven with moderate setup and a full company simulation model.*
-
 ---
 
 ## 7. Navigation — Deep-Dive Documents
@@ -133,7 +130,6 @@ Each technique has a dedicated deep-dive document following a consistent templat
 
 - [Squad](techniques/squad.md) — Coordinator-based multi-agent orchestration with persistent memory and casting.
 - [BMAD](techniques/bmad.md) — AI-driven agile framework with 12+ specialized agent personas.
-- [MetaGPT](techniques/metagpt.md) — SOP-based software company simulation. Code = SOP(Team).
 
 ### Autonomous Iteration
 

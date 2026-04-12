@@ -25,7 +25,6 @@ A comprehensive, evidence-based comparison of techniques, methodologies, and fra
 |-----------|-------------|-------|
 | [Squad](techniques/squad.md) | Coordinator-based multi-agent orchestration with persistent memory, casting, and ceremonies | Growing |
 | [BMAD](techniques/bmad.md) | AI-driven agile framework with 12+ specialized agent personas and 34+ workflows | ~44K |
-| [MetaGPT](techniques/metagpt.md) | Open-source SOP-based software company simulation (PM, Architect, Engineer, QA) | Large |
 
 ### Autonomous Iteration
 

@@ -35,7 +35,7 @@ Context engineering is the practice of structuring, curating, and managing the i
 
 Andrej Karpathy articulated the foundational mental model in June 2025: "The LLM is a CPU, the context window is RAM, and you are the operating system responsible for loading exactly the right information for each task." This framing recast the developer's role — from someone who writes clever prompts to someone who designs information architectures for AI agents.
 
-Context engineering is not a framework, a tool, or a product. It is a cross-cutting discipline that underlies every framework in this comparison. GSD, BMAD, Squad, HVE, Ralph, Spec Kit, and MetaGPT all implement context engineering in their own ways. Understanding context engineering as a standalone practice helps developers make informed choices about which framework to adopt — or whether to build their own approach from first principles.
+Context engineering is not a framework, a tool, or a product. It is a cross-cutting discipline that underlies every framework in this comparison. GSD, BMAD, Squad, HVE, Ralph, and Spec Kit all implement context engineering in their own ways. Understanding context engineering as a standalone practice helps developers make informed choices about which framework to adopt — or whether to build their own approach from first principles.
 
 ## Core Concepts
 

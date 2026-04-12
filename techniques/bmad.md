@@ -100,4 +100,4 @@ BMAD is one of the two most popular AI development frameworks (alongside GSD), w
 
 **vs. Squad:** Both use multi-agent orchestration, but with different philosophies. BMAD simulates a full team (PM, Architect, Dev, QA) within a single user's AI session — the agents are personas. Squad creates actual parallel agent instances with persistent memory, shared decision ledgers, and an autonomous work monitor (Ralph). BMAD is richer in structured process; Squad is richer in coordination infrastructure.
 
-**vs. MetaGPT:** Both simulate software company structures with role-based agents. MetaGPT takes an academic/SOPs approach ("Code = SOP(Team)") with a focus on standardized operating procedures. BMAD takes a practitioner/agile approach with scale-adaptive intelligence. MetaGPT is a framework with a Python runtime; BMAD is a set of prompts, workflows, and a CLI. BMAD's community (44K stars) is significantly larger than MetaGPT's, and its workflow coverage is broader.
+

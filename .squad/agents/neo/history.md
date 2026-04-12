@@ -38,3 +38,12 @@
 - File list updated: `roo-boomerang.md` and `devin.md` removed from techniques/, `ralph.md` and `hve.md` added
 - Appended sections 17 (Ralph) and 18 (HVE) to research-raw-findings.md with full research from Trinity
 
+### 2026-04-12: Overview & README Written
+- Wrote overview.md — the executive summary and master comparison document
+- Contains 6 sections: Executive Summary, Comparison Matrix (13 dimensions × 8 techniques), Decision Guide (10 scenarios), Category Summaries (5 categories), Complexity vs. Speed ASCII spectrum, and Navigation links
+- Comparison matrix scored all 8 Tier 1 techniques across: Approach, Human Control, Setup Complexity, Tool Compatibility, Scale, Predictability, Context Management, Quality Gates, Governance, Learning Curve, Ecosystem Maturity, Cost, Open Source
+- Decision guide covers 10 practical "if you want X, use Y" scenarios
+- MetaGPT had limited dedicated research data (no deep-dive section in raw findings) — scored conservatively from cross-cutting observations and scope document
+- Updated README.md as project landing page with technique tables organized by category, links to all deep-dives, and project context
+- Key architectural insight: the spectrum runs Context Eng → Ralph → GSD → Spec Kit → Squad → BMAD → HVE from least to most ceremony/structure
+- All techniques converge on spec-first thinking and context engineering as foundational practices

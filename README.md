@@ -13,12 +13,14 @@ A comprehensive, evidence-based comparison of techniques, methodologies, and fra
 ## Deep-Dive Documents
 
 ### Spec-Driven Development
+
 | Technique | Description | Stars |
 |-----------|-------------|-------|
 | [GSD (Get Shit Done)](techniques/gsd.md) | Meta-prompting, context engineering, and spec-driven dev system for reliable AI development | ~51K |
 | [Spec Kit](techniques/spec-kit.md) | GitHub's official toolkit for spec-driven development — specs → plans → tasks | Growing |
 
 ### Multi-Agent Orchestration
+
 | Technique | Description | Stars |
 |-----------|-------------|-------|
 | [Squad](techniques/squad.md) | Coordinator-based multi-agent orchestration with persistent memory, casting, and ceremonies | Growing |
@@ -26,16 +28,19 @@ A comprehensive, evidence-based comparison of techniques, methodologies, and fra
 | [MetaGPT](techniques/metagpt.md) | Open-source SOP-based software company simulation (PM, Architect, Engineer, QA) | Large |
 
 ### Autonomous Iteration
+
 | Technique | Description | Stars |
 |-----------|-------------|-------|
 | [Ralph](techniques/ralph.md) | Autonomous bash-loop methodology — tests as backpressure, git as memory, tool-agnostic | Community |
 
 ### Enterprise AI-Native SDLC
+
 | Technique | Description | Stars |
 |-----------|-------------|-------|
 | [HVE](techniques/hve.md) | Microsoft ISE's RPI workflow with 49 agents, constraint-based governance, and validated artifacts | ~919 |
 
 ### Cross-Cutting
+
 | Technique | Description |
 |-----------|-------------|
 | [Context Engineering](techniques/context-engineering.md) | The practice of structuring project context via rules files across an 8-layer model |

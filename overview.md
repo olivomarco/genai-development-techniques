@@ -1,10 +1,5 @@
 # GenAI Development Techniques — Overview & Comparison
 
-**Author:** Neo (Lead / Research Architect)  
-**Requested by:** Marco Olivo  
-**Date:** April 12, 2026  
-**Date:** April 2026
-
 ---
 
 ## 1. Executive Summary
@@ -39,7 +34,17 @@ All scores are derived from the research findings. Where a technique spans a ran
 
 ---
 
-## 3. Decision Guide
+## 3. GitHub Star History
+
+Frameworks with GitHub repositories — star growth over time:
+
+[![Star History Chart](https://api.star-history.com/svg?repos=gsd-build/get-shit-done,bmad-code-org/BMAD-METHOD,github/spec-kit,bradygaster/squad,microsoft/hve-core,FoundationAgents/MetaGPT&type=Date)](https://star-history.com/#gsd-build/get-shit-done&bmad-code-org/BMAD-METHOD&github/spec-kit&bradygaster/squad&microsoft/hve-core&FoundationAgents/MetaGPT&Date)
+
+*Ralph and Context Engineering are not included — Ralph is a technique (no central repo), and Context Engineering is a cross-tool practice.*
+
+---
+
+## 4. Decision Guide
 
 | If you want... | Use | Why |
 |----------------|-----|-----|
@@ -56,7 +61,7 @@ All scores are derived from the research findings. Where a technique spans a ran
 
 ---
 
-## 4. Category Summaries
+## 5. Category Summaries
 
 ### Spec-Driven Development — GSD, Spec Kit
 
@@ -80,7 +85,7 @@ Context engineering is not a framework — it's the foundational practice that e
 
 ---
 
-## 5. Complexity vs. Speed Spectrum
+## 6. Complexity vs. Speed Spectrum
 
 ```
                         COMPLEXITY vs. SPEED SPECTRUM
@@ -115,29 +120,35 @@ Context engineering is not a framework — it's the foundational practice that e
 
 ---
 
-## 6. Navigation — Deep-Dive Documents
+## 7. Navigation — Deep-Dive Documents
 
 Each technique has a dedicated deep-dive document following a consistent template (At a Glance → Overview → Core Concepts → How It Works → Strengths → Limitations → Best For → Not Ideal For → Community & Ecosystem → Comparison Notes).
 
 ### Spec-Driven Development
+
 - [GSD (Get Shit Done)](techniques/gsd.md) — Meta-prompting, context engineering, and spec-driven dev. 51K stars.
 - [Spec Kit](techniques/spec-kit.md) — GitHub's official SDD toolkit. Specs → plans → tasks.
 
 ### Multi-Agent Orchestration
+
 - [Squad](techniques/squad.md) — Coordinator-based multi-agent orchestration with persistent memory and casting.
 - [BMAD](techniques/bmad.md) — AI-driven agile framework with 12+ specialized agent personas.
 - [MetaGPT](techniques/metagpt.md) — SOP-based software company simulation. Code = SOP(Team).
 
 ### Autonomous Iteration
+
 - [Ralph](techniques/ralph.md) — Autonomous bash-loop methodology. Tests as backpressure, git as memory.
 
 ### Enterprise AI-Native SDLC
+
 - [HVE (Hypervelocity Engineering)](techniques/hve.md) — Microsoft ISE's RPI workflow with 49 agents and constraint-based governance.
 
 ### Cross-Cutting
+
 - [Context Engineering](techniques/context-engineering.md) — The practice of structuring project context via rules files across an 8-layer model.
 
 ### Supporting Documents
+
 - [Research Scope](research-scope.md) — Full technique inventory, taxonomy, and comparison dimensions.
 - [comparisons/spec-driven-vs-multi-agent.md](comparisons/spec-driven-vs-multi-agent.md) — Category comparison.
 - [comparisons/solo-dev-vs-team.md](comparisons/solo-dev-vs-team.md) — Scale comparison.

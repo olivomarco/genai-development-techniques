@@ -1,6 +1,7 @@
 # Context Engineering
 
 ## At a Glance
+
 | Field              | Value                         |
 |--------------------|-------------------------------|
 | Full Name          | Context Engineering (practice/discipline) |

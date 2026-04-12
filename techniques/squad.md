@@ -1,6 +1,7 @@
 # Squad
 
 ## At a Glance
+
 | Field              | Value                         |
 |--------------------|-------------------------------|
 | Full Name          | Squad                         |

@@ -1,6 +1,7 @@
 # Spec Kit
 
 ## At a Glance
+
 | Field              | Value                         |
 |--------------------|-------------------------------|
 | Full Name          | GitHub Spec Kit (CLI: "Specify") |

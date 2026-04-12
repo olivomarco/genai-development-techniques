@@ -1,6 +1,7 @@
 # BMAD Method
 
 ## At a Glance
+
 | Field              | Value                         |
 |--------------------|-------------------------------|
 | Full Name          | Build More Architect Dreams (originally "Breakthrough Method for Agile AI-Driven Development") |

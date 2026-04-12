@@ -1,6 +1,7 @@
 # Ralph (Wiggum)
 
 ## At a Glance
+
 | Field              | Value                         |
 |--------------------|-------------------------------|
 | Full Name          | Ralph Wiggum                  |

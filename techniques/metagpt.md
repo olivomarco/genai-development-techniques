@@ -1,6 +1,7 @@
 # MetaGPT
 
 ## At a Glance
+
 | Field              | Value                         |
 |--------------------|-------------------------------|
 | Full Name          | MetaGPT                       |

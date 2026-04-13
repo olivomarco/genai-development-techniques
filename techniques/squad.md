@@ -33,6 +33,19 @@ Squad is an AI agent orchestration system that creates a persistent, coordinated
 
 The system applies Conway's Law to AI development: rather than trying to produce better output from a single agent through better prompts, Squad changes the structure. It introduces role separation, shared memory, decision tracking, and autonomous work monitoring. The agents don't just execute tasks — they accumulate knowledge, follow team decisions, and coordinate through a shared repository-based state.
 
+## Pros & Cons at a Glance
+
+| Pros | Cons |
+|------|------|
+| ✅ True parallel multi-agent orchestration | ❌ Copilot-only — doesn't work with Claude Code, Cursor, etc. |
+| ✅ Persistent memory across sessions (decisions, history) | ❌ Still pre-1.0 (v0.8.21) — expect API changes |
+| ✅ Autonomous work management via Ralph (Work Monitor) | ❌ Substantial .squad/ directory overhead for small projects |
+| ✅ Full GitHub lifecycle integration (issues → PRs → merge) | ❌ Requires GitHub CLI authentication for full feature set |
+| ✅ Reviewer rejection protocol enforces genuine review | ❌ Node.js dependency for the CLI |
+| ✅ Extensible — human members, @copilot agent, custom agents | ❌ Overkill for solo developers or projects without GitHub Issues |
+
+> **In one sentence:** Squad is Conway's Law applied to AI — persistent teams with real coordination, perfect for GitHub-centric Copilot teams of 4-10 who want agents that remember, coordinate, and never stop working.
+
 ## Core Concepts
 
 **Coordinator Pattern.** A central Coordinator orchestrates all work. It receives user requests, routes them to the appropriate agent(s), manages parallel fan-out, and synthesizes results. The Coordinator never does domain work itself — it delegates.

@@ -46,6 +46,10 @@ Frameworks with GitHub repositories — star growth over time:
 
 ## 4. Decision Guide
 
+> **For a comprehensive decision guide by team size, project type, industry, and development activity, see [Choosing Your Approach](techniques/choosing-your-approach.md).**
+>
+> The table below is a quick reference. The full guide covers solo developers, teams of 3, teams of 10, regulated environments (finance, healthcare, government), agile workflows, brownfield vs. greenfield, and more.
+
 | If you want... | Use | Why |
 |----------------|-----|-----|
 | The simplest possible setup | **Ralph** | A bash one-liner. No framework, no dependencies, no configuration. Define a prompt, run the loop. |
@@ -119,7 +123,11 @@ Context engineering is not a framework — it's the foundational practice that e
 
 ## 7. Navigation — Deep-Dive Documents
 
-Each technique has a dedicated deep-dive document following a consistent template (At a Glance → Overview → Core Concepts → How It Works → Strengths → Limitations → Best For → Not Ideal For → Community & Ecosystem → Comparison Notes).
+Each technique has a dedicated deep-dive document following a consistent template (At a Glance → Overview → **Pros & Cons at a Glance** → Core Concepts → How It Works → Strengths → Limitations → Best For → Not Ideal For → Community & Ecosystem → Comparison Notes).
+
+### Decision Guide
+
+- [Choosing Your Approach](techniques/choosing-your-approach.md) — Which technique for which situation. By team size, project type, industry, and development activity.
 
 ### Spec-Driven Development
 

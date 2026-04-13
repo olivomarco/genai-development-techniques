@@ -37,6 +37,19 @@ Andrej Karpathy articulated the foundational mental model in June 2025: "The LLM
 
 Context engineering is not a framework, a tool, or a product. It is a cross-cutting discipline that underlies every framework in this comparison. GSD, BMAD, Squad, HVE, Ralph, and Spec Kit all implement context engineering in their own ways. Understanding context engineering as a standalone practice helps developers make informed choices about which framework to adopt — or whether to build their own approach from first principles.
 
+## Pros & Cons at a Glance
+
+| Pros | Cons |
+|------|------|
+| ✅ Universal — works with every AI coding tool | ❌ No structure by itself — a practice, not a workflow |
+| ✅ Zero barrier to entry — create a rules file in 5 minutes | ❌ Fragmented tooling — each tool has its own format |
+| ✅ Compounds over time — knowledge accumulates in rules files | ❌ Quality depends entirely on the practitioner's curation |
+| ✅ Foundation for everything else — makes all frameworks better | ❌ No built-in quality gates or enforcement mechanisms |
+| ✅ Version-controllable — lives in git, reviewed in PRs | ❌ Birgitta Böckeler's warning: "Illusion of control" — AI may still ignore instructions |
+| ✅ Model-portable — principles transfer across LLM families | ❌ Invisible when done well — hard to demonstrate or get buy-in for |
+
+> **In one sentence:** Context engineering is the foundational skill that makes every AI coding approach better — the rules files you write today compound into a project-knowledge system that benefits every session, human and AI alike.
+
 ## Core Concepts
 
 - **Context rot** — The gradual degradation of AI output quality as context windows fill up during long sessions. This is the core problem that every framework in this comparison attempts to solve, whether through fresh windows (GSD, Ralph), phased workflows (HVE), or structured memory files (Squad).

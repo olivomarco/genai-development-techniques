@@ -38,6 +38,19 @@ At its simplest, Ralph is a bash one-liner: `while :; do cat PROMPT.md | claude-
 
 The technique emerged from Geoffrey Huntley's observation that one-shot AI coding (single context window, single attempt) doesn't scale for substantial projects. Ralph trades elegance for relentlessness — it is, in Huntley's own words, "deterministically bad in an undeterministic world. It's better to fail predictably than succeed unpredictably."
 
+## Pros & Cons at a Glance
+
+| Pros | Cons |
+|------|------|
+| ✅ Extreme simplicity — a bash one-liner, zero dependencies | ❌ Can be expensive — $50-100+ per long run in API costs |
+| ✅ Tool-agnostic — works with any AI CLI | ❌ Non-convergence risk — some loops burn iterations without progress |
+| ✅ Solves context rot (fresh window each iteration) | ❌ Poor fit for judgment-heavy work (architecture, security, ambiguity) |
+| ✅ Overnight/AFK productivity — set it and sleep | ❌ Huntley's own warning: not for brownfield/existing codebases |
+| ✅ Proven results — CURSED language, YC hackathon repos | ❌ Requires crisp completion criteria; vague prompts → infinite loops |
+| ✅ Battle-tested community, official Claude Code plugin | ❌ Nondeterministic search is Achilles' heel — agents may create duplicates |
+
+> **In one sentence:** Ralph is AI coding on autopilot — radical simplicity and overnight productivity for greenfield work with clear specs, but trust your test suite because nobody's watching.
+
 ## Core Concepts
 
 - **Autonomous iteration loop** — A bash loop repeatedly feeds the same prompt to an AI agent. Each iteration is a fresh context window, and the agent picks up where the last one left off via git history and file state.

@@ -33,6 +33,19 @@ BMAD is a comprehensive AI-driven agile development framework that simulates an 
 
 The framework addresses the gap between casual AI prompting and production-grade development. It transforms AI coding from trial-and-error into a structured, repeatable workflow with clear phases, quality gates, and role separation. BMAD explicitly positions itself not as a tool that "does the thinking for you" but as expert collaborators guiding structured processes.
 
+## Pros & Cons at a Glance
+
+| Pros | Cons |
+|------|------|
+| ✅ Most comprehensive lifecycle coverage (34+ workflows) | ❌ Heavy upfront investment in spec generation and planning |
+| ✅ Scale-adaptive — adjusts planning depth to project complexity | ❌ Steep learning curve — 12+ agents, 34+ workflows, multiple modules |
+| ✅ Cross-platform support (Claude Code, Cursor, Windsurf, Copilot) | ❌ Can generate overwhelming volumes of specification documents |
+| ✅ Rich module ecosystem (BMB, TEA, BMGD, CIS) | ❌ Team simulation can feel overly ceremonial for solo developers |
+| ✅ 44K+ stars, active Discord community, strong ecosystem | ❌ Proprietary trademark on the BMAD name |
+| ✅ 100% free and open source | ❌ Four-phase process front-loads significant work before implementation |
+
+> **In one sentence:** BMAD is the most fully-realized agile simulation for AI coding — ideal when your project is complex enough to justify having a PM, Architect, and QA challenge every decision before code is written.
+
 ## Core Concepts
 
 **Specialized Agent Roles.** BMAD defines distinct agent personas, each with specific responsibilities: John (PM) asks "WHY?" relentlessly to validate the product direction; Winston (Architect) balances pragmatism with innovation; Dev focuses on clean, maintainable implementation; Quinn (QA) handles quality assurance; and additional agents cover UX design, domain analysis, and scrum facilitation. The total roster is 12+ agents.

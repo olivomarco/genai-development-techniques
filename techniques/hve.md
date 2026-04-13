@@ -35,6 +35,19 @@ Unlike lighter-weight approaches that focus on a single developer's workflow, HV
 
 HVE ships as a VS Code extension and a GitHub repository containing 49 agents, 102 instructions, 63 prompts, 11 skills, and 10 domain-specific collections. It is explicitly built for — and tightly coupled to — the GitHub Copilot ecosystem.
 
+## Pros & Cons at a Glance
+
+| Pros | Cons |
+|------|------|
+| ✅ Enterprise-grade governance — audit trails, validated artifacts, policy-as-code | ❌ Copilot lock-in — no support for Claude Code, Cursor, or other tools |
+| ✅ Research-first philosophy prevents costly rework | ❌ 49 agents + 102 instructions can overwhelm small teams |
+| ✅ Comprehensive tooling — 10 domain-specific collections | ❌ Manual context clearing between RPI phases adds operational burden |
+| ✅ Supply-chain security (SBOM, attestation, CodeQL, OpenSSF) | ❌ Some collections still experimental/preview |
+| ✅ Proven at enterprise scale (AT&T, KT Corporation) | ❌ No autonomous iteration — each phase needs human initiation |
+| ✅ Multi-stack support (no-code → pro-code) | ❌ Microsoft ecosystem tilt (Azure, M365, Power Platform) |
+
+> **In one sentence:** HVE is the enterprise weapon — built from Microsoft ISE's experience shipping 140+ AI solutions, it trades simplicity for the governance, audit trails, and research-first rigor that regulated industries demand.
+
 ## Core Concepts
 
 - **Velocity-as-Vector** — Speed alone is insufficient. HVE measures velocity as speed + direction + quality combined. Moving fast in the wrong direction is not progress.

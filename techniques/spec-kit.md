@@ -33,6 +33,19 @@ Spec Kit is GitHub's official open-source toolkit for spec-driven development (S
 
 The core problem Spec Kit addresses is what might be called "vibes-based development" — the tendency for developers to jump straight into prompting an AI without clearly specifying what they want, then spending time correcting the AI's assumptions. Spec Kit inserts a specification layer between intent and implementation: you describe what you want, review and refine that description, then let the AI build from an explicit spec rather than an ambiguous prompt.
 
+## Pros & Cons at a Glance
+
+| Pros | Cons |
+|------|------|
+| ✅ GitHub-backed — institutional support and credibility | ❌ Still experimental (v0.6.0) — API and workflow may change |
+| ✅ Truly agent-agnostic — works with Copilot, Claude Code, Gemini CLI, Cursor | ❌ Significant review overhead — Birgitta Böckeler noted it was comparable to just coding directly |
+| ✅ Minimal footprint — Markdown files and a scaffolding CLI | ❌ One opinionated workflow — may not fit all task sizes |
+| ✅ Specification quality checks (analyze, checklist commands) | ❌ No multi-agent orchestration — specification toolkit, not execution framework |
+| ✅ Growing extension ecosystem (worktree isolation, git, diagrams) | ❌ Generates many Markdown files that need review and maintenance |
+| ✅ Version-controlled specs as part of normal Git workflow | ❌ Agent may still ignore spec instructions — no enforcement mechanism |
+
+> **In one sentence:** Spec Kit is GitHub's disciplined answer to "vibes-based development" — lightweight, agent-agnostic, and focused on getting the spec right before building, but still finding its footing at v0.6.0.
+
 ## Core Concepts
 
 **Specifications as Source of Truth.** Everything starts with a `spec.md` file that captures project goals and requirements. This spec is version-controlled Markdown — reviewable, diffable, and auditable like any other source file.

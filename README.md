@@ -6,11 +6,19 @@ A comprehensive, evidence-based comparison of techniques, methodologies, and fra
 
 ## Start Here
 
-**[Overview & Comparison Matrix](overview.md)** — Executive summary, full comparison table, decision guide, and category analysis.
+**[Choosing Your Approach](techniques/choosing-your-approach.md)** — Which technique fits your situation? Decision guide by team size, project type, industry, and development activity.
+
+**[Overview & Comparison Matrix](overview.md)** — Executive summary, full comparison table, and category analysis.
 
 ---
 
 ## Deep-Dive Documents
+
+### Decision Guide
+
+| Document | Description |
+|----------|-------------|
+| [Choosing Your Approach](techniques/choosing-your-approach.md) | Which technique for which situation — by team size, project type, industry, methodology, and task type |
 
 ### Spec-Driven Development
 

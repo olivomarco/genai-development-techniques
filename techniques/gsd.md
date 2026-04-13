@@ -33,6 +33,19 @@ GSD is a lightweight, spec-driven development system that addresses one of the m
 
 The core insight is that raw prompting doesn't scale for substantial projects. Features get forgotten, files get overwritten, and debugging cycles waste time. GSD solves this by enforcing a disciplined 6-step workflow where each phase ideally runs in a fresh context window, giving every spawned agent 100% clean context.
 
+## Pros & Cons at a Glance
+
+| Pros | Cons |
+|------|------|
+| ✅ Eliminates context rot with fresh windows per task | ❌ Originally Claude Code-only — community ports lose depth |
+| ✅ Low dependency footprint (~50 Markdown files) | ❌ Medium learning curve — 6-step workflow to internalize |
+| ✅ Parallel execution (5+ agents via wave-based orchestrator) | ❌ Still requires upfront spec work that feels heavy for small fixes |
+| ✅ Verification gates check actual codebase, not AI self-reports | ❌ No built-in team coordination — single-user focus |
+| ✅ Atomic git commits for clean history and easy rollbacks | ❌ No enterprise governance or audit trails |
+| ✅ 51K+ stars, active community, battle-tested at scale | ❌ XML prompt formatting may be unfamiliar |
+
+> **In one sentence:** GSD is the go-to for solo Claude Code users who want structured discipline without enterprise overhead — it solves the #1 problem (context rot) with minimal ceremony.
+
 ## Core Concepts
 
 **Context Engineering as Foundation.** GSD treats context management as the central engineering challenge. Each task spawned by the orchestrator receives a fresh context window, eliminating the accumulated noise that degrades output in long sessions.

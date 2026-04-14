@@ -113,4 +113,6 @@ BMAD is one of the two most popular AI development frameworks (alongside GSD), w
 
 **vs. Squad:** Both use multi-agent orchestration, but with different philosophies. BMAD simulates a full team (PM, Architect, Dev, QA) within a single user's AI session — the agents are personas. Squad creates actual parallel agent instances with persistent memory, shared decision ledgers, and an autonomous work monitor (Ralph). BMAD is richer in structured process; Squad is richer in coordination infrastructure.
 
+**vs. Superpowers:** BMAD simulates a full agile team with 12+ agent personas and structured phases (Analysis → Planning → Solutioning → Implementation); Superpowers enhances individual developer effectiveness through composable behavioral skills. BMAD's strength is process simulation — having a PM, Architect, and QA challenge decisions before code is written. Superpowers' strength is process internalization — the agent acquires abilities (TDD, debugging, code review) as mandatory skills rather than playing roles. Both support multiple tools. Superpowers has significantly more stars (151K vs. 44K) but serves a different use case: individual discipline vs. team simulation.
+
 

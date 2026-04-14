@@ -34,6 +34,12 @@ A comprehensive, evidence-based comparison of techniques, methodologies, and fra
 | [Squad](techniques/squad.md) | Coordinator-based multi-agent orchestration with persistent memory, casting, and ceremonies | Growing |
 | [BMAD](techniques/bmad.md) | AI-driven agile framework with 12+ specialized agent personas and 34+ workflows | ~44K |
 
+### Skill-Based Development
+
+| Technique | Description | Stars |
+|-----------|-------------|-------|
+| [Superpowers](techniques/superpowers.md) | Composable skills framework — TDD, subagent-driven development, self-improving agent workflows | ~151K |
+
 ### Autonomous Iteration
 
 | Technique | Description | Stars |

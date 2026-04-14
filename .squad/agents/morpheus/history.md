@@ -44,3 +44,14 @@
 - "Skill-Based Development" category accepted as fifth taxonomy category in decisions.md
 - Technique count now 9, category count now 5 (plus Context Engineering cross-cutting)
 
+### 2026-04-14: Community ports & unofficial adaptations update
+- Updated 6 technique files with community port information from Trinity's research report (`.squad/research/community-ports-report.md`)
+- **gsd.md:** Updated Cursor row with link to gsd-for-cursor (76★). Added "Community Ports & Unofficial Adaptations" section covering gsd-for-cursor, gsd-pro (66★), official --opencode/--codex/Gemini flags, grassroots Copilot effort via Kilo Code, and gaps (Windsurf, Roo Code).
+- **bmad.md:** Added note in Community & Ecosystem that V6's official multi-platform support renders community ports unnecessary — the maintainer built cross-platform directly.
+- **spec-kit.md:** Added "Community Ports & Unofficial Adaptations" section covering catalog infrastructure, spec-kit-github-issues, ADIK integration, and Issue #2066 integration catalog proposal.
+- **ralph.md:** CRITICAL FIX — replaced unverified "8.7K+ stars" claim with verified numbers: how-to-ralph-wiggum (1.4K★, 127 forks) and ralph-orchestrator (2.7K★, 246 forks). Rewrote Community & Ecosystem with canonical doc repo, ralph-orchestrator (now a Rust-based multi-backend platform at v2.9.2), and ralph-local (4★).
+- **superpowers.md:** Updated Copilot row from ❌ to ⚠️ Community with two VS Code Marketplace extensions (2,568 and 389 installs). Added "Community Ports & Unofficial Adaptations" section covering both marketplace extensions, two GitHub repos, and official v5.0.7 Copilot CLI support.
+- **context-engineering.md:** Added educational resource note (Denis2054 book companion, 555 commits) and observation that no dominant framework has emerged.
+- **squad.md and hve.md:** No changes — both already clearly document Copilot-only status with zero community ports.
+- Key insight: techniques that start tool-agnostic (Ralph, Superpowers) attract the most community ports. Copilot-only tools (Squad, HVE) have zero. BMAD sidesteps the issue by going officially multi-platform.
+

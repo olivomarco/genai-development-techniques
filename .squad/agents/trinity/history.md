@@ -44,3 +44,14 @@
 - Key distinction: Ralph = autonomous loop (AFK coding), HVE = structured phased workflow with governance
 - Both solve "how to use AI for software development at scale" but from opposite philosophies: Ralph trusts iteration, HVE trusts structure
 
+### 2026-04-14: Community Ports & Adaptations Research
+- **GSD:** rmindel/gsd-for-cursor (76★, 15 forks) is the primary community port. GSD also officially added --opencode, --codex, Gemini CLI support. A Copilot port exists as personal forks via Kilo Code bridge but no standalone repo. itsjwill/gsd-pro (66★) adds multi-model routing.
+- **BMAD:** No community ports needed — V6 went officially multi-platform (Claude Code, Cursor, Windsurf, Copilot, Roo Code). Has MCP Server for cross-platform use.
+- **Squad:** ZERO community ports. Entirely Copilot-locked. No unofficial adaptations found.
+- **HVE:** ZERO community ports. Entirely Copilot-locked. Enterprise governance model makes porting difficult.
+- **Spec Kit:** Agent-agnostic by design. Community extension catalog infrastructure exists. Fatima367/spec-kit-github-issues is the first community extension (1★, Apr 2026). Integration catalog system proposed (Issue #2066).
+- **Ralph:** Thriving ecosystem. mikeyobrien/ralph-orchestrator (2.7K★, 246 forks, v2.9.2) is a major community tool — Rust-based, multi-backend (Claude, Roo, Copilot, Pi), web dashboard, MCP server. ghuntley/how-to-ralph-wiggum is at 1.4K★ (NOT 8.7K as previously noted — correction needed).
+- **Superpowers:** Most active porting activity. dwaintr.superpowers-vscode (2.5K installs on VS Code Marketplace), anothel.superpowers-copilot-agents (389 installs), varunr89/superpowers-copilot (4★), jsloat/superpowers-for-copilot (3★). Official project added Copilot CLI support in v5.0.7.
+- **Context Engineering:** Practice, not framework. Denis2054/Context-Engineering-for-Multi-Agent-Systems (555 commits) is the most comprehensive educational resource. No standardization framework has emerged.
+- **Key insight:** Copilot-only tools (Squad, HVE) have zero community ports = platform lock-in risk. Tool-agnostic projects (Ralph, Superpowers) attract the most community activity.
+

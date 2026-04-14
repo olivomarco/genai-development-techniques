@@ -6,7 +6,7 @@
 
 The landscape of AI-assisted software development has matured dramatically by April 2026. What began as raw prompting and "vibe coding" has evolved into a rich ecosystem of structured methodologies, multi-agent frameworks, and enterprise-grade workflows — all designed to make AI coding agents more predictable, productive, and safe at scale. The core shift is philosophical: developers are no longer asking "can AI write code?" but "how do I *direct* AI to write the *right* code, reliably, every time?" The answer, across every technique studied, is some form of specification-first thinking combined with disciplined context engineering.
 
-Seven distinct approaches have emerged as Tier 1 techniques, spanning four categories. **Spec-driven development** (GSD, Spec Kit) focuses on defining exactly what you want before the AI builds it. **Multi-agent orchestration** (Squad, BMAD) simulates development teams with specialized AI agents working in parallel. **Autonomous iteration** (Ralph) takes the radical approach of running AI agents in a bash loop overnight, using tests as backpressure. **Enterprise AI-native SDLC** (HVE) brings constraint-based governance and validated artifacts to the development lifecycle. Underneath them all sits **context engineering** — the cross-cutting discipline of curating what information fills the AI's context window.
+Eight distinct approaches have emerged as Tier 1 techniques, spanning five categories. **Spec-driven development** (GSD, Spec Kit) focuses on defining exactly what you want before the AI builds it. **Multi-agent orchestration** (Squad, BMAD) simulates development teams with specialized AI agents working in parallel. **Autonomous iteration** (Ralph) takes the radical approach of running AI agents in a bash loop overnight, using tests as backpressure. **Skill-based development** (Superpowers) teaches agents reusable behavioral skills — composable modules that enforce TDD, code review, and systematic workflows across any CLI-based AI tool. **Enterprise AI-native SDLC** (HVE) brings constraint-based governance and validated artifacts to the development lifecycle. Underneath them all sits **context engineering** — the cross-cutting discipline of curating what information fills the AI's context window. Superpowers is the largest by community with 151K GitHub stars, reflecting strong demand for disciplined individual workflows.
 
 The choice between these approaches is not about which is "best" — it's about matching the technique to your situation. A solo developer prototyping a weekend project has fundamentally different needs than an enterprise team shipping regulated software with audit requirements. This document provides the data and decision frameworks to make that match.
 
@@ -16,21 +16,21 @@ The choice between these approaches is not about which is "best" — it's about 
 
 All scores are derived from the research findings. Where a technique spans a range, the most representative value is used.
 
-| Dimension | GSD | BMAD | Spec Kit | Squad | Ralph | HVE | Context Engineering |
-|-----------|-----|------|----------|-------|-------|-----|---------------------|
-| **Approach** | Spec-Driven | Multi-Agent | Spec-Driven | Multi-Agent | Autonomous Iteration | Enterprise SDLC | Practice |
-| **Human Control** | Semi-autonomous | HITL | HITL | Semi-autonomous | AFK / HITL | Phased | HITL |
-| **Setup Complexity** | Minutes | Hours | Minutes | Hours | Minutes | Hours–Days | Minutes |
-| **Tool Compatibility** | Multi-tool (Claude Code primary, community ports) | Multi-tool (Claude Code, Cursor, Windsurf) | Multi-tool (Copilot, Claude Code, Gemini CLI, Cursor) | Single-tool (GitHub Copilot) | Tool-agnostic (any AI CLI) | Single-tool (GitHub Copilot) | Tool-agnostic (all tools) |
-| **Scale** | Solo–Small team | Solo–Enterprise | Solo–Small team | Small team–Enterprise | Solo | Large team–Enterprise | Solo–Enterprise |
-| **Predictability** | High | High | Medium–High | Medium | Low–Medium | High | Varies by implementation |
-| **Context Management** | Fresh agent per task; waves for parallelism | Agent personas + structured workflows | Spec files as context anchor | Charter files + decision ledger + history | Fresh context each loop iteration; git as memory | Clear context between RPI phases; research docs persist in files | Rules files layered by scope (8-layer model) |
-| **Quality Gates** | Moderate (verification per phase) | Comprehensive (QA agent, readiness checks, retros) | Moderate (analyze + checklist commands) | Moderate (reviewer rejection protocol, ceremonies) | Basic (tests/linting as backpressure) | Comprehensive (validated artifacts, lint/build/test, review phase) | None (practice, not a system) |
-| **Governance** | Light | Moderate | Light | Moderate (decisions ledger, reviewer lockout) | None | Heavy (constraint-based, audit trails, policy-as-code) | None |
-| **Learning Curve** | Medium | High | Low–Medium | Medium–High | Low | High | Low |
-| **Ecosystem Maturity** | Established (51K stars, active community) | Established (44K stars, Discord, docs site) | Growing (GitHub-backed, v0.6.0) | Growing (Microsoft employee project, SDK + CLI) | Growing (official plugin, community forks, VentureBeat coverage) | Established (Microsoft ISE, 23 releases, Learn hub) | Established (cross-tool standard practice) |
-| **Cost** | Free (API costs for AI tool) | Free (API costs for AI tool) | Free (API costs for AI tool) | Free (API costs for Copilot sub) | Free (API costs — can be high for long loops) | Free (Copilot subscription) | Free |
-| **Open Source** | Yes (MIT) | Partial (open source, trademark on name) | Yes (GitHub official) | Yes (MIT) | Yes (technique is open; plugin is official) | Yes (MIT) | Yes (community-driven) |
+| Dimension | GSD | BMAD | Spec Kit | Squad | Ralph | Superpowers | HVE | Context Engineering |
+|-----------|-----|------|----------|-------|-------|-------------|-----|---------------------|
+| **Approach** | Spec-Driven | Multi-Agent | Spec-Driven | Multi-Agent | Autonomous Iteration | Skill-Based | Enterprise SDLC | Practice |
+| **Human Control** | Semi-autonomous | HITL | HITL | Semi-autonomous | AFK / HITL | Semi-autonomous | Phased | HITL |
+| **Setup Complexity** | Minutes | Hours | Minutes | Hours | Minutes | Minutes | Hours–Days | Minutes |
+| **Tool Compatibility** | Multi-tool (Claude Code primary, community ports) | Multi-tool (Claude Code, Cursor, Windsurf) | Multi-tool (Copilot, Claude Code, Gemini CLI, Cursor) | Single-tool (GitHub Copilot) | Tool-agnostic (any AI CLI) | Multi-tool (Claude Code primary, Cursor, Codex, Copilot CLI, Gemini CLI, OpenCode) | Single-tool (GitHub Copilot) | Tool-agnostic (all tools) |
+| **Scale** | Solo–Small team | Solo–Enterprise | Solo–Small team | Small team–Enterprise | Solo | Solo–Small team | Large team–Enterprise | Solo–Enterprise |
+| **Predictability** | High | High | Medium–High | Medium | Low–Medium | High | High | Varies by implementation |
+| **Context Management** | Fresh agent per task; waves for parallelism | Agent personas + structured workflows | Spec files as context anchor | Charter files + decision ledger + history | Fresh context each loop iteration; git as memory | Skill files as behavioral modules; token-light bootstrap (~2K tokens); lazy skill loading via CLI search; subagents for implementation | Clear context between RPI phases; research docs persist in files | Rules files layered by scope (8-layer model) |
+| **Quality Gates** | Moderate (verification per phase) | Comprehensive (QA agent, readiness checks, retros) | Moderate (analyze + checklist commands) | Moderate (reviewer rejection protocol, ceremonies) | Basic (tests/linting as backpressure) | Comprehensive (mandatory skills, TDD enforcement, two-stage code review, pressure-tested compliance) | Comprehensive (validated artifacts, lint/build/test, review phase) | None (practice, not a system) |
+| **Governance** | Light | Moderate | Light | Moderate (decisions ledger, reviewer lockout) | None | Light | Heavy (constraint-based, audit trails, policy-as-code) | None |
+| **Learning Curve** | Medium | High | Low–Medium | Medium–High | Low | Medium | High | Low |
+| **Ecosystem Maturity** | Established (51K stars, active community) | Established (44K stars, Discord, docs site) | Growing (GitHub-backed, v0.6.0) | Growing (Microsoft employee project, SDK + CLI) | Growing (official plugin, community forks, VentureBeat coverage) | Established (151K stars, active Discord, Prime Radiant backing) | Established (Microsoft ISE, 23 releases, Learn hub) | Established (cross-tool standard practice) |
+| **Cost** | Free (API costs for AI tool) | Free (API costs for AI tool) | Free (API costs for AI tool) | Free (API costs for Copilot sub) | Free (API costs — can be high for long loops) | Free (API costs for AI tool) | Free (Copilot subscription) | Free |
+| **Open Source** | Yes (MIT) | Partial (open source, trademark on name) | Yes (GitHub official) | Yes (MIT) | Yes (technique is open; plugin is official) | Yes (MIT) | Yes (MIT) | Yes (community-driven) |
 
 ---
 
@@ -38,7 +38,7 @@ All scores are derived from the research findings. Where a technique spans a ran
 
 Frameworks with GitHub repositories — star growth over time:
 
-[![Star History Chart](https://api.star-history.com/svg?repos=gsd-build/get-shit-done,bmad-code-org/BMAD-METHOD,github/spec-kit,bradygaster/squad,microsoft/hve-core&type=timeline)](https://star-history.com/#gsd-build/get-shit-done&bmad-code-org/BMAD-METHOD&github/spec-kit&bradygaster/squad&microsoft/hve-core&timeline)
+[![Star History Chart](https://api.star-history.com/svg?repos=gsd-build/get-shit-done,bmad-code-org/BMAD-METHOD,github/spec-kit,bradygaster/squad,obra/superpowers,microsoft/hve-core&type=timeline)](https://star-history.com/#gsd-build/get-shit-done&bmad-code-org/BMAD-METHOD&github/spec-kit&bradygaster/squad&obra/superpowers&microsoft/hve-core&timeline)
 
 *Ralph and Context Engineering are not included — Ralph is a technique (no central repo), and Context Engineering is a cross-tool practice.*
 
@@ -58,7 +58,8 @@ Frameworks with GitHub repositories — star growth over time:
 | GitHub-backed spec-driven development | **Spec Kit** | GitHub's official SDD toolkit. Works with Copilot, Claude Code, Gemini CLI. Minimal footprint, strong institutional backing. |
 | Parallel multi-agent orchestration with persistent memory | **Squad** | Named agents with charters, shared decisions, ceremonies, and Ralph-style work monitoring. Conway's Law for AI teams. |
 | Enterprise governance and audit trails | **HVE** | Microsoft ISE's constraint-based RPI workflow with 49 agents, validated artifacts, and policy-as-code. Built for regulated environments. |
-| To improve any AI tool's output without adopting a framework | **Context Engineering** | Rules files (.cursorrules, CLAUDE.md, copilot-instructions.md) work everywhere. Start here before committing to a framework. |
+| To improve any AI tool's output without adopting a framework | **Context Engineering** | Rules files (copilot-instructions.md, .cursorrules, CLAUDE.md) work everywhere. Start here before committing to a framework. |
+| A disciplined individual workflow with TDD and reusable skills | **Superpowers** | 151K stars. Composable skills enforce systematic development. Works with Claude Code, Cursor, Codex, and more. |
 | To run AI agents overnight on mechanical tasks | **Ralph** | AFK mode with max iteration cap. Y Combinator teams shipped 6+ repos overnight for $297 in API costs. |
 | Tool-agnostic methodology that works with any AI CLI | **Ralph** or **Context Engineering** | Ralph works with any CLI that doesn't cap tool calls. Context engineering practices apply to every tool. |
 
@@ -69,7 +70,9 @@ Frameworks with GitHub repositories — star growth over time:
 ### Spec-Driven Development — GSD, Spec Kit
 
 Spec-driven development (SDD) is the most intuitive response to the chaos of unstructured AI coding: write down what you want before the AI builds it. **GSD** is the community champion — 51K GitHub stars, a 6-step slash-command workflow, and a "Lean Orchestrator" that spawns fresh agents per task to avoid context rot. It was built for Claude Code but has community ports for other tools. **Spec Kit** is GitHub's official entry — a lighter-weight toolkit that organizes projects around `.specify/` directories with specs, plans, and tasks. Where GSD is opinionated and comprehensive, Spec Kit is minimal and agent-agnostic. Both share the conviction that disciplined specification prevents the "AI assumed what I wanted" failure mode.
+### Skill-Based Development — Superpowers
 
+Superpowers introduces a distinct paradigm: rather than defining specifications or orchestrating agent teams, it teaches AI agents reusable behavioral *skills* — composable modules that encode development practices like TDD, code review, debugging, and architecture planning. With 151K GitHub stars (the largest community in this comparison), Superpowers provides a token-light bootstrap (~2K tokens) that lazily loads skills on demand via CLI search, keeping context lean while enforcing rigorous methodology. The framework is built for Claude Code but officially supports Cursor, Codex, Copilot CLI, Gemini CLI, and OpenCode. Its quality gates are comprehensive: mandatory skills enforce TDD, two-stage code review, and pressure-tested compliance. Subagents handle implementation while the orchestrating agent maintains architectural oversight. The trade-off is individual focus — Superpowers enhances a single developer's discipline rather than coordinating teams.
 ### Multi-Agent Orchestration — Squad, BMAD
 
 Multi-agent systems simulate development teams where each AI agent has a specialized role. **BMAD** is the heavyweight — 44K stars, 12+ named agent personas (PM, Architect, Dev, QA), scale-adaptive intelligence, and an extensible module ecosystem. It's the closest to a full agile shop simulation. **Squad** takes a different approach: a coordinator spawns named agents in parallel, with persistent memory (charters, decisions, history files) and structured ceremonies. It's tightly integrated with GitHub Copilot and includes a built-in work monitor (Ralph) for continuous pipeline management. Both prove that structuring AI collaboration produces better results than a single AI working alone, though they trade simplicity for coordination overhead.
@@ -84,7 +87,7 @@ Hypervelocity Engineering (HVE) is the enterprise end of the spectrum. Created b
 
 ### Cross-Cutting: Context Engineering
 
-Context engineering is not a framework — it's the foundational practice that every framework implements differently. Popularized by Andrej Karpathy's analogy ("the LLM is a CPU, the context window is RAM, and you are the operating system"), it's the discipline of curating exactly what fills the AI's context window. In practice, this manifests as an 8-layer model from system instructions down to auto-memory, implemented through tool-specific rules files: `.cursorrules` (Cursor), `CLAUDE.md` (Claude Code), `copilot-instructions.md` (GitHub Copilot), and `AGENTS.md`. GSD solves context rot through fresh agents per task. Ralph solves it through fresh loops. HVE clears context between RPI phases. The specific mechanism varies, but the principle is universal: what you put in the context window matters more than how you phrase the prompt.
+Context engineering is not a framework — it's the foundational practice that every framework implements differently. Popularized by Andrej Karpathy's analogy ("the LLM is a CPU, the context window is RAM, and you are the operating system"), it's the discipline of curating exactly what fills the AI's context window. In practice, this manifests as an 8-layer model from system instructions down to auto-memory, implemented through tool-specific rules files: `copilot-instructions.md` (GitHub Copilot), `.cursorrules` (Cursor), `CLAUDE.md` (Claude Code), and `AGENTS.md`. GSD solves context rot through fresh agents per task. Ralph solves it through fresh loops. HVE clears context between RPI phases. The specific mechanism varies, but the principle is universal: what you put in the context window matters more than how you phrase the prompt.
 
 ---
 
@@ -98,20 +101,20 @@ Context engineering is not a framework — it's the foundational practice that e
   Faster Start                                                  More Structure
   ◄─────────────────────────────────────────────────────────────────────────►
 
-       │         │              │          │         │        │         │
-       ▼         ▼              ▼          ▼         ▼        ▼         ▼
-  ┌─────────┐┌───────┐   ┌──────────┐┌─────────┐┌───────┐┌──────┐┌─────────┐
-  │ Context ││ Ralph │   │   GSD    ││Spec Kit ││ Squad ││ BMAD ││   HVE   │
-  │  Eng.   ││       │   │          ││         ││       ││      ││         │
-  │ ─────── ││ ───── │   │ ──────── ││ ─────── ││ ───── ││ ──── ││ ─────── │
-  │ Rules   ││ Bash  │   │6-step    ││Spec +   ││Multi- ││Full  ││RPI +    │
-  │ files   ││ loop  │   │workflow  ││plan +   ││agent  ││agile ││49 agents│
-  │ only    ││       │   │+ waves   ││tasks    ││+ mem  ││sim   ││+ govern │
-  └─────────┘└───────┘   └──────────┘└─────────┘└───────┘└──────┘└─────────┘
-       │         │              │          │         │        │         │
-   Minutes    Minutes        Minutes    Minutes    Hours    Hours   Hours–Days
-       │         │              │          │         │        │         │
-    Any tool   Any CLI     Claude Code+  Any tool  Copilot  Any tool  Copilot
+       │         │              │          │           │         │        │         │
+       ▼         ▼              ▼          ▼           ▼         ▼        ▼         ▼
+  ┌─────────┐┌───────┐   ┌──────────┐┌───────────┐┌─────────┐┌───────┐┌──────┐┌─────────┐
+  │ Context ││ Ralph │   │   GSD    ││Superpwrs ││Spec Kit ││ Squad ││ BMAD ││   HVE   │
+  │  Eng.   ││       │   │          ││           ││         ││       ││      ││         │
+  │ ─────── ││ ───── │   │ ──────── ││ ───────── ││ ─────── ││ ───── ││ ──── ││ ─────── │
+  │ Rules   ││ Bash  │   │6-step    ││Skills +  ││Spec +   ││Multi- ││Full  ││RPI +    │
+  │ files   ││ loop  │   │workflow  ││TDD +     ││plan +   ││agent  ││agile ││49 agents│
+  │ only    ││       │   │+ waves   ││subagents ││tasks    ││+ mem  ││sim   ││+ govern │
+  └─────────┘└───────┘   └──────────┘└───────────┘└─────────┘└───────┘└──────┘└─────────┘
+       │         │              │          │           │         │        │         │
+   Minutes    Minutes        Minutes    Minutes     Minutes    Hours    Hours   Hours–Days
+       │         │              │          │           │         │        │         │
+    Any tool   Any CLI     Claude Code+ Multi-tool  Any tool  Copilot  Any tool  Copilot
                                 ports
 
   ◄── Solo dev, quick projects ──────────────────── Enterprise, governance ──►
@@ -142,6 +145,10 @@ Each technique has a dedicated deep-dive document following a consistent templat
 ### Autonomous Iteration
 
 - [Ralph](techniques/ralph.md) — Autonomous bash-loop methodology. Tests as backpressure, git as memory.
+
+### Skill-Based Development
+
+- [Superpowers](techniques/superpowers.md) — Composable skills framework. TDD, subagent-driven development, and self-improving agent workflows. 151K stars.
 
 ### Enterprise AI-Native SDLC
 

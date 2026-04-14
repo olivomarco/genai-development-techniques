@@ -47,3 +47,27 @@
 - Updated README.md as project landing page with technique tables organized by category, links to all deep-dives, and project context
 - Key architectural insight: the spectrum runs Context Eng → Ralph → GSD → Spec Kit → Squad → BMAD → HVE from least to most ceremony/structure
 - All techniques converge on spec-first thinking and context engineering as foundational practices
+
+### 2026-04-14: Integrated Superpowers across all interlinking docs
+- Updated overview.md: exec summary, comparison matrix (now 9 techniques), star history, decision guide, category summaries (now 5 categories), spectrum, navigation
+- Updated choosing-your-approach.md: all tables, flowchart, combining techniques, anti-patterns, costs, tool lock-in, summary
+- Updated gsd.md and context-engineering.md comparison notes sections
+- New "Skill-Based Development" category accepted — Superpowers positioned between Ralph and GSD on the ceremony spectrum
+- Morpheus wrote the deep-dive page (`techniques/superpowers.md`) with all 12 template sections
+
+### 2026-04-14: Scribe — Cross-agent update
+- Morpheus wrote `techniques/superpowers.md` — full 12-section deep-dive (151K stars, Jesse Vincent, skill-based development)
+- "Skill-Based Development" category accepted as fifth taxonomy category in decisions.md
+
+### 2026-04-14: Superpowers Integration — Cross-Document Interlinking
+- Added Superpowers as the 8th Tier 1 technique, in a new category: **Skill-Based Development**
+- Category count: 4 → 5 (Spec-Driven, Multi-Agent Orchestration, Autonomous Iteration, Skill-Based Development, Enterprise AI-Native SDLC) plus Context Engineering as cross-cutting
+- Superpowers is the largest by community: 151K GitHub stars, active Discord, Prime Radiant backing
+- Key differentiator: composable behavioral skills (not specs, not agent roles, not loops) — skills teach agents *how* to develop (TDD, code review, debugging) rather than *what* to build
+- Tool compatibility: multi-tool (Claude Code primary, Cursor, Codex, Copilot CLI, Gemini CLI, OpenCode) — broader than GSD, narrower than Ralph/Context Eng
+- Spectrum position: between Ralph and GSD (Minutes setup, moderate structure, semi-autonomous)
+- Updated overview.md: executive summary, comparison matrix (added column), star history chart, decision guide, category summaries (new section), ASCII spectrum (added box), navigation (new category)
+- Updated choosing-your-approach.md: flowchart, all team size tables, all project type tables, regulated/non-regulated, development activity tables, development methodology tables, combining techniques (2 new combos), anti-patterns, cost considerations, tool lock-in matrix, summary table
+- Updated gsd.md comparison notes: vs. Superpowers — both spec-driven with TDD but different mechanisms (slash commands vs composable skills), GSD is Claude Code-only while Superpowers is multi-tool, Superpowers has 3x stars
+- Updated context-engineering.md comparison notes: vs. Superpowers — Superpowers is arguably the most sophisticated implementation of context engineering, skills ARE context engineering packaged as behavioral modules
+- Filed categorization decision to .squad/decisions/inbox/neo-superpowers-categorization.md

@@ -56,7 +56,7 @@ Context engineering is not a framework, a tool, or a product. It is a cross-cutt
 - **The 8-layer context model** — Context arrives at an AI agent through multiple layers, each under different control:
   1. **System/platform instructions** (set by the AI provider)
   2. **Organization rules** (set by IT/admin)
-  3. **Project rules** (committed to the repo — CLAUDE.md, .cursorrules, copilot-instructions.md)
+  3. **Project rules** (committed to the repo — copilot-instructions.md, .cursorrules, CLAUDE.md)
   4. **Directory-scoped rules** (subfolder-specific instructions)
   5. **User preferences** (personal settings, local overrides)
   6. **Session context** (conversation history, current task)
@@ -133,7 +133,7 @@ Context engineering is practiced universally but has no single community hub:
 
 - **Key voices:** Andrej Karpathy (foundational framing), the-ai-corner.com (guides), fungies.io (developer guides), Thomas Wiegold (best practices blog).
 - **Academic research:** arXiv:2509.13196 on the effects of over-prompting with examples.
-- **Community resources:** cursor.directory (community-shared Cursor rules), various CLAUDE.md examples shared on GitHub, copilot-instructions.md templates in GitHub docs.
+- **Community resources:** cursor.directory (community-shared Cursor rules), copilot-instructions.md templates in GitHub docs, various CLAUDE.md examples shared on GitHub.
 - **Documentation quality:** Scattered. Each tool documents its own rules file format. No unified documentation for context engineering as a discipline exists.
 - **Ecosystem maturity:** The underlying practice is mature and battle-tested, but the discipline's identity as "context engineering" is recent (mid-2025). Standardization is in its early stages.
 - **Industry adoption:** Universal — every team using AI coding tools practices context engineering to some degree, whether they use the term or not.
@@ -145,3 +145,5 @@ Context engineering is practiced universally but has no single community hub:
 **vs. Squad:** Squad implements context engineering through charter files, decision ledgers, agent history files, and routing rules — a persistent memory system designed for multi-agent coordination. Context engineering principles explain why Squad's architecture works; Squad provides the orchestration layer that context engineering alone lacks.
 
 **vs. HVE:** HVE implements context engineering through 102 instruction files, the RPI phased workflow, and constraint-based governance. HVE's research phase is a direct application of the context engineering principle that AI should gather verified information before acting. HVE is the most comprehensive implementation of context engineering in an enterprise setting among the Tier 1 techniques.
+
+**vs. Superpowers:** Superpowers is arguably the most sophisticated implementation of context engineering among the Tier 1 techniques. Its composable skills *are* context engineering — each skill is a behavioral module that shapes the AI's context with methodology, constraints, and workflow patterns. The token-light bootstrap (~2K tokens) and lazy skill loading via CLI search demonstrate advanced context budget management. Where context engineering is the theory, Superpowers operationalizes it into a skills-based system that enforces TDD, code review, and systematic development across multiple tools.

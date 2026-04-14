@@ -19,7 +19,7 @@
 - **Squad** (by Brady Gaster at MSFT) is unique as an agent *orchestration* system — it creates a team of named AI agents, not just a workflow
 - **Kiro** is AWS's standalone IDE for SDD — not a framework, it's a whole product
 - **Tessl** is in closed beta but has a fascinating spec registry (10K+ library specs) — could be the "NPM for AI knowledge"
-- **Additional techniques discovered:** Cline, Roo Code, Aider, Continue, OpenCode, Cursor Rules, CLAUDE.md memory system, copilot-instructions.md
+- **Additional techniques discovered:** Cline, Roo Code, Aider, Continue, OpenCode, Cursor Rules, copilot-instructions.md, CLAUDE.md memory system
 - **Key sources:** GitHub repos, GitHub Blog, Martin Fowler (martinfowler.com), codecentric.de, dev.to, thomy.tech, multiple LinkedIn posts
 - **Important distinction:** Tools vs. Methodologies vs. Platforms — these are different categories but often compared as if equivalent
 - **The complexity spectrum runs:** Raw prompting → .cursorrules → GSD → Spec Kit → Squad → BMAD → Kiro

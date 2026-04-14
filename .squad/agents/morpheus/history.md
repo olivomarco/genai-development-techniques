@@ -30,3 +30,17 @@
 - MetaGPT is the most standalone of all Tier 1 techniques — no IDE integration, no rules file ecosystem integration. Stars (~50K+) comparable to GSD but community is more research-oriented.
 - All 8 Tier 1 technique documents now complete in `techniques/` directory.
 
+### 2026-04-14: Wrote Superpowers technique deep-dive
+- Created `techniques/superpowers.md` following the established template (At a Glance → Compatible Coding Agents → Overview → Pros & Cons → Core Concepts → How It Works → Strengths → Limitations → Best For → Not Ideal For → Community & Ecosystem → Comparison Notes)
+- Source material: comprehensive pre-researched brief provided by Neo (no additional research needed)
+- Superpowers introduces a NEW category: "Skill-Based Development" — distinct from Spec-Driven (GSD, Spec Kit) and Multi-Agent Orchestration (BMAD, Squad). This is the first technique in this comparison that defines its own category.
+- Key differentiators: largest community by far (151K stars — 3× GSD), broadest multi-tool support (6 tools), self-improving skill system with persuasion-tested compliance
+- Author Jesse Vincent (obra) has notable pedigree: Keyboardio founder, Best Practical co-founder (RT), Prime Radiant team
+- Comparison notes written against GSD, BMAD, and Context Engineering — the three most relevant comparison points per the research brief
+- Rapid version churn (v1→v5 in 6 months) noted as both a sign of active development and a potential risk for early adopters
+
+### 2026-04-14: Scribe — Cross-agent update
+- Neo integrated Superpowers across all interlinking docs (overview.md, choosing-your-approach.md, gsd.md, context-engineering.md)
+- "Skill-Based Development" category accepted as fifth taxonomy category in decisions.md
+- Technique count now 9, category count now 5 (plus Context Engineering cross-cutting)
+

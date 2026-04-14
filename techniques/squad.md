@@ -39,12 +39,12 @@ The system applies Conway's Law to AI development: rather than trying to produce
 |------|------|
 | ✅ True parallel multi-agent orchestration | ❌ Copilot-only — doesn't work with Claude Code, Cursor, etc. |
 | ✅ Persistent memory across sessions (decisions, history) | ❌ Still pre-1.0 (v0.8.21) — expect API changes |
-| ✅ Autonomous work management via Ralph (Work Monitor) | ❌ Substantial .squad/ directory overhead for small projects |
-| ✅ Full GitHub lifecycle integration (issues → PRs → merge) | ❌ Requires GitHub CLI authentication for full feature set |
-| ✅ Reviewer rejection protocol enforces genuine review | ❌ Node.js dependency for the CLI |
-| ✅ Extensible — human members, @copilot agent, custom agents | ❌ Overkill for solo developers or projects without GitHub Issues |
+| ✅ Autonomous work management via Ralph (Work Monitor) | ❌ Requires GitHub CLI authentication for full feature set |
+| ✅ Full GitHub lifecycle integration (issues → PRs → merge) | ❌ Node.js dependency for the CLI |
+| ✅ Reviewer rejection protocol enforces genuine review | |
+| ✅ Extensible — human members, @copilot agent, custom agents | |
 
-> **In one sentence:** Squad is Conway's Law applied to AI — persistent teams with real coordination, perfect for GitHub-centric Copilot teams of 4-10 who want agents that remember, coordinate, and never stop working.
+> **In one sentence:** Squad is Conway's Law applied to AI — persistent teams with real coordination, effective for GitHub-centric Copilot users from solo developers to teams of 10+ who want agents that remember, coordinate, and never stop working.
 
 ## Core Concepts
 
@@ -62,7 +62,7 @@ The system applies Conway's Law to AI development: rather than trying to produce
 
 Squad creates a `.squad/` directory in the repository containing the team's state:
 
-```
+```text
 .squad/
 ├── team.md              # Agent roster with roles
 ├── routing.md           # Work assignment rules
@@ -98,7 +98,7 @@ Additional features include **Ceremonies** (structured team meetings — design 
 
 - **Copilot-only.** Squad is tightly coupled to the GitHub Copilot ecosystem — CLI and VS Code. It does not work with Claude Code, Cursor, or other AI coding tools directly.
 - **Still pre-1.0.** At v0.8.21 (March 2026), the API and workflow structure may still change. Early adopters should expect iteration.
-- **Substantial directory overhead.** The `.squad/` directory contains team files, agent charters, histories, decision ledgers, orchestration logs, casting state, and session logs. For small projects, this infrastructure footprint is disproportionate.
+- **Directory overhead.** The `.squad/` directory contains team files, agent charters, histories, decision ledgers, orchestration logs, casting state, and session logs. The setup is automated by the Coordinator, but the infrastructure footprint is nontrivial.
 - **Requires GitHub authentication.** The full feature set (Ralph, issue routing, PR lifecycle) depends on GitHub CLI authentication. Without it, Squad loses its autonomous capabilities.
 - **Node.js dependency.** The CLI requires npm and Node.js, which may be a friction point for teams not already in the Node ecosystem.
 
@@ -112,8 +112,7 @@ Additional features include **Ceremonies** (structured team meetings — design 
 ## Not Ideal For
 
 - **Non-Copilot environments.** If the team uses Claude Code, Cursor, or another AI tool as their primary agent, Squad's Copilot dependency is a hard blocker.
-- **Small, quick projects.** The `.squad/` directory structure, team assembly, and routing infrastructure are overkill for a weekend project or quick script.
-- **Solo developers without GitHub Issues.** Squad's strengths — parallel agents, work routing, Ralph — assume a project management workflow centered on GitHub. Without issues and PRs, much of Squad's value is unused.
+- **Projects without GitHub.** Squad's strengths — work routing, Ralph, issue lifecycle — assume a workflow centered on GitHub. Without issues and PRs, much of Squad's value is unused.
 - **Teams needing enterprise governance.** Squad has reviewer protocols but lacks the formal constraint enforcement, policy-as-code, and audit trail capabilities of HVE.
 
 ## Community & Ecosystem

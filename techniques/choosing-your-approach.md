@@ -21,7 +21,7 @@ Jump to the scenario that matches your situation:
 
 ## Quick Decision Flowchart
 
-```
+```text
 START: What are you building?
 │
 ├─ Quick fix / small task (< 1 hour of work)?

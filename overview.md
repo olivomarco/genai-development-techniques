@@ -90,7 +90,7 @@ Context engineering is not a framework — it's the foundational practice that e
 
 ## 6. Complexity vs. Speed Spectrum
 
-```
+```text
                         COMPLEXITY vs. SPEED SPECTRUM
                         ─────────────────────────────
 
@@ -102,11 +102,11 @@ Context engineering is not a framework — it's the foundational practice that e
        ▼         ▼              ▼          ▼         ▼        ▼         ▼
   ┌─────────┐┌───────┐   ┌──────────┐┌─────────┐┌───────┐┌──────┐┌─────────┐
   │ Context ││ Ralph │   │   GSD    ││Spec Kit ││ Squad ││ BMAD ││   HVE   │
-  │  Eng.   ││       │   │         ││         ││       ││      ││         │
-  │ ─────── ││ ───── │   │ ─────── ││ ─────── ││ ───── ││ ──── ││ ─────── │
-  │ Rules   ││ Bash  │   │6-step   ││Spec +   ││Multi- ││Full  ││RPI +    │
-  │ files   ││ loop  │   │workflow ││plan +   ││agent  ││agile ││49 agents│
-  │ only    ││       │   │+ waves  ││tasks    ││+ mem  ││sim   ││+ govern │
+  │  Eng.   ││       │   │          ││         ││       ││      ││         │
+  │ ─────── ││ ───── │   │ ──────── ││ ─────── ││ ───── ││ ──── ││ ─────── │
+  │ Rules   ││ Bash  │   │6-step    ││Spec +   ││Multi- ││Full  ││RPI +    │
+  │ files   ││ loop  │   │workflow  ││plan +   ││agent  ││agile ││49 agents│
+  │ only    ││       │   │+ waves   ││tasks    ││+ mem  ││sim   ││+ govern │
   └─────────┘└───────┘   └──────────┘└─────────┘└───────┘└──────┘└─────────┘
        │         │              │          │         │        │         │
    Minutes    Minutes        Minutes    Minutes    Hours    Hours   Hours–Days

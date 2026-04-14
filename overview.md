@@ -90,7 +90,7 @@ Context engineering is not a framework — it's the foundational practice that e
 
 ## 6. Complexity vs. Speed Spectrum
 
-```
+```text
                         COMPLEXITY vs. SPEED SPECTRUM
                         ─────────────────────────────
 

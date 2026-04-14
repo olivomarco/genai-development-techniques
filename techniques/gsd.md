@@ -21,7 +21,7 @@
 | GitHub Copilot (VS Code) | ❌ Not natively supported |
 | GitHub Copilot Coding Agent (github.com) | ❌ Not supported |
 | Claude Code | ✅ Primary — built on native Claude Code features (sub-agents, slash commands, hooks) |
-| Cursor | ⚠️ Community port available |
+| Cursor | ⚠️ Community — [gsd-for-cursor](https://github.com/rmindel/gsd-for-cursor) (76★) |
 | OpenAI Codex (CLI) | ❌ Not natively supported |
 | Windsurf | ❌ Not natively supported |
 | Gemini CLI | ❌ Not natively supported |
@@ -109,6 +109,12 @@ GSD also offers a **Quick Mode** for smaller projects that compresses the workfl
 ## Community & Ecosystem
 
 GSD has one of the largest communities among AI development frameworks, with 51K+ GitHub stars and 4,300+ forks. The project is actively maintained (1,835+ commits, v1.35.0 as of April 2026) with frequent releases. Community adoption is evidenced by technical deep-dives on codecentric.de and dev.to, LinkedIn testimonials from production users (including a notable case at Whatnot), and community ports for non-Claude-Code environments. Documentation is inline — the ~50 Markdown files that compose the system also serve as its documentation.
+
+## Community Ports & Unofficial Adaptations
+
+The GSD ecosystem has expanded beyond its Claude Code origins through both official and community efforts. The official installer (`npx get-shit-done-cc`) now supports `--opencode`, `--codex`, and Gemini CLI flags natively. On the community side, **[gsd-for-cursor](https://github.com/rmindel/gsd-for-cursor)** (76★) provides a full Cursor IDE adaptation with install scripts and a migration guide, while **[gsd-pro](https://github.com/itsjwill/gsd-pro)** (66★) is an enhanced fork adding multi-model routing, rollback/recovery, and adaptive context management.
+
+A grassroots Copilot effort exists via Kilo Code (documented on Reddit) but has no standalone published repo. No dedicated ports exist yet for Windsurf or Roo Code.
 
 ## Comparison Notes
 

@@ -105,7 +105,7 @@ The V6 release introduced cross-platform agent team support, a skills architectu
 
 ## Community & Ecosystem
 
-BMAD is one of the two most popular AI development frameworks (alongside GSD), with 44K+ stars and 5,300+ forks. The community is active on Discord, Medium, and developer blogs. Coverage includes articles on GMO Recruit's blog, Benny Cheung's technical deep-dive, and multiple Medium writeups. The Module Ecosystem extends BMAD into testing (TEA), game development (BMGD), and creative work (CIS). The project maintains documentation at docs.bmad-method.org and offers multilingual READMEs. Installation is streamlined via npx, and the Builder module (BMB) allows users to create custom agents and workflows.
+BMAD is one of the two most popular AI development frameworks (alongside GSD), with 44K+ stars and 5,300+ forks. The community is active on Discord, Medium, and developer blogs. Coverage includes articles on GMO Recruit's blog, Benny Cheung's technical deep-dive, and multiple Medium writeups. The Module Ecosystem extends BMAD into testing (TEA), game development (BMGD), and creative work (CIS). The project maintains documentation at docs.bmad-method.org and offers multilingual READMEs. Installation is streamlined via npx, and the Builder module (BMB) allows users to create custom agents and workflows. Notably, BMAD V6's official multi-platform support (Claude Code, Cursor, Windsurf, Copilot, Roo Code, plus an MCP Server) means community ports are largely unnecessary — the maintainer built cross-platform agent support directly into the framework rather than leaving it to the community.
 
 ## Comparison Notes
 

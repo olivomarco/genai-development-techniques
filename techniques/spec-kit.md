@@ -115,6 +115,10 @@ The CLI tool (`specify`) handles project scaffolding, generating the `.specify` 
 
 Spec Kit benefits from GitHub's institutional backing, including official GitHub Blog posts and advocacy from Den Delimarsky. External coverage includes Martin Fowler's analysis (martinfowler.com), writeups on Tessl, IntuitionLabs, and Level Up GitConnected. IBM released its own `iac-spec-kit` for infrastructure-as-code, indicating the SDD approach is gaining traction beyond GitHub's implementation. The community extensions ecosystem is growing, with contributions for worktree isolation, Git integration, spec diagrams, and linting tools. Monthly newsletters track progress and community contributions. However, as a v0.6.2 experiment, the ecosystem is young relative to GSD (51K stars) or BMAD (44K stars).
 
+## Community Ports & Unofficial Adaptations
+
+Spec Kit's architecture is designed for community extensibility, with catalog infrastructure already in place (`extensions/catalog.community.json`). Early community contributions include **[spec-kit-github-issues](https://github.com/Fatima367/spec-kit-github-issues)** — a community extension that generates spec artifacts from GitHub Issues — and an **ADIK Integration** (by mateors1), a Spec Kit extension bridging the ADIK framework, submitted via GitHub Discussions with a full 10-part technical analysis. An integration catalog proposal (Issue #2066) would formalize community contributions alongside the existing extension and preset catalogs. The ecosystem is architecturally ready but nascent — contributions are just starting to trickle in.
+
 ## Comparison Notes
 
 **vs. GSD:** Both are spec-driven but at different scopes. GSD provides a complete lifecycle (spec → plan → execute → verify → release) with multi-agent orchestration and context engineering. Spec Kit focuses on the specification and planning phases, leaving execution to whatever AI tool the user prefers. GSD is Claude Code-native; Spec Kit is agent-agnostic. GSD is more mature (v1.35.0 vs. v0.6.2) and has a larger community.

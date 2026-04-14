@@ -137,6 +137,7 @@ Context engineering is practiced universally but has no single community hub:
 - **Documentation quality:** Scattered. Each tool documents its own rules file format. No unified documentation for context engineering as a discipline exists.
 - **Ecosystem maturity:** The underlying practice is mature and battle-tested, but the discipline's identity as "context engineering" is recent (mid-2025). Standardization is in its early stages.
 - **Industry adoption:** Universal — every team using AI coding tools practices context engineering to some degree, whether they use the term or not.
+- **Educational resources:** [Denis2054/Context-Engineering-for-Multi-Agent-Systems](https://github.com/Denis2054/Context-Engineering-for-Multi-Agent-Systems) — a book companion repo with 555 commits, 10 chapters, MCP integration, and live workshop cohorts — is the most comprehensive community educational resource. However, no dominant "context engineering framework" has emerged; the practice remains diffuse, implemented through per-tool mechanisms (CLAUDE.md, .cursorrules, copilot-instructions.md, etc.).
 
 ## Comparison Notes
 

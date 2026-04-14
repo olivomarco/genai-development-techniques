@@ -18,7 +18,7 @@
 
 | Agent | Support |
 |-------|--------|
-| GitHub Copilot (VS Code) | ❌ Not natively supported (Copilot CLI has a plugin, but VS Code agent mode is not supported) |
+| GitHub Copilot (VS Code) | ⚠️ Community — two VS Code Marketplace extensions (2,568 and 389 installs) bring Superpowers to Copilot Chat |
 | GitHub Copilot Coding Agent (github.com) | ❌ Not supported |
 | Claude Code | ✅ Primary — built on Claude Code's plugin system |
 | Cursor | ✅ Supported — via plugin marketplace (`/add-plugin superpowers`) |
@@ -137,6 +137,12 @@ The underlying principles are explicit:
 ## Community & Ecosystem
 
 Superpowers has the largest community of any AI development framework, with 151K GitHub stars and 13.1K forks. Created by Jesse Vincent (obra), who also founded Keyboardio and Best Practical (makers of Request Tracker). The framework is actively maintained by Jesse and the team at Prime Radiant, with 28 contributors. Community support is available via Discord, and the project has been covered by Simon Willison (simonwillison.net), Hacker News front page, and multiple YouTube tutorials. Jesse also created the claude-memory-extractor tool for mining conversation histories into skills. Sam Schillace (Microsoft) wrote about the related concept of self-improving agents in systems like Microsoft Amplifier.
+
+## Community Ports & Unofficial Adaptations
+
+Superpowers has the most active community porting activity of any technique in this comparison. Two VS Code Marketplace extensions bring Superpowers to GitHub Copilot Chat: **[Superpowers for Copilot Chat](https://marketplace.visualstudio.com/items?itemName=dwaintr.superpowers-vscode)** (2,568 installs) by Kaan Aslan provides a `@superpowers` chat participant with 14 slash commands, and **[Superpowers Copilot Agents](https://marketplace.visualstudio.com/items?itemName=anothel.superpowers-copilot-agents)** (389 installs) converts Superpowers workflow skills into VS Code Copilot agents. On GitHub, **[superpowers-copilot](https://github.com/varunr89/superpowers-copilot)** (4★) offers a multi-platform adaptation with `.copilot`, `.codex`, and `.claude-plugin` directories, while **[superpowers-for-copilot](https://github.com/jsloat/superpowers-for-copilot)** (3★) is a clean fork targeting Copilot CLI specifically.
+
+The official project added Copilot CLI support natively in v5.0.7, closing the gap from the upstream side. Active community demand is evidenced by issues [#217](https://github.com/obra/superpowers/issues/217) and [#764](https://github.com/obra/superpowers/issues/764) on obra/superpowers.
 
 ## Comparison Notes
 

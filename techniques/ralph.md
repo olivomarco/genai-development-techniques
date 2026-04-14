@@ -11,7 +11,7 @@
 | License            | Open technique; official Claude Code plugin available |
 | First Released     | July 14, 2025 (original blog post) |
 | Current Version    | N/A (methodology, not versioned software) |
-| Stars / Popularity | No single repo — community forks: [ralph-claude-code](https://github.com/frankbria/ralph-claude-code) (364 stars), [ralph-orchestrator](https://github.com/mikeyobrien/ralph-orchestrator); VentureBeat coverage; BetterStack YouTube (60K views) |
+| Stars / Popularity | No single repo — community forks: [ralph-claude-code](https://github.com/frankbria/ralph-claude-code) (8.7K+ stars), [ralph-orchestrator](https://github.com/mikeyobrien/ralph-orchestrator); VentureBeat coverage; BetterStack YouTube (60K views) |
 | Supported Tools    | Tool-agnostic: Claude Code, Copilot CLI, Cursor, Codex, OpenCode, or any AI coding CLI that doesn't cap tool calls |
 
 ## Compatible Coding Agents
@@ -117,7 +117,7 @@ The technique emerged from Geoffrey Huntley's observation that one-shot AI codin
 Ralph has achieved broad recognition in the AI coding community as of early 2026. Key ecosystem elements:
 
 - **Official Claude Code plugin:** `/plugin install ralph-wiggum@claude-plugins-official`
-- **Community tools:** [ralph-claude-code](https://github.com/frankbria/ralph-claude-code) (364 stars) — adds rate limiting, tmux dashboards, and circuit breakers. [ralph-orchestrator](https://github.com/mikeyobrien/ralph-orchestrator) — adds token tracking, spending limits, git checkpointing, and multi-AI support.
+- **Community tools:** [ralph-claude-code](https://github.com/frankbria/ralph-claude-code) (8.7K+ stars) — adds rate limiting, tmux dashboards, and circuit breakers. [ralph-orchestrator](https://github.com/mikeyobrien/ralph-orchestrator) — adds token tracking, spending limits, git checkpointing, and multi-AI support.
 - **MCP Market skill:** "Autonomous Agent Loop Generator" implementing the Ralph process.
 - **Documentation quality:** Huntley's blog post is detailed and opinionated; community guides exist on aihero.dev, dev.to, and muleai.io. No formal documentation site.
 - **Media coverage:** VentureBeat headline, BetterStack YouTube (60K views), AwesomeClaude, DeepWiki.

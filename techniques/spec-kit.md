@@ -37,14 +37,14 @@ The core problem Spec Kit addresses is what might be called "vibes-based develop
 
 | Pros | Cons |
 |------|------|
-| ✅ GitHub-backed — institutional support and credibility | ❌ Still experimental (v0.6.0) — API and workflow may change |
+| ✅ GitHub-backed — institutional support and credibility | ❌ Still experimental (v0.6.2) — API and workflow may change |
 | ✅ Truly agent-agnostic — works with Copilot, Claude Code, Gemini CLI, Cursor | ❌ Significant review overhead — Birgitta Böckeler noted it was comparable to just coding directly |
 | ✅ Minimal footprint — Markdown files and a scaffolding CLI | ❌ One opinionated workflow — may not fit all task sizes |
 | ✅ Specification quality checks (analyze, checklist commands) | ❌ No multi-agent orchestration — specification toolkit, not execution framework |
 | ✅ Growing extension ecosystem (worktree isolation, git, diagrams) | ❌ Generates many Markdown files that need review and maintenance |
 | ✅ Version-controlled specs as part of normal Git workflow | ❌ Agent may still ignore spec instructions — no enforcement mechanism |
 
-> **In one sentence:** Spec Kit is GitHub's disciplined answer to "vibes-based development" — lightweight, agent-agnostic, and focused on getting the spec right before building, but still finding its footing at v0.6.0.
+> **In one sentence:** Spec Kit is GitHub's disciplined answer to "vibes-based development" — lightweight, agent-agnostic, and focused on getting the spec right before building, but still finding its footing at v0.6.2.
 
 ## Core Concepts
 
@@ -78,7 +78,7 @@ The workflow operates through slash commands:
 | 7 | `/speckit.checklist` | Create "unit tests for English" for the spec |
 | 8 | `/speckit.implement` | Implement based on all combined artifacts |
 
-The CLI tool (`specify`) handles project scaffolding, generating the `.specify` directory structure with pre-baked prompts configured for the user's chosen AI tool. Installation is via `uv tool install specify-cli --from git+https://github.com/github/spec-kit.git@v0.6.0`.
+The CLI tool (`specify`) handles project scaffolding, generating the `.specify` directory structure with pre-baked prompts configured for the user's chosen AI tool. Installation is via `uv tool install specify-cli --from git+https://github.com/github/spec-kit.git@v0.6.2`.
 
 ## Strengths
 

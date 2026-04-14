@@ -10,7 +10,7 @@
 | Author/Org         | Brady Gaster (Microsoft)      |
 | License            | MIT                           |
 | First Released     | 2025                          |
-| Current Version    | v0.8.21 (March 2026)         |
+| Current Version    | v0.9.1 (April 2026)          |
 | Stars / Popularity | Active development · 1,454+ commits · Microsoft backing |
 | Supported Tools    | GitHub Copilot (CLI and VS Code) |
 
@@ -38,7 +38,7 @@ The system applies Conway's Law to AI development: rather than trying to produce
 | Pros | Cons |
 |------|------|
 | ✅ True parallel multi-agent orchestration | ❌ Copilot-only — doesn't work with Claude Code, Cursor, etc. |
-| ✅ Persistent memory across sessions (decisions, history) | ❌ Still pre-1.0 (v0.8.21) — expect API changes |
+| ✅ Persistent memory across sessions (decisions, history) | ❌ Still pre-1.0 (v0.9.1) — expect API changes |
 | ✅ Autonomous work management via Ralph (Work Monitor) | ❌ Requires GitHub CLI authentication for full feature set |
 | ✅ Full GitHub lifecycle integration (issues → PRs → merge) | ❌ Node.js dependency for the CLI |
 | ✅ Reviewer rejection protocol enforces genuine review | |
@@ -81,7 +81,7 @@ Squad creates a `.squad/` directory in the repository containing the team's stat
 
 **GitHub Integration.** Squad manages the full issue → branch → PR → merge lifecycle. Agents create branches (`squad/{issue-number}-{slug}`), make commits referencing issues, push, and open PRs via the GitHub CLI. Ralph monitors the queue and keeps work moving.
 
-**SDK-First Mode (v0.8.21).** Squad offers type-safe team configuration through builder functions (`defineTeam()`, `defineAgent()`, `defineRouting()`) for teams that prefer code over Markdown configuration.
+**SDK-First Mode (v0.9.1).** Squad offers type-safe team configuration through builder functions (`defineTeam()`, `defineAgent()`, `defineRouting()`) for teams that prefer code over Markdown configuration.
 
 Additional features include **Ceremonies** (structured team meetings — design reviews, retrospectives, standups), **Worktree Support** (git worktrees for isolated issue work), **PRD Mode** (ingest product requirement documents as work source), **Human Team Members** (mix AI and human participants), and **Per-Agent Model Selection** (a multi-layer system for optimizing cost and quality per task).
 
@@ -97,7 +97,7 @@ Additional features include **Ceremonies** (structured team meetings — design 
 ## Limitations
 
 - **Copilot-only.** Squad is tightly coupled to the GitHub Copilot ecosystem — CLI and VS Code. It does not work with Claude Code, Cursor, or other AI coding tools directly.
-- **Still pre-1.0.** At v0.8.21 (March 2026), the API and workflow structure may still change. Early adopters should expect iteration.
+- **Still pre-1.0.** At v0.9.1 (April 2026), the API and workflow structure may still change. Early adopters should expect iteration.
 - **Directory overhead.** The `.squad/` directory contains team files, agent charters, histories, decision ledgers, orchestration logs, casting state, and session logs. The setup is automated by the Coordinator, but the infrastructure footprint is nontrivial.
 - **Requires GitHub authentication.** The full feature set (Ralph, issue routing, PR lifecycle) depends on GitHub CLI authentication. Without it, Squad loses its autonomous capabilities.
 - **Node.js dependency.** The CLI requires npm and Node.js, which may be a friction point for teams not already in the Node ecosystem.

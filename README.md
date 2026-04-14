@@ -26,6 +26,7 @@ A comprehensive, evidence-based comparison of techniques, methodologies, and fra
 |-----------|-------------|-------|
 | [GSD (Get Shit Done)](techniques/gsd.md) | Meta-prompting, context engineering, and spec-driven dev system for reliable AI development | ~51K |
 | [Spec Kit](techniques/spec-kit.md) | GitHub's official toolkit for spec-driven development — specs → plans → tasks | Growing |
+| [OpenSpec](techniques/openspec.md) | Change-centric SDD with delta specs — brownfield-first, 27+ tool support, YC W26 | ~39.9K |
 
 ### Multi-Agent Orchestration
 

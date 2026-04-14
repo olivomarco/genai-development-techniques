@@ -55,3 +55,16 @@
 - **squad.md and hve.md:** No changes — both already clearly document Copilot-only status with zero community ports.
 - Key insight: techniques that start tool-agnostic (Ralph, Superpowers) attract the most community ports. Copilot-only tools (Squad, HVE) have zero. BMAD sidesteps the issue by going officially multi-platform.
 
+### 2026-04-14: Wrote OpenSpec technique deep-dive
+- Created `techniques/openspec.md` — the 10th technique deep-dive, 3rd in the Spec-Driven Development category alongside GSD and Spec Kit
+- Source material: Trinity's research report (`.squad/decisions/inbox/trinity-openspec-research.md`) and Neo's scoping decision (`.squad/decisions/inbox/neo-openspec-scope.md`)
+- Followed the established template exactly: At a Glance → Compatible Coding Agents → Overview → Pros & Cons → Core Concepts → How It Works → Strengths → Limitations → Best For → Not Ideal For → Community & Ecosystem → Community Ports & Unofficial Adaptations → Comparison Notes
+- Key structural decisions:
+  - Compatible Coding Agents table lists all 27+ tools individually (not grouped) — this is by far the largest agent table in the comparison, reflecting OpenSpec's unique breadth
+  - Community Ports section explicitly notes that no ports are needed due to native 27+ tool support — a deliberate contrast to GSD (needed community forks) and Superpowers (needed marketplace extensions)
+  - Comparison Notes written against 4 techniques: GSD (greenfield vs. brownfield), Spec Kit (comprehensive vs. lightweight), Context Engineering (practice vs. implementation), Superpowers (skill-based vs. spec-driven)
+  - Positioned OpenSpec's unique differentiator as "change-centric" vs GSD's "task-centric" and Spec Kit's "project-centric" — this three-way taxonomy within Spec-Driven Development is clean and clarifying
+- How It Works table includes all 10 opsx commands from Neo's scope: /opsx:new, /opsx:propose, /opsx:apply, /opsx:archive, /opsx:continue, /opsx:ff, /opsx:verify, /opsx:sync, /opsx:bulk-archive, /opsx:onboard
+- Delta specs (ADDED/MODIFIED/REMOVED markers) are the most distinctive concept — no other technique has this
+- Remaining work: overview.md, choosing-your-approach.md, and cross-reference comparison notes in gsd.md, spec-kit.md, context-engineering.md still need OpenSpec integration
+

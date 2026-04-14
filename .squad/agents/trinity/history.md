@@ -55,3 +55,22 @@
 - **Context Engineering:** Practice, not framework. Denis2054/Context-Engineering-for-Multi-Agent-Systems (555 commits) is the most comprehensive educational resource. No standardization framework has emerged.
 - **Key insight:** Copilot-only tools (Squad, HVE) have zero community ports = platform lock-in risk. Tool-agnostic projects (Ralph, Superpowers) attract the most community activity.
 
+### 2026-04-14: Deep Dive — OpenSpec (Fission AI)
+- **OpenSpec** is a lightweight, open-source spec-driven development (SDD) framework by Fission AI (YC W26), created by Tabish Bidiwale (@TabishB / @0xTab on X)
+- **GitHub:** github.com/Fission-AI/OpenSpec — 39.9K★, 2.7K forks, 59 contributors, MIT license, v1.3.0 (35 releases), TypeScript 98.9%, ~8 months old
+- **Core concept:** "Version control for intent" — proposal-first workflow with delta specs (ADDED/MODIFIED/REMOVED markers) tracking changes against existing functionality
+- **Three-phase state machine:** Propose → Apply → Archive. No code generation until human reviews and approves the proposal
+- **Key philosophy:** "fluid not rigid, iterative not waterfall, easy not complex, brownfield-first"
+- **Tool support:** 27+ AI coding tools — the WIDEST of any framework. Claude Code, Cursor, Copilot, Codex, Amazon Q, Gemini CLI, Windsurf, Cline, Continue, RooCode, Kilo Code, Kiro, OpenCode, Junie, IBM Bob, and more
+- **Setup:** `npm install -g @fission-ai/openspec@latest && openspec init` — minutes, no API keys, no MCP
+- **Brownfield-first design:** Only framework explicitly designed for modifying existing codebases. Delta markers are unique to OpenSpec
+- **Lightweight output:** ~250 lines per spec vs. Spec Kit's ~800 lines — significantly less review overhead
+- **Quality gates:** Proposal approval gates, `openspec validate --strict` catches missing scenarios, `/opsx:verify` checks implementation against specs
+- **Governance:** Limited — no multi-repo, no SSO/SCIM, no enterprise compliance. Archive system provides audit trail but not enterprise-grade governance
+- **Community:** Discord (discord.gg/YctCnvvshC), Slack for teams, GitHub Discussions, YC W26 backing, featured in Augment Code comparison and Better Stack, Cursor community showcase
+- **Limitations:** Static specs (don't update during implementation), no multi-agent orchestration, single-repo focus, requires manual archive discipline
+- **Category:** Spec-Driven Development — fits squarely alongside GSD and Spec Kit
+- **Positioning within SDD:** GSD = structured greenfield, Spec Kit = comprehensive portable, OpenSpec = lightweight brownfield
+- **Star ranking in comparison:** 4th highest (39.9K) — after Superpowers (151K), GSD (51K), BMAD (44K)
+- **Recommendation:** Strong inclusion candidate. Significant traction (39.9K★), YC-backed, widest tool support, unique brownfield niche
+

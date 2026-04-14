@@ -59,6 +59,18 @@
 - Morpheus wrote `techniques/superpowers.md` — full 12-section deep-dive (151K stars, Jesse Vincent, skill-based development)
 - "Skill-Based Development" category accepted as fifth taxonomy category in decisions.md
 
+### 2026-04-14: OpenSpec Scoping Decision
+- Evaluated openspec.dev (Fission AI, @0xTab/TabishB) for inclusion — **APPROVED**
+- OpenSpec: lightweight spec-driven framework, 39.9K GitHub stars, 2.7K forks, MIT license, v1.3.0, 25+ tool support
+- Category: **Spec-Driven Development** (alongside GSD and Spec Kit) — no new category needed
+- Key differentiator: change-centric workflow (each change gets proposal/specs/design/tasks folder) with spec deltas for reviewing requirement changes, not just code
+- Spectrum position: between Superpowers and Spec Kit — more structured than GSD (dedicated CLI, change folders), more fluid than Spec Kit (no rigid phase gates)
+- Technique count: 9 → 10. Category count remains 5 + cross-cutting
+- Broadest tool compatibility of any spec-driven technique (25+ tools vs GSD's Claude Code primary vs Spec Kit's 4 tools)
+- Impact: all interlinking docs need updates (overview.md, choosing-your-approach.md, new techniques/openspec.md, comparison notes in gsd.md, spec-kit.md, context-engineering.md)
+- Concerns: Spec-Driven category now has 3 techniques (manageable), team features not yet shipped (Workspaces "coming soon"), potential overlap with Spec Kit needs Trinity to map differences
+- Scoping decision filed to .squad/decisions/inbox/neo-openspec-scope.md
+
 ### 2026-04-14: Superpowers Integration — Cross-Document Interlinking
 - Added Superpowers as the 8th Tier 1 technique, in a new category: **Skill-Based Development**
 - Category count: 4 → 5 (Spec-Driven, Multi-Agent Orchestration, Autonomous Iteration, Skill-Based Development, Enterprise AI-Native SDLC) plus Context Engineering as cross-cutting

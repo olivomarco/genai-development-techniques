@@ -33,8 +33,9 @@ theme:
     - content.code.copy
 
 nav:
-  - Home: index.md
-  - Overview: overview.md
+  - Guide:
+      - Home: index.md
+      - Overview: overview.md
   - Techniques:
       - Choosing Your Approach: techniques/choosing-your-approach.md
       - GSD: techniques/gsd.md

@@ -24,5 +24,10 @@ Desktop.ini
 node_modules/
 package-lock.json
 
+# MkDocs build artifacts
+.venv-docs/
+docs-staging/
+site/
+
 # Logs
 *.log

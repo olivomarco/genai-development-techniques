@@ -93,3 +93,9 @@
 
 ### 2026-06-21: Oracle Freshness Revision
 - Revised Morpheus' rejected freshness edits as separate reviewer agent: softened OpenSpec workspace/tool-parity claims, clarified BMAD Web Bundle support vs CLI/runtime support, and reframed GSD's stale community-port con around Claude Code depth.
+
+### 2026-06-21: GitHub Pages Documentation Publishing
+- Added a MkDocs Material publishing path for the Markdown comparison repo: `mkdocs.yml`, `requirements-docs.txt`, `scripts/build_docs.py`, and `.github/workflows/publish-docs.yml`.
+- Source Markdown stays in place; the build script stages `README.md` as `index.md`, `overview.md`, and every `techniques/*.md` file into `docs-staging/` before MkDocs builds `site/`.
+- GitHub Actions deploys from `main` and `workflow_dispatch` using GitHub Pages artifact/deploy actions.
+- Local verification command used: `python scripts/build_docs.py && mkdocs build --strict` with dependencies from `requirements-docs.txt`.

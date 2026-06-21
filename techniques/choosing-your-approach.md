@@ -12,7 +12,7 @@ Jump to the scenario that matches your situation:
 
 - [By Team Size](#by-team-size) — Solo, small team, medium team, large organization
 - [By Project Type](#by-project-type) — Greenfield, brownfield, prototype, migration
-- [By Industry & Compliance](#by-industry--compliance) — Regulated environments, auditable systems
+- [By Industry & Compliance](#by-industry-compliance) — Regulated environments, auditable systems
 - [By Development Activity](#by-development-activity) — Bug fixes, features, refactoring, tests, docs
 - [By Development Methodology](#by-development-methodology) — Agile/Scrum, Kanban, waterfall-adjacent
 - [Quick Decision Flowchart](#quick-decision-flowchart) — Don't want to read? Start here.

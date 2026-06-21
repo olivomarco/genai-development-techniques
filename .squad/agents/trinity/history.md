@@ -74,3 +74,10 @@
 - **Star ranking in comparison:** 4th highest (39.9K) — after Superpowers (151K), GSD (51K), BMAD (44K)
 - **Recommendation:** Strong inclusion candidate. Significant traction (39.9K★), YC-backed, widest tool support, unique brownfield niche
 
+### 2026-06-21: Freshness Pass — Rapid Post-April Movement
+- Most documented projects advanced since April: GSD v1.42.3, BMAD v6.8.0, Spec Kit v0.11.3, OpenSpec v1.4.1, Squad v0.10.0, Superpowers v6.0.3, ralph-orchestrator v2.9.3.
+- Big adoption changes: Superpowers ~234K★, Spec Kit ~114K★, GSD ~64K★, OpenSpec ~56K★, BMAD ~49K★; update star chart/README/deep dives.
+- Squad v0.10.0 added state backends, governed memory, import/export, built-in RAI reviewer, MCP/frontmatter work, and broader Copilot CLI skill scanning; still Copilot-centric.
+- BMAD v6.8.0 added `bmad-spec`, `bmad-ux`, Web Bundles for Gemini Gems/ChatGPT Custom GPTs, and alpha UI/dashboard work.
+- Additional projects to consider: OpenHands, Open SWE, Goose, and Cline are strongest “must consider” adjacent candidates; Aider/OpenCode/Continue/Kilo/Pythagora are maybe/substrate candidates; Roo Code needs rebrand/archive follow-up.
+

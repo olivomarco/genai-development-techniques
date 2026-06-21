@@ -11,7 +11,7 @@
 | License            | Open technique; official Claude Code plugin available |
 | First Released     | July 14, 2025 (original blog post) |
 | Current Version    | N/A (methodology, not versioned software) |
-| Stars / Popularity | No single repo — key repos: [how-to-ralph-wiggum](https://github.com/ghuntley/how-to-ralph-wiggum) (1.4K★, 127 forks), [ralph-orchestrator](https://github.com/mikeyobrien/ralph-orchestrator) (2.7K★, 246 forks); VentureBeat coverage; BetterStack YouTube (60K views) |
+| Stars / Popularity | No single repo — key repos: [how-to-ralph-wiggum](https://github.com/ghuntley/how-to-ralph-wiggum) (~1.7K★, 144 forks), [ralph-orchestrator](https://github.com/mikeyobrien/ralph-orchestrator) (~2.95K★, 280 forks); VentureBeat coverage; BetterStack YouTube (60K views) |
 | Supported Tools    | Tool-agnostic: Claude Code, Copilot CLI, Cursor, Codex, OpenCode, or any AI coding CLI that doesn't cap tool calls |
 
 ## Compatible Coding Agents
@@ -116,9 +116,9 @@ The technique emerged from Geoffrey Huntley's observation that one-shot AI codin
 
 Ralph has achieved broad recognition in the AI coding community as of early 2026. Key ecosystem elements:
 
-- **Canonical documentation:** [ghuntley/how-to-ralph-wiggum](https://github.com/ghuntley/how-to-ralph-wiggum) (1.4K★, 127 forks) — Geoffrey Huntley's original technique documentation, forked from ClaytonFarr/ralph-playbook.
+- **Canonical documentation:** [ghuntley/how-to-ralph-wiggum](https://github.com/ghuntley/how-to-ralph-wiggum) (~1.7K★, 144 forks) — Geoffrey Huntley's original technique documentation, forked from ClaytonFarr/ralph-playbook. It is best read as stable method documentation rather than active software.
 - **Official Claude Code plugin:** `/plugin install ralph-wiggum@claude-plugins-official`
-- **ralph-orchestrator:** [mikeyobrien/ralph-orchestrator](https://github.com/mikeyobrien/ralph-orchestrator) (2.7K★, 246 forks) — evolved from a simple loop into a Rust-based multi-backend orchestration platform. Now at v2.9.2 with support for Claude Code, Roo Code, Copilot, and Pi. Includes web dashboard (alpha), MCP server mode, TUI interface, and agent waves for parallel execution. 492 commits, ~300 issues, active community.
+- **ralph-orchestrator:** [mikeyobrien/ralph-orchestrator](https://github.com/mikeyobrien/ralph-orchestrator) (~2.95K★, 280 forks) — evolved from a simple loop into a Rust-based multi-backend orchestration platform. Now at v2.9.3 with `ralph-cli`, `ralph-api`, `ralph-bench`, `ralph-e2e`, npm packages, shell installers, platform binaries, MCP server mode, TUI interface, and agent waves for parallel execution. Repository topics suggest broadening backend interest across Codex CLI, Gemini CLI, Kiro/Kiro CLI, and OpenCode.
 - **ralph-local:** [Soul-Brews-Studio/ralph-local](https://github.com/Soul-Brews-Studio/ralph-local) (4★) — fork adding session isolation and multi-agent support.
 - **MCP Market skill:** "Autonomous Agent Loop Generator" implementing the Ralph process.
 - **Documentation quality:** Huntley's blog post is detailed and opinionated; community guides exist on aihero.dev, dev.to, and muleai.io. No formal documentation site.

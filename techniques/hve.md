@@ -10,8 +10,8 @@
 | Author/Org         | Microsoft ISE (Industry Solutions Engineering) |
 | License            | MIT                           |
 | First Released     | 2024 (internal), open-sourced 2025 |
-| Current Version    | v3.2.2 (23 releases as of April 2026) |
-| Stars / Popularity | 919 stars, 141 forks, 54 contributors |
+| Current Version    | v3.2.2 (latest public release, March 23, 2026) |
+| Stars / Popularity | ~1,180 stars, 209 forks, 54 contributors |
 | Supported Tools    | GitHub Copilot (VS Code extension and CLI) |
 
 ## Compatible Coding Agents
@@ -119,9 +119,9 @@ Beyond the RPI workflow, HVE includes:
 
 ## Community & Ecosystem
 
-HVE has a moderate but growing ecosystem anchored by Microsoft's backing:
+HVE has a moderate but growing ecosystem anchored by Microsoft's backing. The latest public release remains v3.2.2, but the repository has continued to show current activity and adoption growth.
 
-- **GitHub:** 919 stars, 141 forks, 54 contributors, 23 releases — modest compared to community-driven frameworks (GSD has 51K+), but meaningful for an enterprise methodology.
+- **GitHub:** ~1,180 stars, 209 forks, 54 contributors, 23 releases — modest compared to community-driven frameworks (GSD has ~64K+), but meaningful for an enterprise methodology.
 - **VS Code Extension:** Available on the VS Code Marketplace as "HVE Core" (ise-hve-essentials.hve-core), providing one-click install.
 - **Microsoft Learn:** Featured on the HVE Accelerators Hub, giving it institutional credibility.
 - **Public advocacy:** Robin Cole (VP Engineering, Microsoft) has presented at TMForum and on the Telco in 20 podcast (Ep 122). Valentina Alto published an end-to-end Medium walkthrough (April 2026). Paul Yuknewicz called it "rad" for Azure Functions development.
@@ -133,8 +133,8 @@ HVE has a moderate but growing ecosystem anchored by Microsoft's backing:
 
 **vs. Ralph:** Opposite ends of the autonomy-governance spectrum. Ralph is a bash loop with zero structure; HVE is 49 agents with constraint-based governance. Ralph is tool-agnostic; HVE is Copilot-locked. Ralph enables AFK overnight runs; HVE requires human presence at phase boundaries. Ralph optimizes for individual throughput on scoped tasks; HVE optimizes for team consistency and enterprise compliance.
 
-**vs. BMAD:** Both are multi-agent methodologies with structured roles, but BMAD uses named persona agents (Analyst, PM, Architect, Dev, QA) within a more agile-oriented framework with 34+ workflows. HVE uses specialized unnamed agents within a phased RPI workflow. BMAD is tool-portable and community-driven (44K+ stars); HVE is Copilot-specific and Microsoft-backed (919 stars). BMAD supports scale-adaptive intelligence for solo-to-team use; HVE is explicitly designed for enterprise teams.
+**vs. BMAD:** Both are multi-agent methodologies with structured roles, but BMAD uses named persona agents (Analyst, PM, Architect, Dev, QA) within a more agile-oriented framework with 34+ workflows. HVE uses specialized unnamed agents within a phased RPI workflow. BMAD is tool-portable and community-driven (~49K+ stars); HVE is Copilot-specific and Microsoft-backed (~1.2K stars). BMAD supports scale-adaptive intelligence for solo-to-team use; HVE is explicitly designed for enterprise teams.
 
-**vs. GSD:** GSD is a spec-driven methodology with a 6-step workflow (new project → discuss → plan → execute → verify → complete milestone) focused on preventing context rot through fresh agent spawning. HVE's RPI workflow similarly uses phased separation but adds formal research and review phases with validation gates. GSD is lighter-weight and Claude Code-focused (51K+ stars); HVE is heavier and Copilot-focused. GSD is more accessible to solo developers; HVE scales better for enterprise teams.
+**vs. GSD:** GSD is a spec-driven methodology with a 6-step workflow (new project → discuss → plan → execute → verify → complete milestone) focused on preventing context rot through fresh agent spawning. HVE's RPI workflow similarly uses phased separation but adds formal research and review phases with validation gates. GSD is lighter-weight and Claude Code-focused (~64K+ stars); HVE is heavier and Copilot-focused. GSD is more accessible to solo developers; HVE scales better for enterprise teams.
 
 **vs. Superpowers:** Both enforce structured development workflows, but at different scales and with different mechanisms. HVE uses 49 agents with constraint-based governance, validated artifacts, and audit trails for enterprise environments. Superpowers uses composable behavioral skills (TDD, code review, debugging) for individual developer discipline. HVE is Copilot-only; Superpowers supports six tools. HVE provides enterprise governance that Superpowers lacks entirely. Superpowers' quality gates (mandatory TDD, pressure-tested skills) are thorough but informal — there are no compliance artifacts or audit trails.

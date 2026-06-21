@@ -2,6 +2,59 @@
 
 ## Active Decisions
 
+### 2026-06-21: Freshness Pass Approved With Taxonomy Unchanged
+
+**Authors:** Neo (Lead), Trinity (Researcher), Morpheus (Writer), Oracle (Reviewer)  
+**Status:** Accepted
+
+The June 2026 freshness pass updates public documentation for current versions, adoption metrics, support matrices, and maturity language while preserving the existing methodology-first taxonomy: Spec-Driven Development, Multi-Agent Orchestration, Skill-Based Development, Autonomous Iteration, Enterprise AI-Native SDLC, with Context Engineering as a cross-cutting practice.
+
+**Rationale:** Neo's scope review and Trinity's research found rapid project movement, but no new top-level methodology category that warranted restructuring the comparison. Morpheus refreshed the docs from research, and Oracle approved the final revision after blocker fixes.
+
+**Impact:**
+- Keep the documented Tier 1 set at ten approaches.
+- Update stale metrics and internal count/spectrum consistency across public docs.
+- Surface OpenHands, Open SWE, Goose, Cline, and other adjacent projects as watchlist candidates until transferable methodology fit is proven.
+- Keep OpenSpec positioned between Superpowers and Spec Kit in the complexity spectrum.
+
+### 2026-06-21: Capability Claims Must Distinguish Support Breadth From Runtime Parity
+
+**Authors:** Oracle (Reviewer), Neo (Lead)  
+**Status:** Accepted
+
+Freshness wording must separate documented support from inferred parity. OpenSpec can be described as having broad 27+ native/pre-baked tool support, but not proven identical feature depth across every runtime. OpenSpec workspace language should stay limited to observed `workspace.yaml` evidence; full team workspace, multi-repo, and monorepo support remain unproven. BMAD Gemini Gems and ChatGPT Custom GPT support should be framed as Web Bundle/planning-bundle support, not full Gemini CLI or Codex-style runtime parity. GSD should be described as Claude Code-centered with meaningful official multi-runtime expansion.
+
+**Rationale:** Oracle rejected the first freshness pass because some wording overstated support parity or made stronger claims than Trinity's research supported. Neo's revision resolved those blockers, and Oracle approved the final pass.
+
+**Impact:**
+- Future updates should avoid turning broad support lists into first-class parity claims without direct source evidence.
+- Summary pages may stay compact, but technique pages must carry the important caveats.
+
+### 2026-06-21: Freshness Watchlist Before New Tier 1 Deep Dives
+
+**Authors:** Neo (Lead), Trinity (Researcher), Morpheus (Writer)  
+**Status:** Accepted
+
+Adjacent projects should be tracked as candidates before being promoted to full technique pages. OpenHands, Open SWE, Goose, and Cline are the strongest current watchlist candidates; Aider, OpenCode, Continue, Kilo Code, Pythagora/GPT Pilot, Roo Code, AutoGPT, SWE-agent, Plandex, and MetaGPT remain possible follow-up research targets depending on methodology signal.
+
+**Rationale:** Popular AI coding products or runtimes should not become Tier 1 entries unless they represent a transferable development methodology rather than only a tool/platform.
+
+**Impact:**
+- Add concise watchlist language instead of creating new full deep dives during this pass.
+- Require a separate scope decision before promoting any candidate to Tier 1.
+
+### 2026-04-14: README Must Stay in Sync When Adding Techniques
+
+**Authors:** Marco Olivo (via Copilot)  
+**Status:** Accepted
+
+When adding a new framework or technique to the comparison, always update `README.md` alongside `overview.md` and the new or changed deep-dive document. The README has its own Deep-Dive Documents table and must not lag behind the main comparison docs.
+
+**Rationale:** The README was missed during the OpenSpec addition, creating cross-document drift.
+
+**Impact:**
+- Future technique additions require README, overview, choosing guide, and relevant cross-reference updates to be checked together.
+
 ### 2026-04-14: Superpowers Categorized as "Skill-Based Development"
 
 **Authors:** Morpheus (Writer), Neo (Lead)

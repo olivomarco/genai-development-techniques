@@ -24,22 +24,22 @@ A comprehensive, evidence-based comparison of techniques, methodologies, and fra
 
 | Technique | Description | Stars |
 |-----------|-------------|-------|
-| [GSD (Get Shit Done)](techniques/gsd.md) | Meta-prompting, context engineering, and spec-driven dev system for reliable AI development | ~51K |
-| [Spec Kit](techniques/spec-kit.md) | GitHub's official toolkit for spec-driven development — specs → plans → tasks | Growing |
-| [OpenSpec](techniques/openspec.md) | Change-centric SDD with delta specs — brownfield-first, 27+ tool support, YC W26 | ~39.9K |
+| [GSD (Get Shit Done)](techniques/gsd.md) | Meta-prompting, context engineering, and spec-driven dev system for reliable AI development | ~64K |
+| [Spec Kit](techniques/spec-kit.md) | GitHub's official toolkit for spec-driven development — specs → plans → tasks | ~114K |
+| [OpenSpec](techniques/openspec.md) | Change-centric SDD with delta specs — brownfield-first, 27+ tool support, YC W26 | ~56K |
 
 ### Multi-Agent Orchestration
 
 | Technique | Description | Stars |
 |-----------|-------------|-------|
-| [Squad](techniques/squad.md) | Coordinator-based multi-agent orchestration with persistent memory, casting, and ceremonies | Growing |
-| [BMAD](techniques/bmad.md) | AI-driven agile framework with 12+ specialized agent personas and 34+ workflows | ~44K |
+| [Squad](techniques/squad.md) | Coordinator-based multi-agent orchestration with persistent memory, casting, and ceremonies | ~2.8K |
+| [BMAD](techniques/bmad.md) | AI-driven agile framework with 12+ specialized agent personas and 34+ workflows | ~49K |
 
 ### Skill-Based Development
 
 | Technique | Description | Stars |
 |-----------|-------------|-------|
-| [Superpowers](techniques/superpowers.md) | Composable skills framework — TDD, subagent-driven development, self-improving agent workflows | ~151K |
+| [Superpowers](techniques/superpowers.md) | Composable skills framework — TDD, subagent-driven development, self-improving agent workflows | ~234K |
 
 ### Autonomous Iteration
 
@@ -51,7 +51,7 @@ A comprehensive, evidence-based comparison of techniques, methodologies, and fra
 
 | Technique | Description | Stars |
 |-----------|-------------|-------|
-| [HVE](techniques/hve.md) | Microsoft ISE's RPI workflow with 49 agents, constraint-based governance, and validated artifacts | ~919 |
+| [HVE](techniques/hve.md) | Microsoft ISE's RPI workflow with 49 agents, constraint-based governance, and validated artifacts | ~1.2K |
 
 ### Cross-Cutting
 

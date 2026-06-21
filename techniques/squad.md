@@ -10,8 +10,8 @@
 | Author/Org         | Brady Gaster (Microsoft)      |
 | License            | MIT                           |
 | First Released     | 2025                          |
-| Current Version    | v0.9.1 (April 2026)          |
-| Stars / Popularity | Active development · 1,454+ commits · Microsoft backing |
+| Current Version    | v0.10.0 (June 7, 2026)       |
+| Stars / Popularity | ~2,840 stars · 428+ forks · active development · Microsoft backing |
 | Supported Tools    | GitHub Copilot (CLI and VS Code) |
 
 ## Compatible Coding Agents
@@ -38,7 +38,7 @@ The system applies Conway's Law to AI development: rather than trying to produce
 | Pros | Cons |
 |------|------|
 | ✅ True parallel multi-agent orchestration | ❌ Copilot-only — doesn't work with Claude Code, Cursor, etc. |
-| ✅ Persistent memory across sessions (decisions, history) | ❌ Still pre-1.0 (v0.9.1) — expect API changes |
+| ✅ Persistent memory across sessions (decisions, history, governed memory) | ❌ Still pre-1.0 (v0.10.0) — expect API changes |
 | ✅ Autonomous work management via Ralph (Work Monitor) | ❌ Requires GitHub CLI authentication for full feature set |
 | ✅ Full GitHub lifecycle integration (issues → PRs → merge) | ❌ Node.js dependency for the CLI |
 | ✅ Reviewer rejection protocol enforces genuine review | |
@@ -52,7 +52,7 @@ The system applies Conway's Law to AI development: rather than trying to produce
 
 **Persistent Agent Identity.** Each agent has a charter (`charter.md`) defining its role and boundaries, and a personal history (`history.md`) where it accumulates learnings. These files live in the repo and persist across sessions, giving agents continuity that ephemeral AI sessions lack.
 
-**Decisions-as-Memory.** A shared `decisions.md` file acts as the team's collective brain. When an agent makes a decision that affects others (architecture choices, naming conventions, library selections), it gets recorded here. All agents read this file at spawn time, ensuring consistency.
+**Decisions-as-Memory and Governed Memory.** A shared `decisions.md` file acts as the team's collective brain. When an agent makes a decision that affects others (architecture choices, naming conventions, library selections), it gets recorded here. All agents read this file at spawn time, ensuring consistency. Version 0.10.0 added more explicit governed memory, provider boundaries, diagnostics, and CLI validation.
 
 **Casting System.** Agents receive character names drawn from fictional universes — an easter egg naming convention that makes the team feel distinct without introducing role-play or character behavior. Names are persistent identifiers, not personas.
 
@@ -81,14 +81,14 @@ Squad creates a `.squad/` directory in the repository containing the team's stat
 
 **GitHub Integration.** Squad manages the full issue → branch → PR → merge lifecycle. Agents create branches (`squad/{issue-number}-{slug}`), make commits referencing issues, push, and open PRs via the GitHub CLI. Ralph monitors the queue and keeps work moving.
 
-**SDK-First Mode (v0.9.1).** Squad offers type-safe team configuration through builder functions (`defineTeam()`, `defineAgent()`, `defineRouting()`) for teams that prefer code over Markdown configuration.
+**SDK and State Backend Maturity (v0.10.0).** Squad offers type-safe team configuration through builder functions (`defineTeam()`, `defineAgent()`, `defineRouting()`) for teams that prefer code over Markdown configuration. The v0.10.0 line added state backend documentation and wiring across worktree, git-notes, orphan, and two-layer modes, plus `SQUAD_HOME`, presets, import/export of Squad configuration to/from GitHub repositories, MCP frontmatter/config fixes, and broader Copilot CLI skill-path scanning.
 
-Additional features include **Ceremonies** (structured team meetings — design reviews, retrospectives, standups), **Worktree Support** (git worktrees for isolated issue work), **PRD Mode** (ingest product requirement documents as work source), **Human Team Members** (mix AI and human participants), and **Per-Agent Model Selection** (a multi-layer system for optimizing cost and quality per task).
+Additional features include **Ceremonies** (structured team meetings — design reviews, retrospectives, standups), **Worktree Support** (git worktrees for isolated issue work), **PRD Mode** (ingest product requirement documents as work source), **Human Team Members** (mix AI and human participants), **Per-Agent Model Selection** (a multi-layer system for optimizing cost and quality per task), and a built-in RAI reviewer agent, Rai.
 
 ## Strengths
 
 - **True parallel orchestration.** Multiple agents work simultaneously on different parts of a problem, each in their own context. This is not sequential delegation — it is concurrent fan-out with dependency-aware scheduling.
-- **Persistent memory across sessions.** Agent histories, team decisions, and orchestration logs persist in the repository. An agent picking up an issue today has access to what the team decided and learned yesterday. This is unique among the techniques compared here.
+- **Persistent memory across sessions.** Agent histories, team decisions, governed memory, and orchestration logs persist in the repository. An agent picking up an issue today has access to what the team decided and learned yesterday. This is unique among the techniques compared here.
 - **Autonomous work management (Ralph).** Ralph continuously scans for work — untriaged issues, CI failures, stalled PRs, approved merges — and routes it without human prompting. This enables a degree of autonomy that other frameworks leave to the user.
 - **Full GitHub lifecycle integration.** Issues, branches, PRs, and merges are part of the core workflow, not an afterthought. Squad agents interact with GitHub natively via the CLI.
 - **Reviewer rejection protocol.** Rejected work must be revised by a *different* agent — the original author is locked out. This enforces genuine review rather than rubber-stamping.
@@ -97,7 +97,7 @@ Additional features include **Ceremonies** (structured team meetings — design 
 ## Limitations
 
 - **Copilot-only.** Squad is tightly coupled to the GitHub Copilot ecosystem — CLI and VS Code. It does not work with Claude Code, Cursor, or other AI coding tools directly.
-- **Still pre-1.0.** At v0.9.1 (April 2026), the API and workflow structure may still change. Early adopters should expect iteration.
+- **Still pre-1.0.** At v0.10.0 (June 2026), the API and workflow structure may still change. Early adopters should expect iteration.
 - **Directory overhead.** The `.squad/` directory contains team files, agent charters, histories, decision ledgers, orchestration logs, casting state, and session logs. The setup is automated by the Coordinator, but the infrastructure footprint is nontrivial.
 - **Requires GitHub authentication.** The full feature set (Ralph, issue routing, PR lifecycle) depends on GitHub CLI authentication. Without it, Squad loses its autonomous capabilities.
 - **Node.js dependency.** The CLI requires npm and Node.js, which may be a friction point for teams not already in the Node ecosystem.
@@ -117,7 +117,7 @@ Additional features include **Ceremonies** (structured team meetings — design 
 
 ## Community & Ecosystem
 
-Squad is backed by Brady Gaster at Microsoft, with contributions from Jeffrey T. Fritz, Shayne Boyer, and others. It has been featured in YouTube videos, LinkedIn posts with significant engagement, and a detailed blog post by thomy.tech ("My First Coding Agent Fleet with Enterprise Tooling"). Microsoft teams have used it internally for demo scripts, QA systems, and Minecraft plugins. The project offers a CLI (17 commands), SDK with builder functions, documentation site, and workshop materials. While Squad's community is smaller than GSD (51K stars) or BMAD (44K stars) in raw GitHub metrics, its Microsoft backing and active development (1,454+ commits) provide institutional continuity.
+Squad is backed by Brady Gaster at Microsoft, with contributions from Jeffrey T. Fritz, Shayne Boyer, and others. It has been featured in YouTube videos, LinkedIn posts with significant engagement, and a detailed blog post by thomy.tech ("My First Coding Agent Fleet with Enterprise Tooling"). Microsoft teams have used it internally for demo scripts, QA systems, and Minecraft plugins. The project offers a CLI, SDK with builder functions, documentation site, and workshop materials. While Squad's community is smaller than GSD (~64K stars) or BMAD (~49K stars) in raw GitHub metrics, its ~2.8K stars, v0.10.0 state/memory maturity, Microsoft backing, and active development provide institutional continuity.
 
 ## Comparison Notes
 

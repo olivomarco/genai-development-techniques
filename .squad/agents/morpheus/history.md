@@ -68,3 +68,8 @@
 - Delta specs (ADDED/MODIFIED/REMOVED markers) are the most distinctive concept — no other technique has this
 - Remaining work: overview.md, choosing-your-approach.md, and cross-reference comparison notes in gsd.md, spec-kit.md, context-engineering.md still need OpenSpec integration
 
+### 2026-06-21: Freshness doc pass after Trinity/Neo review
+- Updated public docs with June 2026 freshness numbers and maturity wording while preserving the methodology-first taxonomy.
+- Key writing decision: surface OpenHands, Open SWE, Goose, and Cline as must-consider watchlist candidates rather than new Tier 1 pages until the team confirms a transferable methodology beyond product/platform usage.
+- Keep future freshness passes careful with "broadest" claims: OpenSpec has the widest overall supported-tool list, while Superpowers has broad support within skill-based workflows.
+

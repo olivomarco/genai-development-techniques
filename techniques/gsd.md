@@ -10,9 +10,9 @@
 | Author/Org         | TÂCHES / gsd-build            |
 | License            | MIT                           |
 | First Released     | 2025                          |
-| Current Version    | v1.35.0 (April 11, 2026)     |
-| Stars / Popularity | ~51,100 stars · 4,300+ forks · 1,835+ commits |
-| Supported Tools    | Claude Code (primary), OpenCode; community ports for Cursor and others |
+| Current Version    | v1.42.3 (May 16, 2026)       |
+| Stars / Popularity | ~64,400 stars · 5,500+ forks · active development |
+| Supported Tools    | Claude Code (primary), Codex CLI, OpenCode/Kilo-style runtimes, Gemini CLI; community ports for Cursor and others |
 
 ## Compatible Coding Agents
 
@@ -22,9 +22,9 @@
 | GitHub Copilot Coding Agent (github.com) | ❌ Not supported |
 | Claude Code | ✅ Primary — built on native Claude Code features (sub-agents, slash commands, hooks) |
 | Cursor | ⚠️ Community — [gsd-for-cursor](https://github.com/rmindel/gsd-for-cursor) (76★) |
-| OpenAI Codex (CLI) | ❌ Not natively supported |
+| OpenAI Codex (CLI) | ✅ Supported — `--codex` installs `$gsd-*` skills for Codex CLI 0.130.0+ |
 | Windsurf | ❌ Not natively supported |
-| Gemini CLI | ❌ Not natively supported |
+| Gemini CLI | ⚠️ Supported via official installer flag |
 | Roo Code | ❌ Not natively supported |
 
 ## Overview
@@ -37,12 +37,12 @@ The core insight is that raw prompting doesn't scale for substantial projects. F
 
 | Pros | Cons |
 |------|------|
-| ✅ Eliminates context rot with fresh windows per task | ❌ Originally Claude Code-only — community ports lose depth |
+| ✅ Eliminates context rot with fresh windows per task | ❌ Claude Code remains the deepest integration despite official multi-runtime expansion |
 | ✅ Low dependency footprint (~50 Markdown files) | ❌ Medium learning curve — 6-step workflow to internalize |
 | ✅ Parallel execution (5+ agents via wave-based orchestrator) | ❌ Still requires upfront spec work that feels heavy for small fixes |
 | ✅ Verification gates check actual codebase, not AI self-reports | ❌ No built-in team coordination — single-user focus |
 | ✅ Atomic git commits for clean history and easy rollbacks | ❌ No enterprise governance or audit trails |
-| ✅ 51K+ stars, active community, battle-tested at scale | ❌ XML prompt formatting may be unfamiliar |
+| ✅ 64K+ stars, active community, battle-tested at scale | ❌ XML prompt formatting may be unfamiliar |
 
 > **In one sentence:** GSD is the go-to for solo Claude Code users who want structured discipline without enterprise overhead — it solves the #1 problem (context rot) with minimal ceremony.
 
@@ -60,16 +60,16 @@ The core insight is that raw prompting doesn't scale for substantial projects. F
 
 ## How It Works
 
-GSD follows a 6-step workflow executed via slash commands:
+GSD follows a 6-step workflow executed via runtime-aware commands. Claude/Cursor/OpenCode/Kilo-style runtimes now emit `/gsd-<cmd>` commands, while Codex emits `$gsd-*` skills; older colon-form command examples may still appear in older notes.
 
 | Step | Command | Purpose |
 |------|---------|---------|
-| 1 | `/gsd:new-project` | Capture the idea, research the domain, define requirements and roadmap |
-| 2 | `/gsd:discuss-phase N` | Clarify implementation details for phase N |
-| 3 | `/gsd:plan-phase N` | Create a task breakdown for phase N |
-| 4 | `/gsd:execute-phase N` | Execute plans in parallel, one commit per task |
-| 5 | `/gsd:verify-work N` | Validate that phase goals have been achieved |
-| 6 | `/gsd:complete-milestone` | Archive, tag release, initialize next cycle |
+| 1 | `/gsd-new-project` | Capture the idea, research the domain, define requirements and roadmap |
+| 2 | `/gsd-discuss-phase N` | Clarify implementation details for phase N |
+| 3 | `/gsd-plan-phase N` | Create a task breakdown for phase N |
+| 4 | `/gsd-execute-phase N` | Execute plans in parallel, one commit per task |
+| 5 | `/gsd-verify-work N` | Validate that phase goals have been achieved |
+| 6 | `/gsd-complete-milestone` | Archive, tag release, initialize next cycle |
 
 The workflow is designed to be iterative. Each phase runs in a fresh context window. The planning step produces structured task definitions that the execution step parallelizes across multiple agents. Verification runs against the real codebase to close the loop.
 
@@ -82,11 +82,11 @@ GSD also offers a **Quick Mode** for smaller projects that compresses the workfl
 - **Battle-tested at scale.** Community reports include a production iOS-to-Android port completed in a 3-day sprint (90+ AI sessions, 23 plans executed), demonstrating real-world viability.
 - **Strong parallel execution.** The wave-based orchestrator runs 5+ agents simultaneously, grouped by dependency, making efficient use of available compute.
 - **Verification gates close the loop.** Unlike approaches that trust the AI's self-report, GSD verifies against the actual codebase after each phase.
-- **Active community.** 51K+ stars, active LinkedIn community, blog coverage from codecentric.de, dev.to, and others.
+- **Active community.** 64K+ stars, active LinkedIn community, blog coverage from codecentric.de, dev.to, and others.
 
 ## Limitations
 
-- **Originally Claude Code-only.** GSD was designed for Claude Code. Community ports exist for other tools, but the primary workflow assumes Claude Code features (sub-agents, slash commands, hooks).
+- **Claude Code remains the deepest integration.** GSD now has official support for Codex CLI, OpenCode/Kilo-style runtimes, and Gemini CLI, but its design center is still Claude Code features such as sub-agents, slash commands, and hooks.
 - **Medium learning curve.** The 6-step workflow is more involved than just prompting. Developers need to learn the phase structure, slash commands, and planning conventions.
 - **Spec-driven overhead.** While lighter than BMAD, GSD still requires upfront planning and specification work that may feel heavy for quick scripts or bug fixes.
 - **No built-in enterprise governance.** GSD lacks the constraint enforcement, audit trails, and policy-as-code features found in enterprise-focused approaches like HVE.
@@ -108,7 +108,7 @@ GSD also offers a **Quick Mode** for smaller projects that compresses the workfl
 
 ## Community & Ecosystem
 
-GSD has one of the largest communities among AI development frameworks, with 51K+ GitHub stars and 4,300+ forks. The project is actively maintained (1,835+ commits, v1.35.0 as of April 2026) with frequent releases. Community adoption is evidenced by technical deep-dives on codecentric.de and dev.to, LinkedIn testimonials from production users (including a notable case at Whatnot), and community ports for non-Claude-Code environments. Documentation is inline — the ~50 Markdown files that compose the system also serve as its documentation.
+GSD has one of the largest communities among AI development frameworks, with ~64K GitHub stars and 5,500+ forks. The project is actively maintained (v1.42.3 as of May 2026) with frequent releases. Recent releases strengthened Codex CLI support, made command emission runtime-aware, and added lifecycle guardrails such as planning gates for closed phases and stricter worktree behavior. Community adoption is evidenced by technical deep-dives on codecentric.de and dev.to, LinkedIn testimonials from production users (including a notable case at Whatnot), and community ports for non-Claude-Code environments. Documentation is inline — the ~50 Markdown files that compose the system also serve as its documentation.
 
 ## Community Ports & Unofficial Adaptations
 
@@ -120,8 +120,8 @@ A grassroots Copilot effort exists via Kilo Code (documented on Reddit) but has 
 
 **vs. BMAD:** Both are spec-driven, but GSD is lighter — ~50 Markdown files vs. BMAD's 12+ specialized agents and 34+ workflows. GSD focuses on context engineering and parallel execution; BMAD emphasizes structured agile process with distinct phase gates. A community observation: GSD delivers a "solid build in a few hours," while BMAD targets "complex or production-grade" work with heavier upfront investment. GSD is MIT-licensed; BMAD carries a proprietary trademark.
 
-**vs. Spec Kit:** Both follow spec-driven development. GSD is more opinionated, providing a complete lifecycle (plan → execute → verify → release), while Spec Kit focuses on the specification and planning phases (spec → plan → tasks → implement). GSD is Claude Code-native; Spec Kit is agent-agnostic, working with Copilot, Claude Code, Gemini CLI, and Cursor. Spec Kit is backed by GitHub but still experimental (v0.6.2); GSD is community-driven but more mature.
+**vs. Spec Kit:** Both follow spec-driven development. GSD is more opinionated, providing a complete lifecycle (plan → execute → verify → release), while Spec Kit focuses on the specification and planning phases (spec → plan → tasks → implement). GSD is Claude Code-centered but now has meaningful official multi-runtime support; Spec Kit is agent-agnostic, working with Copilot, Claude Code, Gemini CLI, Cursor, Codex CLI, and many more. Spec Kit is backed by GitHub but still pre-1.0 (v0.11.3); GSD is community-driven and more mature.
 
 **vs. Context Engineering (Practice):** GSD is one of the most explicit implementations of context engineering principles. Its fresh-context-per-task approach directly addresses the context rot problem that context engineering identifies. Where context engineering is a set of principles (curate context, version prompts, manage window limits), GSD is a concrete system that operationalizes those principles for Claude Code specifically.
 
-**vs. Superpowers:** Both are spec-driven with TDD orientation, but the mechanisms differ. GSD uses slash commands and a 6-step workflow; Superpowers uses composable behavioral skills that agents load on demand. GSD is Claude Code-only (with community ports); Superpowers officially supports Claude Code, Cursor, Codex, Copilot CLI, Gemini CLI, and OpenCode. Superpowers has roughly 3x the GitHub stars (151K vs. 51K). GSD's strength is parallel wave execution and context rot prevention; Superpowers' strength is reusable skill modules and comprehensive quality gates (mandatory TDD, two-stage code review). They solve similar problems from different angles — GSD through workflow structure, Superpowers through behavioral enforcement.
+**vs. Superpowers:** Both are spec-driven with TDD orientation, but the mechanisms differ. GSD uses runtime-aware commands and a 6-step workflow; Superpowers uses composable behavioral skills that agents load on demand. GSD remains Claude Code-centered with expanding official runtime support; Superpowers officially supports Claude Code, Cursor, Codex, Copilot CLI, Gemini CLI, and OpenCode. Superpowers has roughly 3.5x the GitHub stars (~234K vs. ~64K). GSD's strength is parallel wave execution and context rot prevention; Superpowers' strength is reusable skill modules and comprehensive quality gates (mandatory TDD, two-stage code review). They solve similar problems from different angles — GSD through workflow structure, Superpowers through behavioral enforcement.

@@ -9,3 +9,6 @@
 
 ## Learnings
 
+- 2026-06-21: Freshness reviews should flag both stale metrics and overconfident capability claims; tool support and workspace/multi-repo wording need especially careful source grounding.
+- 2026-06-21: Approval can stand when summary language remains broad but deep-dive caveats clearly distinguish support breadth from proven runtime parity.
+

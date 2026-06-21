@@ -75,12 +75,14 @@ You're one person. You need to maximize output while maintaining quality. The ov
 | **Ralph** | ★★★★★ | Perfect for solo. Set it running, go to bed, wake up to progress. Requires clear specs and a test suite as backpressure. Best for greenfield. |
 | **GSD** | ★★★★☆ | Excellent if you use Claude Code. The 6-step workflow prevents the "context rot" that kills long solo sessions. Parallel agent execution makes one person feel like three. |
 | **Spec Kit** | ★★★★☆ | Good if you use multiple tools. Lighter than GSD, focused on getting the spec right before building. GitHub-backed, agent-agnostic. |
+| **OpenSpec** | ★★★★☆ | Strong for brownfield solo work. Change folders and delta specs help you make targeted changes without turning every task into a full project plan. |
 | **BMAD** | ★★★☆☆ | Can feel ceremonial for one person — PM, Architect, Dev, QA agents simulating a team you don't have. The Quick Flow mode helps. Best when your project is complex enough that you'd benefit from the discipline of separate analysis, planning, and architecture phases. |
 | **Squad** | ★★★★☆ | Squad's "team" is AI agents, not humans — a solo developer gets a coordinated team of specialized agents with persistent memory, parallel fan-out, and Ralph for autonomous work monitoring. Requires Copilot and benefits most when using GitHub Issues. |
-| **Superpowers** | ★★★★★ | Built for this — skills-based discipline for individual developers. Composable behavioral skills enforce TDD, code review, and systematic workflows. 151K stars, multi-tool support (Claude Code, Cursor, Codex, Copilot CLI, Gemini CLI, OpenCode). |
+| **Superpowers** | ★★★★★ | Built for this — skills-based discipline for individual developers. Composable behavioral skills enforce TDD, code review, and systematic workflows. ~234K stars, multi-tool support (Claude Code, Cursor, Codex, Copilot CLI, Gemini CLI, OpenCode). |
 | **HVE** | ★☆☆☆☆ | 49 agents, 102 instructions, enterprise governance. Unless you're a solo developer shipping regulated software, this is a sledgehammer for a nail. |
 
 **What real users say:**
+
 - Geoffrey Huntley (Ralph creator): "Ralph can replace the majority of outsourcing at most companies for greenfield projects." He built an entire programming language (CURSED) solo using Ralph — compiler, stdlib, LLVM backend.
 - Y Combinator hackathon teams: "We put a coding agent in a while loop and it shipped 6 repos overnight" for $297 in API costs.
 - Birgitta Böckeler (Thoughtworks): On spec-driven approaches for small tasks — "the time spent reviewing generated specification files was comparable to the time spent just coding directly." Context engineering via rules files is often enough.
@@ -98,6 +100,7 @@ You know each other well, communication is natural, but you need AI agents that 
 | **Context Engineering** | ★★★★★ | Non-negotiable. Shared rules files in the repo mean every team member's AI sessions follow the same conventions. This is your minimum viable coordination. |
 | **GSD** | ★★★★☆ | Each person runs their own GSD workflow on different features. Parallel execution within GSD, plus human parallelism across features. Works well if the whole team is on Claude Code. |
 | **Spec Kit** | ★★★★☆ | Shared specs in the repo give everyone a common source of truth. Agent-agnostic — one person can use Copilot while another uses Claude Code. The specs coordinate, not the tools. |
+| **OpenSpec** | ★★★★☆ | Strong for teams evolving an existing codebase. Delta specs make intent review explicit and work across a very broad set of coding tools. |
 | **BMAD** | ★★★★☆ | The team simulation starts to make more sense. One person can run the PM/Architect phases while another starts implementation. Quick Flow keeps it light for small tasks. |
 | **Squad** | ★★★★☆ | Strong fit if you're on Copilot. The Coordinator routes work across specialized AI agents, persistent memory keeps decisions consistent across sessions, and Ralph automates issue triage and backlog management. The .squad/ setup is automated — the Coordinator handles assembly. |
 | **Ralph** | ★★★☆☆ | Individual team members can Ralph independently on separate branches. No built-in team coordination — you'll need to handle merge conflicts yourself. |
@@ -122,12 +125,14 @@ Now coordination matters. You have multiple concerns (frontend, backend, testing
 | **BMAD** | ★★★★★ | Also a sweet spot. 12+ agent personas cover every role a medium team needs. Scale-adaptive intelligence adjusts process weight automatically. The full agile simulation (sprints, retros, stories) maps to how medium teams actually work. |
 | **HVE** | ★★★★☆ | The RPI workflow starts to pay off as task complexity increases. Research-first philosophy prevents expensive rework. Still heavy on setup, but the governance layer is increasingly justified. |
 | **Context Engineering** | ★★★★☆ | Still essential as a foundation, but no longer sufficient alone. You need a framework on top to coordinate multi-person, multi-concern work. |
+| **OpenSpec** | ★★★☆☆ | Useful for change-level intent tracking and multi-tool teams, but lacks multi-agent orchestration or team workspaces for larger coordination. |
 | **GSD** | ★★★☆☆ | Good for individual contributors within the team, but no built-in team coordination. Each person runs GSD independently — you need something else (Squad, BMAD, or your own process) for cross-team orchestration. |
 | **Spec Kit** | ★★★☆☆ | Useful for the specification phase, but you'll pair it with another technique for execution and coordination. |
 | **Ralph** | ★★☆☆☆ | Individual contributors can still use Ralph for well-scoped tasks, but it offers nothing for team coordination. Teams using Ralph typically assign separate repos or features to separate Ralph loops. |
 | **Superpowers** | ★★☆☆☆ | No team coordination features. Individual contributors can use Superpowers for their own tasks, but the framework has no mechanisms for cross-team orchestration or shared governance. |
 
 **What real users say:**
+
 - thomy.tech (on Squad): "My First Coding Agent Fleet with Enterprise Tooling" — described running Squad with multiple agents handling different aspects of a project simultaneously, with persistent memory keeping everything aligned.
 - BMAD community (Discord): Teams of 5-8 report the scale-adaptive intelligence actually works — it doesn't force enterprise process on a simple feature branch.
 
@@ -143,14 +148,16 @@ Governance, consistency, audit trails, and onboarding matter. You can't rely on 
 |-----------|-----|-----|
 | **HVE** | ★★★★★ | Designed for this. 49 agents, 102 instructions, collection-based architecture. Teams adopt the collections they need (coding-standards, security, data-science). Enterprise governance, validated artifacts, policy-as-code. Microsoft ISE built this from shipping 140+ enterprise projects. |
 | **Context Engineering** | ★★★★★ | The foundation layer. Organization-wide rules files standardize AI behavior across all teams. Layer 2 (organization rules) in the 8-layer model is specifically for this. |
-| **BMAD** | ★★★★☆ | The Module Ecosystem (BMB, TEA, BMGD, CIS) scales to enterprise needs. Cross-platform support means teams using different tools can still use the same methodology. The 44K-star community provides extensive resources. |
+| **BMAD** | ★★★★☆ | The Module Ecosystem (BMB, TEA, BMGD, CIS, bmad-spec, bmad-ux) scales to enterprise needs. Cross-platform support means teams using different tools can still use the same methodology. The ~49K-star community provides extensive resources. |
 | **Squad** | ★★★★☆ | Per-team Squad instances work well. Each team has its own .squad/ with its own agents, decisions, and routing. The SDK-first mode (squad.config.ts) is more enterprise-friendly than Markdown-only configuration. |
 | **Spec Kit** | ★★★☆☆ | The constitution.md concept (project principles and guardrails) scales well for enforcing organizational standards. Pair with a heavier framework for execution. |
+| **OpenSpec** | ★★☆☆☆ | Useful for brownfield change records, but current large-org fit is limited until workspace/multi-repo and enterprise governance features mature. |
 | **GSD** | ★★☆☆☆ | Individual contributor tool within a larger framework. Not designed for organizational coordination. |
 | **Superpowers** | ★★☆☆☆ | No governance or team features. Individual contributors can adopt Superpowers skills for personal workflows, but the framework provides no organizational coordination or audit capabilities. |
 | **Ralph** | ★☆☆☆☆ | No governance, no audit trail, no team coordination. An organization using Ralph needs extensive wrapping and oversight. |
 
 **What real users say:**
+
 - Robin Cole (VP Engineering, Microsoft) on HVE at TMForum: Enterprise adoption by AT&T and KT Corporation demonstrates viability at scale for telco-grade software.
 - Birgitta Böckeler on harness engineering: "What's good for humans is good for AI" — organizations should invest in architectural constraints (custom linters, structural tests, context documentation) as "harnesses" that make AI agents more reliable. HVE's collection architecture implements this.
 
@@ -170,6 +177,7 @@ Every technique works for greenfield — but some shine brighter.
 | **GSD** | ★★★★★ | The 6-step lifecycle (new → discuss → plan → execute → verify → complete) is designed for starting from nothing. Parallel wave execution builds multiple concerns simultaneously. |
 | **BMAD** | ★★★★☆ | The Analysis phase (domain research, market research, technical research) is most valuable at greenfield stage when the problem space is poorly understood. |
 | **Spec Kit** | ★★★★☆ | Constitution → specify → plan → tasks → implement maps naturally to the "blank slate" starting point. |
+| **OpenSpec** | ★★★☆☆ | Can work for greenfield, but it is change-centric rather than project-centric. GSD or Spec Kit provide more full-project scaffolding. |
 | **Squad** | ★★★★☆ | Team assembly, initial architecture decisions, and parallel agent fan-out are effective for scaffolding new projects. |
 | **Superpowers** | ★★★★★ | Brainstorm→plan→implement with TDD enforcement. Parallel development via worktrees. Skills ensure disciplined greenfield development from the first commit. |
 | **HVE** | ★★★☆☆ | Works, but the Research phase is less valuable when there's no existing codebase to investigate. More valuable later as the codebase grows. |
@@ -184,6 +192,7 @@ Working with existing code is harder for AI. The agent needs to understand what'
 | **HVE** | ★★★★★ | The Research phase shines here. The AI investigates the existing codebase, documents findings, then plans changes. This prevents the "AI regenerated existing code" problem. |
 | **Context Engineering** | ★★★★★ | Critical. A detailed rules file describing your existing architecture, conventions, and gotchas is the single most impactful thing you can do for brownfield AI work. |
 | **GSD** | ★★★★☆ | Has explicit Brownfield Support mode. Fresh context per task prevents accumulated confusion about the existing codebase. |
+| **OpenSpec** | ★★★★★ | Built for this. Change folders and delta specs track how a targeted change modifies existing behavior, with proposal approval before code. |
 | **BMAD** | ★★★★☆ | The Analysis phase can study the existing domain before changes begin. Scale-adaptive intelligence adjusts to task size within the existing codebase. |
 | **Spec Kit** | ★★★☆☆ | The analyze command checks for inconsistencies, but in brownfield testing, spec-driven tools have been observed taking existing class descriptions as new specifications and generating duplicates. Careful scoping is needed. |
 | **Squad** | ★★★☆☆ | Persistent agent memory helps — agents remember past decisions about the codebase. But the initial context loading needs careful setup. |
@@ -199,6 +208,7 @@ Speed is everything. Polish later (or never).
 | **Ralph** | ★★★★★ | Y Combinator teams proved it: 6 repos overnight for $297. Set the loop, let it rip. |
 | **Context Engineering** | ★★★★☆ | A quick rules file that sets the tech stack and coding style is enough. Don't overthink it. |
 | **GSD** | ★★★☆☆ | Quick Mode compresses the workflow, but even the compressed version adds ceremony that slows down hackathon pace. |
+| **OpenSpec** | ★★☆☆☆ | Lightweight for SDD, but proposal/review/archive still adds more intent tracking than most prototypes need. |
 | **Superpowers** | ★★★☆☆ | TDD enforcement adds ceremony that can slow hackathon pace. The skills framework is valuable for disciplined prototyping, but pure speed favors lighter approaches. |
 | **Spec Kit** | ★★☆☆☆ | Spec-plan-tasks-implement is too many steps when you want code running in hours. |
 | **BMAD** | ★★☆☆☆ | Quick Flow helps, but PM → Architect → Dev → QA phases are overkill for a prototype. |
@@ -214,6 +224,7 @@ You're moving from one stack/pattern to another. The existing code is the input;
 | **Ralph** | ★★★★☆ | Migrations are mechanical — exactly the kind of repetitive, well-defined work Ralph excels at. A GSD community report describes a production iOS-to-Android port in 3 days. Combine with clear specs defining the "from" and "to." |
 | **HVE** | ★★★★☆ | Research phase documents the existing system. Plan phase maps the migration path. Implement phase executes task-by-task with verification. |
 | **GSD** | ★★★★☆ | The parallel wave execution is valuable for migrations with many independent modules to port. |
+| **OpenSpec** | ★★★★☆ | Delta specs are a good fit when migration work needs explicit intent review for changed behavior in an existing codebase. |
 | **Context Engineering** | ★★★★☆ | Critical to document "old patterns → new patterns" in rules files so the AI consistently applies the transformation. |
 | **BMAD** | ★★★☆☆ | The Analyst agent can study the existing system. But the full agile simulation may be overkill for a mechanical migration. |
 | **Spec Kit** | ★★★☆☆ | Spec the migration requirements clearly. Constitution can enforce "always use new patterns." |
@@ -229,6 +240,7 @@ You're moving from one stack/pattern to another. The existing code is the input;
 Industries where audit trails, compliance evidence, and validated artifacts are non-negotiable. Mistakes have legal or safety consequences.
 
 **Examples:**
+
 - **Financial services** — SOX compliance, SEC reporting requirements, PCI-DSS for payment systems. Every code change affecting financial calculations needs traceability from requirement to implementation to test.
 - **Healthcare / Life sciences** — HIPAA compliance, FDA software validation (21 CFR Part 11), GxP requirements. AI-generated code must be verifiable and its provenance documented.
 - **Government / Defense** — FedRAMP, NIST 800-53, ITAR restrictions. Security clearances may restrict which cloud-based AI tools can be used at all.
@@ -241,12 +253,14 @@ Industries where audit trails, compliance evidence, and validated artifacts are 
 | **Context Engineering** | ★★★★★ | Constraint context in rules files (Layer 5 — "what the agent must NOT do") is essential for regulated environments. Document forbidden patterns, security requirements, and compliance gates in version-controlled rules files that every AI session respects. |
 | **BMAD** | ★★★☆☆ | Structured phases provide some process evidence, but no built-in compliance artifacts or policy enforcement. You'd need to add governance layers on top. |
 | **Spec Kit** | ★★★☆☆ | The constitution.md concept can encode compliance requirements. Version-controlled specs provide some traceability. But no enforcement mechanism — the AI may still ignore the constitution. |
+| **OpenSpec** | ★★★☆☆ | Proposal approval and archived change intent provide lightweight traceability, but there is no enterprise policy enforcement, SSO/SCIM, or compliance-grade audit layer. |
 | **GSD** | ★★☆☆☆ | Verification gates help, but no formal audit trail, no compliance artifacts, no policy-as-code. |
 | **Squad** | ★★☆☆☆ | The reviewer rejection protocol and decisions ledger provide some governance, but not at the level regulated industries require. |
 | **Superpowers** | ★★☆☆☆ | TDD enforcement provides some structure, but no audit trails, governance mechanisms, or compliance artifacts. Every change would still need manual compliance review. |
 | **Ralph** | ★☆☆☆☆ | Zero governance, zero audit trail. "Deterministically bad in a nondeterministic world" is not a phrase you want in a compliance review. Every change would need human review before landing, which negates Ralph's AFK advantage. |
 
 **Real-world guidance for regulated environments:**
+
 1. **Never skip the research phase.** Whether using HVE's formal Research agent or doing it manually, the AI must investigate before implementing. As HVE's docs state: "When AI knows it cannot implement, it stops optimizing for 'plausible code' and starts optimizing for 'verified truth.'"
 2. **Invest in harness engineering.** Deterministic custom linters, structural tests, and architectural constraints create a safety net that doesn't depend on LLM compliance. The AI can hallucinate, but the harness catches it.
 3. **Pin model versions.** Context engineering research shows: "Production applications should pin to specific model snapshots, as router behavior changes between versions." For regulated environments, model version changes should go through the same change control as code changes.
@@ -371,6 +385,10 @@ Most real teams don't use a single technique in isolation. Here are battle-teste
 
 Use Spec Kit for the specification and planning phase, then hand off to GSD (for execution with parallel waves) or Squad (for multi-agent team execution). Spec Kit is deliberately narrow — it handles specs, not execution.
 
+### OpenSpec + Superpowers or GSD
+
+Use OpenSpec to govern the change intent for existing code, then use Superpowers or GSD to enforce disciplined implementation. This pairing works best when you need both reviewable "why" artifacts and stronger execution practices.
+
 ### Ralph + GSD
 
 Use GSD's structured planning to create the spec and task breakdown. Then use Ralph to execute the tasks autonomously overnight. Ralph's prompt.md can reference GSD's planning artifacts.
@@ -433,6 +451,7 @@ An important practical concern: which techniques lock you into which AI coding t
 | **Context Engineering** | Any | All tools | None — universal practice |
 | **Ralph** | Any CLI | Claude Code, Copilot CLI, Cursor CLI, Codex, Gemini CLI | Needs CLI mode — doesn't work in IDE-only tools |
 | **Spec Kit** | Any | Copilot, Claude Code, Cursor, Windsurf, Gemini CLI | None — agent-agnostic by design |
+| **OpenSpec** | Any | 27+ tools including Copilot, Claude Code, Cursor, Codex, Gemini CLI, Windsurf, Cline, Continue, Kilo Code, OpenCode | None for supported tools — broad native configuration |
 | **BMAD** | Claude Code, Cursor, Windsurf | Most tools via V6 cross-platform support | None (V6 broadened support) |
 | **GSD** | Claude Code | Community ports for Cursor, others | Best experience requires Claude Code's native features |
 | **Superpowers** | Claude Code | Cursor, Codex, Copilot CLI, Gemini CLI, OpenCode | Needs CLI mode for bootstrapping |
@@ -450,6 +469,7 @@ For the reader who just wants one definitive recommendation per scenario:
 | Solo dev, quick project | Context Engineering + Ralph | GSD or Superpowers |
 | Solo dev, serious project | GSD (Claude Code) or Squad (Copilot) | Superpowers or BMAD |
 | Small team (2-3), multi-tool | Spec Kit + Context Engineering | BMAD |
+| Small team (2-3), brownfield | OpenSpec + Context Engineering | GSD |
 | Small team (2-3), Copilot | Squad | GSD |
 | Medium team (4-10) | Squad (Copilot) or BMAD (multi-tool) | HVE |
 | Large org (10+) | HVE + Context Engineering | BMAD |

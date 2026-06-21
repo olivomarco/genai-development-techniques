@@ -83,3 +83,13 @@
 - Updated gsd.md comparison notes: vs. Superpowers — both spec-driven with TDD but different mechanisms (slash commands vs composable skills), GSD is Claude Code-only while Superpowers is multi-tool, Superpowers has 3x stars
 - Updated context-engineering.md comparison notes: vs. Superpowers — Superpowers is arguably the most sophisticated implementation of context engineering, skills ARE context engineering packaged as behavioral modules
 - Filed categorization decision to .squad/decisions/inbox/neo-superpowers-categorization.md
+
+### 2026-06-21: Freshness Scope Review
+- Current taxonomy still holds; no new top-level category required before Trinity refreshes evidence.
+- Existing docs are stale on popularity/activity: Superpowers (~234K), Spec Kit (~114K), GSD (~64K), OpenSpec (~56K), BMAD (~49K), HVE (~1.2K), Squad (~2.8K) have all moved from April figures.
+- Overview needs consistency fixes: says nine Tier 1 approaches while listing ten; OpenSpec spectrum order differs between accepted decision and overview.
+- Candidate watchlist for Marco/Trinity: OpenHands, Cline, Roo Code, OpenCode, Goose; include only if they represent transferable methodology rather than just tools/platforms.
+- Filed scope proposal to .squad/decisions/inbox/neo-freshness-scope.md.
+
+### 2026-06-21: Oracle Freshness Revision
+- Revised Morpheus' rejected freshness edits as separate reviewer agent: softened OpenSpec workspace/tool-parity claims, clarified BMAD Web Bundle support vs CLI/runtime support, and reframed GSD's stale community-port con around Claude Code depth.

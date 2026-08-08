@@ -15,7 +15,23 @@ Jump to the scenario that matches your situation:
 - [By Industry & Compliance](#by-industry-compliance) — Regulated environments, auditable systems
 - [By Development Activity](#by-development-activity) — Bug fixes, features, refactoring, tests, docs
 - [By Development Methodology](#by-development-methodology) — Agile/Scrum, Kanban, waterfall-adjacent
+- [Skills Library or Skills Methodology?](#skills-library-or-skills-methodology) — Adaptable capabilities versus enforced workflow
 - [Quick Decision Flowchart](#quick-decision-flowchart) — Don't want to read? Start here.
+
+---
+
+## Skills library or skills methodology?
+
+Agent Skills is now a portable packaging specification, but a skill package is not automatically a development methodology.
+
+| If you want... | Choose | Trade-off |
+|----------------|--------|-----------|
+| Reusable practices you can mix, edit, or ignore | A library such as [`mattpocock/skills`](skills-ecosystem.md) | You retain control, but nothing enforces sequence or quality gates |
+| A mandatory individual workflow | [Superpowers](superpowers.md) | Strong TDD and review discipline, with more ceremony |
+| Automatic upstream updates | Managed plugin distribution | Convenient, but upstream changes arrive without a local merge |
+| Reviewable and reproducible files | Vendored copy through the `skills` CLI | You own updates, conflicts, and local modifications |
+
+Skills are additive: you can use a library with any Tier 1 methodology. Check for duplicate instructions, conflicting workflows, runtime-specific features, and unreviewed scripts.
 
 ---
 
@@ -34,7 +50,7 @@ START: What are you building?
 │   ├─ Want skills-based methodology with TDD?
 │   │   └─→ Superpowers
 │   ├─ Want structured phases with verification?
-│   │   └─→ GSD (if Claude Code) or Spec Kit (if multi-tool)
+│   │   └─→ GSD Core or Spec Kit
 │   ├─ Want a persistent AI team with memory?
 │   │   └─→ Squad (if Copilot)
 │   └─ Want full agile simulation?
@@ -45,7 +61,7 @@ START: What are you building?
 │   │   └─→ Squad
 │   ├─ Mixed tools (Claude Code + Cursor + Copilot)?
 │   │   └─→ BMAD, Spec Kit + Context Engineering, or Superpowers
-│   └─ Mainly Claude Code?
+│   └─ Want a five-step project workflow?
 │       └─→ GSD
 │
 ├─ Team of 5-15, enterprise product?
@@ -73,13 +89,13 @@ You're one person. You need to maximize output while maintaining quality. The ov
 |-----------|-----|-----|
 | **Context Engineering** | ★★★★★ | Start here. A good rules file (copilot-instructions.md, .cursorrules, CLAUDE.md) costs nothing and improves every session. Zero overhead. |
 | **Ralph** | ★★★★★ | Perfect for solo. Set it running, go to bed, wake up to progress. Requires clear specs and a test suite as backpressure. Best for greenfield. |
-| **GSD** | ★★★★☆ | Excellent if you use Claude Code. The 6-step workflow prevents the "context rot" that kills long solo sessions. Parallel agent execution makes one person feel like three. |
+| **GSD** | ★★★★☆ | The five-step Discuss → Plan → Execute → Verify → Ship workflow prevents context rot. The installer targets multiple runtimes, though feature parity is unverified. |
 | **Spec Kit** | ★★★★☆ | Good if you use multiple tools. Lighter than GSD, focused on getting the spec right before building. GitHub-backed, agent-agnostic. |
 | **OpenSpec** | ★★★★☆ | Strong for brownfield solo work. Change folders and delta specs help you make targeted changes without turning every task into a full project plan. |
 | **BMAD** | ★★★☆☆ | Can feel ceremonial for one person — PM, Architect, Dev, QA agents simulating a team you don't have. The Quick Flow mode helps. Best when your project is complex enough that you'd benefit from the discipline of separate analysis, planning, and architecture phases. |
 | **Squad** | ★★★★☆ | Squad's "team" is AI agents, not humans — a solo developer gets a coordinated team of specialized agents with persistent memory, parallel fan-out, and Ralph for autonomous work monitoring. Requires Copilot and benefits most when using GitHub Issues. |
-| **Superpowers** | ★★★★★ | Built for this — skills-based discipline for individual developers. Composable behavioral skills enforce TDD, code review, and systematic workflows. ~234K stars, multi-tool support (Claude Code, Cursor, Codex, Copilot CLI, Gemini CLI, OpenCode). |
-| **HVE** | ★☆☆☆☆ | 49 agents, 102 instructions, enterprise governance. Unless you're a solo developer shipping regulated software, this is a sledgehammer for a nail. |
+| **Superpowers** | ★★★★★ | Built for this — mandatory behavioral skills enforce TDD, code review, and systematic workflows across several tools. |
+| **HVE** | ★☆☆☆☆ | A large enterprise agent and instruction inventory. Unless you're shipping regulated software, this is a sledgehammer for a nail. |
 
 **What real users say:**
 
@@ -98,14 +114,14 @@ You know each other well, communication is natural, but you need AI agents that 
 | Technique | Fit | Why |
 |-----------|-----|-----|
 | **Context Engineering** | ★★★★★ | Non-negotiable. Shared rules files in the repo mean every team member's AI sessions follow the same conventions. This is your minimum viable coordination. |
-| **GSD** | ★★★★☆ | Each person runs their own GSD workflow on different features. Parallel execution within GSD, plus human parallelism across features. Works well if the whole team is on Claude Code. |
+| **GSD** | ★★★★☆ | Each person runs a GSD Core workflow on different features. The installer targets several runtimes, but GSD still provides no shared team coordination. |
 | **Spec Kit** | ★★★★☆ | Shared specs in the repo give everyone a common source of truth. Agent-agnostic — one person can use Copilot while another uses Claude Code. The specs coordinate, not the tools. |
 | **OpenSpec** | ★★★★☆ | Strong for teams evolving an existing codebase. Delta specs make intent review explicit and work across a very broad set of coding tools. |
 | **BMAD** | ★★★★☆ | The team simulation starts to make more sense. One person can run the PM/Architect phases while another starts implementation. Quick Flow keeps it light for small tasks. |
 | **Squad** | ★★★★☆ | Strong fit if you're on Copilot. The Coordinator routes work across specialized AI agents, persistent memory keeps decisions consistent across sessions, and Ralph automates issue triage and backlog management. The .squad/ setup is automated — the Coordinator handles assembly. |
 | **Ralph** | ★★★☆☆ | Individual team members can Ralph independently on separate branches. No built-in team coordination — you'll need to handle merge conflicts yourself. |
 | **Superpowers** | ★★★☆☆ | No built-in team coordination — each person runs independently with their own skills. Individual discipline is excellent, but you'll need external coordination for shared work. |
-| **HVE** | ★★☆☆☆ | Still too heavy. The RPI workflow adds value for complex features, but 49 agents and 102 instructions are designed for larger organizations. |
+| **HVE** | ★★☆☆☆ | Still too heavy for most small teams. The large RPI inventory is designed for larger organizations. |
 
 **What real users say:**
 - Martin Fowler's blog: SDD tools like Spec Kit work best when both team members can review specs before implementation — the shared spec becomes a communication artifact, not just an AI input.
@@ -122,7 +138,7 @@ Now coordination matters. You have multiple concerns (frontend, backend, testing
 | Technique | Fit | Why |
 |-----------|-----|-----|
 | **Squad** | ★★★★★ | This is Squad's sweet spot. Named agents with charters map to real team concerns. The decisions ledger ensures AI agents respect past choices. Ralph monitors the GitHub board. Parallel fan-out reflects real team parallelism. |
-| **BMAD** | ★★★★★ | Also a sweet spot. 12+ agent personas cover every role a medium team needs. Scale-adaptive intelligence adjusts process weight automatically. The full agile simulation (sprints, retros, stories) maps to how medium teams actually work. |
+| **BMAD** | ★★★★★ | Also a sweet spot. Specialized roles cover product, architecture, development, and quality concerns. Scale-adaptive intelligence adjusts process weight automatically. |
 | **HVE** | ★★★★☆ | The RPI workflow starts to pay off as task complexity increases. Research-first philosophy prevents expensive rework. Still heavy on setup, but the governance layer is increasingly justified. |
 | **Context Engineering** | ★★★★☆ | Still essential as a foundation, but no longer sufficient alone. You need a framework on top to coordinate multi-person, multi-concern work. |
 | **OpenSpec** | ★★★☆☆ | Useful for change-level intent tracking and multi-tool teams, but lacks multi-agent orchestration or team workspaces for larger coordination. |
@@ -146,9 +162,9 @@ Governance, consistency, audit trails, and onboarding matter. You can't rely on 
 
 | Technique | Fit | Why |
 |-----------|-----|-----|
-| **HVE** | ★★★★★ | Designed for this. 49 agents, 102 instructions, collection-based architecture. Teams adopt the collections they need (coding-standards, security, data-science). Enterprise governance, validated artifacts, policy-as-code. Microsoft ISE built this from shipping 140+ enterprise projects. |
-| **Context Engineering** | ★★★★★ | The foundation layer. Organization-wide rules files standardize AI behavior across all teams. Layer 2 (organization rules) in the 8-layer model is specifically for this. |
-| **BMAD** | ★★★★☆ | The Module Ecosystem (BMB, TEA, BMGD, CIS, bmad-spec, bmad-ux) scales to enterprise needs. Cross-platform support means teams using different tools can still use the same methodology. The ~49K-star community provides extensive resources. |
+| **HVE** | ★★★★★ | Designed for this. Teams adopt enterprise collections, validated artifacts, and policy-as-code. Repository inventory has expanded heavily into skills, but stable-package contents differ from `main`. |
+| **Context Engineering** | ★★★★★ | The foundation layer. Organization-wide rules files standardize AI behavior, while Agent Skills packages reusable capabilities above them. |
+| **BMAD** | ★★★★☆ | The module ecosystem scales to enterprise needs. Cross-platform support lets teams use the same methodology across several tools, with runtime-depth caveats. |
 | **Squad** | ★★★★☆ | Per-team Squad instances work well. Each team has its own .squad/ with its own agents, decisions, and routing. The SDK-first mode (squad.config.ts) is more enterprise-friendly than Markdown-only configuration. |
 | **Spec Kit** | ★★★☆☆ | The constitution.md concept (project principles and guardrails) scales well for enforcing organizational standards. Pair with a heavier framework for execution. |
 | **OpenSpec** | ★★☆☆☆ | Useful for brownfield change records, but current large-org fit is limited until workspace/multi-repo and enterprise governance features mature. |
@@ -174,7 +190,7 @@ Every technique works for greenfield — but some shine brighter.
 | Technique | Fit | Why |
 |-----------|-----|-----|
 | **Ralph** | ★★★★★ | Ideal for greenfield. Fresh context per iteration, clear specs, no legacy baggage. Ralph excels when starting from scratch with well-defined requirements. |
-| **GSD** | ★★★★★ | The 6-step lifecycle (new → discuss → plan → execute → verify → complete) is designed for starting from nothing. Parallel wave execution builds multiple concerns simultaneously. |
+| **GSD** | ★★★★★ | The five-step Discuss → Plan → Execute → Verify → Ship lifecycle provides strong greenfield scaffolding. |
 | **BMAD** | ★★★★☆ | The Analysis phase (domain research, market research, technical research) is most valuable at greenfield stage when the problem space is poorly understood. |
 | **Spec Kit** | ★★★★☆ | Constitution → specify → plan → tasks → implement maps naturally to the "blank slate" starting point. |
 | **OpenSpec** | ★★★☆☆ | Can work for greenfield, but it is change-centric rather than project-centric. GSD or Spec Kit provide more full-project scaffolding. |
@@ -221,7 +237,7 @@ You're moving from one stack/pattern to another. The existing code is the input;
 
 | Technique | Fit | Why |
 |-----------|-----|-----|
-| **Ralph** | ★★★★☆ | Migrations are mechanical — exactly the kind of repetitive, well-defined work Ralph excels at. A GSD community report describes a production iOS-to-Android port in 3 days. Combine with clear specs defining the "from" and "to." |
+| **Ralph** | ★★★★☆ | Migrations are mechanical — exactly the kind of repetitive, well-defined work Ralph excels at. Combine the loop with clear specs defining the "from" and "to." |
 | **HVE** | ★★★★☆ | Research phase documents the existing system. Plan phase maps the migration path. Implement phase executes task-by-task with verification. |
 | **GSD** | ★★★★☆ | The parallel wave execution is valuable for migrations with many independent modules to port. |
 | **OpenSpec** | ★★★★☆ | Delta specs are a good fit when migration work needs explicit intent review for changed behavior in an existing codebase. |
@@ -335,7 +351,7 @@ Running sprints with stand-ups, retrospectives, and backlog grooming.
 | **BMAD** | ★★★★★ | BMAD *is* agile simulation. Sprint planning, stories, retrospectives, QA cycles — it maps 1:1 to Scrum. The Scrum Master agent facilitates ceremonies. |
 | **Squad** | ★★★★☆ | Ceremonies (design reviews, retros, standups) are built-in. Ralph monitors the GitHub backlog continuously. The issue → branch → PR → merge lifecycle integrates with sprint-based work. |
 | **HVE** | ★★★★☆ | The RPI workflow maps to sprint tasks: Research and Plan early in the sprint, Implement mid-sprint, Review at the end. Collections for GitHub, ADO, and Jira integrate with existing backlog tools. |
-| **GSD** | ★★★☆☆ | The 6-step workflow maps to individual sprint tasks, but GSD has no sprint-level coordination. Use within sprints, not to manage them. |
+| **GSD** | ★★★☆☆ | The five-step workflow maps to individual sprint tasks, but GSD has no sprint-level coordination. Use it within sprints, not to manage them. |
 | **Spec Kit** | ★★★☆☆ | Specs can map to user stories. The constitution can encode sprint conventions. But Spec Kit doesn't manage sprint process. |
 | **Context Engineering** | ★★★☆☆ | Rules files can encode sprint conventions ("always reference the Jira ticket in commit messages"), but won't manage agile process. |
 | **Ralph** | ★★☆☆☆ | Can be used for specific sprint tasks, but has no concept of sprints, backlogs, or ceremonies. |
@@ -348,7 +364,7 @@ Work-in-progress limits, continuous delivery, no sprints.
 | Technique | Fit | Why |
 |-----------|-----|-----|
 | **Squad** | ★★★★★ | Ralph (Work Monitor) continuously scans for work and routes it — this IS Kanban for AI agents. No sprint boundaries, just a flowing board. |
-| **GSD** | ★★★★☆ | Each ticket/card runs through the 6-step workflow independently. No sprint coupling. |
+| **GSD** | ★★★★☆ | Each ticket or card runs through the five-step workflow independently. No sprint coupling. |
 | **Context Engineering** | ★★★★☆ | Rules files define the "how," the Kanban board defines the "what." Lightweight and flow-compatible. |
 | **Ralph** | ★★★★☆ | The autonomous loop is inherently continuous. Pair with a GitHub Issues board for visual tracking. |
 | **Superpowers** | ★★★☆☆ | Individual workflow fits continuous flow. Skills execute per-card naturally. No batch-like overhead, but no board-level awareness. |
@@ -365,7 +381,7 @@ Sequential phases with formal gate reviews between them.
 | **HVE** | ★★★★★ | RPI *is* stage-gate: Research → gate → Plan → gate → Implement → gate → Review. Validated artifacts at each gate. |
 | **BMAD** | ★★★★★ | Four sequential phases (Analysis → Planning → Solutioning → Implementation) with quality gates between each. |
 | **Spec Kit** | ★★★★☆ | Constitution → specify → plan → tasks → implement is a natural stage pipeline. |
-| **GSD** | ★★★☆☆ | The 6-step workflow is sequential, but designed for iteration within phases rather than strict gates. |
+| **GSD** | ★★★☆☆ | The five-step workflow is sequential, but designed for iteration within stages rather than strict gates. |
 | **Squad** | ★★☆☆☆ | More about parallel coordination than sequential phases. Can enforce phase gates through ceremonies, but it's not native. |
 | **Ralph** | ★☆☆☆☆ | The antithesis of stage-gate. No phases, no gates, just a loop. |
 | **Superpowers** | ★★☆☆☆ | Skills provide structure within tasks, but no formal phase gates or validated artifacts between stages. |
@@ -409,6 +425,10 @@ Superpowers is arguably the most sophisticated implementation of context enginee
 
 Use Superpowers for individual agent skill development within Squad's team coordination. Each Squad agent can be enhanced with Superpowers skills for disciplined task execution, while Squad handles the cross-agent orchestration, persistent memory, and work routing that Superpowers lacks.
 
+### Skills library + any methodology
+
+Install selected skills alongside GSD, Spec Kit, OpenSpec, BMAD, Squad, Ralph, or HVE. Prefer a vendored, reviewed copy when reproducibility matters. Managed plugins reduce update work but require trust in upstream changes. See the [skills ecosystem guide](skills-ecosystem.md) for provenance and runtime caveats.
+
 ---
 
 ## Anti-Patterns: When NOT to Use a Technique
@@ -419,8 +439,9 @@ Use Superpowers for individual agent skill development within Squad's team coord
 | Using Ralph in a large brownfield codebase without safeguards | Nondeterministic ripgrep searches lead to duplicate code and incorrect assumptions about what exists. Ralph's own documentation cautions against brownfield use without safeguards. |
 | Using any SDD tool for exploratory prototyping | When you don't know what you're building yet, the time spent reviewing generated specification files can be comparable to the time spent just coding directly. Specs create drag during exploration. |
 | Using Ralph without a test suite | Tests are Ralph's backpressure. Without them, the loop has no quality gate and will drift indefinitely, burning API credits on garbage. |
-| Using GSD without Claude Code | GSD is built on native Claude Code features (sub-agents, slash commands, hooks). Community ports exist but lose the tight integration that makes GSD effective. |
-| Forcing one technique on a team with mixed tools | If half the team uses Claude Code and half uses Copilot, mandating GSD or Squad creates friction. Use Spec Kit or BMAD (agent-agnostic) as the shared layer, individual tools beneath. |
+| Assuming every GSD installer target has parity | GSD Core documents many targets, but equivalent hooks, subagents, commands, and execution semantics were not verified. Pilot your runtime before standardizing. |
+| Forcing one technique on a team with mixed tools | If half the team uses Claude Code and half uses Copilot, a runtime-specific methodology creates friction. Use a portable specification or skills layer where possible. |
+| Installing skills without reviewing provenance | Skills can bundle scripts and tool permissions. Registry presence or an audit badge is not a substitute for source review and pinning. |
 | Using Superpowers for team coordination | Superpowers enhances individual agent workflows, not team orchestration. For team coordination, use Squad or BMAD. Superpowers can complement these frameworks for individual task execution. |
 
 ---
@@ -451,9 +472,9 @@ An important practical concern: which techniques lock you into which AI coding t
 | **Context Engineering** | Any | All tools | None — universal practice |
 | **Ralph** | Any CLI | Claude Code, Copilot CLI, Cursor CLI, Codex, Gemini CLI | Needs CLI mode — doesn't work in IDE-only tools |
 | **Spec Kit** | Any | Copilot, Claude Code, Cursor, Windsurf, Gemini CLI | None — agent-agnostic by design |
-| **OpenSpec** | Any | 27+ tools including Copilot, Claude Code, Cursor, Codex, Gemini CLI, Windsurf, Cline, Continue, Kilo Code, OpenCode | None for supported tools — broad native configuration |
+| **OpenSpec** | Any | Broad native/pre-baked support, including vendor-neutral `.agents/skills/` output | Feature depth varies by runtime |
 | **BMAD** | Claude Code, Cursor, Windsurf | Most tools via V6 cross-platform support | None (V6 broadened support) |
-| **GSD** | Claude Code | Community ports for Cursor, others | Best experience requires Claude Code's native features |
+| **GSD** | Multi-runtime installer | Claude Code, OpenCode, Antigravity CLI, Kimi CLI, Kilo, Codex, Copilot, Cursor, Windsurf, and more | Installer support does not prove runtime parity |
 | **Superpowers** | Claude Code | Cursor, Codex, Copilot CLI, Gemini CLI, OpenCode | Needs CLI mode for bootstrapping |
 | **Squad** | GitHub Copilot | Copilot CLI + VS Code | Does not work with Claude Code, Cursor, or other tools |
 | **HVE** | GitHub Copilot | VS Code extension only | Tightly coupled to Copilot — no other tool support |
@@ -467,7 +488,7 @@ For the reader who just wants one definitive recommendation per scenario:
 | Scenario | Primary Recommendation | Runner-Up |
 |----------|----------------------|-----------|
 | Solo dev, quick project | Context Engineering + Ralph | GSD or Superpowers |
-| Solo dev, serious project | GSD (Claude Code) or Squad (Copilot) | Superpowers or BMAD |
+| Solo dev, serious project | GSD (after validating host behavior) or Squad (Copilot) | Superpowers or BMAD |
 | Small team (2-3), multi-tool | Spec Kit + Context Engineering | BMAD |
 | Small team (2-3), brownfield | OpenSpec + Context Engineering | GSD |
 | Small team (2-3), Copilot | Squad | GSD |

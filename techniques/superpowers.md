@@ -10,8 +10,8 @@
 | Author/Org         | Jesse Vincent (obra) / Prime Radiant |
 | License            | MIT                           |
 | First Released     | October 2025                  |
-| Current Version    | v6.0.3 (June 18, 2026)       |
-| Stars / Popularity | ~234,400 stars · 20,800+ forks · 28 contributors |
+| Current Version    | v6.2.0 (July 24, 2026)       |
+| Stars / Popularity | ~269,300 stars · 24,000+ forks |
 | Supported Tools    | Claude Code (primary), Cursor, Codex (OpenAI), OpenCode, GitHub Copilot CLI, Gemini CLI — broadly multi-tool |
 
 ## Compatible Coding Agents
@@ -35,20 +35,20 @@ Superpowers is a complete software development workflow for coding agents, built
 
 The core insight is that AI coding agents aren't unreliable because they lack capability — they're unreliable because they lack discipline. Superpowers addresses this by giving agents mandatory skills that they must search for and follow before performing any task. When combined with persuasion principles (drawn from Robert Cialdini's research, which has been scientifically validated to work on LLMs), these skills enforce systematic, test-driven development even when the AI would otherwise cut corners.
 
-Superpowers describes itself as "an agentic skills framework & software development methodology." It started as a Claude Code plugin in October 2025 and has since expanded to support Cursor, Codex, OpenCode, Copilot CLI, and Gemini CLI. At ~234K GitHub stars, it is the largest project in this comparison by a significant margin.
+Superpowers describes itself as "an agentic skills framework & software development methodology." It started as a Claude Code plugin in October 2025 and has since expanded to support Cursor, Codex, OpenCode, Copilot CLI, and Gemini CLI. Its large repository audience is a useful awareness signal, but not proof of production outcomes.
 
 ## Pros & Cons at a Glance
 
 | Pros | Cons |
 |------|------|
-| ✅ Largest community by far (~234K stars, 20K+ forks) | ❌ No built-in team coordination — single-developer workflow |
+| ✅ Large community and active release cadence | ❌ No built-in team coordination — single-developer workflow |
 | ✅ Composable, shareable, forkable skills system | ❌ Skills can become stale without deliberate maintenance |
 | ✅ Token-light bootstrap (~2K tokens) with lazy skill loading | ❌ Installing on non-Claude-Code platforms requires manual steps |
 | ✅ Broad multi-tool support (6 tools) for a skills methodology | ❌ Mandatory-skills philosophy may conflict with quick ad-hoc tasks |
 | ✅ Self-improving — agent learns to create and refine skills | ❌ No enterprise governance, audit trails, or compliance features |
-| ✅ Persuasion-tested skills ensure agent compliance under pressure | ❌ Rapid version iteration (v1→v6 in 8 months) may bring breaking changes |
+| ✅ Persuasion-tested skills ensure agent compliance under pressure | ❌ Rapid version iteration (v1→v6 in roughly 10 months) may bring breaking changes |
 
-> **In one sentence:** Superpowers is the most popular AI development framework — a skill-based methodology that teaches coding agents disciplined, test-driven behavior through composable Markdown skills that work across six different tools.
+> **In one sentence:** Superpowers is a mandatory skill-based methodology that teaches coding agents disciplined, test-driven behavior through composable Markdown skills.
 
 ## Core Concepts
 
@@ -80,6 +80,8 @@ Superpowers follows a skill-driven workflow where each phase activates a specifi
 
 Plans are written for "an enthusiastic junior engineer with poor taste, no judgement, no project context, and an aversion to testing" — a deliberately low bar that ensures instructions are precise enough for a subagent with no prior context.
 
+Version 6.2.0 stores review state in a plan-scoped workspace at `.superpowers/sdd/<plan-basename>/`. The workspace is deleted after the final clean review, and review-fix loops resume the original implementer rather than starting over. Release notes report 25/25 baseline and GREEN evaluation runs; treat these as vendor-reported results, not independent validation.
+
 The Skills Library covers five domains:
 
 - **Testing:** `test-driven-development`, testing anti-patterns
@@ -101,7 +103,7 @@ The underlying principles are explicit:
 
 ## Strengths
 
-- **Largest community by far.** ~234K GitHub stars and 20.8K+ forks make Superpowers the most popular AI development framework in this comparison. That scale brings more contributors, more battle-tested skills, and faster iteration.
+- **Large community and current releases.** The repository had roughly 269K stars and 24K forks on August 8, 2026, and v6.2.0 shipped on July 24.
 - **Skills are composable and shareable.** Users can fork, customize, and PR new skills. The skill format (Markdown + YAML frontmatter) is simple enough that anyone can author one.
 - **Token-light bootstrap.** The ~2K token bootstrap keeps initial context minimal. Skills are loaded on demand via CLI search, avoiding the context bloat that plagues heavier frameworks.
 - **Broad multi-tool support.** Claude Code, Cursor, Codex, Copilot CLI, Gemini CLI, and OpenCode. OpenSpec and Spec Kit support more named tools overall, but Superpowers remains broad for a skill-based methodology.
@@ -117,12 +119,12 @@ The underlying principles are explicit:
 - **Manual installation on non-Claude-Code platforms.** Installing on Cursor, Codex, or Gemini CLI requires following INSTALL.md instructions or using platform-specific extension mechanisms — not a one-click setup.
 - **Mandatory-skills philosophy adds overhead.** For quick bug fixes or small scripts, the requirement to search for and follow skills before acting may feel heavy-handed.
 - **No enterprise governance.** No audit trails, constraint enforcement, policy-as-code, or compliance features. Enterprise environments should consider HVE.
-- **Rapid version churn.** v1 to v6 in roughly eight months means early adopters may face breaking changes. The skills repo (`obra/superpowers-skills`) was archived in October 2025 as skills moved into the main repo.
+- **Rapid version churn.** v1 to v6 in roughly ten months means early adopters may face breaking changes. The skills repo (`obra/superpowers-skills`) was archived in October 2025 as skills moved into the main repo.
 
 ## Best For
 
 - **Solo developers who want structured discipline** without enterprise overhead. Superpowers codifies best practices into enforceable skills rather than relying on developer memory.
-- **Claude Code power users** who want the most comprehensive development methodology built for their tool.
+- **Claude Code power users** who want a deeply integrated, skills-based development methodology for their tool.
 - **Teams that want to accumulate and share AI agent knowledge** as versioned, testable, Markdown-based skills.
 - **Projects that benefit from strict TDD enforcement** — the mandatory RED-GREEN-REFACTOR cycle catches regressions early.
 - **Developers using multiple AI tools** who want consistent agent behavior across Claude Code, Cursor, Codex, Copilot CLI, Gemini CLI, and OpenCode.
@@ -136,7 +138,7 @@ The underlying principles are explicit:
 
 ## Community & Ecosystem
 
-Superpowers has the largest community of any AI development framework in this comparison, with ~234K GitHub stars and 20.8K forks. Created by Jesse Vincent (obra), who also founded Keyboardio and Best Practical (makers of Request Tracker). The framework is actively maintained by Jesse and the team at Prime Radiant, with 28 contributors. Version 6.0.3 moved subagent-driven development scratch storage from `.git/sdd/` to self-ignoring `.superpowers/sdd/`, because Claude Code protects `.git/` from agent writes. Community support is available via Discord, and the project has been covered by Simon Willison (simonwillison.net), Hacker News front page, and multiple YouTube tutorials. Jesse also created the claude-memory-extractor tool for mining conversation histories into skills. Sam Schillace (Microsoft) wrote about the related concept of self-improving agents in systems like Microsoft Amplifier.
+Superpowers had roughly 269K GitHub stars and 24K forks on August 8, 2026. Created by Jesse Vincent (obra), the framework is maintained with Prime Radiant backing. Version 6.2.0 uses plan-scoped state under `.superpowers/sdd/<plan-basename>/`, then deletes that workspace after a clean final review. Community support is available through Discord and third-party tutorials.
 
 ## Community Ports & Unofficial Adaptations
 
@@ -146,8 +148,10 @@ The official project added Copilot CLI support natively in v5.0.7, closing the g
 
 ## Comparison Notes
 
-**vs. GSD:** Both enforce spec-driven development with TDD and subagent-based parallel execution. The fundamental difference is architecture: GSD uses runtime-aware commands and a Lean Orchestrator within Claude Code-centered features; Superpowers uses composable, shareable skills that work across multiple tools. GSD has a more opinionated phase structure (6 steps); Superpowers has more reusable behavioral modules. GSD is Claude Code-centered with expanding official runtime support; Superpowers supports Claude Code, Cursor, Codex, Copilot CLI, Gemini CLI, and OpenCode. Superpowers has roughly 3.5x the stars (~234K vs. ~64K), suggesting broader adoption.
+**vs. GSD:** Both enforce structured development with fresh task contexts. GSD Core uses a five-step project workflow; Superpowers uses composable, mandatory skills. Repository metrics are not a meaningful adoption comparison because GSD migrated to a new repository.
 
-**vs. BMAD:** BMAD simulates a full agile team (PM, Architect, Dev, QA) with structured phases and ceremonies; Superpowers enhances individual developer effectiveness through behavioral skills. BMAD's strength is process simulation — it creates distinct agent personas that challenge decisions; Superpowers' strength is process internalization — the agent doesn't play a role, it acquires abilities. Both support multiple tools. BMAD's 12+ agent personas are heavier than Superpowers' skill-based approach but provide more structured team dynamics.
+**vs. BMAD:** BMAD simulates a full agile team with structured phases and ceremonies; Superpowers enhances individual developer effectiveness through behavioral skills. BMAD's strength is process simulation through distinct roles. Superpowers' strength is process internalization through mandatory abilities.
 
 **vs. Context Engineering:** Superpowers is arguably the most sophisticated implementation of context engineering principles. Skills ARE context engineering — they're Markdown documents that structure what the agent knows and how it behaves. But Superpowers goes further with a complete development workflow, TDD enforcement, subagent management, and a self-improving skill system. Context Engineering is the practice; Superpowers is a fully realized system built on that practice.
+
+**vs. the skills ecosystem:** Superpowers uses the same `SKILL.md` primitive formalized by [Agent Skills](https://agentskills.io), but turns it into an enforced methodology. [`mattpocock/skills`](skills-ecosystem.md) takes the opposite approach: small, independently selectable skills with no mandatory end-to-end lifecycle. Choose Superpowers when you want the framework to constrain execution; choose a library when you want to compose and adapt practices yourself.

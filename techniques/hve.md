@@ -10,15 +10,15 @@
 | Author/Org         | Microsoft ISE (Industry Solutions Engineering) |
 | License            | MIT                           |
 | First Released     | 2024 (internal), open-sourced 2025 |
-| Current Version    | v3.2.2 (latest public release, March 23, 2026) |
-| Stars / Popularity | ~1,180 stars, 209 forks, 54 contributors |
+| Current Version    | v3.2.2 stable (March 23, 2026); prereleases through v3.3.101 (April 25, 2026) |
+| Stars / Popularity | ~1,300 stars · 251 forks |
 | Supported Tools    | GitHub Copilot (VS Code extension and CLI) |
 
 ## Compatible Coding Agents
 
 | Agent | Support |
 |-------|--------|
-| GitHub Copilot (VS Code) | ✅ Primary — ships as a VS Code extension with 49 agents and 102 instructions |
+| GitHub Copilot (VS Code) | ✅ Primary — ships as a VS Code extension; repository inventory is larger than the latest verified stable-release inventory |
 | GitHub Copilot Coding Agent (github.com) | ⚠️ Partial — instruction files are readable but the RPI workflow requires interactive phase switching |
 | Claude Code | ❌ Not supported — tightly coupled to Copilot ecosystem |
 | Cursor | ❌ Not supported |
@@ -33,14 +33,14 @@ Hypervelocity Engineering (HVE) is Microsoft's enterprise methodology and toolin
 
 Unlike lighter-weight approaches that focus on a single developer's workflow, HVE targets multidisciplinary teams of 4–5 people working on enterprise software. Its signature contribution is the RPI workflow (Research → Plan → Implement → Review), a four-phase development cycle where specialized AI agents handle each phase under constraint-based governance. The core insight, as the HVE documentation states: "When AI knows it cannot implement, it stops optimizing for 'plausible code' and starts optimizing for 'verified truth.' The constraint changes the goal."
 
-HVE ships as a VS Code extension and a GitHub repository containing 49 agents, 102 instructions, 63 prompts, 11 skills, and 10 domain-specific collections. It is explicitly built for — and tightly coupled to — the GitHub Copilot ecosystem.
+HVE ships as a VS Code extension and a GitHub repository. On August 8, 2026, the `main` branch contained 70 `*.agent.md`, 80 `*.instructions.md`, 67 `*.prompt.md`, and 58 `SKILL.md` files. These are repository-level counts, not verified contents of the v3.2.2 stable package. It is explicitly built for — and tightly coupled to — the GitHub Copilot ecosystem.
 
 ## Pros & Cons at a Glance
 
 | Pros | Cons |
 |------|------|
 | ✅ Enterprise-grade governance — audit trails, validated artifacts, policy-as-code | ❌ Copilot lock-in — no support for Claude Code, Cursor, or other tools |
-| ✅ Research-first philosophy prevents costly rework | ❌ 49 agents + 102 instructions can overwhelm small teams |
+| ✅ Research-first philosophy prevents costly rework | ❌ Large agent and instruction inventory can overwhelm small teams |
 | ✅ Comprehensive tooling — 10 domain-specific collections | ❌ Manual context clearing between RPI phases adds operational burden |
 | ✅ Supply-chain security (SBOM, attestation, CodeQL, OpenSSF) | ❌ Some collections still experimental/preview |
 | ✅ Proven at enterprise scale (AT&T, KT Corporation) | ❌ No autonomous iteration — each phase needs human initiation |
@@ -75,19 +75,20 @@ Uncertainty → Knowledge → Strategy → Working Code → Validated Code
 
 Beyond the RPI workflow, HVE includes:
 
-| Type | Count | Description |
-|------|-------|-------------|
-| Agents | 49 | Specialized AI assistants for research, planning, implementation, and domain tasks |
-| Instructions | 102 | Repository-specific coding guidelines applied automatically |
-| Prompts | 63 | Reusable templates for common tasks (commits, PRs, etc.) |
-| Skills | 11 | Self-contained packages with cross-platform scripts and guidance |
-| Collections | 10 | Domain-specific bundles ranging from stable to experimental |
+| Type | Count on `main` | Description |
+|------|-----------------|-------------|
+| Agent files | 70 | Specialized AI assistants for research, planning, implementation, and domain tasks |
+| Instruction files | 80 | Repository-specific coding guidelines |
+| Prompt files | 67 | Reusable task templates |
+| `SKILL.md` files | 58 | Self-contained skill packages |
+
+These counts describe the repository tree observed on August 8, 2026. The contents of the v3.2.2 stable VSIX were not inspected.
 
 ## Strengths
 
 - **Enterprise-grade governance.** Constraint-based workflows, validated artifacts, audit trails, and policy-as-code provide the kind of structured oversight that regulated industries require.
 - **Research-first philosophy.** The Research phase forces the AI to investigate before implementing, producing higher-quality code and reducing rework. The separation of concerns between phases is its most distinctive contribution.
-- **Comprehensive tooling.** 49 agents, 102 instructions, 63 prompts, and 11 skills cover a wide range of development scenarios out of the box, reducing the need for custom setup.
+- **Comprehensive repository inventory.** The `main` branch contains 70 agent files, 80 instruction files, 67 prompt files, and 58 skills. The sharp increase in skills shows HVE repackaging more guidance onto the Agent Skills primitive.
 - **Multi-stack support.** Works across no-code (Copilot Studio), low-code (Power Platform), and pro-code (Azure, custom frameworks), making it suitable for organizations with mixed technology stacks.
 - **Supply-chain security.** SBOM generation, attestation, OpenSSF Scorecard, and CodeQL analysis address enterprise security requirements.
 - **Proven at scale.** Evolved from Microsoft's internal delivery of 140+ AI solutions. Enterprise adoption by AT&T, KT Corporation, and other telcos provides real-world validation.
@@ -95,7 +96,7 @@ Beyond the RPI workflow, HVE includes:
 ## Limitations
 
 - **GitHub Copilot lock-in.** Tightly coupled to the Copilot ecosystem. Teams using Claude Code, Cursor, or other AI tools cannot use HVE without significant adaptation.
-- **Enterprise weight.** 49 agents and 102 instructions can overwhelm solo developers or small teams. The framework is designed for organizations, not individuals.
+- **Enterprise weight.** The large repository inventory can overwhelm solo developers or small teams. The framework is designed for organizations, not individuals.
 - **Context management burden.** The RPI workflow requires manually clearing context between phases and switching agents, adding operational overhead that simpler approaches avoid.
 - **Experimental collections.** Several domain collections (security, jira, rai-planning, design-thinking) remain experimental or preview, with stability not guaranteed.
 - **No autonomous iteration.** Unlike Ralph, HVE does not include an autonomous loop. Each phase requires explicit human initiation, which limits AFK productivity.
@@ -111,7 +112,7 @@ Beyond the RPI workflow, HVE includes:
 
 ## Not Ideal For
 
-- **Solo developers or small teams** who find 49 agents and 102 instructions excessive for their workflow.
+- **Solo developers or small teams** who find a large enterprise agent and instruction inventory excessive.
 - **Teams committed to non-Copilot tools** (Claude Code, Cursor, Aider) — HVE's tight Copilot coupling makes portability impractical.
 - **Rapid prototyping or hackathon-style development** where governance overhead slows down exploration.
 - **Projects needing autonomous overnight iteration** — HVE's phased approach requires human presence at each phase transition.
@@ -119,9 +120,9 @@ Beyond the RPI workflow, HVE includes:
 
 ## Community & Ecosystem
 
-HVE has a moderate but growing ecosystem anchored by Microsoft's backing. The latest public release remains v3.2.2, but the repository has continued to show current activity and adoption growth.
+HVE has an ecosystem anchored by Microsoft's backing. The latest stable release remains v3.2.2 from March 23, 2026. Prereleases continued through v3.3.101 on April 25, and the repository was pushed on August 8. Keep stable, prerelease, and unreleased repository activity distinct.
 
-- **GitHub:** ~1,180 stars, 209 forks, 54 contributors, 23 releases — modest compared to community-driven frameworks (GSD has ~64K+), but meaningful for an enterprise methodology.
+- **GitHub:** ~1,328 stars and 251 forks on August 8, 2026.
 - **VS Code Extension:** Available on the VS Code Marketplace as "HVE Core" (ise-hve-essentials.hve-core), providing one-click install.
 - **Microsoft Learn:** Featured on the HVE Accelerators Hub, giving it institutional credibility.
 - **Public advocacy:** Robin Cole (VP Engineering, Microsoft) has presented at TMForum and on the Telco in 20 podcast (Ep 122). Valentina Alto published an end-to-end Medium walkthrough (April 2026). Paul Yuknewicz called it "rad" for Azure Functions development.
@@ -131,10 +132,12 @@ HVE has a moderate but growing ecosystem anchored by Microsoft's backing. The la
 
 ## Comparison Notes
 
-**vs. Ralph:** Opposite ends of the autonomy-governance spectrum. Ralph is a bash loop with zero structure; HVE is 49 agents with constraint-based governance. Ralph is tool-agnostic; HVE is Copilot-locked. Ralph enables AFK overnight runs; HVE requires human presence at phase boundaries. Ralph optimizes for individual throughput on scoped tasks; HVE optimizes for team consistency and enterprise compliance.
+**vs. Ralph:** Opposite ends of the autonomy-governance spectrum. Ralph is a bash loop with minimal structure; HVE has a large repository inventory and constraint-based governance. Ralph is tool-agnostic; HVE is Copilot-locked. Ralph enables AFK runs; HVE requires human presence at phase boundaries.
 
-**vs. BMAD:** Both are multi-agent methodologies with structured roles, but BMAD uses named persona agents (Analyst, PM, Architect, Dev, QA) within a more agile-oriented framework with 34+ workflows. HVE uses specialized unnamed agents within a phased RPI workflow. BMAD is tool-portable and community-driven (~49K+ stars); HVE is Copilot-specific and Microsoft-backed (~1.2K stars). BMAD supports scale-adaptive intelligence for solo-to-team use; HVE is explicitly designed for enterprise teams.
+**vs. BMAD:** Both are multi-agent methodologies with structured roles. BMAD uses named personas and an agile-oriented module ecosystem. HVE uses specialized agents within a phased RPI workflow. BMAD is more tool-portable; HVE is Copilot-specific and Microsoft-backed.
 
-**vs. GSD:** GSD is a spec-driven methodology with a 6-step workflow (new project → discuss → plan → execute → verify → complete milestone) focused on preventing context rot through fresh agent spawning. HVE's RPI workflow similarly uses phased separation but adds formal research and review phases with validation gates. GSD is lighter-weight and Claude Code-focused (~64K+ stars); HVE is heavier and Copilot-focused. GSD is more accessible to solo developers; HVE scales better for enterprise teams.
+**vs. GSD:** GSD Core is a spec-driven methodology with a five-step Discuss → Plan → Execute → Verify → Ship loop. HVE's RPI workflow adds formal research and review phases with enterprise validation gates. GSD is lighter and multi-runtime; HVE is heavier and Copilot-focused.
 
-**vs. Superpowers:** Both enforce structured development workflows, but at different scales and with different mechanisms. HVE uses 49 agents with constraint-based governance, validated artifacts, and audit trails for enterprise environments. Superpowers uses composable behavioral skills (TDD, code review, debugging) for individual developer discipline. HVE is Copilot-only; Superpowers supports six tools. HVE provides enterprise governance that Superpowers lacks entirely. Superpowers' quality gates (mandatory TDD, pressure-tested skills) are thorough but informal — there are no compliance artifacts or audit trails.
+**vs. Superpowers:** Both enforce structured development workflows at different scales. HVE uses agents, constraint-based governance, validated artifacts, and audit trails for enterprise environments. Superpowers uses composable behavioral skills for individual developer discipline. HVE is Copilot-only; Superpowers is multi-tool. HVE provides formal governance that Superpowers lacks.
+
+HVE's growth from 11 previously documented skills to 58 `SKILL.md` files on `main` also connects it to the [skills ecosystem](skills-ecosystem.md). That repository activity shows increased use of the skills primitive, but it does not prove those files shipped in the latest stable VSIX.

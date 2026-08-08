@@ -10,8 +10,8 @@
 | Author/Org         | bmad-code-org                 |
 | License            | Open source (proprietary trademark on name) |
 | First Released     | 2025                          |
-| Current Version    | v6.8.0 (May 25, 2026)        |
-| Stars / Popularity | ~49,400 stars · 5,700+ forks · active development |
+| Current Version    | v6.10.0 (July 3, 2026)       |
+| Stars / Popularity | ~51,700 stars · 5,900+ forks |
 | Supported Tools    | Claude Code, Cursor, Windsurf, Copilot, Roo Code; MCP Server; Web Bundles for Gemini Gems and ChatGPT Custom GPTs |
 
 ## Compatible Coding Agents
@@ -37,22 +37,22 @@ The framework addresses the gap between casual AI prompting and production-grade
 
 | Pros | Cons |
 |------|------|
-| ✅ Most comprehensive lifecycle coverage (34+ workflows) | ❌ Heavy upfront investment in spec generation and planning |
-| ✅ Scale-adaptive — adjusts planning depth to project complexity | ❌ Steep learning curve — 12+ agents, 34+ workflows, multiple modules |
+| ✅ Broad lifecycle coverage | ❌ Heavy upfront investment in spec generation and planning |
+| ✅ Scale-adaptive — adjusts planning depth to project complexity | ❌ Steep learning curve — many agents, workflows, and modules |
 | ✅ Cross-platform support (Claude Code, Cursor, Windsurf, Copilot) | ❌ Can generate overwhelming volumes of specification documents |
 | ✅ Rich module ecosystem (BMB, TEA, BMGD, CIS) | ❌ Team simulation can feel overly ceremonial for solo developers |
-| ✅ 49K+ stars, active Discord community, strong ecosystem | ❌ Proprietary trademark on the BMAD name |
+| ✅ 51K+ stars, active Discord community, strong ecosystem | ❌ Proprietary trademark on the BMAD name |
 | ✅ 100% free and open source | ❌ Four-phase process front-loads significant work before implementation |
 
 > **In one sentence:** BMAD is the most fully-realized agile simulation for AI coding — ideal when your project is complex enough to justify having a PM, Architect, and QA challenge every decision before code is written.
 
 ## Core Concepts
 
-**Specialized Agent Roles.** BMAD defines distinct agent personas, each with specific responsibilities: John (PM) asks "WHY?" relentlessly to validate the product direction; Winston (Architect) balances pragmatism with innovation; Dev focuses on clean, maintainable implementation; Quinn (QA) handles quality assurance; and additional agents cover UX design, domain analysis, and scrum facilitation. The total roster is 12+ agents.
+**Specialized Agent Roles.** BMAD defines distinct agent personas, each with specific responsibilities: John (PM) validates product direction; Winston (Architect) balances pragmatism with innovation; Dev focuses on implementation; Quinn (QA) handles quality assurance; and additional agents cover UX design, domain analysis, and scrum facilitation. The exact current roster was not re-counted after v6.10.0 module changes.
 
 **Scale-Adaptive Intelligence.** BMAD automatically adjusts planning depth based on project complexity. A bug fix gets a lightweight process; an enterprise system gets the full agile treatment. This prevents the common criticism that structured frameworks are overkill for small tasks.
 
-**Module Ecosystem.** BMAD is built around extensible modules: BMM (Core, 34+ workflows), BMad Builder (BMB, for custom agents and workflows), Test Architect (TEA, risk-based testing), Game Dev Studio (BMGD, for Unity/Unreal/Godot), Creative Intelligence Suite (CIS, for innovation and design thinking), `bmad-spec` for compact intent distillation, and `bmad-ux` for design/experience contracts.
+**Module Ecosystem.** BMAD is built around extensible modules: BMM (Core), BMad Builder (BMB), Test Architect (TEA), Game Dev Studio (BMGD), Creative Intelligence Suite (CIS), `bmad-spec`, `bmad-ux`, and `bmad-loop`. Exact workflow counts were not re-verified after recent module churn.
 
 **Party Mode.** Multiple agent personas can be brought into a single session to collaborate, enabling cross-functional discussions within one context window.
 
@@ -70,14 +70,14 @@ BMAD operates through four sequential phases, each driven by the appropriate spe
 
 All phases operate through slash commands in the AI IDE. Installation is via `npx bmad-method install` (or `npx bmad-method@next install` for the latest). BMAD also provides a **Quick Flow** for smaller projects that compresses the four phases.
 
-The V6 line introduced cross-platform agent team support, a skills architecture for better modularity, and dev loop automation for faster iteration. By v6.8.0, BMAD also added `bmad-spec` to produce compact `SPEC.md` kernels from messy intent and `bmad-ux` to split UX work into visual identity (`DESIGN.md`) and experience/flow (`EXPERIENCE.md`). Web Bundles now extend BMAD planning into Gemini Gems and ChatGPT Custom GPTs while preserving schema parity with IDE skills; this should be read as official planning-bundle support, not full CLI/runtime parity with Gemini CLI or Codex-style agents.
+The V6 line introduced cross-platform agent team support, a skills architecture, `bmad-spec`, and `bmad-ux`. Version 6.10.0 added the installable `bmad-loop` module, driven by the `bmad-dev-auto` skill for one unattended iteration over a specification state machine. It deprecated `bmad-automator`, retired `bmad-investigate`, added an anti-consensus room to party mode, and sharpened review severity triage. Web Bundles extend BMAD planning into Gemini Gems and ChatGPT Custom GPTs; treat this as planning-bundle support, not full CLI/runtime parity.
 
 ## Strengths
 
-- **Most comprehensive lifecycle coverage.** 34+ workflows spanning analysis, planning, architecture, implementation, QA, and retrospectives. No other technique in this comparison covers the full SDLC as thoroughly.
+- **Broad lifecycle coverage.** BMAD spans analysis, planning, architecture, implementation, QA, and retrospectives. Exact current persona and workflow counts were not re-verified after v6.10.0 module churn.
 - **Scale-adaptive.** Automatically adjusts process weight to project complexity, partially addressing the "overkill for small projects" criticism that applies to enterprise-oriented frameworks.
-- **Rich agent ecosystem.** 12+ specialized agents with distinct personalities and expertise areas. The Module Ecosystem (BMB, TEA, BMGD, CIS) extends coverage into testing, game development, and creative work.
-- **Strong community.** 49K+ stars, 5,700+ forks, active Discord community, multiple language READMEs (English, Chinese, Vietnamese). Adoption spans solo developers to enterprise teams.
+- **Rich agent ecosystem.** Specialized agents and modules extend coverage into testing, game development, creative work, specification, UX, and unattended iteration.
+- **Strong community.** Roughly 52K stars, 5.9K forks, an active Discord community, and multilingual READMEs.
 - **Cross-platform support (V6).** While originally agent-agnostic in theory, V6 made cross-platform collaboration a first-class feature.
 - **100% free and open source.** No paywalls, no gated content — the full framework is available to all users.
 
@@ -85,7 +85,7 @@ The V6 line introduced cross-platform agent team support, a skills architecture 
 
 - **Heavy upfront investment.** More time is required for spec generation and planning than lighter approaches like GSD. The four-phase process front-loads significant work before implementation begins.
 - **Overwhelming specification volume.** BMAD can generate large amounts of specification documents. For some projects, the review overhead of these artifacts approaches the effort of just writing the code directly.
-- **Steep learning curve.** 12+ agents, 34+ workflows, and multiple modules create a substantial surface area to learn. New users may struggle to find the right entry point.
+- **Steep learning curve.** Numerous agents, workflows, and modules create a substantial surface area to learn. New users may struggle to find the right entry point.
 - **May feel heavy for solo developers.** The team simulation — with PM, Architect, UX Designer, Scrum Master — can feel overly ceremonial for a single developer building a small-to-medium project.
 - **Trademark restrictions.** While the code is open source, the BMAD name carries a proprietary trademark, which may affect derivative works or competing distributions.
 
@@ -105,14 +105,14 @@ The V6 line introduced cross-platform agent team support, a skills architecture 
 
 ## Community & Ecosystem
 
-BMAD is one of the most popular AI development frameworks, with ~49K stars and 5,700+ forks. The community is active on Discord, Medium, and developer blogs. Coverage includes articles on GMO Recruit's blog, Benny Cheung's technical deep-dive, and multiple Medium writeups. The Module Ecosystem extends BMAD into testing (TEA), game development (BMGD), creative work (CIS), intent distillation (`bmad-spec`), and UX planning (`bmad-ux`). The project maintains documentation at docs.bmad-method.org and offers multilingual READMEs. Installation is streamlined via npx, and the Builder module (BMB) allows users to create custom agents and workflows. Notably, BMAD V6's official multi-platform support covers Claude Code, Cursor, Windsurf, Copilot, Roo Code, and an MCP Server, while Web Bundles extend BMAD planning into Gemini Gems and ChatGPT Custom GPTs. Codex-style and Gemini CLI runtime support should still be treated as community/indirect rather than equivalent official runtime support.
+BMAD had roughly 52K stars and 5.9K forks on August 8, 2026. The module ecosystem extends into testing, game development, creative work, specification, UX planning, and unattended iteration through `bmad-loop`. The project maintains documentation at docs.bmad-method.org and offers multilingual READMEs. Official multi-platform support and Web Bundles have different scopes; Codex-style and Gemini CLI runtime support should still be treated as community or indirect rather than equivalent official support.
 
 ## Comparison Notes
 
-**vs. GSD:** The most natural comparison. Both are popular spec-driven approaches, but they sit at different points on the weight spectrum. GSD uses ~50 Markdown files and a CLI helper to orchestrate parallel execution with fresh contexts; BMAD provides 12+ named agents, 34+ workflows, and four structured phases. A community-sourced summary: GSD is for a "solid build in a few hours," BMAD is for "complex or production-grade" projects. BMAD's upfront investment is higher, but its lifecycle coverage is more comprehensive.
+**vs. GSD:** Both structure AI-assisted development, but they sit at different points on the weight spectrum. GSD Core uses a five-step project loop with fresh task contexts; BMAD provides specialized roles, modules, and four structured phases. BMAD's upfront investment is higher, but its lifecycle coverage is broader.
 
 **vs. Squad:** Both use multi-agent orchestration, but with different philosophies. BMAD simulates a full team (PM, Architect, Dev, QA) within a single user's AI session — the agents are personas. Squad creates actual parallel agent instances with persistent memory, shared decision ledgers, and an autonomous work monitor (Ralph). BMAD is richer in structured process; Squad is richer in coordination infrastructure.
 
-**vs. Superpowers:** BMAD simulates a full agile team with 12+ agent personas and structured phases (Analysis → Planning → Solutioning → Implementation); Superpowers enhances individual developer effectiveness through composable behavioral skills. BMAD's strength is process simulation — having a PM, Architect, and QA challenge decisions before code is written. Superpowers' strength is process internalization — the agent acquires abilities (TDD, debugging, code review) as mandatory skills rather than playing roles. Both support multiple tools. Superpowers has significantly more stars (~234K vs. ~49K) but serves a different use case: individual discipline vs. team simulation.
+**vs. Superpowers:** BMAD simulates a full agile team through specialized roles and structured phases; Superpowers enhances individual developer effectiveness through mandatory behavioral skills. BMAD's strength is process simulation and modular lifecycle coverage. Superpowers' strength is process internalization through TDD, debugging, and review skills.
 
-
+**vs. Ralph:** Ralph is a minimal autonomous loop. BMAD's `bmad-loop` approaches unattended iteration from the structured end: one iteration at a time, driven by spec frontmatter and a BMAD skill. Choose Ralph for minimalism and backend freedom; choose `bmad-loop` when you want unattended work inside BMAD's artifacts and roles.

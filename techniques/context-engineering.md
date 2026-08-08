@@ -42,7 +42,7 @@ Context engineering is not a framework, a tool, or a product. It is a cross-cutt
 | Pros | Cons |
 |------|------|
 | ✅ Universal — works with every AI coding tool | ❌ No structure by itself — a practice, not a workflow |
-| ✅ Zero barrier to entry — create a rules file in 5 minutes | ❌ Fragmented tooling — each tool has its own format |
+| ✅ Zero barrier to entry — create a rules file in 5 minutes | ❌ Rules files remain fragmented across tools |
 | ✅ Compounds over time — knowledge accumulates in rules files | ❌ Quality depends entirely on the practitioner's curation |
 | ✅ Foundation for everything else — makes all frameworks better | ❌ No built-in quality gates or enforcement mechanisms |
 | ✅ Version-controllable — lives in git, reviewed in PRs | ❌ Birgitta Böckeler's warning: "Illusion of control" — AI may still ignore instructions |
@@ -77,6 +77,10 @@ Context engineering operates through rules files — persistent, version-control
 | GitHub Copilot | `.github/copilot-instructions.md`, `.github/instructions/*.instructions.md` | Repo-wide → path-specific (via glob frontmatter) |
 | Gemini | `.gemini/` | Project-level |
 
+Rules files remain tool-specific, but skills packaging has converged further. [Agent Skills](https://agentskills.io) now defines a vendor-neutral `SKILL.md` format with progressive disclosure: discovery, activation, then execution. The shared `.agents/skills/` path is also emerging through the `skills` CLI and OpenSpec's vendor-neutral `agents` target.
+
+This convergence applies to packaging, not complete execution semantics. In the `skills` CLI compatibility matrix observed on August 8, 2026, basic skills worked across all 18 compared agents, `allowed-tools` across 16, hooks across 4, and `context: fork` in 1. Treat skills as a portable context-delivery layer with runtime-specific capabilities.
+
 **Practical implementation layers:**
 
 1. **Project context** — Define what the project is, its tech stack, coding conventions, architecture patterns. Every team member (human or AI) reads this.
@@ -106,10 +110,10 @@ Context engineering operates through rules files — persistent, version-control
 ## Limitations
 
 - **No structure by itself.** Context engineering is a practice, not a workflow. It tells you *what* to put in the window but not *when* or *how* to organize a development process around it.
-- **Fragmented tooling.** Each AI tool has its own rules file format, location, and scoping mechanism. There is no universal standard, requiring parallel maintenance for multi-tool teams.
+- **Fragmented rules, uneven skill semantics.** Rules files still use tool-specific locations and scoping. Agent Skills standardizes packaging, but optional features and execution behavior vary by runtime.
 - **Quality depends on the practitioner.** A poorly maintained `CLAUDE.md` with outdated information or conflicting instructions can actively degrade AI output. The practice requires ongoing curation.
 - **No built-in quality gates.** Unlike HVE's validated artifacts or GSD's verification phases, context engineering alone provides no mechanism to check that the AI followed the rules correctly.
-- **Limited community standardization.** While resources exist (fungies.io, the-ai-corner.com, Karpathy's talks), there is no canonical reference or certification. Best practices are still emerging and vary widely.
+- **Partial standardization.** Agent Skills provides a canonical format and implementor guidance for reusable skill packages. Broader context-engineering practices, rules files, and certification remain fragmented.
 - **Invisible when done well.** Context engineering is hard to demonstrate or showcase because its success looks like "the AI just worked." This makes it harder to get organizational buy-in compared to frameworks with visible workflows.
 
 ## Best For
@@ -135,16 +139,18 @@ Context engineering is practiced universally but has no single community hub:
 - **Academic research:** arXiv:2509.13196 on the effects of over-prompting with examples.
 - **Community resources:** cursor.directory (community-shared Cursor rules), copilot-instructions.md templates in GitHub docs, various CLAUDE.md examples shared on GitHub.
 - **Documentation quality:** Scattered. Each tool documents its own rules file format. No unified documentation for context engineering as a discipline exists.
-- **Ecosystem maturity:** The underlying practice is mature and battle-tested, but the discipline's identity as "context engineering" is recent (mid-2025). Standardization is in its early stages.
+- **Ecosystem maturity:** The underlying practice is established. Rules remain fragmented, while the skills layer now has a published vendor-neutral specification and an emerging shared install path.
 - **Industry adoption:** Universal — every team using AI coding tools practices context engineering to some degree, whether they use the term or not.
 - **Educational resources:** [Denis2054/Context-Engineering-for-Multi-Agent-Systems](https://github.com/Denis2054/Context-Engineering-for-Multi-Agent-Systems) — an active book companion repo with roughly 251 stars, 85 forks, MCP integration, and workshop material — is a useful community educational resource, but not a dominant framework. No dominant "context engineering framework" has emerged; the practice remains diffuse and is increasingly embedded inside concrete systems such as GSD runtime-specific skills, Spec Kit extension catalogs, Squad governed memory, Superpowers skills, and HVE instruction collections.
 
 ## Comparison Notes
 
-**vs. GSD:** GSD is an explicit implementation of context engineering principles in a structured 6-step workflow. GSD's fresh-agent-per-task pattern and verification gates are specific context engineering decisions packaged into a repeatable process. Context engineering is the "why"; GSD is one "how."
+**vs. GSD:** GSD Core is an explicit implementation of context engineering principles in a structured five-step workflow. Its fresh-task context and verification gates package context-engineering decisions into a repeatable process. Context engineering is the "why"; GSD is one "how."
 
 **vs. Squad:** Squad implements context engineering through charter files, decision ledgers, agent history files, and routing rules — a persistent memory system designed for multi-agent coordination. Context engineering principles explain why Squad's architecture works; Squad provides the orchestration layer that context engineering alone lacks.
 
-**vs. HVE:** HVE implements context engineering through 102 instruction files, the RPI phased workflow, and constraint-based governance. HVE's research phase is a direct application of the context engineering principle that AI should gather verified information before acting. HVE is the most comprehensive implementation of context engineering in an enterprise setting among the Tier 1 techniques.
+**vs. HVE:** HVE implements context engineering through repository-level instruction collections, the RPI phased workflow, and constraint-based governance. HVE's research phase directly applies the context engineering principle that AI should gather verified information before acting. Among the Tier 1 techniques, HVE is the dedicated enterprise implementation of these practices.
 
 **vs. Superpowers:** Superpowers is arguably the most sophisticated implementation of context engineering among the Tier 1 techniques. Its composable skills *are* context engineering — each skill is a behavioral module that shapes the AI's context with methodology, constraints, and workflow patterns. The token-light bootstrap (~2K tokens) and lazy skill loading via CLI search demonstrate advanced context budget management. Where context engineering is the theory, Superpowers operationalizes it into a skills-based system that enforces TDD, code review, and systematic development across multiple tools.
+
+**vs. the skills ecosystem:** Context engineering is the broad discipline. [Agent Skills and skill libraries](skills-ecosystem.md) package selected context into discoverable, reusable units. A library delivers capabilities; a methodology such as Superpowers adds sequencing and enforcement.

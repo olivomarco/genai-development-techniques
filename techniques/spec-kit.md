@@ -10,8 +10,8 @@
 | Author/Org         | GitHub (Den Delimarsky, key contributor) |
 | License            | Open source (GitHub)          |
 | First Released     | 2025                          |
-| Current Version    | v0.11.3 (June 19, 2026)      |
-| Stars / Popularity | ~114,400 stars · 10,100+ forks; broad community adoption |
+| Current Version    | v0.16.1 (August 7, 2026)      |
+| Stars / Popularity | ~125,900 stars · 11,200+ forks |
 | Supported Tools    | GitHub Copilot, Claude Code, Gemini CLI, Codex CLI, Cursor, Windsurf, and 20+ more |
 
 ## Compatible Coding Agents
@@ -37,14 +37,14 @@ The core problem Spec Kit addresses is what might be called "vibes-based develop
 
 | Pros | Cons |
 |------|------|
-| ✅ GitHub-backed — institutional support and credibility | ❌ Still experimental/pre-1.0 (v0.11.3) — API and workflow may change |
+| ✅ GitHub-backed — institutional support and credibility | ❌ Still experimental/pre-1.0 (v0.16.1) — API and workflow may change |
 | ✅ Truly agent-agnostic — works with Copilot, Claude Code, Gemini CLI, Cursor | ❌ Significant review overhead — Birgitta Böckeler noted it was comparable to just coding directly |
 | ✅ Minimal footprint — Markdown files and a scaffolding CLI | ❌ One opinionated workflow — may not fit all task sizes |
 | ✅ Specification quality checks (analyze, checklist commands) | ❌ No multi-agent orchestration — specification toolkit, not execution framework |
 | ✅ Growing extension ecosystem (worktree isolation, git, diagrams, review, token economy) | ❌ Generates many Markdown files that need review and maintenance |
 | ✅ Version-controlled specs as part of normal Git workflow | ❌ Agent may still ignore spec instructions — no enforcement mechanism |
 
-> **In one sentence:** Spec Kit is GitHub's disciplined answer to "vibes-based development" — lightweight, agent-agnostic, and focused on getting the spec right before building, with very high adoption but still pre-1.0 at v0.11.3.
+> **In one sentence:** Spec Kit is GitHub's disciplined answer to "vibes-based development" — lightweight, agent-agnostic, and focused on getting the spec right before building, while remaining experimental and pre-1.0.
 
 ## Core Concepts
 
@@ -54,7 +54,7 @@ The core problem Spec Kit addresses is what might be called "vibes-based develop
 
 **Constitution.** An optional `constitution.md` defines project principles or standards (coding conventions, architectural constraints, quality requirements) that the AI must respect during implementation. This is Spec Kit's mechanism for persistent governance.
 
-**Agent Agnosticism.** Unlike GSD (Claude Code-native) or Squad (Copilot-native), Spec Kit is designed to work across AI coding tools. The `specify` CLI scaffolds projects with pre-baked prompts for each supported agent.
+**Agent Agnosticism.** Spec Kit, like GSD, targets multiple AI coding tools, while Squad is Copilot-native. Spec Kit's `specify` CLI scaffolds projects with pre-baked prompts for each supported agent; GSD documents host-specific capability negotiation, with Claude Code as its deepest integration.
 
 ## How It Works
 
@@ -78,12 +78,12 @@ The workflow operates through slash commands:
 | 7 | `/speckit.checklist` | Create "unit tests for English" for the spec |
 | 8 | `/speckit.implement` | Implement based on all combined artifacts |
 
-The CLI tool (`specify`) handles project scaffolding, generating the `.specify` directory structure with pre-baked prompts configured for the user's chosen AI tool. Installation is via `uv tool install specify-cli --from git+https://github.com/github/spec-kit.git@v0.11.3`.
+The CLI tool (`specify`) handles project scaffolding, generating the `.specify` directory structure with pre-baked prompts configured for the user's chosen AI tool. Installation is via `uv tool install specify-cli --from git+https://github.com/github/spec-kit.git@v0.16.1`.
 
 ## Strengths
 
 - **GitHub-backed.** Institutional support from GitHub — featured on the GitHub Blog, maintained by GitHub engineers. This provides a level of credibility and continuity that community projects may lack.
-- **Truly agent-agnostic.** Works with GitHub Copilot, Claude Code, Gemini CLI, Cursor, Windsurf, Codex CLI, and many more. OpenSpec supports more named tools overall, but Spec Kit remains one of the broadest spec-driven options.
+- **Agent-agnostic design.** Works with GitHub Copilot, Claude Code, Gemini CLI, Cursor, Windsurf, Codex CLI, and many more. Support lists change quickly, so validate the depth of the integration you plan to use.
 - **Minimal footprint.** The system revolves around prompts and a scaffolding CLI. No proprietary runtime, no heavy dependencies, no agent framework. The entire system is Markdown files in your repo.
 - **Growing extension ecosystem.** Community extensions include Bugfix Workflow, Worktree Isolation, Git extension, Spec Diagram, Branch Convention, memorylint, Multi-Model Review, Token Economy, and others — indicating active third-party development.
 - **Specification quality checks.** The `/speckit.analyze` command checks specs, plans, and tasks for inconsistencies. The `/speckit.checklist` command creates "unit tests for English" — testable assertions about what the spec says.
@@ -91,7 +91,7 @@ The CLI tool (`specify`) handles project scaffolding, generating the `.specify` 
 
 ## Limitations
 
-- **Still experimental.** Spec Kit is explicitly labeled an experiment, not a product. At v0.11.3 (June 2026), it has very high adoption and an active extension catalog, but it remains pre-1.0 and subject to change.
+- **Still experimental.** Spec Kit is explicitly labeled an experiment, not a product. At v0.16.1 it has a large repository audience and an active extension catalog, but it remains pre-1.0 and subject to change.
 - **Significant review overhead.** Martin Fowler's review (martinfowler.com) noted that the time spent reviewing generated specification files was comparable to the time spent just coding directly. The specs themselves become artifacts that need quality assurance.
 - **One opinionated workflow.** Spec Kit prescribes a specific spec → plan → tasks → implement path. Real development doesn't always follow this sequence — bug fixes, exploratory prototyping, and iterative design may not fit cleanly.
 - **No multi-agent orchestration.** Spec Kit is a specification toolkit, not an execution framework. It doesn't spawn parallel agents, manage context windows, or coordinate work across multiple AI instances.
@@ -108,12 +108,12 @@ The CLI tool (`specify`) handles project scaffolding, generating the `.specify` 
 
 - **Rapid prototyping or exploratory coding.** The spec → plan → tasks → implement flow adds review overhead that slows down iteration when the goal is to see something running quickly.
 - **Projects needing execution orchestration.** Spec Kit handles specification and planning, not execution. It doesn't manage parallel agents, context windows, or work queues. Pair it with GSD or Squad for execution.
-- **Production environments needing stability guarantees.** At v0.11.3, Spec Kit is pre-1.0 and explicitly experimental. API and workflow changes are expected.
+- **Production environments needing stability guarantees.** At v0.16.1, Spec Kit is pre-1.0 and explicitly experimental. API and workflow changes are expected.
 - **Solo developers on small tasks.** The specification overhead is hard to justify for tasks where the requirement is already clear and the implementation is straightforward.
 
 ## Community & Ecosystem
 
-Spec Kit benefits from GitHub's institutional backing, including official GitHub Blog posts and advocacy from Den Delimarsky. External coverage includes Martin Fowler's analysis (martinfowler.com), writeups on Tessl, IntuitionLabs, and Level Up GitConnected. IBM released its own `iac-spec-kit` for infrastructure-as-code, indicating the SDD approach is gaining traction beyond GitHub's implementation. The community extensions ecosystem is growing, with contributions for worktree isolation, Git integration, spec diagrams, linting tools, Multi-Model Review, and Token Economy. Monthly newsletters track progress and community contributions. At ~114K stars and v0.11.3, Spec Kit is no longer a tiny experiment, but its pre-1.0 status still warrants caution.
+Spec Kit benefits from GitHub's institutional backing and a growing extension catalog. Version 0.16.1 focused on defensive hardening, including malformed YAML bundle manifests, non-UTF-8 catalogs, command escaping, and bounded catalog fetches. The catalog is real and actively maintained, but no evidence in this refresh showed `SKILL.md` as a first-class Spec Kit distribution mechanism. At roughly 126K stars and v0.16.1, the project has high visibility while remaining experimental and pre-1.0.
 
 ## Community Ports & Unofficial Adaptations
 
@@ -121,9 +121,9 @@ Spec Kit's architecture is designed for community extensibility, with catalog in
 
 ## Comparison Notes
 
-**vs. GSD:** Both are spec-driven but at different scopes. GSD provides a complete lifecycle (spec → plan → execute → verify → release) with multi-agent orchestration and context engineering. Spec Kit focuses on the specification and planning phases, leaving execution to whatever AI tool the user prefers. GSD is Claude Code-centered with expanding runtime support; Spec Kit is agent-agnostic. GSD is more mature by versioning (v1.42.3 vs. Spec Kit's v0.11.3), while Spec Kit now has the larger GitHub audience.
+**vs. GSD:** Both are spec-driven but at different scopes. GSD Core provides a complete Discuss → Plan → Execute → Verify → Ship loop. Spec Kit focuses on specification and planning artifacts, leaving execution to the selected AI tool. Both target multiple runtimes; published target lists do not prove identical feature depth.
 
-**vs. BMAD:** BMAD covers the full development lifecycle with 12+ specialized agents and 34+ workflows. Spec Kit covers specification and planning only — it is deliberately narrow. BMAD is heavier in process and agent complexity; Spec Kit is lighter and more focused. BMAD works across AI tools but has agent-specific integrations; Spec Kit's agent-agnosticism is a core design goal.
+**vs. BMAD:** BMAD covers the full development lifecycle with specialized roles and modular workflows. Spec Kit covers specification and planning only. BMAD is heavier in process and agent complexity; Spec Kit is lighter and more focused.
 
 **vs. Context Engineering (Practice):** Spec Kit is a concrete tool implementing context engineering principles at the specification layer. Spec files, plans, constitutions, and task breakdowns are all forms of curated context that structure what the AI receives. Where context engineering is the umbrella practice, Spec Kit is a specific tool for the "specification as context" subset — version-controlled documents that pre-load the AI's context with requirements and constraints.
 

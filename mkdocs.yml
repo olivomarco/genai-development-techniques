@@ -47,6 +47,8 @@ nav:
       - Ralph: techniques/ralph.md
       - HVE: techniques/hve.md
       - Context Engineering: techniques/context-engineering.md
+  - Skills ecosystem:
+      - Ecosystem guide: techniques/skills-ecosystem.md
 
 markdown_extensions:
   - admonition

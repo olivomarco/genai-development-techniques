@@ -11,7 +11,7 @@
 | License            | Open technique; official Claude Code plugin available |
 | First Released     | July 14, 2025 (original blog post) |
 | Current Version    | N/A (methodology, not versioned software) |
-| Stars / Popularity | No single repo — key repos: [how-to-ralph-wiggum](https://github.com/ghuntley/how-to-ralph-wiggum) (~1.7K★, 144 forks), [ralph-orchestrator](https://github.com/mikeyobrien/ralph-orchestrator) (~2.95K★, 280 forks); VentureBeat coverage; BetterStack YouTube (60K views) |
+| Stars / Popularity | No single repo — canonical guide ~1.7K stars; ralph-orchestrator ~3.1K stars |
 | Supported Tools    | Tool-agnostic: Claude Code, Copilot CLI, Cursor, Codex, OpenCode, or any AI coding CLI that doesn't cap tool calls |
 
 ## Compatible Coding Agents
@@ -83,7 +83,7 @@ The technique emerged from Geoffrey Huntley's observation that one-shot AI codin
 - **Extreme simplicity.** No framework, no dependencies, no configuration — it's a bash loop. The barrier to entry is near zero.
 - **Tool-agnostic.** Works with any AI coding CLI (Claude Code, Copilot CLI, Cursor, Codex, OpenCode), making it portable across the entire AI coding ecosystem.
 - **Solves context rot.** Fresh context each iteration avoids the degradation that plagues long LLM sessions, a problem every other framework also tries to address.
-- **Overnight productivity.** Set it running before bed, wake up to completed work. Y Combinator hackathon teams shipped 6+ repos overnight for $297 in API costs.
+- **Overnight productivity.** Ralph is designed for AFK runs. Reports of Y Combinator teams shipping 6+ repositories overnight for $297 are anecdotal and were not re-verified in this refresh.
 - **Battle-tested community.** Official Claude Code plugin, community tools (ralph-claude-code, ralph-orchestrator), VentureBeat coverage, and public advocates like Matt Pocock ("Ralph Wiggum + Opus 4.5 is really, really good").
 - **Proof-of-concept output.** Huntley used Ralph to build "CURSED" — a complete programming language with LLVM compilation, standard library, and partial editor support — over 3 months.
 
@@ -116,9 +116,9 @@ The technique emerged from Geoffrey Huntley's observation that one-shot AI codin
 
 Ralph has achieved broad recognition in the AI coding community as of early 2026. Key ecosystem elements:
 
-- **Canonical documentation:** [ghuntley/how-to-ralph-wiggum](https://github.com/ghuntley/how-to-ralph-wiggum) (~1.7K★, 144 forks) — Geoffrey Huntley's original technique documentation, forked from ClaytonFarr/ralph-playbook. It is best read as stable method documentation rather than active software.
+- **Canonical documentation:** [ghuntley/how-to-ralph-wiggum](https://github.com/ghuntley/how-to-ralph-wiggum) (~1.7K stars, 145 forks) — best read as static method documentation; its last push was January 11, 2026, and no license metadata was reported.
 - **Official Claude Code plugin:** `/plugin install ralph-wiggum@claude-plugins-official`
-- **ralph-orchestrator:** [mikeyobrien/ralph-orchestrator](https://github.com/mikeyobrien/ralph-orchestrator) (~2.95K★, 280 forks) — evolved from a simple loop into a Rust-based multi-backend orchestration platform. Now at v2.9.3 with `ralph-cli`, `ralph-api`, `ralph-bench`, `ralph-e2e`, npm packages, shell installers, platform binaries, MCP server mode, TUI interface, and agent waves for parallel execution. Repository topics suggest broadening backend interest across Codex CLI, Gemini CLI, Kiro/Kiro CLI, and OpenCode.
+- **ralph-orchestrator:** [mikeyobrien/ralph-orchestrator](https://github.com/mikeyobrien/ralph-orchestrator) (~3.1K stars, 286 forks) — a Rust-based multi-backend orchestration platform. Its latest release was v2.10.1 on June 23, 2026, and its last push was July 25. Describe it as the active implementation branch of the ecosystem, while avoiding claims of continuous release activity.
 - **ralph-local:** [Soul-Brews-Studio/ralph-local](https://github.com/Soul-Brews-Studio/ralph-local) (4★) — fork adding session isolation and multi-agent support.
 - **MCP Market skill:** "Autonomous Agent Loop Generator" implementing the Ralph process.
 - **Documentation quality:** Huntley's blog post is detailed and opinionated; community guides exist on aihero.dev, dev.to, and muleai.io. No formal documentation site.
@@ -127,10 +127,12 @@ Ralph has achieved broad recognition in the AI coding community as of early 2026
 
 ## Comparison Notes
 
-**vs. GSD:** Both solve context rot through fresh context windows, but GSD provides a structured 6-step workflow with verification gates and parallel agent orchestration, while Ralph is deliberately minimal — a bash loop with no framework overhead. GSD suits developers who want process; Ralph suits those who want simplicity. GSD requires Claude Code (community ports exist); Ralph is tool-agnostic.
+**vs. GSD:** Both solve context rot through fresh context windows, but GSD Core provides a structured five-step workflow with verification, while Ralph is deliberately minimal. GSD suits developers who want process; Ralph suits those who want simplicity. GSD Core targets multiple runtimes; Ralph is a tool-agnostic loop pattern.
 
-**vs. HVE:** Opposite ends of the complexity spectrum. HVE provides 49 agents, 102 instructions, and enterprise governance with the RPI workflow. Ralph has no agents, no governance, and no structure beyond the loop itself. HVE is for enterprise teams needing constraint-based quality assurance; Ralph is for solo developers or small teams who trust test suites as their quality gate.
+**vs. HVE:** Opposite ends of the complexity spectrum. HVE provides a large repository inventory and enterprise governance through the RPI workflow. Ralph has no built-in governance and little structure beyond the loop itself. HVE serves teams needing constraint-based quality assurance; Ralph serves developers who trust test suites as their quality gate.
 
 **vs. Squad:** Squad uses multi-agent orchestration with named agents, persistent memory, and structured coordination. Ralph uses a single agent in a loop with git as memory. Squad optimizes for team-scale development with routing and ceremonies; Ralph optimizes for individual throughput on well-scoped tasks. Note: Squad includes a built-in "Ralph" agent (Work Monitor) inspired by this technique but functionally different — Squad's Ralph monitors work queues, while the original Ralph is an autonomous coding loop.
 
 **vs. Superpowers:** Both are individual-developer tools that work with CLI-based coding agents, but with opposite philosophies. Ralph is deliberately minimal — a bash loop with no framework. Superpowers is a comprehensive skill-based methodology with mandatory TDD, code review, brainstorming, and planning phases. Ralph trusts iteration and test suites as backpressure; Superpowers trusts behavioral skills and persuasion-tested compliance. Ralph is tool-agnostic (any CLI); Superpowers supports six specific tools. Ralph excels at AFK overnight runs; Superpowers excels at disciplined, human-guided development sessions.
+
+**vs. BMAD `bmad-loop`:** BMAD v6.10.0 adds unattended single-iteration development through a spec-frontmatter state machine. Ralph remains the simpler and more tool-agnostic pattern; `bmad-loop` adds BMAD's structured artifacts and process assumptions.

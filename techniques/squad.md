@@ -10,8 +10,8 @@
 | Author/Org         | Brady Gaster (Microsoft)      |
 | License            | MIT                           |
 | First Released     | 2025                          |
-| Current Version    | v0.10.0 (June 7, 2026)       |
-| Stars / Popularity | ~2,840 stars · 428+ forks · active development · Microsoft backing |
+| Current Version    | v0.11.0 (June 30, 2026)      |
+| Stars / Popularity | ~3,100 stars · 475 forks; repository activity continued after the release |
 | Supported Tools    | GitHub Copilot (CLI and VS Code) |
 
 ## Compatible Coding Agents
@@ -38,7 +38,7 @@ The system applies Conway's Law to AI development: rather than trying to produce
 | Pros | Cons |
 |------|------|
 | ✅ True parallel multi-agent orchestration | ❌ Copilot-only — doesn't work with Claude Code, Cursor, etc. |
-| ✅ Persistent memory across sessions (decisions, history, governed memory) | ❌ Still pre-1.0 (v0.10.0) — expect API changes |
+| ✅ Persistent memory across sessions (decisions, history, governed memory) | ❌ Still pre-1.0 (v0.11.0) — expect API changes |
 | ✅ Autonomous work management via Ralph (Work Monitor) | ❌ Requires GitHub CLI authentication for full feature set |
 | ✅ Full GitHub lifecycle integration (issues → PRs → merge) | ❌ Node.js dependency for the CLI |
 | ✅ Reviewer rejection protocol enforces genuine review | |
@@ -81,7 +81,9 @@ Squad creates a `.squad/` directory in the repository containing the team's stat
 
 **GitHub Integration.** Squad manages the full issue → branch → PR → merge lifecycle. Agents create branches (`squad/{issue-number}-{slug}`), make commits referencing issues, push, and open PRs via the GitHub CLI. Ralph monitors the queue and keeps work moving.
 
-**SDK and State Backend Maturity (v0.10.0).** Squad offers type-safe team configuration through builder functions (`defineTeam()`, `defineAgent()`, `defineRouting()`) for teams that prefer code over Markdown configuration. The v0.10.0 line added state backend documentation and wiring across worktree, git-notes, orphan, and two-layer modes, plus `SQUAD_HOME`, presets, import/export of Squad configuration to/from GitHub repositories, MCP frontmatter/config fixes, and broader Copilot CLI skill-path scanning.
+**SDK and state backends.** Squad offers type-safe team configuration through builder functions (`defineTeam()`, `defineAgent()`, `defineRouting()`). The v0.10.0 line added state backend documentation, governed memory, presets, import/export, and broader Copilot CLI skill-path scanning.
+
+**Version 0.11.0.** The current stable release added `squad preset install <source>` for GitHub URLs and local paths, cross-Squad discovery, Copilot App sub-sessions, memory tools through `squad_state`, and slimmer satellite skills. It also replaced `hire` terminology with `cast`; older workflows continue to work. Repository pushes after June 30 represent unreleased activity and should not be described as shipped features.
 
 Additional features include **Ceremonies** (structured team meetings — design reviews, retrospectives, standups), **Worktree Support** (git worktrees for isolated issue work), **PRD Mode** (ingest product requirement documents as work source), **Human Team Members** (mix AI and human participants), **Per-Agent Model Selection** (a multi-layer system for optimizing cost and quality per task), and a built-in RAI reviewer agent, Rai.
 
@@ -97,7 +99,7 @@ Additional features include **Ceremonies** (structured team meetings — design 
 ## Limitations
 
 - **Copilot-only.** Squad is tightly coupled to the GitHub Copilot ecosystem — CLI and VS Code. It does not work with Claude Code, Cursor, or other AI coding tools directly.
-- **Still pre-1.0.** At v0.10.0 (June 2026), the API and workflow structure may still change. Early adopters should expect iteration.
+- **Still pre-1.0.** At v0.11.0, the API and workflow structure may still change. Early adopters should expect iteration.
 - **Directory overhead.** The `.squad/` directory contains team files, agent charters, histories, decision ledgers, orchestration logs, casting state, and session logs. The setup is automated by the Coordinator, but the infrastructure footprint is nontrivial.
 - **Requires GitHub authentication.** The full feature set (Ralph, issue routing, PR lifecycle) depends on GitHub CLI authentication. Without it, Squad loses its autonomous capabilities.
 - **Node.js dependency.** The CLI requires npm and Node.js, which may be a friction point for teams not already in the Node ecosystem.
@@ -117,14 +119,14 @@ Additional features include **Ceremonies** (structured team meetings — design 
 
 ## Community & Ecosystem
 
-Squad is backed by Brady Gaster at Microsoft, with contributions from Jeffrey T. Fritz, Shayne Boyer, and others. It has been featured in YouTube videos, LinkedIn posts with significant engagement, and a detailed blog post by thomy.tech ("My First Coding Agent Fleet with Enterprise Tooling"). Microsoft teams have used it internally for demo scripts, QA systems, and Minecraft plugins. The project offers a CLI, SDK with builder functions, documentation site, and workshop materials. While Squad's community is smaller than GSD (~64K stars) or BMAD (~49K stars) in raw GitHub metrics, its ~2.8K stars, v0.10.0 state/memory maturity, Microsoft backing, and active development provide institutional continuity.
+Squad is backed by Brady Gaster at Microsoft and offers a CLI, SDK, documentation site, and workshop materials. Version 0.11.0 merged 104 pull requests from 8 authors and updated its toolchain, including the GitHub Copilot SDK, TypeScript, Vitest, Ink, and OpenTelemetry. The repository had roughly 3.1K stars and 475 forks on August 8, 2026. Its last stable release remained June 30 even though repository activity continued.
 
 ## Comparison Notes
 
-**vs. BMAD:** Both use multi-agent architectures, but the implementation is fundamentally different. BMAD simulates a team through agent personas within a single user's AI session — the agents are prompts with different roles. Squad creates actual parallel agent instances with persistent memory, shared decision ledgers, and autonomous work monitoring via Ralph. BMAD is richer in structured agile process (34+ workflows, four phases); Squad is richer in coordination infrastructure (persistent state, work queues, GitHub lifecycle).
+**vs. BMAD:** Both use multi-agent architectures, but the implementation is fundamentally different. BMAD simulates a team through agent personas within a user's AI session. Squad creates parallel agent instances with persistent memory, shared decision ledgers, and autonomous work monitoring. BMAD is richer in structured agile process; Squad is richer in coordination infrastructure.
 
-**vs. GSD:** Different paradigms solving different problems. GSD is spec-driven, focused on context engineering and parallel task execution within a structured lifecycle. Squad is orchestration-focused, managing a persistent team with roles, memory, and autonomous work routing. GSD is lighter and Claude Code-native; Squad is heavier and Copilot-native. They occupy different categories entirely — Spec-Driven vs. Multi-Agent Orchestration.
+**vs. GSD:** Different paradigms solving different problems. GSD is spec-driven, focused on context engineering and parallel task execution within a structured lifecycle. Squad is orchestration-focused, managing a persistent team with roles, memory, and autonomous work routing. GSD is lighter and documents multiple host integrations, with Claude Code as its deepest integration; Squad is heavier and Copilot-native. They occupy different categories entirely — Spec-Driven vs. Multi-Agent Orchestration.
 
-**vs. HVE:** Both target structured, multi-agent development but at different scales. HVE is enterprise-grade with 49 agents, 102 instructions, constraint-based governance, and the RPI workflow. Squad is team-scale with typically 4-5 agents, persistent memory, and GitHub-centric work management. HVE emphasizes governance and audit trails; Squad emphasizes team coordination and autonomous work routing. HVE targets enterprise teams in regulated environments; Squad targets development teams that want AI agents working alongside their existing GitHub workflow.
+**vs. HVE:** Both target structured, multi-agent development but at different scales. HVE is enterprise-grade with a large repository inventory of agents, instructions, prompts, and skills plus the RPI workflow. Squad is team-scale with persistent memory and GitHub-centric work management. HVE emphasizes governance and audit trails; Squad emphasizes coordination and work routing.
 
 **vs. Superpowers:** Squad orchestrates a team of specialized AI agents with persistent memory, shared decisions, and autonomous work monitoring. Superpowers enhances a single agent's discipline through composable behavioral skills (TDD, debugging, code review). They operate at different levels: Squad coordinates *who* does what; Superpowers defines *how* each agent works. They're complementary — a Squad agent could use Superpowers skills internally. Squad is Copilot-only; Superpowers supports Claude Code, Cursor, Codex, Copilot CLI, Gemini CLI, and OpenCode.

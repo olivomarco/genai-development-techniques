@@ -10,9 +10,9 @@
 | Author/Org         | Fission AI / Tabish Bidiwale (@0xTab) |
 | License            | MIT                           |
 | First Released     | August 2025                   |
-| Current Version    | v1.4.1 (June 3, 2026) |
-| Stars / Popularity | ~55,800 stars · 3,900+ forks · 59 contributors |
-| Supported Tools    | 27+ tools — Claude Code, Cursor, GitHub Copilot, Codex, Gemini CLI, Windsurf, Roo Code, and many more via broad native/pre-baked support (widest in comparison) |
+| Current Version    | v1.8.0 stable (August 5, 2026); prerelease channel also exists |
+| Stars / Popularity | ~64,300 stars · 4,400+ forks |
+| Supported Tools    | Broad native/pre-baked support, including a vendor-neutral `agents` target plus MiniMax Code and Rovo Dev CLI |
 
 ## Compatible Coding Agents
 
@@ -47,7 +47,7 @@
 | Antigravity | ✅ Supported |
 | CodeBuddy | ✅ Supported |
 
-OpenSpec has the widest tool compatibility of any technique in this comparison. Its 27+ supported tools are presented by the project as native/pre-baked integrations rather than community ports, though the available freshness research does not prove identical feature depth across every runtime.
+OpenSpec presents its supported tools as native/pre-baked integrations rather than community ports. Version 1.8.0 added three targets, bringing the previously documented list to at least 30, but the exact current total and identical feature depth across runtimes were not verified.
 
 ## Overview
 
@@ -55,20 +55,20 @@ OpenSpec is a lightweight, spec-driven development framework for AI coding assis
 
 The core problem OpenSpec addresses is brownfield development with AI. Most spec-driven tools assume you're starting fresh or building a complete project plan. OpenSpec starts from the opposite end: you have an existing codebase, and you need to make targeted changes without breaking what's already there. It uses **delta specs** — lightweight specifications annotated with ADDED, MODIFIED, and REMOVED markers — to track how changes affect existing functionality, not just what new code is being written.
 
-At ~55.8K GitHub stars and v1.4.1, OpenSpec is the third spec-driven technique in this comparison (alongside GSD and Spec Kit) and the only one built explicitly for brownfield workflows. Its TypeScript CLI installs in minutes via npm, requires no API keys or MCP servers, and offers broad native/pre-baked support for 27+ AI coding tools — more than any other framework compared.
+At roughly 64K GitHub stars and v1.8.0, OpenSpec is the third spec-driven technique in this comparison (alongside GSD and Spec Kit) and the only one built explicitly for brownfield workflows. Its TypeScript CLI installs in minutes via npm, requires no API keys or MCP servers, and offers broad native/pre-baked support across many AI coding tools.
 
 ## Pros & Cons at a Glance
 
 | Pros | Cons |
 |------|------|
-| ✅ Widest tool support in comparison (27+ tools via native/pre-baked integrations) | ❌ Static specs — don't update during implementation (drift risk on long tasks) |
+| ✅ Broad native/pre-baked tool support | ❌ Static specs — don't update during implementation (drift risk on long tasks) |
 | ✅ Brownfield-first — built for existing codebases, not just greenfield | ❌ No multi-agent orchestration or parallel execution |
 | ✅ Lightest weight in SDD category (~250 lines, minutes setup) | ❌ Team workspace and multi-repo support not yet proven in public research |
 | ✅ Delta specs make code review about intent, not just diffs | ❌ Requires manual discipline to archive completed changes |
 | ✅ Proposal approval gate — no code until human reviews | ❌ Limited enterprise compliance — no SSO/SCIM, no policy-as-code |
 | ✅ YC W26-backed with active development | ❌ Team workspaces feature still in development |
 
-> **In one sentence:** OpenSpec is the lightest, widest-reaching spec-driven framework — built for brownfield codebases where you need to track *why* things changed, not just *what* changed, across a broad set of AI coding tools.
+> **In one sentence:** OpenSpec is a lightweight spec-driven framework for brownfield codebases where you need to track *why* things changed across a broad set of AI coding tools.
 
 ## Core Concepts
 
@@ -78,7 +78,7 @@ At ~55.8K GitHub stars and v1.4.1, OpenSpec is the third spec-driven technique i
 
 **Propose → Apply → Archive.** The core state machine. You **propose** a change (creating the change folder with specs and tasks), get human approval, **apply** it (implement the code), then **archive** it (move the completed change to the archive for audit trail). No code is generated until the proposal is reviewed and approved — this is the human-in-the-loop gate.
 
-**Brownfield-First.** OpenSpec is built for codebases that already exist. Where GSD's 6-step workflow and Spec Kit's spec → plan → tasks flow are oriented toward building things from a plan, OpenSpec's change folder model assumes you already have working software and need to evolve it without breaking it.
+**Brownfield-First.** OpenSpec is built for codebases that already exist. Where GSD Core's five-step workflow and Spec Kit's spec → plan → tasks flow are oriented toward building things from a plan, OpenSpec's change folder model assumes you already have working software and need to evolve it without breaking it.
 
 **Artifact-Guided Workflow.** The `opsx` workflow (a rebuilt, expanded version of the original OpenSpec commands) treats each artifact — proposal, spec, design, tasks — as a living document that can be updated at any time. There are no rigid phase gates; you can revisit and refine artifacts fluidly as understanding evolves.
 
@@ -112,7 +112,8 @@ For validation, `openspec validate --strict` catches missing GIVEN/WHEN/THEN sce
 
 ## Strengths
 
-- **Widest tool compatibility.** 27+ tools supported through native/pre-baked integrations. This is more than any other technique in the comparison and reduces tool lock-in substantially, while exact feature parity across every runtime should be treated as unverified.
+- **Broad tool compatibility.** Native/pre-baked integrations reduce tool lock-in, while exact feature parity across every runtime remains unverified.
+- **Skills convention support.** Version 1.8.0 added a vendor-neutral `agents` target that writes skills to `.agents/skills/`, linking OpenSpec to the emerging [skills ecosystem](skills-ecosystem.md).
 - **Lightest weight in the SDD category.** ~250 lines of configuration, minutes to set up (`npm install -g @fission-ai/openspec@latest && openspec init`). No API keys, no MCP server, no complex scaffolding.
 - **Brownfield-first design.** The only framework in this comparison built explicitly for evolving existing codebases. Delta markers (ADDED/MODIFIED/REMOVED) are a unique mechanism for tracking change impact.
 - **Intent-level code review.** Delta specs shift code review from "what code changed?" to "what was the intent and how does it affect existing functionality?" This is a meaningful workflow improvement for teams that review PRs.
@@ -124,16 +125,16 @@ For validation, `openspec validate --strict` catches missing GIVEN/WHEN/THEN sce
 
 - **Static specs.** Specs are written at proposal time and don't automatically update as implementation progresses. On long or complex tasks, specs can drift from reality — you must manually `/opsx:sync` to reconcile.
 - **No multi-agent orchestration.** OpenSpec is a single-agent workflow. It doesn't spawn parallel agents, manage context windows across agents, or coordinate work across multiple AI instances. GSD and Squad handle this; OpenSpec does not.
-- **Workspace support still unproven.** v1.4.1 touched `workspace.yaml` update behavior, but the available research does not establish full team workspace, multi-repo, or monorepo support. Enterprise teams with complex repo structures should validate this before standardizing on OpenSpec.
+- **Workspace support still unproven.** The available research does not establish full team workspace, multi-repo, or monorepo support. Enterprise teams with complex repo structures should validate this before standardizing on OpenSpec.
 - **Manual archive discipline.** Completed changes must be manually archived via `/opsx:archive` or `/opsx:bulk-archive`. Without discipline, the `openspec/changes/` directory accumulates stale change folders that clutter context.
 - **Limited enterprise governance.** No SSO/SCIM, no policy-as-code, no constraint enforcement, no compliance features. The archive provides a lightweight audit trail, but it's not enterprise-grade governance.
-- **Young project.** At under a year old and v1.4.1, OpenSpec is still early. The `opsx` workflow was recently rebuilt, indicating the API surface is still evolving.
+- **Young project.** At under a year old and v1.8.0, OpenSpec is still evolving. A prerelease channel exists, so distinguish stable releases from beta artifacts.
 
 ## Best For
 
 - **Brownfield development.** Teams evolving an existing codebase who need to track how changes affect existing functionality. OpenSpec's delta markers are purpose-built for this.
-- **Multi-tool teams.** Organizations where different developers use different AI coding tools. OpenSpec's broad 27+ tool support means many teams can use the same spec workflow regardless of their editor or agent.
-- **Lightweight spec-driven development.** Developers who want the discipline of spec-driven development without the overhead of a full lifecycle framework. OpenSpec is lighter than GSD (6-step workflow) and Spec Kit (phase-gated).
+- **Multi-tool teams.** Organizations where different developers use different AI coding tools. OpenSpec's broad native/pre-baked support lets many teams share the same spec workflow.
+- **Lightweight spec-driven development.** Developers who want the discipline of spec-driven development without the overhead of a full lifecycle framework. OpenSpec is lighter than GSD Core's five-step workflow and Spec Kit's phase gates.
 - **Solo developers and small teams.** The current sweet spot — fast setup, low ceremony, no team infrastructure required.
 - **Intent-level code review workflows.** Teams that want to review *why* a change was made, not just *what* code changed. Delta specs make this native to the workflow.
 
@@ -147,18 +148,18 @@ For validation, `openspec validate --strict` catches missing GIVEN/WHEN/THEN sce
 
 ## Community & Ecosystem
 
-OpenSpec has built significant community traction in under a year: ~55.8K GitHub stars, 3.9K forks, 59 contributors, and active development. The project is backed by Y Combinator (W26 batch) through Fission AI, giving it commercial backing uncommon among open-source AI development frameworks in this comparison. Community channels include an active Discord (discord.gg/YctCnvvshC), a Slack channel for teams (teams@openspec.dev), and GitHub Discussions. The founder Tabish Bidiwale is active on LinkedIn and YouTube. OpenSpec has been featured in Augment Code's "6 Best SDD Tools" roundup, Better Stack, and Cursor community discussions. The project is actively inviting enterprise early partners for the upcoming Workspaces (multi-repo) feature; v1.4.1 touched `workspace.yaml` update behavior, but that alone should not be read as full multi-repo workspace availability.
+OpenSpec had roughly 64K GitHub stars and 4.4K forks on August 8, 2026. Version 1.8.0 merged 34 pull requests from 15 contributors. It also made GitHub Copilot cloud-agent file generation opt-in, defaulting to No, and added `retire_capabilities: true` during archive. These are shipped stable-release changes; full multi-repo workspace availability remains unverified.
 
 ## Community Ports & Unofficial Adaptations
 
-OpenSpec supports 27+ AI coding tools out of the box — the widest compatibility of any technique in this comparison. Because of this breadth, there is less need for community ports or unofficial adaptations. Where GSD required community forks for Cursor support and Superpowers needed marketplace extensions for Copilot, OpenSpec ships with native/pre-baked support for many major tools from day one. This is a deliberate architectural decision: the TypeScript CLI and Markdown-based spec format are tool-agnostic by design, with pre-baked configurations for each supported tool.
+OpenSpec ships native/pre-baked configurations for many major tools, reducing the need for community ports. Version 1.8.0 added a vendor-neutral `agents` target, MiniMax Code, and Rovo Dev CLI. Treat this as documented support breadth, not proof of runtime parity.
 
 ## Comparison Notes
 
-**vs. GSD:** Both are spec-driven, but they target different workflows and codebases. GSD is greenfield-oriented — its 6-step lifecycle (new-project → discuss → plan → execute → verify → complete) builds things from scratch with fresh context windows per task. OpenSpec is brownfield-oriented — its change folder model assumes existing code and tracks modifications with delta markers. GSD manages context rot through fresh agent spawning; OpenSpec manages context through scoped change folders. GSD has expanded official runtime support while remaining Claude Code-centered; OpenSpec supports 27+ tools natively. GSD offers parallel execution via wave-based orchestration; OpenSpec is single-agent. GSD is more mature by release history (v1.42.3, ~64K stars); OpenSpec is younger but growing fast (v1.4.1, ~56K stars). Choose GSD for structured greenfield builds with parallelism; choose OpenSpec for lightweight brownfield changes across any tool.
+**vs. GSD:** Both are spec-driven, but they target different workflows. GSD Core uses a five-step project loop and fresh task contexts; OpenSpec organizes targeted brownfield changes around delta specs. Both document broad runtime targets, but parity is unverified. Choose GSD for structured project execution and OpenSpec for lightweight change governance.
 
-**vs. Spec Kit:** Both are spec-driven and multi-tool, making them the closest comparison pair in this category. The key differences are weight and philosophy. Spec Kit produces comprehensive, portable specifications (~800 lines of spec artifacts) through a phase-gated workflow (specify → clarify → plan → tasks → implement). OpenSpec produces lightweight delta specs (~250 lines) through a fluid, change-centric workflow with no rigid phase gates. Spec Kit is GitHub-backed, very high-adoption, and still pre-1.0 (v0.11.3); OpenSpec is YC-backed and more aggressively versioned (v1.4.1). Spec Kit's agent-agnosticism covers 20+ tools via pre-baked prompts; OpenSpec's covers 27+ tools natively. Spec Kit focuses on the specification phase and leaves execution to the user's tool; OpenSpec covers the full change lifecycle (propose → apply → verify → archive). Spec Kit has richer quality checks (analyze, checklist); OpenSpec has a stronger human gate (proposal approval before any code). They're complementary in principle — Spec Kit for upfront project specification, OpenSpec for ongoing change management — but in practice they occupy overlapping territory.
+**vs. Spec Kit:** Both are spec-driven and multi-tool. Spec Kit produces project-level specifications through a phase-gated workflow and remains pre-1.0 at v0.16.1. OpenSpec uses lightweight delta specs and a change-centric v1.8.0 workflow. Spec Kit emphasizes upfront specification quality; OpenSpec emphasizes proposal approval and ongoing change records.
 
 **vs. Context Engineering:** OpenSpec is a concrete implementation of context engineering principles applied to change management. Change folders are curated context — each one scopes what the AI sees to a single change and its relevant specs, design, and tasks. Delta markers are a form of structured context annotation — they tell the AI not just what to build, but what already exists and how it's being modified. The proposal → approval → apply flow is a context quality gate — ensuring the AI works from reviewed, human-approved context rather than raw prompts. Where context engineering is the underlying practice, OpenSpec is one specific operationalization of it for brownfield spec-driven development.
 
-**vs. Superpowers:** Both have broad multi-tool support (27+ vs. 6 tools) and both are lighter than GSD or Spec Kit, but they solve different problems. Superpowers is a skill-based methodology — composable behavioral modules that teach agents *how* to develop (TDD, code review, debugging). OpenSpec is a spec-driven workflow — structured change tracking that defines *what* to build and *why*. Superpowers enforces development discipline through mandatory skills and persuasion-tested compliance; OpenSpec enforces change discipline through proposal gates and delta specs. Superpowers has the larger community (~234K vs. ~56K stars) and a different category (Skill-Based Development vs. Spec-Driven Development). They're complementary: Superpowers could govern how an agent implements code, while OpenSpec governs what changes are being made and why.
+**vs. Superpowers:** Superpowers is a skill-based methodology that teaches agents *how* to develop. OpenSpec defines *what* changes to make and *why*. Version 1.8.0 also exports to the shared `.agents/skills/` path, so OpenSpec can participate in the skills layer without becoming a skill-based methodology.

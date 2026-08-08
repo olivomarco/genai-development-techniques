@@ -6,88 +6,94 @@
 |--------------------|-------------------------------|
 | Full Name          | Get Shit Done                 |
 | Category           | Spec-Driven Development       |
-| Source              | [gsd-build/get-shit-done](https://github.com/gsd-build/get-shit-done) |
-| Author/Org         | TÂCHES / gsd-build            |
+| Source              | [open-gsd/gsd-core](https://github.com/open-gsd/gsd-core) |
+| Author/Org         | open-gsd                      |
 | License            | MIT                           |
 | First Released     | 2025                          |
-| Current Version    | v1.42.3 (May 16, 2026)       |
-| Stars / Popularity | ~64,400 stars · 5,500+ forks · active development |
-| Supported Tools    | Claude Code (primary), Codex CLI, OpenCode/Kilo-style runtimes, Gemini CLI; community ports for Cursor and others |
+| Current Version    | GSD Core v1.10.0 (August 8, 2026) |
+| Stars / Popularity | ~7,900 stars · 550+ forks on the active successor; archived predecessor has ~64,700 stars |
+| Supported Tools    | Installer targets include Claude Code, OpenCode, Antigravity CLI, Kimi CLI, Kilo, Codex, Copilot, Cursor, Windsurf, and more |
 
 ## Compatible Coding Agents
 
 | Agent | Support |
 |-------|--------|
-| GitHub Copilot (VS Code) | ❌ Not natively supported |
+| GitHub Copilot (VS Code) | ✅ Documented installer target |
 | GitHub Copilot Coding Agent (github.com) | ❌ Not supported |
-| Claude Code | ✅ Primary — built on native Claude Code features (sub-agents, slash commands, hooks) |
-| Cursor | ⚠️ Community — [gsd-for-cursor](https://github.com/rmindel/gsd-for-cursor) (76★) |
-| OpenAI Codex (CLI) | ✅ Supported — `--codex` installs `$gsd-*` skills for Codex CLI 0.130.0+ |
-| Windsurf | ❌ Not natively supported |
-| Gemini CLI | ⚠️ Supported via official installer flag |
-| Roo Code | ❌ Not natively supported |
+| Claude Code | ✅ Deepest integration — nested dispatch, background agents, and worktree isolation are documented |
+| Cursor | ✅ Documented installer target |
+| OpenAI Codex (CLI) | ✅ Documented installer target |
+| Windsurf | ✅ Documented installer target |
+| Gemini CLI | ⚠️ Not listed by name in the current GSD Core README |
+| Roo Code | ⚠️ Not verified |
+
+GSD Core documents capability profiles for 20 hosts and negotiates dispatch behavior from available host features. This does not establish identical feature depth: Copilot defaults execution to sequential inline mode because subagent completion signals are unreliable.
 
 ## Overview
 
-GSD is a lightweight, spec-driven development system that addresses one of the most persistent problems in AI-assisted coding: context rot — the gradual degradation of AI output quality as context windows fill up during long sessions. Rather than building a heavy framework, GSD is constructed entirely from native Claude Code features: roughly 50 Markdown files, a Node.js CLI helper, and a set of hooks that together orchestrate a complete software development lifecycle.
+GSD is a lightweight, spec-driven development system that addresses context rot — the gradual degradation of AI output quality as context windows fill during long sessions. The original [`gsd-build/get-shit-done`](https://github.com/gsd-build/get-shit-done) repository was archived in 2026 with a "GSD Has Moved" notice. Active development continues as **GSD Core** in [`open-gsd/gsd-core`](https://github.com/open-gsd/gsd-core), installed from npm as `@opengsd/gsd-core`.
 
-The core insight is that raw prompting doesn't scale for substantial projects. Features get forgotten, files get overwritten, and debugging cycles waste time. GSD solves this by enforcing a disciplined 6-step workflow where each phase ideally runs in a fresh context window, giving every spawned agent 100% clean context.
+The core insight is that raw prompting doesn't scale for substantial projects. GSD Core packages a five-step loop — Discuss → Plan → Execute → Verify → Ship — with entry points for new and existing projects. The successor reset the version line from the archived package's v1.42.3 to GSD Core v1.10.0; this is a repository and package migration, not a maturity regression.
 
 ## Pros & Cons at a Glance
 
 | Pros | Cons |
 |------|------|
 | ✅ Eliminates context rot with fresh windows per task | ❌ Claude Code remains the deepest integration despite official multi-runtime expansion |
-| ✅ Low dependency footprint (~50 Markdown files) | ❌ Medium learning curve — 6-step workflow to internalize |
-| ✅ Parallel execution (5+ agents via wave-based orchestrator) | ❌ Still requires upfront spec work that feels heavy for small fixes |
+| ✅ Multi-runtime installer targets | ❌ Medium learning curve — five-step workflow to internalize |
+| ✅ Wave-based parallel execution with configurable concurrency (default 3 agents) | ❌ Still requires upfront spec work that feels heavy for small fixes |
 | ✅ Verification gates check actual codebase, not AI self-reports | ❌ No built-in team coordination — single-user focus |
 | ✅ Atomic git commits for clean history and easy rollbacks | ❌ No enterprise governance or audit trails |
-| ✅ 64K+ stars, active community, battle-tested at scale | ❌ XML prompt formatting may be unfamiliar |
+| ✅ Active successor, multilingual READMEs, Discord, and CI | ❌ Migration makes old tutorials, commands, and metrics stale |
 
-> **In one sentence:** GSD is the go-to for solo Claude Code users who want structured discipline without enterprise overhead — it solves the #1 problem (context rot) with minimal ceremony.
+> **In one sentence:** GSD Core is a structured, multi-runtime spec-driven workflow for developers who want fresh context, planned execution, and verification without enterprise governance.
 
 ## Core Concepts
 
 **Context Engineering as Foundation.** GSD treats context management as the central engineering challenge. Each task spawned by the orchestrator receives a fresh context window, eliminating the accumulated noise that degrades output in long sessions.
 
-**Lean Orchestrator.** GSD's multi-agent model groups tasks into "waves" by dependency and executes them in parallel — up to 5+ agents simultaneously. This is not a heavyweight agent framework; it is a thin orchestration layer that leverages Claude Code's native sub-agent spawning.
+**Lean Orchestrator.** GSD groups plans into dependency waves. Waves run sequentially, while non-file-overlapping plans within a wave can run in parallel with configurable concurrency; the documented default is three simultaneous agents. Dispatch is negotiated against host capabilities rather than depending on a Claude-only mechanism, although Claude Code remains the deepest integration.
 
 **Atomic Git Commits.** Each task produces a single, clean commit. This creates a traceable history and makes rollbacks straightforward.
 
-**XML Prompt Formatting.** GSD uses XML-structured prompts for precision, reducing ambiguity in how the AI interprets instructions.
+**XML Prompt Formatting.** GSD uses XML for plan task structure and prompt sectioning, reducing ambiguity without treating XML as a universal wire format.
 
 **Verification Gates.** Every phase ends with automated verification against the actual codebase, not just the AI's claims about what it did.
 
 ## How It Works
 
-GSD follows a 6-step workflow executed via runtime-aware commands. Claude/Cursor/OpenCode/Kilo-style runtimes now emit `/gsd-<cmd>` commands, while Codex emits `$gsd-*` skills; older colon-form command examples may still appear in older notes.
+Install the active package with:
 
-| Step | Command | Purpose |
-|------|---------|---------|
-| 1 | `/gsd-new-project` | Capture the idea, research the domain, define requirements and roadmap |
-| 2 | `/gsd-discuss-phase N` | Clarify implementation details for phase N |
-| 3 | `/gsd-plan-phase N` | Create a task breakdown for phase N |
-| 4 | `/gsd-execute-phase N` | Execute plans in parallel, one commit per task |
-| 5 | `/gsd-verify-work N` | Validate that phase goals have been achieved |
-| 6 | `/gsd-complete-milestone` | Archive, tag release, initialize next cycle |
+```bash
+npx @opengsd/gsd-core@latest
+```
+
+GSD Core documents a five-step loop. `/gsd-new-project` starts a new project and `/gsd-onboard` brings an existing codebase into the workflow.
+
+| Step | Stage | Purpose |
+|------|-------|---------|
+| 1 | Discuss | Clarify goals, constraints, and implementation choices |
+| 2 | Plan | Create an executable task breakdown |
+| 3 | Execute | Implement the plan with scoped agent work |
+| 4 | Verify | Check the result against the codebase and acceptance criteria |
+| 5 | Ship | Complete the work and prepare delivery |
 
 The workflow is designed to be iterative. Each phase runs in a fresh context window. The planning step produces structured task definitions that the execution step parallelizes across multiple agents. Verification runs against the real codebase to close the loop.
 
-GSD also offers a **Quick Mode** for smaller projects that compresses the workflow, and **Brownfield Support** for working with existing codebases rather than starting from scratch. **Workstreams** enable parallel development streams, and **Multi-Project Workspaces** allow managing multiple projects simultaneously.
+GSD also offers **`/gsd-quick`** for ad-hoc tasks that do not need a full phase and **`/gsd-onboard`** for brownfield onboarding. **Workstreams** maintain separate state for concurrent milestone areas. **Workspaces** isolate multi-repo work behind independent `.planning/` state using git worktrees or clones; the documentation does not claim simultaneous multi-project management.
 
 ## Strengths
 
 - **Solves context rot directly.** Fresh context windows per task keep AI output quality high across long projects. This is the core problem most developers face when scaling AI-assisted work.
-- **Low dependency footprint.** ~50 Markdown files and a CLI helper — no heavy framework, no proprietary runtime. The system is readable and forkable.
-- **Battle-tested at scale.** Community reports include a production iOS-to-Android port completed in a 3-day sprint (90+ AI sessions, 23 plans executed), demonstrating real-world viability.
-- **Strong parallel execution.** The wave-based orchestrator runs 5+ agents simultaneously, grouped by dependency, making efficient use of available compute.
+- **Small runtime dependency tree.** The published package has two production dependencies: `@anthropic-ai/claude-agent-sdk` and `ws`. Its package payload is substantial, so this claim concerns dependencies rather than file count.
+- **Strong parallel execution where the host supports it.** The wave orchestrator groups plans by dependency and parallelizes non-file-overlapping work, with a documented default maximum of three simultaneous agents.
 - **Verification gates close the loop.** Unlike approaches that trust the AI's self-report, GSD verifies against the actual codebase after each phase.
-- **Active community.** 64K+ stars, active LinkedIn community, blog coverage from codecentric.de, dev.to, and others.
+- **Active successor.** GSD Core released v1.10.0 on August 8, 2026, with multilingual READMEs, a Discord, and CI badges.
 
 ## Limitations
 
-- **Claude Code remains the deepest integration.** GSD now has official support for Codex CLI, OpenCode/Kilo-style runtimes, and Gemini CLI, but its design center is still Claude Code features such as sub-agents, slash commands, and hooks.
-- **Medium learning curve.** The 6-step workflow is more involved than just prompting. Developers need to learn the phase structure, slash commands, and planning conventions.
+- **Runtime behavior degrades by host capability.** GSD Core documents 20 host profiles and negotiates dispatch rather than assuming parity. Copilot forces sequential inline execution; backgrounded Claude Code agents can also lose nested dispatch and wave parallelism.
+- **Medium learning curve.** The five-step workflow is more involved than direct prompting. Developers need to learn its stages, commands, and planning conventions.
 - **Spec-driven overhead.** While lighter than BMAD, GSD still requires upfront planning and specification work that may feel heavy for quick scripts or bug fixes.
 - **No built-in enterprise governance.** GSD lacks the constraint enforcement, audit trails, and policy-as-code features found in enterprise-focused approaches like HVE.
 - **Single-user focus.** The workflow is designed for a solo developer directing AI agents. There is no built-in team coordination, role routing, or shared decision ledger.
@@ -95,33 +101,31 @@ GSD also offers a **Quick Mode** for smaller projects that compresses the workfl
 ## Best For
 
 - **Solo developers working on medium-to-large projects** who have experienced context rot and want structured discipline without enterprise overhead.
-- **Claude Code users** who want the most mature integration. GSD is built on native Claude Code features and takes full advantage of them.
+- **Developers using one of the documented installer targets** who want a structured spec-driven loop and are willing to validate runtime-specific behavior.
 - **Projects that benefit from parallel execution** — multi-module applications, feature-rich products, or codebases where multiple independent tasks can be worked simultaneously.
 - **Developers who value traceability** — atomic commits and verification gates create a clean, auditable history.
 
 ## Not Ideal For
 
-- **Quick bug fixes or small scripts** — the 6-step workflow is overkill for work that takes 15 minutes of direct coding.
+- **Quick bug fixes or small scripts** — the five-step workflow is overkill for work that takes 15 minutes of direct coding.
 - **Teams needing shared coordination** — GSD has no built-in mechanism for team routing, shared decisions, or multi-developer workflows. For that, look at Squad or BMAD.
 - **Enterprise environments requiring governance** — no audit trails, constraint enforcement, or policy-as-code. HVE is the dedicated enterprise approach.
-- **Developers not using Claude Code** — while community ports exist, the primary experience is Claude Code-native.
+- **Teams that require proven cross-runtime parity** — the current evidence verifies installer targets, not equivalent execution semantics.
 
 ## Community & Ecosystem
 
-GSD has one of the largest communities among AI development frameworks, with ~64K GitHub stars and 5,500+ forks. The project is actively maintained (v1.42.3 as of May 2026) with frequent releases. Recent releases strengthened Codex CLI support, made command emission runtime-aware, and added lifecycle guardrails such as planning gates for closed phases and stricter worktree behavior. Community adoption is evidenced by technical deep-dives on codecentric.de and dev.to, LinkedIn testimonials from production users (including a notable case at Whatnot), and community ports for non-Claude-Code environments. Documentation is inline — the ~50 Markdown files that compose the system also serve as its documentation.
+The archived predecessor retains roughly 64.7K stars and 5.5K forks. The active GSD Core successor had roughly 7.9K stars and 550 forks on August 8, 2026. Report these as separate repository snapshots: the migration reset repository metrics even though the project lineage continued. GSD Core is MIT-licensed, publishes through npm, and was current at v1.10.0 on the observation date.
 
 ## Community Ports & Unofficial Adaptations
 
-The GSD ecosystem has expanded beyond its Claude Code origins through both official and community efforts. The official installer (`npx get-shit-done-cc`) now supports `--opencode`, `--codex`, and Gemini CLI flags natively. On the community side, **[gsd-for-cursor](https://github.com/rmindel/gsd-for-cursor)** (76★) provides a full Cursor IDE adaptation with install scripts and a migration guide, while **[gsd-pro](https://github.com/itsjwill/gsd-pro)** (66★) is an enhanced fork adding multi-model routing, rollback/recovery, and adaptive context management.
-
-A grassroots Copilot effort exists via Kilo Code (documented on Reddit) but has no standalone published repo. No dedicated ports exist yet for Windsurf or Roo Code.
+The GSD Core installer now names Cursor, Copilot, and Windsurf among its targets, reducing the role of older community ports. Whether `gsd-for-cursor`, `gsd-pro`, or other adaptations tracked the migration was not verified in this refresh. Treat old port guidance and the frozen `get-shit-done-cc` package as migration-era material.
 
 ## Comparison Notes
 
-**vs. BMAD:** Both are spec-driven, but GSD is lighter — ~50 Markdown files vs. BMAD's 12+ specialized agents and 34+ workflows. GSD focuses on context engineering and parallel execution; BMAD emphasizes structured agile process with distinct phase gates. A community observation: GSD delivers a "solid build in a few hours," while BMAD targets "complex or production-grade" work with heavier upfront investment. GSD is MIT-licensed; BMAD carries a proprietary trademark.
+**vs. BMAD:** Both structure AI-assisted development, but GSD is lighter. GSD focuses on context engineering and planned execution; BMAD emphasizes specialized roles, modules, and agile phase gates. GSD is MIT-licensed; BMAD carries a proprietary trademark.
 
-**vs. Spec Kit:** Both follow spec-driven development. GSD is more opinionated, providing a complete lifecycle (plan → execute → verify → release), while Spec Kit focuses on the specification and planning phases (spec → plan → tasks → implement). GSD is Claude Code-centered but now has meaningful official multi-runtime support; Spec Kit is agent-agnostic, working with Copilot, Claude Code, Gemini CLI, Cursor, Codex CLI, and many more. Spec Kit is backed by GitHub but still pre-1.0 (v0.11.3); GSD is community-driven and more mature.
+**vs. Spec Kit:** Both follow spec-driven development. GSD Core provides a complete Discuss → Plan → Execute → Verify → Ship loop, while Spec Kit focuses on specification and planning artifacts. Both target multiple agents; neither target list alone proves runtime parity. Spec Kit remains pre-1.0, while GSD Core uses a post-migration v1.x line.
 
-**vs. Context Engineering (Practice):** GSD is one of the most explicit implementations of context engineering principles. Its fresh-context-per-task approach directly addresses the context rot problem that context engineering identifies. Where context engineering is a set of principles (curate context, version prompts, manage window limits), GSD is a concrete system that operationalizes those principles for Claude Code specifically.
+**vs. Context Engineering (Practice):** GSD is one of the most explicit implementations of context engineering principles. Its fresh-context-per-task approach directly addresses the context rot problem that context engineering identifies. Where context engineering is a set of principles (curate context, version prompts, manage window limits), GSD is a concrete multi-host system that operationalizes them through capability-negotiated workflows.
 
-**vs. Superpowers:** Both are spec-driven with TDD orientation, but the mechanisms differ. GSD uses runtime-aware commands and a 6-step workflow; Superpowers uses composable behavioral skills that agents load on demand. GSD remains Claude Code-centered with expanding official runtime support; Superpowers officially supports Claude Code, Cursor, Codex, Copilot CLI, Gemini CLI, and OpenCode. Superpowers has roughly 3.5x the GitHub stars (~234K vs. ~64K). GSD's strength is parallel wave execution and context rot prevention; Superpowers' strength is reusable skill modules and comprehensive quality gates (mandatory TDD, two-stage code review). They solve similar problems from different angles — GSD through workflow structure, Superpowers through behavioral enforcement.
+**vs. Superpowers:** GSD Core structures work through a five-step project workflow; Superpowers uses mandatory behavioral skills. GSD's strength is planned execution and context management. Superpowers' strength is reusable enforcement of TDD and review. Repository star counts are not directly comparable because GSD migrated to a new repository.

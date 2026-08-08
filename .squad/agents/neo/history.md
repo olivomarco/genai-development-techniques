@@ -99,3 +99,21 @@
 - Source Markdown stays in place; the build script stages `README.md` as `index.md`, `overview.md`, and every `techniques/*.md` file into `docs-staging/` before MkDocs builds `site/`.
 - GitHub Actions deploys from `main` and `workflow_dispatch` using GitHub Pages artifact/deploy actions.
 - Local verification command used: `python scripts/build_docs.py && mkdocs build --strict` with dependencies from `requirements-docs.txt`.
+
+### 2026-08-08: August Refresh Scope
+- Preserved the methodology-first Tier 1 taxonomy and added a supporting Skills ecosystem layer rather than a new methodology category.
+- Required `mattpocock/skills` as the lead ecosystem profile, pending Trinity verification of scope, portability, provenance, and methodology fit.
+- Bounded market research to nine candidates and retained a strict tool/platform-versus-methodology inclusion boundary.
+- Authorized one new public page, `techniques/skills-ecosystem.md`, plus freshness updates to existing navigation, summary, decision, and deep-dive pages.
+- Set August 8, 2026 as the common observation date and required primary-source claim mapping, Oracle review, link validation, and `mkdocs build --strict`.
+
+### 2026-08-08: Oracle rejection revision
+- Resolved B1–B6 independently under the rejection lockout without reopening passed taxonomy or skills-ecosystem work.
+- Trinity's GSD Core follow-up verified waves, XML task structure, `/gsd-quick`, brownfield onboarding, workstreams, and multi-repo workspaces; the documented default concurrency is 3, not 5+.
+- GSD Core negotiates capabilities across 20 documented host profiles. Claude Code is the deepest integration, while Copilot defaults execution to sequential inline mode.
+- The published GSD Core package has two production dependencies but a substantial payload; dependency count is defensible, the old “~50 Markdown files” claim is not.
+- Removed the unverified iOS-to-Android anecdote everywhere and synchronized dated star language, sentence-case headings, and host-degradation caveats.
+- Strict MkDocs validation passed, and the rendered spectrum retained 101-character box rows.
+
+### 2026-08-08: August refresh orchestration
+- Neo accepted revision responsibility after Oracle's rejection and implemented the B1–B6 corrections with Trinity's GSD Core evidence. Approved final refresh and coordinated cross-agent merges into `.squad/` state.

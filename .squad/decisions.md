@@ -102,3 +102,33 @@ OpenSpec is a lightweight, open-source spec-driven development framework by Fiss
 - All meaningful changes require team consensus
 - Document architectural decisions here
 - Keep history focused on work, decisions focused on direction
+
+---
+
+# Merged inbox — 2026-08-08
+
+The following decision proposals were merged from `.squad/decisions/inbox/` on 2026-08-08 and consolidated into the Squad Decisions ledger. Duplicates were deduplicated and contextual conflicts resolved per Neo's scope guidance.
+
+## neo-august-refresh-scope.md
+**Author:** Neo
+**Date:** 2026-08-08
+**Status:** Accepted (merged)
+
+Summary: Preserve the five-category, methodology-first taxonomy; add a supporting "Skills ecosystem" page (lead: mattpocock/skills) outside the Tier 1 count; require primary-source traceability, Oracle claim review, and strict MkDocs build before completion. Authorized Morpheus to create `techniques/skills-ecosystem.md` and update specified pages; any Tier 1 promotion requires a new scope decision.
+
+## neo-github-pages-docs.md
+**Author:** Neo
+**Date:** 2026-06-21
+**Status:** Accepted (merged)
+
+Summary: Use MkDocs Material with a staging script to publish Markdown source to GitHub Pages. The build stages public Markdown into `docs-staging/`, builds `site/` with MkDocs, and deploys artifacts. Keep source files in place; do not commit generated artifacts.
+
+## trinity-august-market-findings.md
+**Author:** Trinity
+**Date:** 2026-08-08
+**Status:** Proposed → Merged (research findings incorporated)
+
+Summary: Market evidence for August 8, 2026: Agent Skills formalized (agentskills.io), skills CLI / skills.sh pattern, `mattpocock/skills` as an ecosystem profile (not Tier 1), GSD repository migration to `open-gsd/gsd-core`, security/provenance caveats for skills registries, and candidate dispositions for nine verification targets. Recommendations: treat skill packaging as a layer above rules files, prefer install telemetry / release cadence over raw star counts, and add a standing provenance/security caveat.
+
+---
+

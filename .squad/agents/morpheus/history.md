@@ -73,3 +73,12 @@
 - Key writing decision: surface OpenHands, Open SWE, Goose, and Cline as must-consider watchlist candidates rather than new Tier 1 pages until the team confirms a transferable methodology beyond product/platform usage.
 - Keep future freshness passes careful with "broadest" claims: OpenSpec has the widest overall supported-tool list, while Superpowers has broad support within skill-based workflows.
 
+### 2026-08-08: Skills ecosystem and market refresh
+- Added a supporting Skills ecosystem page led by `mattpocock/skills`, while keeping it outside the Tier 1 methodology taxonomy.
+- Distinguished specification, library, registry, installer, curated channel, runtime, and methodology; documented portability limits and the lack of signing, attestation, and lockfile-style pinning.
+- Reframed Agent Skills as a vendor-neutral packaging standard with uneven runtime semantics, not universal execution parity.
+- Updated GSD to the active `open-gsd/gsd-core` successor and preserved the archived repository's metrics as a separate migration snapshot.
+- Kept stable releases, prereleases, and unreleased repository activity separate across OpenSpec, HVE, Squad, and other refreshed pages.
+
+### 2026-08-08: August refresh orchestration
+- Morpheus authored the initial skills-ecosystem draft and the working public-file edits; after Oracle's rejection, Morpheus was locked out of final revision ownership while Neo and Trinity completed the verification and blocker fixes.

@@ -81,3 +81,35 @@
 - BMAD v6.8.0 added `bmad-spec`, `bmad-ux`, Web Bundles for Gemini Gems/ChatGPT Custom GPTs, and alpha UI/dashboard work.
 - Additional projects to consider: OpenHands, Open SWE, Goose, and Cline are strongest “must consider” adjacent candidates; Aider/OpenCode/Continue/Kilo/Pythagora are maybe/substrate candidates; Roo Code needs rebrand/archive follow-up.
 
+
+### 2026-08-08: August Market/Freshness Pass — Skills Ecosystem
+- **CRITICAL: GSD repo `gsd-build/get-shit-done` is ARCHIVED.** Moved to `open-gsd/gsd-core` (MIT, v1.10.0, npm `@opengsd/gsd-core`, ~7.9K★). Workflow changed 6-step → 5-step (Discuss→Plan→Execute→Verify→Ship). Star drop 64.7K→7.9K is migration, NOT decline — always footnote this.
+- **Agent Skills is now a real spec.** `agentskills.io` + `agentskills/agentskills` (Apache-2.0, ~24K★) is vendor-neutral, NOT under `anthropics/`. Anthropic's own repo defers to it. This falsifies our "no standardization emerged" context-engineering claim for the skills layer (still true for rules files).
+- **Key nuance for all future skills claims:** format convergence ≠ runtime parity. skills CLI matrix: basic skills 18/18 agents, `allowed-tools` 16/18, hooks 4/18, `context: fork` 1/18 (Claude Code only). Never infer parity from an install-target list.
+- `.agents/skills/` is the emerging vendor-neutral install path — confirmed independently by vercel-labs/skills CLI and OpenSpec v1.8.0's `agents` target.
+- **skills.sh = `vercel-labs/skills`** (Vercel-operated, MIT, ~28K★, npm `skills` v1.5.22, ~70 agent targets). It is installer + registry + leaderboard + portability layer, but NOT the standard. Uncurated by default (telemetry auto-lists skills); telemetry is opt-OUT.
+- **mattpocock/skills = ecosystem, not methodology.** ~210K★ in 6 months but only 3 contributors. 14.4M installs via skills.sh. README explicitly attacks GSD/BMAD/Spec-Kit for "owning the process." Discrepancy: 35 SKILL.md in repo vs 51 listed on skills.sh — unresolved.
+- **Best framing found:** Superpowers vs mattpocock/skills are opposing philosophies on the SAME SKILL.md primitive — enforce vs adapt. Better than any metric comparison.
+- **Stars are now a broken ranking signal** in this market (Superpowers 269K, mattpocock 210K, anthropics 167K, Spec Kit 126K). Prefer install counts, release cadence, contributor counts.
+- **Security gap is the segment's clearest weakness:** no signing, no attestation, no lockfile pinning anywhere; `allowed-tools` is Experimental; skills bundle executable scripts. skills.sh audits (Gen/Socket/Snyk) have partial coverage and Med Risk verdicts on top skills.
+- Two watchlist repos silently relocated: `All-Hands-AI/OpenHands` → `OpenHands/OpenHands`; `block/goose` → `aaif-goose/goose`.
+- OpenSkills (`numman-ali/openskills`) is DEAD for our purposes — no push since 2026-01-18, superseded, ambiguous name (4+ projects share it), license metadata inconsistent.
+- **HVE counts were all wrong:** repo `main` now has 70 agents / 80 instructions / 67 prompts / 58 SKILL.md (docs said 49/102/63/11). Skills jumped 11→58 — Microsoft is repackaging HVE onto the skills primitive. Latest STABLE is still v3.2.2 (Mar 2026); prereleases run to v3.3.101.
+- Other version moves: Superpowers v6.2.0 (SDD workspace is now plan-scoped `.superpowers/sdd/<plan-basename>/` — old path claim wrong), Spec Kit v0.16.1, OpenSpec v1.8.0, BMAD v6.10.0 (`bmad-automator` DEPRECATED → `bmad-loop`), Squad v0.11.0 (`cast` replaces `hire`).
+- Open SWE has ZERO releases and ZERO tags despite ~10.5K★ — useful maturity tell.
+- **Method note:** GitHub API `full_name` reveals silent org renames when you request the old path. Cheap way to catch relocations — worth doing every freshness pass.
+
+### 2026-08-08: GSD Core capability follow-up (Oracle B4)
+- Full report: `.squad/research/gsd-core-followup-2026-08-08.md`. Primary sources: local clone of `open-gsd/gsd-core` at `main` SHA `b9f5183` + tag `v1.10.0` (`68a04cc`), plus the published npm tarball.
+- **Main ≈ v1.10.0 for all docs cited.** Only `docs/COMMANDS.md` differs (3 unrelated paragraphs). Don't assume main/stable drift without diffing — here it was nil.
+- **VERIFIED as current:** wave-based parallel execution; XML plan/prompt formatting (`docs/FEATURES.md:305` REQ-PLAN-03); `/gsd-quick`; brownfield onboarding (`/gsd-onboard`, ADR-1990, named module + tests — the strongest-evidenced item); `/gsd-workstreams` (ADR-0004); `/gsd-workspace`; `overview.md` "waves for parallelism".
+- **DISPROVED — "5+ agents simultaneously."** Documented default is `max_concurrent_agents: 3` (`docs/CONFIGURATION.md:839` AND the archived repo's own v1.42.3 CONFIGURATION.md:523). The "5+" figure exists in NEITHER repo at any inspected tag — it is downstream embellishment, not archived-era fact. Only "five agents" hit is a *cost warning*.
+- **DISPROVED — "~50 Markdown files and a CLI helper."** npm tarball: 879 files, 486 .md, 337 JS, ~11.2 MB, FOUR declared binaries. Off by ~10x. The defensible replacement claim is **two runtime dependencies** (`@anthropic-ai/claude-agent-sdk`, `ws`).
+- **NOT VERIFIED — iOS-to-Android / 90+ sessions / 23 plans.** Zero hits in gsd-core main, its 567 KB CHANGELOG, or archived READMEs at v1.0.0/v1.10.0/v1.20.0/v1.42.3. Recommend deletion. NOTE: the anecdote is ALSO at `techniques/choosing-your-approach.md:240` — outside B4's line list, so it will survive the fix unless flagged.
+- **Claude-native sub-agent spawning is now WRONG as a mechanism claim.** GSD Core has a 20-host `docs/reference/host-integration-capability-matrix.md` with per-axis cited evidence and 44 `capabilities/` descriptors; dispatch is negotiated, not hardcoded (ADR-1239: "no `runtime===` branch in the scheduler"). Claude Code is still deepest (only `dispatch.isolation: harness-worktree`; sole runtime dep is the Claude Agent SDK).
+- **Best new sourced limitation for our pages: parallelism is not portable.** Copilot forces sequential inline execution regardless of the `parallelization` setting (`gsd-core/workflows/execute-phase.md:23-26,157-159`), and backgrounded Claude Code agents lose wave parallelism entirely (#853, ADR-1143:30). Stronger than the vague "runtime parity not verified" hedge.
+- ADR-1143 (Claude Workflow-tool backend) is still `[Proposed]` and unratified even though the capability shipped — good reminder that shipped ≠ ratified in this repo.
+- **Method that paid off:** clone + `npm pack`/registry `fileCount` beats reading marketing prose for any "footprint" claim; and checking the ARCHIVED repo at an old tag is how you tell "archived-era fact" from "never true anywhere."
+
+### 2026-08-08: August refresh orchestration
+- Trinity supplied the GSD Core verification ledger and primary-source snapshots used by Neo to close Oracle's B4 blocker. Trinity's market findings shaped the Skills ecosystem framing and the nine candidate dispositions.

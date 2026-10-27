@@ -22,7 +22,6 @@ def main() -> None:
     copy_file(ROOT / "README.md", DOCS_STAGING / "index.md")
     copy_file(ROOT / "overview.md", DOCS_STAGING / "overview.md")
     copy_file(ROOT / "methodology.md", DOCS_STAGING / "methodology.md")
-    copy_file(ROOT / "market-updates.md", DOCS_STAGING / "market-updates.md")
 
     techniques_dir = ROOT / "techniques"
     for markdown_file in sorted(techniques_dir.glob("*.md")):

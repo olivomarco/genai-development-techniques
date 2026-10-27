@@ -14,8 +14,6 @@ AI-assisted development is shifting from standalone frameworks toward models, ru
 
 **[Overview and comparison matrix](overview.md)** — Executive summary, full comparison table, and category analysis.
 
-**[Market Updates](market-updates.md)** — Changes recorded in each research pass.
-
 ---
 
 ## Detailed guides
@@ -27,7 +25,6 @@ AI-assisted development is shifting from standalone frameworks toward models, ru
 | [Overview](overview.md) | Executive summary, three-layer model, comparison matrix, and category analysis |
 | [Choosing Your Approach](techniques/choosing-your-approach.md) | Which technique for which situation — by team size, project type, industry, methodology, and task type |
 | [Research Methodology](methodology.md) | How this comparison is researched, inclusion criteria, evidence labels, and update policy |
-| [Market Updates](market-updates.md) | Dated log of research passes and the documentation changes that followed them |
 
 ### Spec-driven development
 

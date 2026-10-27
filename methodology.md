@@ -72,7 +72,7 @@ When sources disagree — a README claim contradicts an issue tracker, or a chan
 
 ## Update process
 
-Updates happen in dated research passes, not on a fixed schedule. Each pass rechecks canonical sources within its scope and records changes in [Market Updates](market-updates.md). Passes happen when enough material has changed to justify one; the site does not track every release as it ships.
+Updates happen in dated research passes, not on a fixed schedule. Each pass rechecks canonical sources within its scope. Passes happen when enough material has changed to justify one; the site does not track every release as it ships.
 
 ## Non-ranking policy
 
@@ -80,4 +80,4 @@ No page assigns an overall score, a star rating across techniques, or a single "
 
 ## Correction and removal policy
 
-If a claim is found to be wrong, outdated beyond the point of being a useful signal, or sourced from content that no longer exists, it is corrected or removed in the next research pass and the change is logged in [Market Updates](market-updates.md). Removals are not silent: a technique dropped from Tier 1 status is noted, with the reason, rather than deleted without explanation.
+If a claim is found to be wrong, outdated beyond the point of being a useful signal, or sourced from content that no longer exists, it is corrected or removed in the next research pass. A technique dropped from Tier 1 status is noted with the reason.

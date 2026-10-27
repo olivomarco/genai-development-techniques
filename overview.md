@@ -226,7 +226,6 @@ Each technique page covers its workflow, strengths, limitations, suitable uses, 
 ## 8. Further reading
 
 - [Research Methodology](methodology.md) — How this comparison is researched, evidence labels, and update policy.
-- [Market Updates](market-updates.md) — Dated log of research passes and documentation changes.
 
 ## 9. Projects to consider next
 

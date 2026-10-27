@@ -1,6 +1,12 @@
 {
   "version": 1,
   "skills": {
+    "diagram-design": {
+      "source": "cathrynlavery/diagram-design",
+      "sourceType": "github",
+      "skillPath": "skills/diagram-design/SKILL.md",
+      "computedHash": "23a05e848a7bf4498f374607aedc8422a9d65ba252ffe201f278b5c8e4990a74"
+    },
     "grill-me": {
       "source": "mattpocock/skills",
       "sourceType": "github",

@@ -38,7 +38,6 @@ nav:
       - Overview: overview.md
       - Choosing your approach: techniques/choosing-your-approach.md
       - Research methodology: methodology.md
-      - Market updates: market-updates.md
   - Techniques:
       - GSD: techniques/gsd.md
       - Spec Kit: techniques/spec-kit.md
@@ -50,11 +49,11 @@ nav:
       - Context engineering: techniques/context-engineering.md
   - Skills and agent frameworks:
       - State of the skills market: techniques/skills-ecosystem.md
+      - Choosing a skills approach: techniques/skills-choosing.md
       - Skill libraries: techniques/skills-libraries.md
       - Orchestrating modes: techniques/skills-orchestrating-modes.md
       - Superpowers: techniques/superpowers.md
       - Distribution and governance: techniques/skills-management.md
-      - Choosing a skills approach: techniques/skills-choosing.md
 
 markdown_extensions:
   - admonition

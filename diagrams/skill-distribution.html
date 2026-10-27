@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Two skill installation paths</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&amp;family=Roboto:wght@400;500;600&amp;family=Roboto+Mono:wght@400;500&amp;display=swap">
+</head>
+<body class="diagram-page">
+  <main>
+    <h1>Two skill installation paths</h1>
+    <figure class="site-diagram">
+      <style>
+        body.diagram-page { margin: 0; padding: 32px; background: #ffffff; color: #212121; font-family: 'Roboto', sans-serif; }
+        .diagram-page main { max-width: 1200px; margin: auto; min-width: 0; }
+        .diagram-page h1 { font: 400 28px 'Instrument Serif', serif; }
+        .site-diagram { --d-paper: #ffffff; --d-surface: #f5f5f5; --d-ink: #212121; --d-muted: #616161; --d-rule: #757575; --d-accent: #4051b5; --d-tint: #eef0fa; margin: 24px 0; max-width: 100%; min-width: 0; color: var(--d-ink); }
+        [data-md-color-scheme="slate"] .site-diagram { --d-paper: #1e2129; --d-surface: #272b35; --d-ink: #e1e1e3; --d-muted: #b3b6be; --d-rule: #9499a6; --d-accent: #9fb7ff; --d-tint: #2c354f; }
+        figure.site-diagram { display: block; container-type: inline-size; width: 100%; }
+        .site-diagram .scroll-hint { display: none; color: var(--d-muted); font: 400 14px/1.5 'Roboto', sans-serif; }
+        @container (max-width: 959px) { .site-diagram .scroll-hint { display: block; } }
+        .site-diagram .diagram-container { width: 100%; overflow-x: auto; }
+        .site-diagram .diagram-container:focus-visible { outline: 2px solid var(--d-accent); outline-offset: 2px; }
+        .site-diagram svg { display: block; width: 100%; min-width: 960px; font-family: 'Roboto', sans-serif; }
+        .site-diagram text { fill: var(--d-ink); font-size: 12px; }
+        .site-diagram .name { font-weight: 600; }
+        .site-diagram .note { fill: var(--d-muted); }
+        .site-diagram .tag { fill: var(--d-muted); font: 400 8px 'Roboto Mono', monospace; letter-spacing: .06em; }
+        .site-diagram .tech { fill: var(--d-muted); font: 400 9px 'Roboto Mono', monospace; }
+        .site-diagram .box { fill: var(--d-paper); stroke: var(--d-rule); }
+        .site-diagram .surface { fill: var(--d-surface); stroke: var(--d-rule); }
+        .site-diagram .focal { fill: var(--d-tint); stroke: var(--d-accent); }
+        .site-diagram .route { fill: none; stroke: var(--d-muted); stroke-width: 1.2; }
+        .site-diagram .rule { stroke: var(--d-rule); stroke-width: .8; }
+        .site-diagram figcaption { margin-top: 12px; color: var(--d-muted); font: 400 14px/1.5 'Roboto', sans-serif; }
+        @media (prefers-color-scheme: dark) {
+          body.diagram-page { background: #1e2129; color: #e1e1e3; }
+          .diagram-page .site-diagram { --d-paper: #1e2129; --d-surface: #272b35; --d-ink: #e1e1e3; --d-muted: #b3b6be; --d-rule: #9499a6; --d-accent: #9fb7ff; --d-tint: #2c354f; }
+        }
+        @media print {
+          .site-diagram .scroll-hint { display: none; }
+          .site-diagram .diagram-container { overflow-x: visible; }
+          .site-diagram svg { min-width: 0; }
+        }
+      </style>
+      <p class="scroll-hint">Scroll horizontally to view the full diagram.</p>
+      <div class="diagram-container" tabindex="0" role="region" aria-label="Skill distribution diagram; scroll horizontally on narrow screens">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="skill-distribution-title skill-distribution-desc">
+          <title id="skill-distribution-title">Two skill installation paths</title>
+          <desc id="skill-distribution-desc">A skill library can reach an agent through a publisher-managed marketplace plugin or an editable CLI-vendored project copy, with different ownership and update policies.</desc>
+          <defs>
+            <marker id="skill-distribution-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0 0 L8 3 L0 6Z" fill="var(--d-muted)"/></marker>
+            <marker id="skill-distribution-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0 0 L8 3 L0 6Z" fill="var(--d-accent)"/></marker>
+            <marker id="skill-distribution-arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0 0 L8 3 L0 6Z" fill="var(--d-accent)"/></marker>
+          </defs>
+          <rect width="960" height="600" fill="var(--d-paper)"/>
+          <path class="route" d="M240 280 H288 Q296 280 296 272 V160 Q296 152 304 152 H360" marker-end="url(#skill-distribution-arrow)"/>
+          <path class="route" d="M240 320 H288 Q296 320 296 328 V416 Q296 424 304 424 H360" marker-end="url(#skill-distribution-arrow)"/>
+          <path class="route" d="M600 152 H680" marker-end="url(#skill-distribution-arrow)"/>
+          <path class="route" d="M600 424 H680" marker-end="url(#skill-distribution-arrow)"/>
+          <rect x="612" y="132" width="56" height="12" rx="2" fill="var(--d-paper)"/>
+          <text x="640" y="141" text-anchor="middle" class="tag">INSTALL</text>
+          <rect x="624" y="404" width="32" height="12" rx="2" fill="var(--d-paper)"/>
+          <text x="640" y="413" text-anchor="middle" class="tag">COPY</text>
+          <rect x="40" y="240" width="200" height="120" rx="6" class="focal"/>
+          <rect x="360" y="104" width="240" height="96" rx="6" class="box"/>
+          <rect x="360" y="376" width="240" height="96" rx="6" class="box"/>
+          <rect x="680" y="104" width="240" height="96" rx="6" class="surface"/>
+          <rect x="680" y="376" width="240" height="96" rx="6" class="surface"/>
+          <text x="140" y="292" text-anchor="middle" class="name">One skill library</text>
+          <text x="140" y="316" text-anchor="middle" class="tech">SKILL.md + resources</text>
+          <text x="376" y="140" class="name">Native marketplace</text>
+          <text x="376" y="168" class="note">Publisher-managed bundle</text>
+          <text x="376" y="412" class="name">Installer CLI</text>
+          <text x="376" y="440" class="tech">npx skills add ...</text>
+          <text x="696" y="140" class="name">Runtime plugin</text>
+          <text x="696" y="168" class="note">Marketplace-specific updates</text>
+          <text x="696" y="412" class="name">Project skill files</text>
+          <text x="696" y="436" class="tech">.agents/skills/</text>
+          <text x="696" y="456" class="note">Editable; manual updates</text>
+          <line x1="40" y1="540" x2="920" y2="540" class="rule"/>
+          <path class="route" d="M40 568 H72" marker-end="url(#skill-distribution-arrow)"/>
+          <text x="88" y="572" class="tech">Alternative installation paths, not sequential stages</text>
+        </svg>
+      </div>
+      <figcaption>Choose one channel per library per agent to avoid duplicates. Marketplace auto-update defaults vary; vendoring only improves reproducibility if you record and pin the source revision.</figcaption>
+    </figure>
+  </main>
+</body>
+</html>

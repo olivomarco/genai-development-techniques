@@ -22,6 +22,8 @@ Choose an approach based on the task, coordination needs, and governance require
 
 The comparison distinguishes three layers:
 
+[Diagram: The three-layer model](diagrams/three-layer-model.html)
+
 1. **Model capability** — what the underlying LLM can reason about, plan, and execute reliably, holding everything else constant.
 2. **Execution runtime / harness** — the tool loop around the model: context assembly, tool calls, retries and recovery, permissions, sandboxing, and state across turns. This layer itself spans a range:
    - **No harness** — direct API calls; the caller writes the loop.
@@ -147,35 +149,23 @@ Some libraries also add routing. `pstack/poteto-mode`, distributed in the `pstac
 
 OpenSpec sits between Superpowers and Spec Kit in this comparison: it adds change-level specifications but is lighter and more change-centric than Spec Kit's project-level phase gates.
 
-```text
-                        COMPLEXITY vs. SPEED SPECTRUM
-                        ─────────────────────────────
+[Diagram: Complexity vs. speed spectrum](diagrams/technique-spectrum.html)
 
-  Less Setup                                                    More Setup
-  Faster Start                                                  More Structure
-  ◄─────────────────────────────────────────────────────────────────────────►
+The spectrum moves from low-ceremony solo work toward enterprise coordination and governance. It is qualitative: neither startup speed nor predictability was measured on a shared benchmark. Use the comparison matrix for quality gates and predictability rather than reading position as a guarantee.
 
-       │         │              │          │           │          │         │        │         │
-       ▼         ▼              ▼          ▼           ▼          ▼         ▼        ▼         ▼
-  ┌─────────┐┌───────┐   ┌──────────┐┌───────────┐┌──────────┐┌─────────┐┌───────┐┌──────┐┌─────────┐
-  │ Context ││ Ralph │   │   GSD    ││Superpwrs  ││ OpenSpec ││Spec Kit ││ Squad ││ BMAD ││   HVE   │
-  │  Eng.   ││       │   │          ││           ││          ││         ││       ││      ││         │
-  │ ─────── ││ ───── │   │ ──────── ││ ───────── ││ ──────── ││ ─────── ││ ───── ││ ──── ││ ─────── │
-  │ Rules   ││ Bash  │   │5-step    ││Skills +   ││Change-   ││Spec +   ││Multi- ││Full  ││RPI +    │
-  │ files   ││ loop  │   │workflow  ││TDD +      ││centric   ││plan +   ││agent  ││agile ││agents   │
-  │ only    ││       │   │+ waves   ││subagents  ││+deltas   ││tasks    ││+ mem  ││sim   ││+ govern │
-  └─────────┘└───────┘   └──────────┘└───────────┘└──────────┘└─────────┘└───────┘└──────┘└─────────┘
-       │         │              │          │           │          │         │        │         │
-   Minutes    Minutes        Minutes    Minutes     Minutes    Minutes    Hours    Hours   Hours–Days
-       │         │              │          │           │          │         │        │         │
-    Any tool   Any CLI      Multi-tool  Multi-tool  Multi-tool Any tool  Copilot  Any tool  Copilot
+| Approach | Structure added | Typical setup | Tool scope |
+|----------|-----------------|---------------|------------|
+| Context Engineering | Rules files | Minutes | Any tool |
+| Ralph | Bash iteration loop | Minutes | Any AI CLI |
+| GSD | Five-step workflow + execution waves where supported | Minutes | Multi-tool |
+| Superpowers | Skills + TDD + subagents | Minutes | Multi-tool |
+| OpenSpec | Change-centric specs + deltas | Minutes | Multi-tool |
+| Spec Kit | Specs + plans + tasks | Minutes | Multi-tool |
+| Squad | Multiple agents + persistent memory | Hours | Copilot |
+| BMAD | Full agile simulation | Hours | Multi-tool |
+| HVE | RPI + agents + governance | Hours–Days | Copilot |
 
-  ◄── Solo dev, quick projects ──────────────────── Enterprise, governance ──►
-  ◄── Low ceremony ──────────────────────────────── High ceremony ──────────►
-  ◄── Low predictability ───────────────────────── High predictability ─────►
-```
-
-GSD negotiates dispatch against documented host capabilities. The spectrum's “+ waves” label applies where parallel dispatch is available; on Copilot, GSD Core defaults execution to sequential inline mode.
+GSD negotiates dispatch against documented host capabilities. Execution waves apply where parallel dispatch is available; on Copilot, GSD Core defaults execution to sequential inline mode.
 
 ---
 

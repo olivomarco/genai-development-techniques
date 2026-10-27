@@ -56,45 +56,37 @@ You can combine a library, orchestrating mode, or methodology with a specificati
 
 ## Quick decision flowchart
 
-```text
-START: What are you building?
-│
-├─ Quick fix / small task (< 1 hour of work)?
-│   └─→ Context Engineering (rules files) + direct prompting
-│       No framework needed. Write a good copilot-instructions.md / CLAUDE.md.
-│
-├─ Solo project, clear requirements?
-│   ├─ Want to run it overnight / AFK?
-│   │   └─→ Ralph
-│   ├─ Want skills-based methodology with TDD?
-│   │   └─→ Superpowers
-│   ├─ Want structured phases with verification?
-│   │   └─→ GSD Core or Spec Kit
-│   ├─ Want a persistent AI team with memory?
-│   │   └─→ Squad (if Copilot)
-│   └─ Want full agile simulation?
-│       └─→ BMAD
-│
-├─ Team of 2-5, using GitHub?
-│   ├─ Already on Copilot?
-│   │   └─→ Squad
-│   ├─ Mixed tools (Claude Code + Cursor + Copilot)?
-│   │   └─→ BMAD, Spec Kit + Context Engineering, or Superpowers
-│   └─ Want a five-step project workflow?
-│       └─→ GSD
-│
-├─ Team of 5-15, enterprise product?
-│   ├─ Regulated / auditable?
-│   │   └─→ HVE (if on Copilot) or BMAD + custom governance
-│   ├─ GitHub-centric workflow?
-│   │   └─→ Squad + HVE collections
-│   └─ Multi-tool environment?
-│       └─→ BMAD + Context Engineering
-│
-└─ Large org / multiple teams?
-    └─→ HVE + Context Engineering as foundation
-        Add Squad per-team if using Copilot
-```
+[Diagram: Choose a starting approach](../diagrams/approach-selection.html)
+
+For a **quick fix or small task (under one hour)**, start with Context Engineering (rules files) and direct prompting. No framework is needed: write a good `copilot-instructions.md` or `CLAUDE.md`.
+
+**Solo project with clear requirements:**
+
+| Workflow preference | Starting approach |
+|---------------------|-------------------|
+| Overnight / AFK execution | Ralph |
+| Skills-based methodology with TDD | Superpowers |
+| Structured phases with verification | GSD Core or Spec Kit |
+| Persistent AI team with memory | Squad, if using Copilot |
+| Full agile simulation | BMAD |
+
+**Team of 2–5, using GitHub:**
+
+| Situation | Starting approach |
+|-----------|-------------------|
+| Already on Copilot | Squad |
+| Mixed tools: Claude Code, Cursor, Copilot | BMAD, Spec Kit + Context Engineering, or Superpowers |
+| Want a five-step project workflow | GSD |
+
+**Team of 5–15, enterprise product:**
+
+| Situation | Starting approach |
+|-----------|-------------------|
+| Regulated / auditable | HVE if using Copilot, or BMAD + custom governance |
+| GitHub-centric workflow | Squad + HVE collections |
+| Multi-tool environment | BMAD + Context Engineering |
+
+For a **large organization or multiple teams**, use HVE + Context Engineering as a foundation. Add Squad per team if using Copilot.
 
 ---
 

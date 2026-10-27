@@ -86,3 +86,11 @@ These pages cover the infrastructure and libraries that support the techniques a
 **Audience:** Developers, tech leads, and engineering managers evaluating structured approaches to AI-assisted development.
 
 The [Decision Guide](overview.md#4-decision-guide) provides a short selection table.
+
+## Building the site
+
+Install `requirements-docs.txt`, run `python scripts/build_docs.py`, then `mkdocs build --strict`.
+
+Diagram sources live in `diagrams/` as standalone HTML files with inline SVG and CSS. A standalone Markdown link labeled `Diagram: ...` embeds that file's `<figure>` during staging; use `diagrams/name.html` from root pages or `../diagrams/name.html` from technique pages. The original Markdown remains readable outside MkDocs. Figures follow the site's light/dark theme and scroll locally on narrow screens.
+
+Run `python -m unittest discover -s scripts -p 'test_*.py'` to check diagram embedding.

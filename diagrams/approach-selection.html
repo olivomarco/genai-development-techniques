@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Choose a starting approach</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&amp;family=Roboto:wght@400;500;600&amp;family=Roboto+Mono:wght@400;500&amp;display=swap">
+</head>
+<body class="diagram-page">
+  <main>
+    <h1>Choose a starting approach</h1>
+    <figure class="site-diagram">
+      <style>
+        body.diagram-page { margin: 0; padding: 32px; background: #ffffff; color: #212121; font-family: 'Roboto', sans-serif; }
+        .diagram-page main { max-width: 1200px; margin: auto; min-width: 0; }
+        .diagram-page h1 { font: 400 28px 'Instrument Serif', serif; }
+        .site-diagram { --d-paper: #ffffff; --d-surface: #f5f5f5; --d-ink: #212121; --d-muted: #616161; --d-rule: #757575; --d-accent: #4051b5; --d-tint: #eef0fa; margin: 24px 0; max-width: 100%; min-width: 0; color: var(--d-ink); }
+        [data-md-color-scheme="slate"] .site-diagram { --d-paper: #1e2129; --d-surface: #272b35; --d-ink: #e1e1e3; --d-muted: #b3b6be; --d-rule: #9499a6; --d-accent: #9fb7ff; --d-tint: #2c354f; }
+        figure.site-diagram { display: block; container-type: inline-size; width: 100%; }
+        .site-diagram .scroll-hint { display: none; color: var(--d-muted); font: 400 14px/1.5 'Roboto', sans-serif; }
+        @container (max-width: 959px) { .site-diagram .scroll-hint { display: block; } }
+        .site-diagram .diagram-container { width: 100%; overflow-x: auto; }
+        .site-diagram .diagram-container:focus-visible { outline: 2px solid var(--d-accent); outline-offset: 2px; }
+        .site-diagram svg { display: block; width: 100%; min-width: 960px; font-family: 'Roboto', sans-serif; }
+        .site-diagram text { fill: var(--d-ink); font-size: 12px; }
+        .site-diagram .name { font-weight: 600; }
+        .site-diagram .note { fill: var(--d-muted); }
+        .site-diagram .tech { fill: var(--d-muted); font: 400 9px 'Roboto Mono', monospace; }
+        .site-diagram .box { fill: var(--d-paper); stroke: var(--d-rule); }
+        .site-diagram .focal { fill: var(--d-tint); stroke: var(--d-accent); }
+        .site-diagram .route { fill: none; stroke: var(--d-muted); stroke-width: 1.2; }
+        .site-diagram .rule { stroke: var(--d-rule); stroke-width: .8; }
+        .site-diagram figcaption { margin-top: 12px; color: var(--d-muted); font: 400 14px/1.5 'Roboto', sans-serif; }
+        @media (prefers-color-scheme: dark) {
+          body.diagram-page { background: #1e2129; color: #e1e1e3; }
+          .diagram-page .site-diagram { --d-paper: #1e2129; --d-surface: #272b35; --d-ink: #e1e1e3; --d-muted: #b3b6be; --d-rule: #9499a6; --d-accent: #9fb7ff; --d-tint: #2c354f; }
+        }
+        @media print {
+          .site-diagram .scroll-hint { display: none; }
+          .site-diagram .diagram-container { overflow-x: visible; }
+          .site-diagram svg { min-width: 0; }
+        }
+      </style>
+      <p class="scroll-hint">Scroll horizontally to view the full diagram.</p>
+      <div class="diagram-container" tabindex="0" role="region" aria-label="Approach selection tree; scroll horizontally on narrow screens">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="approach-selection-title approach-selection-desc">
+          <title id="approach-selection-title">Choose a starting approach</title>
+          <desc id="approach-selection-desc">Start with rules and direct prompting for a quick fix, or use the detailed recommendations for solo projects, small GitHub teams, enterprise products, and multiple teams.</desc>
+          <defs>
+            <marker id="approach-selection-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0 0 L8 3 L0 6Z" fill="var(--d-muted)"/></marker>
+            <marker id="approach-selection-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0 0 L8 3 L0 6Z" fill="var(--d-accent)"/></marker>
+            <marker id="approach-selection-arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0 0 L8 3 L0 6Z" fill="var(--d-accent)"/></marker>
+          </defs>
+          <rect width="960" height="600" fill="var(--d-paper)"/>
+          <path class="route" d="M200 264 H232 Q240 264 240 256 V112 Q240 104 248 104 H400" marker-end="url(#approach-selection-arrow)"/>
+          <path class="route" d="M200 280 H256 Q264 280 264 272 V208 Q264 200 272 200 H400" marker-end="url(#approach-selection-arrow)"/>
+          <path class="route" d="M200 296 H400" marker-end="url(#approach-selection-arrow)"/>
+          <path class="route" d="M200 312 H256 Q264 312 264 320 V384 Q264 392 272 392 H400" marker-end="url(#approach-selection-arrow)"/>
+          <path class="route" d="M200 328 H232 Q240 328 240 336 V480 Q240 488 248 488 H400" marker-end="url(#approach-selection-arrow)"/>
+          <rect x="40" y="248" width="160" height="96" rx="6" class="focal"/>
+          <rect x="400" y="72" width="320" height="64" rx="6" class="box"/>
+          <rect x="400" y="168" width="320" height="64" rx="6" class="box"/>
+          <rect x="400" y="264" width="320" height="64" rx="6" class="box"/>
+          <rect x="400" y="360" width="320" height="64" rx="6" class="box"/>
+          <rect x="400" y="456" width="320" height="64" rx="6" class="box"/>
+          <text x="120" y="288" text-anchor="middle" class="name">What are you</text>
+          <text x="120" y="308" text-anchor="middle" class="name">building?</text>
+          <text x="416" y="96" class="name">Quick fix / small task (&lt;1 hour)</text>
+          <text x="416" y="116" class="note">Context Engineering + direct prompting</text>
+          <text x="416" y="192" class="name">Solo project, clear requirements</text>
+          <text x="416" y="212" class="note">Choose by workflow preference below</text>
+          <text x="416" y="288" class="name">Team of 2-5, using GitHub</text>
+          <text x="416" y="308" class="note">Match your tools and coordination needs</text>
+          <text x="416" y="384" class="name">Team of 5-15, enterprise product</text>
+          <text x="416" y="404" class="note">Match governance and tool requirements</text>
+          <text x="416" y="480" class="name">Large organization / multiple teams</text>
+          <text x="416" y="500" class="note">HVE + Context Engineering as foundation</text>
+          <line x1="40" y1="548" x2="920" y2="548" class="rule"/>
+          <path class="route" d="M40 568 H72" marker-end="url(#approach-selection-arrow)"/>
+          <text x="88" y="572" class="tech">Scenario route; all workflow choices are retained in the tables below</text>
+        </svg>
+      </div>
+      <figcaption>The tree is an entry point, not a complete decision algorithm. Use the layer check first; team size alone does not determine the right technique.</figcaption>
+    </figure>
+  </main>
+</body>
+</html>

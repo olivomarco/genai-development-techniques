@@ -60,9 +60,7 @@ HVE ships as a VS Code extension and a GitHub repository, both built for the Git
 
 The RPI workflow divides tasks into four phases. Each uses a dedicated AI agent with specialized instructions, with context cleared between phases.
 
-```
-Uncertainty → Knowledge → Strategy → Working Code → Validated Code
-```
+[Diagram: HVE artifacts across four phases](../diagrams/hve-workflow.html)
 
 | Phase | Agent | What It Does | Output |
 |-------|-------|-------------|--------|

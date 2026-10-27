@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The three-layer model</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&amp;family=Roboto:wght@400;500;600&amp;family=Roboto+Mono:wght@400;500&amp;display=swap">
+</head>
+<body class="diagram-page">
+  <main>
+    <h1>The three-layer model</h1>
+    <figure class="site-diagram">
+      <style>
+        body.diagram-page { margin: 0; padding: 32px; background: #ffffff; color: #212121; font-family: 'Roboto', sans-serif; }
+        .diagram-page main { max-width: 1200px; margin: auto; min-width: 0; }
+        .diagram-page h1 { font: 400 28px 'Instrument Serif', serif; }
+        .site-diagram { --d-paper: #ffffff; --d-surface: #f5f5f5; --d-ink: #212121; --d-muted: #616161; --d-rule: #757575; --d-accent: #4051b5; --d-tint: #eef0fa; margin: 24px 0; max-width: 100%; min-width: 0; color: var(--d-ink); }
+        [data-md-color-scheme="slate"] .site-diagram { --d-paper: #1e2129; --d-surface: #272b35; --d-ink: #e1e1e3; --d-muted: #b3b6be; --d-rule: #9499a6; --d-accent: #9fb7ff; --d-tint: #2c354f; }
+        figure.site-diagram { display: block; container-type: inline-size; width: 100%; }
+        .site-diagram .scroll-hint { display: none; color: var(--d-muted); font: 400 14px/1.5 'Roboto', sans-serif; }
+        @container (max-width: 959px) { .site-diagram .scroll-hint { display: block; } }
+        .site-diagram .diagram-container { width: 100%; overflow-x: auto; }
+        .site-diagram .diagram-container:focus-visible { outline: 2px solid var(--d-accent); outline-offset: 2px; }
+        .site-diagram svg { display: block; width: 100%; min-width: 960px; font-family: 'Roboto', sans-serif; }
+        .site-diagram text { fill: var(--d-ink); font-size: 12px; }
+        .site-diagram .name { font-weight: 600; }
+        .site-diagram .heading { font-size: 14px; font-weight: 600; }
+        .site-diagram .note { fill: var(--d-muted); }
+        .site-diagram .tag { fill: var(--d-muted); font: 400 8px 'Roboto Mono', monospace; letter-spacing: .06em; }
+        .site-diagram .tech { fill: var(--d-muted); font: 400 9px 'Roboto Mono', monospace; }
+        .site-diagram .box { fill: var(--d-paper); stroke: var(--d-rule); }
+        .site-diagram .surface { fill: var(--d-surface); stroke: var(--d-rule); }
+        .site-diagram .focal { fill: var(--d-tint); stroke: var(--d-accent); }
+        .site-diagram .route { fill: none; stroke: var(--d-muted); stroke-width: 1.2; }
+        .site-diagram .rule { stroke: var(--d-rule); stroke-width: .8; }
+        .site-diagram figcaption { margin-top: 12px; color: var(--d-muted); font: 400 14px/1.5 'Roboto', sans-serif; }
+        @media (prefers-color-scheme: dark) {
+          body.diagram-page { background: #1e2129; color: #e1e1e3; }
+          .diagram-page .site-diagram { --d-paper: #1e2129; --d-surface: #272b35; --d-ink: #e1e1e3; --d-muted: #b3b6be; --d-rule: #9499a6; --d-accent: #9fb7ff; --d-tint: #2c354f; }
+        }
+        @media print {
+          .site-diagram .scroll-hint { display: none; }
+          .site-diagram .diagram-container { overflow-x: visible; }
+          .site-diagram svg { min-width: 0; }
+        }
+      </style>
+      <p class="scroll-hint">Scroll horizontally to view the full diagram.</p>
+      <div class="diagram-container" tabindex="0" role="region" aria-label="Three-layer model diagram; scroll horizontally on narrow screens">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="three-layer-model-title three-layer-model-desc">
+          <title id="three-layer-model-title">The three-layer model</title>
+          <desc id="three-layer-model-desc">Model capability supports the execution runtime, with an optional development methodology adding coordination and decision traceability above it.</desc>
+          <defs>
+            <marker id="three-layer-model-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0 0 L8 3 L0 6Z" fill="var(--d-muted)"/></marker>
+            <marker id="three-layer-model-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0 0 L8 3 L0 6Z" fill="var(--d-accent)"/></marker>
+            <marker id="three-layer-model-arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0 0 L8 3 L0 6Z" fill="var(--d-accent)"/></marker>
+          </defs>
+          <rect width="960" height="600" fill="var(--d-paper)"/>
+          <text x="160" y="76" class="note">Start with capability and runtime; add process for a demonstrated gap.</text>
+          <path class="route" d="M112 448 V112" marker-end="url(#three-layer-model-arrow)"/>
+          <rect x="160" y="112" width="640" height="96" rx="6" class="focal"/>
+          <rect x="160" y="232" width="640" height="96" rx="6" class="box"/>
+          <rect x="160" y="352" width="640" height="96" rx="6" class="surface"/>
+          <text x="184" y="148" class="tag">03</text>
+          <text x="232" y="148" class="heading">Development methodology</text>
+          <text x="232" y="176" class="note">Coordination, sequencing, artifacts, and decision traceability</text>
+          <text x="184" y="268" class="tag">02</text>
+          <text x="232" y="268" class="heading">Execution runtime / harness</text>
+          <text x="232" y="296" class="note">Context, tools, recovery, permissions, and state across turns</text>
+          <text x="184" y="388" class="tag">01</text>
+          <text x="232" y="388" class="heading">Model capability</text>
+          <text x="232" y="416" class="note">Reasoning, planning, and execution reliability</text>
+          <text x="160" y="488" class="note">Skills supply reusable expertise in the runtime and methodology layers.</text>
+          <line x1="40" y1="540" x2="920" y2="540" class="rule"/>
+          <rect x="40" y="560" width="12" height="12" rx="2" class="focal"/>
+          <text x="64" y="570" class="tech">Optional process layer</text>
+          <rect x="352" y="560" width="12" height="12" rx="2" class="box"/>
+          <text x="376" y="570" class="tech">Underlying capability and execution</text>
+        </svg>
+      </div>
+      <figcaption>These are different responsibilities, not competing products. Controls should scale with the task's risk and autonomy.</figcaption>
+    </figure>
+  </main>
+</body>
+</html>

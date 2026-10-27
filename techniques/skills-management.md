@@ -31,6 +31,8 @@ The shared `.agents/skills/` path is an emerging vendor-neutral convention indep
 
 Two structurally different distribution channels now coexist:
 
+[Diagram: Two skill installation paths](../diagrams/skill-distribution.html)
+
 | | Native plugin marketplace | CLI-vendored copy |
 |---|---|---|
 | Example | Claude Code, GitHub Copilot, and Codex plugin marketplaces | skills.sh's `npx skills add ...`, `npx skills@latest update` |

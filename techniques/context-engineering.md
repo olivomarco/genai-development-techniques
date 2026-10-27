@@ -53,6 +53,7 @@ Context engineering is not a framework, a tool, or a product. It is a cross-cutt
 ## Core Concepts
 
 - **Context rot** — The gradual degradation of AI output quality as context windows fill up during long sessions. This is the core problem that every framework in this comparison attempts to solve, whether through fresh windows (GSD, Ralph), phased workflows (HVE), or structured memory files (Squad).
+- **Where this sits in the three-layer model** — Context engineering operates inside the execution runtime/harness and development methodology layers of the [three-layer model](../overview.md#the-three-layer-model-model-runtime-methodology) (model capability → runtime/harness → methodology). Rules files and skills are layer-two and layer-three artifacts riding on top of layer-one model capability: the model still has to apply what the context describes. This is a different axis from the 8-layer context model below, which describes *where context comes from* within a single session rather than which architectural layer manages it.
 - **The 8-layer context model** — Context arrives at an AI agent through multiple layers, each under different control:
   1. **System/platform instructions** (set by the AI provider)
   2. **Organization rules** (set by IT/admin)
@@ -80,6 +81,8 @@ Context engineering operates through rules files — persistent, version-control
 Rules files remain tool-specific, but skills packaging has converged further. [Agent Skills](https://agentskills.io) now defines a vendor-neutral `SKILL.md` format with progressive disclosure: discovery, activation, then execution. The shared `.agents/skills/` path is also emerging through the `skills` CLI and OpenSpec's vendor-neutral `agents` target.
 
 This convergence applies to packaging, not complete execution semantics. In the `skills` CLI compatibility matrix observed on August 8, 2026, basic skills worked across all 18 compared agents, `allowed-tools` across 16, hooks across 4, and `context: fork` in 1. Treat skills as a portable context-delivery layer with runtime-specific capabilities.
+
+**How much the runtime interprets for you varies by harness.** A thin generic harness such as [`SWE-agent/mini-swe-agent`](https://github.com/SWE-agent/mini-swe-agent) — a deliberately minimal, roughly 100-line agent loop — passes your context through with little independent interpretation. A first-party runtime such as Claude Code or GitHub Copilot applies its own retrieval, summarization, permission checks, and state management on top of whatever rules file you supply ([Claude Code docs](https://code.claude.com/docs/en/overview)). Identical `CLAUDE.md` or `copilot-instructions.md` content can therefore behave differently across runtimes — not because the format changed, but because the harness around it does more, or less, on your behalf.
 
 **Practical implementation layers:**
 
@@ -154,3 +157,5 @@ Context engineering is practiced universally but has no single community hub:
 **vs. Superpowers:** Superpowers operationalizes context engineering more thoroughly than most Tier 1 techniques. Its composable skills *are* context engineering — each skill is a behavioral module that shapes the AI's context with methodology, constraints, and workflow patterns. The token-light bootstrap (~2K tokens) and lazy skill loading via CLI search demonstrate advanced context budget management. Where context engineering is the theory, Superpowers turns it into a skills-based system that enforces TDD, code review, and systematic development across multiple tools.
 
 **vs. the skills ecosystem:** Context engineering is the broad discipline. [Agent Skills and skill libraries](skills-ecosystem.md) package selected context into discoverable, reusable units. A library delivers capabilities; a methodology such as Superpowers adds sequencing and enforcement.
+
+**vs. the three-layer model:** Context engineering is not itself a runtime or a methodology — it's the practice of curating what layer two (the runtime) and layer three (the methodology) feed to layer one (the model). See the [overview's three-layer model](../overview.md#the-three-layer-model-model-runtime-methodology) for how model capability, execution runtime, and development methodology interact, and the [decision rule in Choosing Your Approach](choosing-your-approach.md#layer-check-model-runtime-or-methodology-first) for when a rules file is enough versus when it needs a methodology layered on top.

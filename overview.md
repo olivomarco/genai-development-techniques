@@ -10,6 +10,32 @@ The comparison retains ten Tier 1 approaches across five categories, with **cont
 
 The choice between these approaches is not about which is "best" — it's about matching the technique to your situation. A solo developer prototyping a weekend project has fundamentally different needs than an enterprise team shipping regulated software with audit requirements. This document provides the data and decision frameworks to make that match.
 
+### The three-layer model: model, runtime, methodology
+
+Every setup in this comparison stacks three layers, and the techniques below only occupy the top one:
+
+1. **Model capability** — what the underlying LLM can reason about, plan, and execute reliably, holding everything else constant.
+2. **Execution runtime / harness** — the tool loop around the model: context assembly, tool calls, retries and recovery, permissions, sandboxing, and state across turns. This layer itself spans a range:
+   - **No harness** — direct API calls; the caller writes the loop.
+   - **Thin generic harness** — a deliberately minimal, model-agnostic loop, such as [`SWE-agent/mini-swe-agent`](https://github.com/SWE-agent/mini-swe-agent), a roughly 100-line agent built as a hackable research baseline rather than a product.
+   - **First-party runtime** — a vendor-maintained product such as Claude Code, Codex CLI, or GitHub Copilot, which bundles tool access, sandboxing, approval modes, and multi-turn state behind a single surface.
+3. **Development methodology** — the structured process layered on top: GSD's phases, Squad's charters, HVE's RPI workflow, BMAD's agile simulation, and so on. This is what the rest of this document compares, including the fourth harness variant: an **opinionated methodology**, which adds mandatory sequencing or enforcement (Superpowers' mandatory skills, HVE's constraint-based gates) on top of whichever runtime executes it.
+
+**Calibrated thesis.** As frontier models improve, the marginal value of rigid, prescriptive workflow choreography keeps shrinking for bounded, well-specified, independently verifiable repository tasks — a capable model inside a competent runtime increasingly handles planning and tool sequencing that used to require an explicit methodology layer. This does not mean execution harnesses become unnecessary, and it does not mean every harness is thin. First-party runtimes often make context management, tool loops, recovery, permissions, and state *less visible* rather than absent: Claude Code and Codex CLI still manage sandboxing, approval modes, and conversation state on your behalf ([Claude Code docs](https://code.claude.com/docs/en/overview); [Codex CLI](https://github.com/openai/codex)) — they just don't require you to write that logic yourself the way a thin harness does. The practical shift is in where structure lives, not whether it exists.
+
+**What the headline numbers do and don't say.** Metrics like METR's time-horizon figures measure task *difficulty at a fixed success threshold* — the length of task, measured by human completion time, that a model can complete with a given reliability (commonly 50%) — not unattended wall-clock autonomy and not merge-ready repository work. METR fits a logistic success curve against human task duration and reports where that curve crosses the chosen probability; the method says nothing about whether a human reviewer would accept the output. METR's companion study of SWE-bench Verified PRs found that roughly half of patches that passed the automated grader were not actually merged by real maintainers, even after adjusting for noise in human review, because benchmark graders don't catch regressions, style drift, or incomplete fixes, and agents — unlike human contributors — were not given a chance to revise after feedback. Treat any single capability figure (time horizon, benchmark score, vendor-reported repository result) as one data point about task difficulty, not a verdict on unattended autonomy or mergeability.
+
+**Current examples, with caveats.** GPT-6 Astra and Claude Opus 5.5 are the current frontier models most often cited for strong repository-task results. Both caveats apply equally: their headline repository numbers are harness-mediated — produced inside each vendor's own agent scaffold rather than a bare model call — so a result reflects the runtime as much as the model. We found no authoritative same-harness, same-benchmark comparison between the two, and no independent METR-style time-horizon figure published for either exact model at the time of writing. Read vendor-reported repository scores as a lower-confidence, harness-entangled signal, not a calibrated, independently reproduced capability measurement.
+
+**A practical decision rule:**
+
+1. Start with the model and its native runtime (Claude Code, Codex CLI, Copilot, or similar) — for a bounded, well-specified, verifiable task, this is often sufficient on its own.
+2. Add skills when the gap is reusable expertise the model doesn't reliably apply — a missing convention, a domain pattern, a house style.
+3. Add a methodology when the gap is coordination or decision traceability — multiple agents, multiple people, or a need to reconstruct *why* a change was made.
+4. Strengthen controls — governance, audit trails, approval gates, cost caps — as autonomy, task duration, blast radius, or compliance risk rises, not by default.
+
+This rule doesn't replace the comparison below; it explains when reaching for a row in it is worth the overhead that row documents. See [Choosing Your Approach](techniques/choosing-your-approach.md#layer-check-model-runtime-or-methodology-first) for this rule applied scenario by scenario.
+
 ---
 
 ## 2. Comparison matrix
@@ -48,7 +74,7 @@ Frameworks with GitHub repositories — star growth over time:
 
 > **For a comprehensive decision guide by team size, project type, industry, and development activity, see [Choosing Your Approach](techniques/choosing-your-approach.md).**
 >
-> The table below is a quick reference. The full guide covers solo developers, teams of 3, teams of 10, regulated environments (finance, healthcare, government), agile workflows, brownfield vs. greenfield, and more.
+> The table below is a quick reference. The full guide covers solo developers, teams of 3, teams of 10, regulated environments (finance, healthcare, government), agile workflows, brownfield vs. greenfield, and more. Before picking a row, run the [layer check](techniques/choosing-your-approach.md#layer-check-model-runtime-or-methodology-first): confirm the model and its native runtime can't already do the job before adding a methodology on top.
 
 | If you want... | Use | Why |
 |----------------|-----|-----|

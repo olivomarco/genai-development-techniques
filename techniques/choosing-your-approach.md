@@ -10,6 +10,7 @@ Each technique page in this repo covers **what** a technique is and **how** it w
 
 Jump to the scenario that matches your situation:
 
+- [Layer Check: Model, Runtime, or Methodology First?](#layer-check-model-runtime-or-methodology-first) — Place your situation in the stack before picking a row below
 - [By Team Size](#by-team-size) — Solo, small team, medium team, large organization
 - [By Project Type](#by-project-type) — Greenfield, brownfield, prototype, migration
 - [By Industry & Compliance](#by-industry-compliance) — Regulated environments, auditable systems
@@ -17,6 +18,23 @@ Jump to the scenario that matches your situation:
 - [By Development Methodology](#by-development-methodology) — Agile/Scrum, Kanban, waterfall-adjacent
 - [Choosing Within the Skills Ecosystem](#choosing-within-the-skills-ecosystem) — Composable libraries, lifecycle libraries, orchestrating modes, methodologies, and how to evaluate any of them
 - [Quick Decision Flowchart](#quick-decision-flowchart) — Don't want to read? Start here.
+
+---
+
+## Layer Check: Model, Runtime, or Methodology First?
+
+Before matching a row in the tables below, place your situation in the [three-layer model](../overview.md#the-three-layer-model-model-runtime-methodology): model capability, execution runtime/harness, and development methodology. The techniques in this repo are all methodology-layer choices — but a methodology is not always the layer that's missing.
+
+Frontier models running inside a first-party runtime (Claude Code, Codex CLI, GitHub Copilot) increasingly handle bounded, well-specified, independently verifiable repository tasks without a prescriptive workflow bolted on top. That doesn't mean the runtime disappears: it still assembles context, loops on tools, recovers from errors, and enforces permissions — a first-party runtime just makes that work less visible than a thin generic harness like [`SWE-agent/mini-swe-agent`](https://github.com/SWE-agent/mini-swe-agent) does.
+
+Work through this order before adding anything:
+
+1. **Model + native runtime first.** Start with the frontier model you have and its own CLI or IDE integration. For a task that's bounded, well-specified, and independently verifiable (tests, lint, a clear diff), this is frequently enough on its own — no framework required.
+2. **Add skills when expertise is missing.** If the model keeps missing a convention, a domain pattern, or house style it can't infer from the repo, a skill (or a rules file — see [Context Engineering](context-engineering.md)) closes that gap without adding process.
+3. **Add a methodology when coordination or traceability is missing.** If the task spans multiple agents, multiple people, or needs a reconstructable record of *why* a decision was made, that's the signal to adopt GSD, Squad, BMAD, HVE, or another Tier 1 technique from this comparison.
+4. **Strengthen controls as risk rises.** Governance, audit trails, approval gates, and cost caps should scale with autonomy, task duration, blast radius, and compliance exposure — not be the default starting posture for every task.
+
+This is why "Context Engineering + Ralph" is a reasonable default for a solo quick project in the tables below (model, runtime, and the lightest possible loop), while HVE or Squad only earn their overhead once coordination or governance needs actually appear — see [Anti-Patterns](#anti-patterns-when-not-to-use-a-technique) for what happens when a team skips straight to heavy methodology.
 
 ---
 

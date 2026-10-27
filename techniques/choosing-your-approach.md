@@ -16,7 +16,7 @@ Jump to the scenario that matches your situation:
 - [By Industry & Compliance](#by-industry-compliance) — Regulated environments, auditable systems
 - [By Development Activity](#by-development-activity) — Bug fixes, features, refactoring, tests, docs
 - [By Development Methodology](#by-development-methodology) — Agile/Scrum, Kanban, waterfall-adjacent
-- [Choosing Within the Skills Ecosystem](#choosing-within-the-skills-ecosystem) — Composable libraries, lifecycle libraries, orchestrating modes, methodologies, and how to evaluate any of them
+- [Skills, in Brief](#skills-in-brief) — What kind of skills thing you need, and where the full decision guide lives
 - [Quick Decision Flowchart](#quick-decision-flowchart) — Don't want to read? Start here.
 
 ---
@@ -25,11 +25,11 @@ Jump to the scenario that matches your situation:
 
 Before matching a row in the tables below, place your situation in the [three-layer model](../overview.md#the-three-layer-model-model-runtime-methodology): model capability, execution runtime/harness, and development methodology. The techniques in this repo are all methodology-layer choices — but a methodology is not always the layer that's missing.
 
-Frontier models running inside a first-party runtime (Claude Code, Codex CLI, GitHub Copilot) increasingly handle bounded, well-specified, independently verifiable repository tasks without a prescriptive workflow bolted on top. That doesn't mean the runtime disappears: it still assembles context, loops on tools, recovers from errors, and enforces permissions — a first-party runtime just makes that work less visible than a thin generic harness like [`SWE-agent/mini-swe-agent`](https://github.com/SWE-agent/mini-swe-agent) does.
+Frontier models running inside a first-party runtime (Claude Code, Codex CLI, GitHub Copilot) increasingly handle a task that's bounded, clearly specified, and independently checkable — with tests, lint, or a reviewable diff — without a prescriptive workflow bolted on top. That doesn't mean the runtime disappears: it still assembles context, loops on tools, recovers from errors, and enforces permissions. A first-party runtime just makes that work less visible than a thin generic harness like [`SWE-agent/mini-swe-agent`](https://github.com/SWE-agent/mini-swe-agent) does.
 
 Work through this order before adding anything:
 
-1. **Model + native runtime first.** Start with the frontier model you have and its own CLI or IDE integration. For a task that's bounded, well-specified, and independently verifiable (tests, lint, a clear diff), this is frequently enough on its own — no framework required.
+1. **Model + native runtime first.** Start with the frontier model you have and its own CLI or IDE integration. For a task that's bounded, clearly specified, and independently checkable, this is frequently enough on its own — no framework required.
 2. **Add skills when expertise is missing.** If the model keeps missing a convention, a domain pattern, or house style it can't infer from the repo, a skill (or a rules file — see [Context Engineering](context-engineering.md)) closes that gap without adding process.
 3. **Add a methodology when coordination or traceability is missing.** If the task spans multiple agents, multiple people, or needs a reconstructable record of *why* a decision was made, that's the signal to adopt GSD, Squad, BMAD, HVE, or another Tier 1 technique from this comparison.
 4. **Strengthen controls as risk rises.** Governance, audit trails, approval gates, and cost caps should scale with autonomy, task duration, blast radius, and compliance exposure — not be the default starting posture for every task.
@@ -38,52 +38,19 @@ This is why "Context Engineering + Ralph" is a reasonable default for a solo qui
 
 ---
 
-## Choosing within the skills ecosystem
+## Skills, in brief
 
-Agent Skills is a portable packaging specification, but a skill package is not automatically a development methodology — and "skills" today covers at least six structurally different things. Observation date for this section: October 27, 2026. See the [skills ecosystem guide](skills-ecosystem.md) for full detail on every category below.
+"Skills" covers at least six structurally different things — a specification, composable libraries, lifecycle libraries, orchestrating modes, skill-driven methodologies, and native runtimes/custom catalogs — and a skill package is not automatically a development methodology. The short version:
 
-### What kind of thing are you actually choosing?
+| If you want... | Reach for... |
+|----------------|--------------|
+| A handful of practices you select and adapt yourself | A composable library such as `mattpocock/skills` |
+| Skills mapped to lifecycle stages, without a mandatory gate | A lifecycle library such as `addyosmani/agent-skills` |
+| Automatic request routing across a library's skills | An orchestrating mode such as `pstack/poteto-mode` |
+| A mandatory individual workflow with TDD and review enforcement | A skill-driven methodology — [Superpowers](superpowers.md) |
+| Team-scale coordination or enterprise governance, with skills as one ingredient | A multi-agent/runtime approach — [Squad](squad.md) or [HVE](hve.md) |
 
-| Category | Example | Choose it when... | Trade-off |
-|----------|---------|--------------------|-----------|
-| **Composable skill library** | [`mattpocock/skills`](skills-ecosystem.md) | You want a handful of independently selectable practices (TDD, code review, debugging) that you mix, edit, or ignore | You retain full control, but nothing enforces sequence, coverage, or quality gates |
-| **Lifecycle library** | [`addyosmani/agent-skills`](skills-ecosystem.md) | You want skills organized around development stages (define → plan → build → verify → review → ship) without a mandatory gate between them | Stage-mapped commands give more structure than a composable library, but each command can still be invoked out of order |
-| **Orchestrating mode** | [`pstack/poteto-mode`](skills-ecosystem.md) | You want a dispatcher that reads a request and automatically routes to the right skill or playbook in a library you already use | Adds request-classification logic on top of a library — it has no function of its own if the underlying skills aren't installed |
-| **Skill-driven methodology** | [Superpowers](superpowers.md) | You want a mandatory individual workflow — skills you cannot skip, with TDD and review enforcement built in | Strong discipline, but more ceremony and no team coordination |
-| **Specification framework** | [Spec Kit](spec-kit.md), [OpenSpec](openspec.md), [GSD](gsd.md), [BMAD](bmad.md) | You want project- or change-level artifacts (specs, plans, tasks) to drive what the agent builds, independent of any skills layer | Heavier upfront investment in writing and reviewing specs; skills can be layered on top but don't replace this layer |
-| **Multi-agent / runtime approach** | [Squad](squad.md), [HVE](hve.md) | You want team-scale coordination, persistent memory, or enterprise governance — skills become one ingredient inside a larger runtime | Runtime lock-in (Squad and HVE are both Copilot-only) in exchange for coordination or governance skills alone don't provide |
-
-These categories compose. A specification framework like Spec Kit can install skills as one of its extension types; a multi-agent runtime like Squad can equip individual agents with Superpowers-style skills; an orchestrating mode is only useful layered on a library it can dispatch into. Pick the row that matches your immediate need, then check whether you also need a layer above or below it.
-
-### The market has split into packaging questions — ask these before installing anything
-
-Reusable skills are consolidating from loose file collections into versioned, updatable packages, and that shift created a thin, still-forming management layer. Before adopting any skill library, methodology, or framework extension, check it against these criteria:
-
-| Criterion | Question to ask | Why it matters |
-|-----------|------------------|-----------------|
-| **Packaging** | Is this a semver-versioned release with a changelog, or an unversioned file you're copying? | Versioned packages let you track what changed and roll back; unversioned copies drift silently. |
-| **Update channel** | Does it auto-update through a native plugin marketplace (Claude Code, Copilot, Codex), or do you pull updates manually via a CLI like `npx skills@latest update`? | Auto-update is convenient but hands you upstream changes unreviewed. A vendored copy is reviewable but only as current as your last `update` run. |
-| **Portability** | Does the `SKILL.md` just parse in your runtime, or do the hooks, scripts, and `context: fork` features it depends on actually execute there? | Format portability and behavioral portability are different claims. A skill can install everywhere and *work* almost nowhere beyond its primary runtime. |
-| **Provenance** | Is there signing, attestation, or lockfile-style pinning — or just a repository URL and a star count? | As of this observation date, none of the installers, marketplaces, or libraries profiled on this site provide signing or attestation. Pin a revision if reproducibility matters. |
-| **Evaluation** | Is quality evidence independently verified, or is it vendor-reported release-note testing? | Release notes describing "25/25 runs passed" are the vendor's own test harness, not third-party validation. Treat it as a signal, not proof. |
-| **Dependency completeness** | Does a per-skill install pull everything that skill needs (shared `references/`, scripts, companion skills), or only the named directory? | Partial installs can silently drop shared dependencies — a documented failure mode in at least one lifecycle library's own issue tracker. |
-| **Compatibility** | Is the skill's current version the same across every agent and install path you use it from? | The same library can be current in one runtime's marketplace and stale in a vendored copy you haven't updated — there's no cross-channel version signal today. |
-| **Policy/control** | Who decided whether this auto-updates, and does that match your change-control policy? | Auto-update-by-default (marketplaces) versus manual-update-by-default (vendored copies) is a policy choice. In regulated or audited environments, treat it as a decision to make explicitly, not a detail to inherit from the installer's default. |
-
-### Practical guidance by need
-
-| If you want... | Choose | Trade-off |
-|----------------|--------|-----------|
-| Reusable practices you can mix, edit, or ignore | A composable library such as [`mattpocock/skills`](skills-ecosystem.md) | You retain control, but nothing enforces sequence or quality gates |
-| Skills mapped to lifecycle stages without a full methodology | A lifecycle library such as [`addyosmani/agent-skills`](skills-ecosystem.md) | More structure than a composable library, but each stage command is still independently callable |
-| Automatic request routing across a library's skills | An orchestrating mode such as [`pstack/poteto-mode`](skills-ecosystem.md) | Only useful paired with the library it dispatches into — not a standalone capability |
-| A mandatory individual workflow | [Superpowers](superpowers.md) | Strong TDD and review discipline, with more ceremony |
-| Project- or change-level artifacts driving implementation | A specification framework — [Spec Kit](spec-kit.md) (now past 1.0 at v1.2.3), [OpenSpec](openspec.md), [GSD](gsd.md), or [BMAD](bmad.md) | Heavier upfront spec-writing investment; pick brownfield-first OpenSpec vs. project-level Spec Kit/GSD vs. full-team-simulation BMAD based on scope |
-| Team-scale coordination or enterprise governance | A multi-agent/runtime approach — [Squad](squad.md) (v1.1.0 stable, past 1.0 since October) or [HVE](hve.md) | Copilot lock-in for both; skills become one ingredient inside a larger, heavier runtime |
-| Automatic upstream updates | A native plugin marketplace subscription (Claude Code, Copilot, or Codex) | Convenient, but upstream changes arrive without a local review step |
-| Reviewable and reproducible files | A vendored copy through skills.sh or the `skills` CLI | You own updates, conflicts, and local modifications |
-
-Skills are additive: you can use a library, a lifecycle library, or an orchestrating mode with any Tier 1 methodology or specification framework. Check for duplicate instructions, conflicting workflows, runtime-specific features, and unreviewed scripts — and check the packaging criteria above before you standardize on one.
+These categories compose: you can layer a library, an orchestrating mode, or a methodology on top of any specification framework in this comparison. For the full taxonomy, the packaging and provenance criteria to check before adopting anything, and a complete decision guide with practical trade-offs, see **[Choosing a Skills Approach](skills-choosing.md)** and its companion pages — [State of the Skills Market](skills-ecosystem.md), [Skill Libraries](skills-libraries.md), [Orchestrating Modes](skills-orchestrating-modes.md), and [Distribution and Governance](skills-management.md).
 
 ---
 
@@ -479,7 +446,7 @@ Use Superpowers for individual agent skill development within Squad's team coord
 
 ### Skills library + any methodology
 
-Install selected skills — composable (`mattpocock/skills`), lifecycle-mapped (`addyosmani/agent-skills`), or orchestrated (`pstack/poteto-mode`) — alongside GSD, Spec Kit, OpenSpec, BMAD, Squad, Ralph, or HVE. Prefer a vendored, reviewed copy when reproducibility matters. Native plugin marketplaces reduce update work but require trust in upstream changes. See the [skills ecosystem guide](skills-ecosystem.md) for the full packaging, provenance, and runtime criteria.
+Install selected skills — composable (`mattpocock/skills`), lifecycle-mapped (`addyosmani/agent-skills`), or orchestrated (`pstack/poteto-mode`) — alongside GSD, Spec Kit, OpenSpec, BMAD, Squad, Ralph, or HVE. Prefer a vendored, reviewed copy when reproducibility matters. Native plugin marketplaces reduce update work but require trust in upstream changes. See [Choosing a Skills Approach](skills-choosing.md) and [Distribution and Governance](skills-management.md) for the full packaging, provenance, and runtime criteria.
 
 ---
 

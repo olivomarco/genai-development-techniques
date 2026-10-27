@@ -2,7 +2,11 @@
 
 An evidence-based comparison of techniques, methodologies, and frameworks for structured AI-assisted software development. The focus is on **how humans organize and direct AI coding agents** — not on the AI models or tools themselves.
 
-Reusable skills are consolidating into managed packages distributed through cross-agent CLIs and native plugin marketplaces, and some skill libraries now ship orchestrating modes that read like frameworks. See the [overview](overview.md#1-executive-summary) for what that shift changes about evaluation, provenance, and version control.
+## TL;DR
+
+AI-assisted development is shifting from standalone frameworks toward a managed stack of frontier models, native runtimes, reusable skills, and governance controls. This site is a dated, evidence-based market map of that stack — not a ranking, and not an adoption survey.
+
+Start with [Choosing Your Approach](techniques/choosing-your-approach.md) to match a technique to your situation, read the [Overview](overview.md) for the full comparison and three-layer model, and check [Market Updates](market-updates.md) for what changed in the most recent research pass.
 
 ---
 
@@ -16,11 +20,14 @@ Reusable skills are consolidating into managed packages distributed through cros
 
 ## Deep-dive documents
 
-### Decision guide
+### Guide
 
 | Document | Description |
 |----------|-------------|
+| [Overview](overview.md) | Executive summary, three-layer model, comparison matrix, and category analysis |
 | [Choosing Your Approach](techniques/choosing-your-approach.md) | Which technique for which situation — by team size, project type, industry, methodology, and task type |
+| [Research Methodology](methodology.md) | How this comparison is researched, inclusion criteria, evidence labels, and update policy |
+| [Market Updates](market-updates.md) | Dated log of research passes and the documentation changes that followed them |
 
 ### Spec-Driven Development
 
@@ -65,13 +72,17 @@ Star counts are snapshots observed on October 27, 2026. They are awareness signa
 |-----------|-------------|
 | [Context Engineering](techniques/context-engineering.md) | The practice of structuring project context via rules files across an 8-layer model |
 
-### Skills ecosystem
+### Skills and Agent Frameworks
 
-This supporting market layer is not an eleventh Tier 1 technique or a sixth methodology category.
+This supporting market layer is not an eleventh Tier 1 technique or a sixth methodology category. Superpowers, the layer's lead skill-driven methodology, is profiled above under Skill-Based Development.
 
 | Document | Description |
 |----------|-------------|
-| [Skills ecosystem](techniques/skills-ecosystem.md) | Agent Skills specification, `mattpocock/skills`, `addyosmani/agent-skills`, `pstack/poteto-mode`, skills.sh, Anthropic reference skills, GitHub's Copilot channel, portability, provenance, and selection guidance |
+| [State of the Skills Market](techniques/skills-ecosystem.md) | Market overview, taxonomy, and the shift toward versioned, managed skill packages |
+| [Skill Libraries](techniques/skills-libraries.md) | `mattpocock/skills`, `addyosmani/agent-skills`, `anthropics/skills`, `vercel-labs/agent-skills`, and watchlist collections |
+| [Orchestrating Modes](techniques/skills-orchestrating-modes.md) | `pstack/poteto-mode`, canonical-source and port-drift caveats |
+| [Distribution and Governance](techniques/skills-management.md) | Agent Skills specification, marketplaces vs. vendored installs, provenance, permissions, and rollout guidance |
+| [Choosing a Skills Approach](techniques/skills-choosing.md) | Decision guide across libraries, orchestrating modes, methodologies, and native runtimes |
 
 ---
 

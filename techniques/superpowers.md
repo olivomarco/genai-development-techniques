@@ -152,8 +152,19 @@ The official project added Copilot CLI support natively in v5.0.7, closing the g
 
 **vs. GSD:** Both enforce structured development with fresh task contexts. GSD Core uses a five-step project workflow; Superpowers uses composable, mandatory skills. Repository metrics are not a meaningful adoption comparison because GSD migrated to a new repository.
 
-**vs. BMAD:** BMAD simulates a full agile team with structured phases and ceremonies; Superpowers enhances individual developer effectiveness through behavioral skills. BMAD's strength is process simulation through distinct roles. Superpowers' strength is process internalization through mandatory abilities.
+**vs. BMAD:** BMAD simulates a full agile team with structured phases and ceremonies; Superpowers enhances individual developer effectiveness through behavioral skills. BMAD's strength is process simulation through distinct roles. Superpowers' strength is mandatory skills — TDD and code review you cannot skip.
 
 **vs. Context Engineering:** Superpowers is arguably the most sophisticated implementation of context engineering principles. Skills ARE context engineering — they're Markdown documents that structure what the agent knows and how it behaves. But Superpowers goes further with a complete development workflow, TDD enforcement, subagent management, and a self-improving skill system. Context Engineering is the practice; Superpowers is a fully realized system built on that practice.
 
-**vs. the skills ecosystem:** Superpowers uses the same `SKILL.md` primitive formalized by [Agent Skills](https://agentskills.io), but turns it into an enforced methodology. [`mattpocock/skills`](skills-ecosystem.md) and [`addyosmani/agent-skills`](skills-ecosystem.md) take a different approach: independently selectable or lifecycle-mapped skills with no single mandatory end-to-end enforcement loop like Superpowers' brainstorm → plan → TDD → review chain. Choose Superpowers when you want the framework to constrain execution; choose a library when you want to compose and adapt practices yourself.
+**vs. the skills market:** Superpowers uses the same `SKILL.md` primitive formalized by [Agent Skills](https://agentskills.io), but turns it into an enforced methodology. [`mattpocock/skills`](skills-libraries.md) and [`addyosmani/agent-skills`](skills-libraries.md) take a different approach: independently selectable or lifecycle-mapped skills with no single mandatory end-to-end enforcement loop like Superpowers' brainstorm → plan → TDD → review chain. [`pstack/poteto-mode`](skills-orchestrating-modes.md) is closer in spirit — its dispatch logic also drives the agent into specific skills at specific moments — but that dispatch sits on top of an otherwise-composable library rather than being the entire product the way Superpowers' enforcement is. Choose Superpowers when you want the framework to constrain execution end to end; choose a library, or a library plus an orchestrating mode, when you want to compose and adapt practices yourself.
+
+## Related pages
+
+Superpowers sits in [Skills and Agent Frameworks](skills-ecosystem.md) as the comparison's lead skill-driven methodology — the category where skills stop being optional content and become mandatory workflow controls.
+
+- [State of the Skills Market](skills-ecosystem.md) — the market overview and taxonomy Superpowers is positioned against
+- [Skill Libraries](skills-libraries.md) — composable and lifecycle libraries, for contrast with Superpowers' enforced sequence
+- [Orchestrating Modes](skills-orchestrating-modes.md) — `pstack/poteto-mode`, the category closest in spirit to Superpowers' dispatch behavior
+- [Distribution and Governance](skills-management.md) — installation, versioning, and provenance mechanics shared across the skills layer
+- [Choosing a Skills Approach](skills-choosing.md) — decision guide for picking a methodology versus a library
+- [Context Engineering](context-engineering.md) — the underlying practice Superpowers' skills implement

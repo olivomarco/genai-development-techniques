@@ -2,4 +2,4 @@
 
 **Voice:** Direct
 
-Use US English. Keep technical terms precise. Prefer short paragraphs and evidence-backed comparisons. Avoid hype, canned conclusions, and decorative language.
+Use US English. Keep technical terms precise. Prefer short paragraphs and evidence-backed comparisons. Avoid hype, canned conclusions, and decorative language. Lead with simplicity and clarity.

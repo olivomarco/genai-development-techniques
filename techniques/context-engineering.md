@@ -31,7 +31,7 @@ Context engineering is a universal practice — any agent that supports rules fi
 
 ## Overview
 
-Context engineering is the practice of structuring, curating, and managing the information that fills an AI model's context window during development. It has replaced "prompt engineering" as the core skill for AI-assisted software development. The shift is significant: prompt engineering focuses on crafting individual prompts; context engineering focuses on building systems that consistently deliver the right information to the right agent at the right time.
+Context engineering is the practice of structuring, curating, and managing the information that fills an AI model's context window during development. It has replaced "prompt engineering" as the core skill for AI-assisted software development: prompt engineering focuses on crafting individual prompts, while context engineering focuses on building systems that consistently deliver the right information to the right agent at the right time.
 
 Andrej Karpathy articulated the foundational mental model in June 2025: "The LLM is a CPU, the context window is RAM, and you are the operating system responsible for loading exactly the right information for each task." This framing recast the developer's role — from someone who writes clever prompts to someone who designs information architectures for AI agents.
 
@@ -44,11 +44,11 @@ Context engineering is not a framework, a tool, or a product. It is a cross-cutt
 | ✅ Universal — works with every AI coding tool | ❌ No structure by itself — a practice, not a workflow |
 | ✅ Zero barrier to entry — create a rules file in 5 minutes | ❌ Rules files remain fragmented across tools |
 | ✅ Compounds over time — knowledge accumulates in rules files | ❌ Quality depends entirely on the practitioner's curation |
-| ✅ Foundation for everything else — makes all frameworks better | ❌ No built-in quality gates or enforcement mechanisms |
+| ✅ Foundation for other techniques — GSD, BMAD, Squad, and HVE each implement it differently | ❌ No built-in quality gates or enforcement mechanisms |
 | ✅ Version-controllable — lives in git, reviewed in PRs | ❌ Birgitta Böckeler's warning: "Illusion of control" — AI may still ignore instructions |
 | ✅ Model-portable — principles transfer across LLM families | ❌ Invisible when done well — hard to demonstrate or get buy-in for |
 
-> **In one sentence:** Context engineering is the foundational skill that makes every AI coding approach better — the rules files you write today compound into a project-knowledge system that benefits every session, human and AI alike.
+> **In one sentence:** Context engineering is the foundational skill behind every AI coding framework in this comparison — the rules files, memory structures, and context budgets you design today are what GSD's fresh windows, Squad's charters, and HVE's instructions each build on.
 
 ## Core Concepts
 
@@ -151,6 +151,6 @@ Context engineering is practiced universally but has no single community hub:
 
 **vs. HVE:** HVE implements context engineering through repository-level instruction collections, the RPI phased workflow, and constraint-based governance. HVE's research phase directly applies the context engineering principle that AI should gather verified information before acting. Among the Tier 1 techniques, HVE is the dedicated enterprise implementation of these practices.
 
-**vs. Superpowers:** Superpowers is arguably the most sophisticated implementation of context engineering among the Tier 1 techniques. Its composable skills *are* context engineering — each skill is a behavioral module that shapes the AI's context with methodology, constraints, and workflow patterns. The token-light bootstrap (~2K tokens) and lazy skill loading via CLI search demonstrate advanced context budget management. Where context engineering is the theory, Superpowers operationalizes it into a skills-based system that enforces TDD, code review, and systematic development across multiple tools.
+**vs. Superpowers:** Superpowers operationalizes context engineering more thoroughly than most Tier 1 techniques. Its composable skills *are* context engineering — each skill is a behavioral module that shapes the AI's context with methodology, constraints, and workflow patterns. The token-light bootstrap (~2K tokens) and lazy skill loading via CLI search demonstrate advanced context budget management. Where context engineering is the theory, Superpowers turns it into a skills-based system that enforces TDD, code review, and systematic development across multiple tools.
 
 **vs. the skills ecosystem:** Context engineering is the broad discipline. [Agent Skills and skill libraries](skills-ecosystem.md) package selected context into discoverable, reusable units. A library delivers capabilities; a methodology such as Superpowers adds sequencing and enforcement.

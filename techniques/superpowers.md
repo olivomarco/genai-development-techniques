@@ -10,9 +10,9 @@
 | Author/Org         | Jesse Vincent (obra) / Prime Radiant |
 | License            | MIT                           |
 | First Released     | October 2025                  |
-| Current Version    | v6.2.0 (July 24, 2026)       |
-| Stars / Popularity | ~269,300 stars · 24,000+ forks |
-| Supported Tools    | Claude Code (primary), Cursor, Codex (OpenAI), OpenCode, GitHub Copilot CLI, Gemini CLI — broadly multi-tool |
+| Current Version    | v7.0.1 (October 2026)        |
+| Stars / Popularity | ~306,000 stars (October 27, 2026 snapshot; fork count not independently re-verified this pass) |
+| Supported Tools    | Claude Code (primary), plus Antigravity, Cursor, Codex App, Codex CLI, Devin CLI, Factory Droid, Gemini CLI, GitHub Copilot CLI, Grok Build CLI, Kimi Code, OpenCode, Pi, Qwen Code, Hermes Agent, and Muse — broadly multi-tool, with install depth per tool unverified beyond the documented setup steps |
 
 ## Compatible Coding Agents
 
@@ -35,7 +35,7 @@ Superpowers is a complete software development workflow for coding agents, built
 
 The core insight is that AI coding agents aren't unreliable because they lack capability — they're unreliable because they lack discipline. Superpowers addresses this by giving agents mandatory skills that they must search for and follow before performing any task. When combined with persuasion principles (drawn from Robert Cialdini's research, which has been scientifically validated to work on LLMs), these skills enforce systematic, test-driven development even when the AI would otherwise cut corners.
 
-Superpowers describes itself as "an agentic skills framework & software development methodology." It started as a Claude Code plugin in October 2025 and has since expanded to support Cursor, Codex, OpenCode, Copilot CLI, and Gemini CLI. Its large repository audience is a useful awareness signal, but not proof of production outcomes.
+Superpowers describes itself as "an agentic skills framework & software development methodology." It started as a Claude Code plugin in October 2025 and has since expanded its documented install paths to Antigravity, Cursor, Codex (CLI and App), Devin CLI, Factory Droid, Gemini CLI, Copilot CLI, Grok Build CLI, Kimi Code, OpenCode, Pi, Qwen Code, Hermes Agent, and Muse — one of the broadest tool lists of any technique in this comparison. Its large repository audience is a useful awareness signal, but not proof of production outcomes.
 
 ## Pros & Cons at a Glance
 
@@ -44,9 +44,9 @@ Superpowers describes itself as "an agentic skills framework & software developm
 | ✅ Large community and active release cadence | ❌ No built-in team coordination — single-developer workflow |
 | ✅ Composable, shareable, forkable skills system | ❌ Skills can become stale without deliberate maintenance |
 | ✅ Token-light bootstrap (~2K tokens) with lazy skill loading | ❌ Installing on non-Claude-Code platforms requires manual steps |
-| ✅ Broad multi-tool support (6 tools) for a skills methodology | ❌ Mandatory-skills philosophy may conflict with quick ad-hoc tasks |
+| ✅ Broad multi-tool support (15+ documented install targets) for a skills methodology | ❌ Mandatory-skills philosophy may conflict with quick ad-hoc tasks |
 | ✅ Self-improving — agent learns to create and refine skills | ❌ No enterprise governance, audit trails, or compliance features |
-| ✅ Persuasion-tested skills ensure agent compliance under pressure | ❌ Rapid version iteration (v1→v6 in roughly 10 months) may bring breaking changes |
+| ✅ Persuasion-tested skills ensure agent compliance under pressure | ❌ Rapid version iteration (v1→v7 in roughly 12 months) may bring breaking changes |
 
 > **In one sentence:** Superpowers is a mandatory skill-based methodology that teaches coding agents disciplined, test-driven behavior through composable Markdown skills.
 
@@ -63,6 +63,8 @@ Superpowers describes itself as "an agentic skills framework & software developm
 **Self-Improving Skill System.** The "writing-skills" meta-skill teaches the agent how to create new skills. Users can feed books, documents, or extracted conversation memories to the agent and ask it to "mine for new skills." Skills are pressure-tested (TDD for skills) before being committed.
 
 **Git Worktrees for Parallel Work.** After brainstorming, Superpowers automatically creates a git worktree for the project, enabling parallel tasks on the same repository without clobbering each other.
+
+**Brainstorming, Rebuilt (v7.0.0–v7.0.1).** The brainstorming skill was rebuilt from scratch in v7.0.0: it draws out what you want before proposing anything, plays back its understanding in plain words, and sizes the work (quick task, small chat-agreed change, or full design doc) only after it understands the request. A fresh subagent then reads the resulting design as its future builder and lists open questions in one round, replacing the older spec-document reviewer step. v7.0.1 retuned the opening questions after users found v7.0.0's default prompts formulaic — it now digs into the project or supplied spec before asking anything. v7.0.0 also shipped a native plugin manifest for the Antigravity Marketplace.
 
 ## How It Works
 
@@ -103,10 +105,10 @@ The underlying principles are explicit:
 
 ## Strengths
 
-- **Large community and current releases.** The repository had roughly 269K stars and 24K forks on August 8, 2026, and v6.2.0 shipped on July 24.
+- **Large community and current releases.** The repository had roughly 306K stars on October 27, 2026, and v7.0.1 shipped in October, continuing the project's steady release cadence.
 - **Skills are composable and shareable.** Users can fork, customize, and PR new skills. The skill format (Markdown + YAML frontmatter) is simple enough that anyone can author one.
 - **Token-light bootstrap.** The ~2K token bootstrap keeps initial context minimal. Skills are loaded on demand via CLI search, avoiding the context bloat that plagues heavier frameworks.
-- **Broad multi-tool support.** Claude Code, Cursor, Codex, Copilot CLI, Gemini CLI, and OpenCode. OpenSpec and Spec Kit support more named tools overall, but Superpowers remains broad for a skill-based methodology.
+- **Broad multi-tool support.** Claude Code remains primary, with documented paths to Antigravity, Cursor, Codex, Copilot CLI, Gemini CLI, Devin CLI, Factory Droid, Grok Build CLI, Kimi Code, OpenCode, Pi, Qwen Code, Hermes Agent, and Muse. OpenSpec and Spec Kit support more named tools overall, but Superpowers' list is now broad for a skill-based methodology.
 - **Self-improving system.** The agent can mine books, documents, and conversation histories for new skills. The `writing-skills` meta-skill closes the loop: the system teaches itself how to get better.
 - **TDD enforcement catches quality issues.** The RED-GREEN-REFACTOR cycle is mandatory, not optional. Code written before tests is deleted. This is stricter than most approaches.
 - **Subagent-driven development keeps context fresh.** Each task runs in a fresh subagent context, similar to GSD's approach, preventing context rot across long projects.
@@ -119,7 +121,7 @@ The underlying principles are explicit:
 - **Manual installation on non-Claude-Code platforms.** Installing on Cursor, Codex, or Gemini CLI requires following INSTALL.md instructions or using platform-specific extension mechanisms — not a one-click setup.
 - **Mandatory-skills philosophy adds overhead.** For quick bug fixes or small scripts, the requirement to search for and follow skills before acting may feel heavy-handed.
 - **No enterprise governance.** No audit trails, constraint enforcement, policy-as-code, or compliance features. Enterprise environments should consider HVE.
-- **Rapid version churn.** v1 to v6 in roughly ten months means early adopters may face breaking changes. The skills repo (`obra/superpowers-skills`) was archived in October 2025 as skills moved into the main repo.
+- **Rapid version churn.** v1 to v7 in roughly twelve months means early adopters may face breaking changes — brainstorming alone was rebuilt twice (v7.0.0, then retuned in v7.0.1) inside a few weeks. The skills repo (`obra/superpowers-skills`) was archived in October 2025 as skills moved into the main repo.
 
 ## Best For
 
@@ -127,7 +129,7 @@ The underlying principles are explicit:
 - **Claude Code power users** who want a deeply integrated, skills-based development methodology for their tool.
 - **Teams that want to accumulate and share AI agent knowledge** as versioned, testable, Markdown-based skills.
 - **Projects that benefit from strict TDD enforcement** — the mandatory RED-GREEN-REFACTOR cycle catches regressions early.
-- **Developers using multiple AI tools** who want consistent agent behavior across Claude Code, Cursor, Codex, Copilot CLI, Gemini CLI, and OpenCode.
+- **Developers using multiple AI tools** who want consistent agent behavior across Claude Code and the project's 15+ other documented install targets.
 
 ## Not Ideal For
 
@@ -138,7 +140,7 @@ The underlying principles are explicit:
 
 ## Community & Ecosystem
 
-Superpowers had roughly 269K GitHub stars and 24K forks on August 8, 2026. Created by Jesse Vincent (obra), the framework is maintained with Prime Radiant backing. Version 6.2.0 uses plan-scoped state under `.superpowers/sdd/<plan-basename>/`, then deletes that workspace after a clean final review. Community support is available through Discord and third-party tutorials.
+Superpowers had roughly 306K GitHub stars on October 27, 2026. Created by Jesse Vincent (obra), the framework is maintained with Prime Radiant backing. Version 6.2.0 (superseded by the v7.x line) introduced plan-scoped state under `.superpowers/sdd/<plan-basename>/`, then deletes that workspace after a clean final review. Community support is available through Discord and third-party tutorials.
 
 ## Community Ports & Unofficial Adaptations
 
@@ -154,4 +156,4 @@ The official project added Copilot CLI support natively in v5.0.7, closing the g
 
 **vs. Context Engineering:** Superpowers is arguably the most sophisticated implementation of context engineering principles. Skills ARE context engineering — they're Markdown documents that structure what the agent knows and how it behaves. But Superpowers goes further with a complete development workflow, TDD enforcement, subagent management, and a self-improving skill system. Context Engineering is the practice; Superpowers is a fully realized system built on that practice.
 
-**vs. the skills ecosystem:** Superpowers uses the same `SKILL.md` primitive formalized by [Agent Skills](https://agentskills.io), but turns it into an enforced methodology. [`mattpocock/skills`](skills-ecosystem.md) takes the opposite approach: small, independently selectable skills with no mandatory end-to-end lifecycle. Choose Superpowers when you want the framework to constrain execution; choose a library when you want to compose and adapt practices yourself.
+**vs. the skills ecosystem:** Superpowers uses the same `SKILL.md` primitive formalized by [Agent Skills](https://agentskills.io), but turns it into an enforced methodology. [`mattpocock/skills`](skills-ecosystem.md) and [`addyosmani/agent-skills`](skills-ecosystem.md) take a different approach: independently selectable or lifecycle-mapped skills with no single mandatory end-to-end enforcement loop like Superpowers' brainstorm → plan → TDD → review chain. Choose Superpowers when you want the framework to constrain execution; choose a library when you want to compose and adapt practices yourself.

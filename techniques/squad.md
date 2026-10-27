@@ -10,8 +10,8 @@
 | Author/Org         | Brady Gaster (Microsoft)      |
 | License            | MIT                           |
 | First Released     | 2025                          |
-| Current Version    | v0.11.0 (June 30, 2026)      |
-| Stars / Popularity | ~3,100 stars · 475 forks; repository activity continued after the release |
+| Current Version    | v1.1.0 stable (October 20, 2026); v2.0.0 prerelease channel active (v2.0.0-preview.2) |
+| Stars / Popularity | ~3,300 stars · 490+ forks; repository activity continued after the release |
 | Supported Tools    | GitHub Copilot (CLI and VS Code) |
 
 ## Compatible Coding Agents
@@ -38,7 +38,7 @@ The system applies Conway's Law to AI development: rather than trying to produce
 | Pros | Cons |
 |------|------|
 | ✅ True parallel multi-agent orchestration | ❌ Copilot-only — doesn't work with Claude Code, Cursor, etc. |
-| ✅ Persistent memory across sessions (decisions, history, governed memory) | ❌ Still pre-1.0 (v0.11.0) — expect API changes |
+| ✅ Persistent memory across sessions (decisions, history, governed memory) | ❌ Stable since v1.0.0, but the v2.0.0 prerelease line is already reworking the gh-aw lifecycle — pin a version before standardizing |
 | ✅ Autonomous work management via Ralph (Work Monitor) | ❌ Requires GitHub CLI authentication for full feature set |
 | ✅ Full GitHub lifecycle integration (issues → PRs → merge) | ❌ Node.js dependency for the CLI |
 | ✅ Reviewer rejection protocol enforces genuine review | |
@@ -83,7 +83,7 @@ Squad creates a `.squad/` directory in the repository containing the team's stat
 
 **SDK and state backends.** Squad offers type-safe team configuration through builder functions (`defineTeam()`, `defineAgent()`, `defineRouting()`). The v0.10.0 line added state backend documentation, governed memory, presets, import/export, and broader Copilot CLI skill-path scanning.
 
-**Version 0.11.0.** The current stable release added `squad preset install <source>` for GitHub URLs and local paths, cross-Squad discovery, Copilot App sub-sessions, memory tools through `squad_state`, and slimmer satellite skills. It also replaced `hire` terminology with `cast`; older workflows continue to work. Repository pushes after June 30 represent unreleased activity and should not be described as shipped features.
+**Reaching 1.0.** Squad crossed 1.0.0 on October 3, 2026, after an extended 0.x line (`preset install`, cross-Squad discovery, Copilot App sub-sessions, `squad_state` memory tools, and the `hire` → `cast` terminology change all landed pre-1.0). The v1.1.0 stable release (October 20, 2026) followed with documentation refresh and no breaking API changes. A v2.0.0 prerelease channel (currently `v2.0.0-preview.2`) is active in parallel, hardening **GitHub Agentic Workflows (`gh-aw`)** integration — deterministic upserts, lifecycle state handling, versioned health checks, and a tighter GitHub Actions permissions model for workflows that run Squad unattended. Treat v2.0.0 as a prerelease: pin v1.1.0 for production use until it stabilizes.
 
 Additional features include **Ceremonies** (structured team meetings — design reviews, retrospectives, standups), **Worktree Support** (git worktrees for isolated issue work), **PRD Mode** (ingest product requirement documents as work source), **Human Team Members** (mix AI and human participants), **Per-Agent Model Selection** (a multi-layer system for optimizing cost and quality per task), and a built-in RAI reviewer agent, Rai.
 
@@ -99,7 +99,7 @@ Additional features include **Ceremonies** (structured team meetings — design 
 ## Limitations
 
 - **Copilot-only.** Squad is tightly coupled to the GitHub Copilot ecosystem — CLI and VS Code. It does not work with Claude Code, Cursor, or other AI coding tools directly.
-- **Still pre-1.0.** At v0.11.0, the API and workflow structure may still change. Early adopters should expect iteration.
+- **Stable but young, with a prerelease already in flight.** v1.1.0 is the first stable line, so battle-tested history is short. The parallel v2.0.0 prerelease channel (`gh-aw` lifecycle work) means teams standardizing on Squad should pin a version rather than track `dev`.
 - **Directory overhead.** The `.squad/` directory contains team files, agent charters, histories, decision ledgers, orchestration logs, casting state, and session logs. The setup is automated by the Coordinator, but the infrastructure footprint is nontrivial.
 - **Requires GitHub authentication.** The full feature set (Ralph, issue routing, PR lifecycle) depends on GitHub CLI authentication. Without it, Squad loses its autonomous capabilities.
 - **Node.js dependency.** The CLI requires npm and Node.js, which may be a friction point for teams not already in the Node ecosystem.
@@ -119,7 +119,7 @@ Additional features include **Ceremonies** (structured team meetings — design 
 
 ## Community & Ecosystem
 
-Squad is backed by Brady Gaster at Microsoft and offers a CLI, SDK, documentation site, and workshop materials. Version 0.11.0 merged 104 pull requests from 8 authors and updated its toolchain, including the GitHub Copilot SDK, TypeScript, Vitest, Ink, and OpenTelemetry. The repository had roughly 3.1K stars and 475 forks on August 8, 2026. Its last stable release remained June 30 even though repository activity continued.
+Squad is backed by Brady Gaster at Microsoft and offers a CLI, SDK, documentation site, and workshop materials. The project reached 1.0.0 on October 3, 2026, and v1.1.0 followed on October 20. The repository had roughly 3.3K stars and 490 forks on October 27, 2026. A v2.0.0 prerelease channel is active in parallel, focused on `gh-aw` (GitHub Agentic Workflows) lifecycle integration — issue-triggered teams that open PRs for human merge before their workflows go live.
 
 ## Comparison Notes
 

@@ -4,9 +4,9 @@
 
 ## 1. Executive summary
 
-As of August 8, 2026, AI-assisted development spans structured methodologies, multi-agent frameworks, autonomous loops, enterprise workflows, and a rapidly consolidating skills layer. The central question is no longer whether an agent can write code, but how you direct it with repeatable context, artifacts, verification, and governance.
+As of October 27, 2026, AI-assisted development spans structured methodologies, multi-agent frameworks, autonomous loops, and enterprise workflows. The central question is no longer whether an agent can write code, but how you direct it with repeatable context, artifacts, verification, and governance.
 
-The comparison retains ten Tier 1 approaches across five categories, with **context engineering** as a cross-cutting practice. A separate [skills ecosystem](techniques/skills-ecosystem.md) now covers the Agent Skills specification, libraries, registries, installers, and runtime support. It is supporting market context, not an eleventh technique or a sixth methodology category. Star counts remain dated awareness signals; they do not establish production adoption.
+The comparison retains ten Tier 1 approaches across five categories, with **context engineering** as a cross-cutting practice. Alongside them, the [skills ecosystem](techniques/skills-ecosystem.md) is going through a structural shift: reusable skills are moving from loose file collections toward versioned, updatable packages. Distribution is splitting between cross-agent installer CLIs — skills.sh's `npx skills` vendors editable files into any agent — and native plugin marketplaces that auto-update a managed bundle inside one runtime, such as the Claude Code, GitHub Copilot, and Codex plugin marketplaces. `mattpocock/skills` and `addyosmani/agent-skills` both ship through both paths; you pick one per agent, because installing both duplicates every skill. Some libraries now bundle an orchestrating mode alongside their skills — `pstack/poteto-mode` (canonically the `pstack/` directory in [`cursor/plugins`](https://github.com/cursor/plugins)) reads an incoming request, selects from a set of playbooks, and dispatches the library's other skills as each step needs them — which blurs the line between a skill library and a workflow framework. Evaluation, provenance, compatibility checking, and controlled updates are the management layer this shift is creating, and it remains thin: most of what we examined still lacks signing, attestation, or lockfile-style pinning. None of this makes the skills layer an eleventh technique or a sixth methodology category; it's market infrastructure the methodologies above increasingly plug into. Star counts remain dated awareness signals; they do not establish production adoption.
 
 The choice between these approaches is not about which is "best" — it's about matching the technique to your situation. A solo developer prototyping a weekend project has fundamentally different needs than an enterprise team shipping regulated software with audit requirements. This document provides the data and decision frameworks to make that match.
 
@@ -28,7 +28,7 @@ All scores are derived from the research findings. Where a technique spans a ran
 | **Quality Gates** | Moderate (verification per phase) | Comprehensive (QA agent, readiness checks, retros) | Moderate (analyze + checklist commands) | Moderate (proposal approval, validate --strict, verify command) | Moderate (reviewer rejection protocol, ceremonies) | Basic (tests/linting as backpressure) | Comprehensive (mandatory skills, TDD enforcement, two-stage code review, pressure-tested compliance) | Comprehensive (validated artifacts, lint/build/test, review phase) | None (practice, not a system) |
 | **Governance** | Light | Moderate | Light | Light | Moderate (decisions ledger, reviewer lockout) | None | Light | Heavy (constraint-based, audit trails, policy-as-code) | None |
 | **Learning Curve** | Medium | High | Low–Medium | Low | Medium–High | Low | Medium | High | Low |
-| **Ecosystem Maturity** | Active successor v1.10.0; archived predecessor retained its metrics | v6.10.0; active modules and community | v0.16.1; GitHub-backed, experimental, pre-1.0 | v1.8.0 stable; prerelease channel exists | v0.11.0; pre-1.0, unreleased repo activity continues | Canonical guide is static; ralph-orchestrator v2.10.1 | v6.2.0; large audience and active releases | v3.2.2 stable; v3.3 prereleases and newer repo activity | Established practice; skills packaging now standardized |
+| **Ecosystem Maturity** | Active successor v1.19.0; archived predecessor retained its metrics | v6.12.4; active modules and community | v1.2.3; GitHub-backed, past 1.0, composable extensions | v1.15.0 stable; prerelease channel exists | v1.1.0 stable; v2.0.0 prerelease channel active | Canonical guide is static; ralph-orchestrator v2.10.1 | v7.0.1; large audience and active releases | v3.2.2 stable; v3.3 prereleases and newer repo activity | Established practice; skills packaging now standardized |
 | **Cost** | Free (API costs for AI tool) | Free (API costs for AI tool) | Free (API costs for AI tool) | Free (API costs for AI tool) | Free (API costs for Copilot sub) | Free (API costs — can be high for long loops) | Free (API costs for AI tool) | Free (Copilot subscription) | Free |
 | **Open Source** | Yes (MIT) | Partial (open source, trademark on name) | Yes (GitHub official) | Yes (MIT) | Yes (MIT) | Yes (technique is open; plugin is official) | Yes (MIT) | Yes (MIT) | Yes (community-driven) |
 
@@ -71,15 +71,15 @@ Frameworks with GitHub repositories — star growth over time:
 
 ### Spec-Driven Development — GSD, Spec Kit, OpenSpec
 
-**GSD Core** continues the archived original project with a five-step loop and a multi-runtime installer. **Spec Kit** is GitHub's pre-1.0 project-level specification toolkit at v0.16.1. **OpenSpec** is the v1.8.0 brownfield specialist, using change folders and delta specs. OpenSpec now writes vendor-neutral skills to `.agents/skills/`, but remains a spec-driven methodology rather than a skills library.
+**GSD Core** continues the archived original project with a five-step loop and a multi-runtime installer. **Spec Kit** is GitHub's project-level specification toolkit, now past 1.0 at v1.2.3 with composable extensions for integrations, hooks, and bundled bug-fixing and idea-assessment processes. **OpenSpec** is the v1.15.0 brownfield specialist, using change folders and delta specs, and now ships standalone binaries that don't require Node.js. OpenSpec writes vendor-neutral skills to `.agents/skills/`, but remains a spec-driven methodology rather than a skills library.
 
 ### Skill-Based Development — Superpowers
 
-Superpowers uses skills as mandatory workflow controls. Version 6.2.0 stores review state in plan-scoped `.superpowers/sdd/<plan-basename>/` workspaces and resumes implementers during review-fix loops. This differs from `mattpocock/skills`, which offers independently selectable capabilities without an enforced lifecycle.
+Superpowers uses skills as mandatory workflow controls. Version 7.0.1 rebuilt its brainstorming skill to size work after it understands the request, delegate design review to a subagent that reads the spec as its future builder, and ship as a native Antigravity Marketplace plugin. This differs from `mattpocock/skills`, `addyosmani/agent-skills`, and other independently selectable libraries that offer capabilities without an enforced lifecycle.
 
 ### Multi-Agent Orchestration — Squad, BMAD
 
-**BMAD** uses specialized roles, structured phases, and modules; v6.10.0 added `bmad-loop` and retired or deprecated older automation modules. **Squad** creates parallel agent instances with persistent memory; v0.11.0 added preset installation, cross-Squad discovery, Copilot App sub-sessions, and `cast` terminology. Both trade simplicity for coordination.
+**BMAD** uses specialized roles, structured phases, and modules; v6.12.4 followed v6.12.0, which moved Build's ceremony decision to after it investigates a change and added evidence-backed review triage. **Squad** reached 1.0 in October and sits at v1.1.0 stable, with a v2.0.0 prerelease channel already hardening GitHub Actions workflow (`gh-aw`) lifecycle integration. Both trade simplicity for coordination.
 
 ### Autonomous Iteration — Ralph
 
@@ -87,7 +87,7 @@ Ralph stands alone in its category: a bash one-liner that runs an AI coding agen
 
 ### Enterprise AI-Native SDLC — HVE
 
-HVE is the enterprise end of the spectrum. Its latest stable release remains v3.2.2, while v3.3 prereleases and newer repository activity exist separately. The August 8 repository tree contained 70 agent files, 80 instruction files, 67 prompt files, and 58 `SKILL.md` files; these counts do not describe verified stable-package contents.
+HVE is the enterprise end of the spectrum. Its latest stable release remains v3.2.2, while v3.3 prereleases and newer repository activity exist separately. The August 8 repository tree contained 70 agent files, 80 instruction files, 67 prompt files, and 58 `SKILL.md` files; these counts were not re-verified for this update and should not be read as current stable-package contents.
 
 ### Cross-cutting: Context Engineering
 
@@ -95,7 +95,7 @@ Context engineering remains the foundational practice. Rules files are still fra
 
 ### Skills ecosystem
 
-The [skills ecosystem](techniques/skills-ecosystem.md) sits beside the methodology taxonomy. Agent Skills defines the format; `mattpocock/skills` and `anthropics/skills` supply content; skills.sh provides discovery and installation; runtimes execute the result. Provenance remains immature: the examined surfaces lacked signing, attestation, and lockfile-style pinning.
+The [skills ecosystem](techniques/skills-ecosystem.md) sits beside the methodology taxonomy. Agent Skills defines the format; `mattpocock/skills`, `addyosmani/agent-skills`, and `anthropics/skills` supply content; skills.sh and native plugin marketplaces (Claude Code, Copilot, Codex) provide discovery, installation, and updates; runtimes execute the result. The two distribution paths carry different trade-offs: a plugin marketplace keeps a bundle current automatically but hands upstream changes to you unreviewed, while a CLI-vendored copy (`npx skills@latest add ...`) stays editable but only updates when you ask. Some libraries now blur further into framework territory — `pstack/poteto-mode`, distributed as the `pstack/` directory in [`cursor/plugins`](https://github.com/cursor/plugins), reads a request and dispatches across 23 playbooks and the library's other skills, acting as an orchestrating layer rather than a single capability. Provenance remains immature across all of it: the examined surfaces lacked signing, attestation, and lockfile-style pinning.
 
 ---
 
@@ -146,7 +146,7 @@ Each technique has a dedicated deep-dive document following a consistent templat
 ### Spec-Driven Development
 
 - [GSD (Get Shit Done)](techniques/gsd.md) — Active successor workflow at `open-gsd/gsd-core`; original repository archived.
-- [Spec Kit](techniques/spec-kit.md) — GitHub's experimental SDD toolkit at v0.16.1.
+- [Spec Kit](techniques/spec-kit.md) — GitHub's official SDD toolkit at v1.2.3.
 - [OpenSpec](techniques/openspec.md) — Change-centric SDD with delta specs and broad multi-tool support.
 
 ### Multi-Agent Orchestration
@@ -172,11 +172,11 @@ Each technique has a dedicated deep-dive document following a consistent templat
 
 ### Skills ecosystem
 
-- [Skills ecosystem](techniques/skills-ecosystem.md) — Agent Skills, `mattpocock/skills`, skills.sh, Anthropic reference skills, GitHub's Copilot channel, and trust guidance.
+- [Skills ecosystem](techniques/skills-ecosystem.md) — Agent Skills, `mattpocock/skills`, `addyosmani/agent-skills`, `pstack/poteto-mode`, skills.sh, Anthropic reference skills, GitHub's Copilot channel, and trust guidance.
 
 ## 8. Projects to consider next
 
-These projects are relevant to the August 8, 2026 landscape, but they are not Tier 1 methodologies.
+These projects were relevant to the August 8, 2026 research pass and have not been re-verified for this update; they are not Tier 1 methodologies.
 
 | Priority | Projects | Why to watch |
 |----------|----------|--------------|

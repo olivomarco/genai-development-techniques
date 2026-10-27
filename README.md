@@ -1,6 +1,8 @@
 # GenAI development techniques — comparison
 
-A comprehensive, evidence-based comparison of techniques, methodologies, and frameworks for structured AI-assisted software development. The focus is on **how humans organize and direct AI coding agents** — not on the AI models or tools themselves.
+An evidence-based comparison of techniques, methodologies, and frameworks for structured AI-assisted software development. The focus is on **how humans organize and direct AI coding agents** — not on the AI models or tools themselves.
+
+Reusable skills are consolidating into managed packages distributed through cross-agent CLIs and native plugin marketplaces, and some skill libraries now ship orchestrating modes that read like frameworks. See the [overview](overview.md#1-executive-summary) for what that shift changes about evaluation, provenance, and version control.
 
 ---
 
@@ -22,13 +24,13 @@ A comprehensive, evidence-based comparison of techniques, methodologies, and fra
 
 ### Spec-Driven Development
 
-Star counts are snapshots observed on August 8, 2026. They are awareness signals, not adoption evidence.
+Star counts are snapshots observed on October 27, 2026. They are awareness signals, not adoption evidence.
 
 | Technique | Description | Stars |
 |-----------|-------------|-------|
-| [GSD (Get Shit Done)](techniques/gsd.md) | Spec-driven workflow continued as GSD Core after the original repository was archived | ~7.9K* |
-| [Spec Kit](techniques/spec-kit.md) | GitHub's official toolkit for spec-driven development — specs → plans → tasks | ~126K |
-| [OpenSpec](techniques/openspec.md) | Change-centric SDD with delta specs, broad multi-tool support, and a vendor-neutral skills target | ~64K |
+| [GSD (Get Shit Done)](techniques/gsd.md) | Spec-driven workflow continued as GSD Core after the original repository was archived | ~10.9K* |
+| [Spec Kit](techniques/spec-kit.md) | GitHub's official toolkit for spec-driven development — specs → plans → tasks | ~143K |
+| [OpenSpec](techniques/openspec.md) | Change-centric SDD with delta specs, broad multi-tool support, and a vendor-neutral skills target | ~73K |
 
 \* GSD migrated from an archived repository with ~64.7K stars to `open-gsd/gsd-core`; the successor repository started its own count.
 
@@ -36,14 +38,14 @@ Star counts are snapshots observed on August 8, 2026. They are awareness signals
 
 | Technique | Description | Stars |
 |-----------|-------------|-------|
-| [Squad](techniques/squad.md) | Coordinator-based multi-agent orchestration with persistent memory, casting, and ceremonies | ~3.1K |
-| [BMAD](techniques/bmad.md) | AI-driven agile framework with specialized roles, structured phases, and modular workflows | ~52K |
+| [Squad](techniques/squad.md) | Coordinator-based multi-agent orchestration with persistent memory, casting, and ceremonies | ~3.3K |
+| [BMAD](techniques/bmad.md) | AI-driven agile framework with specialized roles, structured phases, and modular workflows | ~55K |
 
 ### Skill-Based Development
 
 | Technique | Description | Stars |
 |-----------|-------------|-------|
-| [Superpowers](techniques/superpowers.md) | Mandatory skills methodology — TDD, subagent-driven development, and review enforcement | ~269K |
+| [Superpowers](techniques/superpowers.md) | Mandatory skills methodology — TDD, subagent-driven development, and review enforcement | ~306K |
 
 ### Autonomous Iteration
 
@@ -55,7 +57,7 @@ Star counts are snapshots observed on August 8, 2026. They are awareness signals
 
 | Technique | Description | Stars |
 |-----------|-------------|-------|
-| [HVE](techniques/hve.md) | Microsoft ISE's RPI workflow with constraint-based governance and a growing repository-level skills inventory | ~1.3K |
+| [HVE](techniques/hve.md) | Microsoft ISE's RPI workflow with constraint-based governance and a growing repository-level skills inventory | ~1.6K |
 
 ### Cross-cutting
 
@@ -69,7 +71,7 @@ This supporting market layer is not an eleventh Tier 1 technique or a sixth meth
 
 | Document | Description |
 |----------|-------------|
-| [Skills ecosystem](techniques/skills-ecosystem.md) | Agent Skills specification, `mattpocock/skills`, skills.sh, Anthropic reference skills, GitHub's Copilot channel, portability, provenance, and selection guidance |
+| [Skills ecosystem](techniques/skills-ecosystem.md) | Agent Skills specification, `mattpocock/skills`, `addyosmani/agent-skills`, `pstack/poteto-mode`, skills.sh, Anthropic reference skills, GitHub's Copilot channel, portability, provenance, and selection guidance |
 
 ---
 

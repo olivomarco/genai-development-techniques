@@ -10,8 +10,8 @@
 | Author/Org         | open-gsd                      |
 | License            | MIT                           |
 | First Released     | 2025                          |
-| Current Version    | GSD Core v1.10.0 (August 8, 2026) |
-| Stars / Popularity | ~7,900 stars · 550+ forks on the active successor; archived predecessor has ~64,700 stars |
+| Current Version    | GSD Core v1.19.0 (October 26, 2026) |
+| Stars / Popularity | ~10,900 stars · 770+ forks on the active successor; archived predecessor has ~64,200 stars |
 | Supported Tools    | Installer targets include Claude Code, OpenCode, Antigravity CLI, Kimi CLI, Kilo, Codex, Copilot, Cursor, Windsurf, and more |
 
 ## Compatible Coding Agents
@@ -33,7 +33,7 @@ GSD Core documents capability profiles for 20 hosts and negotiates dispatch beha
 
 GSD is a lightweight, spec-driven development system that addresses context rot — the gradual degradation of AI output quality as context windows fill during long sessions. The original [`gsd-build/get-shit-done`](https://github.com/gsd-build/get-shit-done) repository was archived in 2026 with a "GSD Has Moved" notice. Active development continues as **GSD Core** in [`open-gsd/gsd-core`](https://github.com/open-gsd/gsd-core), installed from npm as `@opengsd/gsd-core`.
 
-The core insight is that raw prompting doesn't scale for substantial projects. GSD Core packages a five-step loop — Discuss → Plan → Execute → Verify → Ship — with entry points for new and existing projects. The successor reset the version line from the archived package's v1.42.3 to GSD Core v1.10.0; this is a repository and package migration, not a maturity regression.
+The core insight is that raw prompting doesn't scale for substantial projects. GSD Core packages a five-step loop — Discuss → Plan → Execute → Verify → Ship — with entry points for new and existing projects. The successor reset the version line from the archived package's v1.42.3 to GSD Core v1.10.0 at the split and has since moved to v1.19.0; this is a repository and package migration, not a maturity regression.
 
 ## Pros & Cons at a Glance
 
@@ -88,7 +88,7 @@ GSD also offers **`/gsd-quick`** for ad-hoc tasks that do not need a full phase 
 - **Small runtime dependency tree.** The published package has two production dependencies: `@anthropic-ai/claude-agent-sdk` and `ws`. Its package payload is substantial, so this claim concerns dependencies rather than file count.
 - **Strong parallel execution where the host supports it.** The wave orchestrator groups plans by dependency and parallelizes non-file-overlapping work, with a documented default maximum of three simultaneous agents.
 - **Verification gates close the loop.** Unlike approaches that trust the AI's self-report, GSD verifies against the actual codebase after each phase.
-- **Active successor.** GSD Core released v1.10.0 on August 8, 2026, with multilingual READMEs, a Discord, and CI badges.
+- **Active successor.** GSD Core has shipped steadily since the split, reaching v1.19.0 on October 26, 2026, with multilingual READMEs, a Discord, and CI badges.
 
 ## Limitations
 
@@ -114,7 +114,7 @@ GSD also offers **`/gsd-quick`** for ad-hoc tasks that do not need a full phase 
 
 ## Community & Ecosystem
 
-The archived predecessor retains roughly 64.7K stars and 5.5K forks. The active GSD Core successor had roughly 7.9K stars and 550 forks on August 8, 2026. Report these as separate repository snapshots: the migration reset repository metrics even though the project lineage continued. GSD Core is MIT-licensed, publishes through npm, and was current at v1.10.0 on the observation date.
+The archived predecessor retains roughly 64.2K stars and 5.4K forks. The active GSD Core successor had roughly 10.9K stars and 770 forks on October 27, 2026. Report these as separate repository snapshots: the migration reset repository metrics even though the project lineage continued. GSD Core is MIT-licensed, publishes through npm, and was current at v1.19.0 on the observation date.
 
 ## Community Ports & Unofficial Adaptations
 
@@ -124,7 +124,7 @@ The GSD Core installer now names Cursor, Copilot, and Windsurf among its targets
 
 **vs. BMAD:** Both structure AI-assisted development, but GSD is lighter. GSD focuses on context engineering and planned execution; BMAD emphasizes specialized roles, modules, and agile phase gates. GSD is MIT-licensed; BMAD carries a proprietary trademark.
 
-**vs. Spec Kit:** Both follow spec-driven development. GSD Core provides a complete Discuss → Plan → Execute → Verify → Ship loop, while Spec Kit focuses on specification and planning artifacts. Both target multiple agents; neither target list alone proves runtime parity. Spec Kit remains pre-1.0, while GSD Core uses a post-migration v1.x line.
+**vs. Spec Kit:** Both follow spec-driven development. GSD Core provides a complete Discuss → Plan → Execute → Verify → Ship loop, while Spec Kit focuses on specification and planning artifacts. Both target multiple agents; neither target list alone proves runtime parity. Both are now past 1.0 — Spec Kit crossed on August 21, 2026 (now v1.2.3), and GSD Core uses a post-migration v1.x line (now v1.19.0).
 
 **vs. Context Engineering (Practice):** GSD is one of the most explicit implementations of context engineering principles. Its fresh-context-per-task approach directly addresses the context rot problem that context engineering identifies. Where context engineering is a set of principles (curate context, version prompts, manage window limits), GSD is a concrete multi-host system that operationalizes them through capability-negotiated workflows.
 

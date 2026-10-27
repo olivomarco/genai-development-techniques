@@ -1,6 +1,6 @@
 # Market updates
 
-An append-only log of research passes and the documentation changes that followed them. Newest entries first. See [Research Methodology](methodology.md) for how passes are scoped and what the evidence labels mean.
+A log of research passes and the resulting documentation changes, newest first. New entries are added without replacing earlier records. See [Research Methodology](methodology.md) for scope and evidence labels.
 
 ---
 
@@ -10,9 +10,9 @@ An append-only log of research passes and the documentation changes that followe
 
 - **Skills-market taxonomy expanded.** The skills layer now spans at least six structurally distinct categories: specification, composable library, lifecycle library, orchestrating mode, methodology, and installer/marketplace/curated-channel distribution. See [State of the Skills Market](techniques/skills-ecosystem.md).
 - **Addy Osmani's `addyosmani/agent-skills` and `pstack/poteto-mode` coverage added.** `addyosmani/agent-skills` (v0.6.13) is profiled as a lifecycle library mapping skills to define → plan → build → verify → review → ship stages. `pstack/poteto-mode`, canonically the `pstack/` directory in Cursor's [`cursor/plugins`](https://github.com/cursor/plugins) marketplace repository, is profiled as the category's lead example of an orchestrating mode — a dispatcher that routes requests to a library's other skills rather than acting as a standalone capability. See [Orchestrating Modes](techniques/skills-orchestrating-modes.md).
-- **Skills now ship as managed packages.** Reusable skills are consolidating from loose file collections into versioned, updatable packages. Two channels distribute them: cross-agent installer CLIs (skills.sh's `npx skills`, vendored and reviewable) and native plugin marketplaces (Claude Code, GitHub Copilot, Codex — managed and auto-updating). No surface we examined signs, attests, or lockfile-pins a skill.
-- **Long-horizon model/runtime/methodology distinction reaffirmed.** As frontier models and first-party runtimes absorb more bounded, checkable work, the case for a prescriptive methodology layer narrows for that category of task. Execution runtimes stay necessary, and not every harness is thin. See the three-layer model in the [overview](overview.md#the-three-layer-model-model-runtime-methodology).
-- **Spec Kit and Squad confirmed past 1.0.** Spec Kit is at v1.2.3; Squad reached 1.0 in October 2026 and sits at v1.1.0 stable, with a v2.0.0 prerelease channel active.
+- **Skills now ship as managed packages.** Reusable skills are moving from loose file collections into versioned, updatable packages. Two channels distribute them: cross-agent installer CLIs (skills.sh's `npx skills`, vendored and reviewable) and native plugin marketplaces (Claude Code, GitHub Copilot, Codex — managed and auto-updating). No surface we examined signs, attests, or lockfile-pins a skill.
+- **Model, runtime, and methodology remain separate layers.** As frontier models and first-party runtimes handle more bounded, checkable work, those tasks need less prescriptive methodology. Execution runtimes remain necessary, and not every harness is thin. See the three-layer model in the [overview](overview.md#the-three-layer-model-model-runtime-methodology).
+- **Spec Kit and Squad confirmed past 1.0.** Spec Kit is at v1.2.3; Squad reached 1.0 in October 2026 and is at v1.1.0 stable, with a v2.0.0 prerelease channel active.
 - **Superpowers at v7.0.1.** The brainstorming skill was rebuilt in v7.0.0 and retuned in v7.0.1; a native Antigravity Marketplace plugin manifest shipped alongside.
 - **Framework version refresh (Reported/Signal, per-project labels as stated on each technique page):** GSD Core v1.19.0, OpenSpec v1.15.0, BMAD v6.12.4, HVE v3.2.2 stable with v3.3 prereleases, Ralph's `ralph-orchestrator` at v2.10.1.
 - **Vercel's `vercel-labs/agent-skills`** (a domain-specific skill collection: Vercel/React/Next.js audits, React Native guidance, and writing-handbook checks) is distinct from `vercel-labs/skills`, the CLI behind skills.sh. Both are maintained by Vercel but serve different roles — content versus installer. See [Skill Libraries](techniques/skills-libraries.md).
@@ -28,4 +28,4 @@ An append-only log of research passes and the documentation changes that followe
 
 ---
 
-*Earlier research passes (including the August 8, 2026 pass referenced on several technique pages) predate this log. They are not restated here retroactively; only passes recorded going forward appear as dated entries.*
+Earlier research passes, including August 8, 2026, predate this log and are not listed here.

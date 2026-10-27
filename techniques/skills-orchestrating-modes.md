@@ -2,20 +2,20 @@
 
 > **Observation date:** October 27, 2026. Playbook counts and port parity are not re-verified every pass — treat specific counts as dated.
 
-An orchestrating mode is a dispatcher: it reads an incoming request, classifies it, and routes to a playbook or skill that does the actual work. It has no standalone function — its entire value is the routing logic layered on top of a library it depends on. This is a distinct category from a composable library (see [Skill Libraries](skills-libraries.md)), a lifecycle library, a native runtime, or a methodology, and this page exists to keep those distinctions clear using the category's lead example.
+An orchestrating mode reads a request, classifies it, and selects a playbook or skill. It depends on a library to do the work. Unlike a composable or lifecycle library, it decides which capability to invoke. See [Skill Libraries](skills-libraries.md) for those categories.
 
 ## Lead example: `pstack` / `poteto-mode`
 
 [`pstack`](https://github.com/cursor/plugins/tree/main/pstack) is maintained by Cursor engineer "poteto" (a member of the React core team) and distributed canonically as the `pstack/` directory inside Cursor's official [`cursor/plugins`](https://github.com/cursor/plugins) marketplace repository. Its README positions the project against the "AI writes too much slop code" critique directly: "throughput without quality is not a goal I aspire to. If you want to go fast, go deep first."
 
-The headline capability is **`poteto-mode`**, installed as `/poteto-mode` (or `/pstack:poteto-mode` once namespaced by a host like Claude Code). It is a dispatcher skill that reads the non-negotiables defined in its own `SKILL.md`, classifies the incoming request — architecture decision, parallel fan-out opportunity, contested design, pre-commit, pre-review — and routes to the matching playbook and skill:
+The **`poteto-mode`** skill is installed as `/poteto-mode`, or `/pstack:poteto-mode` in a host namespace such as Claude Code's. It reads the constraints in its `SKILL.md`, classifies the request, and selects a playbook and skill for architecture decisions, parallel work, contested designs, or commit and review checks:
 
 - `architect` — cross-boundary design decisions
 - `swarm` — parallel-agent coverage matrices
 - `arena` — design bakeoffs between competing approaches
 - `interrogate` — multi-model adversarial review before shipping
 
-This read-classify-dispatch loop is the defining trait of the category: `poteto-mode` does nothing on its own. Its value is entirely in routing into `pstack`'s other skills based on context, the same way a lifecycle library's slash commands do work directly.
+`poteto-mode` selects other `pstack` skills based on context; it does not perform their work itself. A lifecycle library's slash commands invoke capabilities directly.
 
 `poteto-mode` dispatches across a documented set of playbooks and the library's other skills — reported at 23 playbooks in prior research and not re-counted this pass. Treat that figure as a signal of scope, not a current, re-verified count.
 
@@ -26,24 +26,30 @@ This read-classify-dispatch loop is the defining trait of the category: `poteto-
 | Cursor (canonical) | `/add-plugin pstack` | The source of truth — other hosts run a generated or adapted copy |
 | Claude Code | `/plugin marketplace add cursor/plugins` then `/plugin install pstack@cursor-plugins` | Auto-update is off by default for third-party marketplaces and must be enabled manually in the marketplaces tab |
 
-Claude Code runs a generated, harness-adapted copy of `pstack` from `harness/pstack/` at the repository root, kept in sync by a generator script the project's CI enforces. This matters for a specific reason: **the canonical source is Cursor-shaped**, and the Claude Code port is a derived artifact, not an independent implementation. A step that needs a Cursor-only feature (Bugbot, Automations) is skipped on Claude Code with a one-line note rather than failing — a documented, intentional port-drift point, not a bug. If you adopt `pstack` outside Cursor, verify against the canonical `cursor/plugins` source when behavior looks off, and don't assume feature parity across hosts just because the generator keeps files in sync.
+Claude Code runs a generated adaptation of `pstack` from `harness/pstack/` at the repository root. CI checks that the generator keeps it in sync with the Cursor source.
+
+Steps requiring Cursor-only features such as Bugbot or Automations are skipped on Claude Code with a one-line note. This is documented behavior, not a failure. Compare unexpected behavior with the canonical `cursor/plugins` source; synchronized files do not establish feature parity.
 
 ## The unrelated "potato-mode" name collision
 
-`pstack/poteto-mode` is unrelated to **[`aryannaio/potato-mode-agent-skill`](https://github.com/aryannaio/potato-mode-agent-skill)**, a resource-aware Agent Skill for Claude Code and Codex that measures available memory, disk, and CPU headroom and recommends conservative worker limits for test runners and build tools on low-spec or already-busy machines. The two projects share a near-identical spoken name ("poteto" vs. "potato") but solve different problems: `poteto-mode` is a request-classification dispatcher that routes work to other skills; `potato-mode` is a single skill that throttles resource usage for the agent's own commands and explicitly does not touch unrelated processes. Don't conflate them when searching, citing, or installing — they are different authors, different repositories, and different categories (orchestrating mode vs. a single composable skill).
+`pstack/poteto-mode` is unrelated to **[`aryannaio/potato-mode-agent-skill`](https://github.com/aryannaio/potato-mode-agent-skill)**. The latter is a skill for Claude Code and Codex that measures memory, disk, and CPU headroom, then recommends conservative test-runner and build-tool worker limits. It limits resources for the agent's own commands and does not touch unrelated processes.
+
+The similar names refer to different authors, repositories, and functions: `poteto-mode` routes requests to skills; `potato-mode` limits resource use.
 
 ## How this differs from adjacent categories
 
 | Compared to... | The difference |
 |---|---|
-| **A composable library** ([Skill Libraries](skills-libraries.md)) | A composable library is a menu you choose from yourself. An orchestrating mode chooses for you, based on a read of the request — it adds a decision layer a library doesn't have. |
+| **A composable library** ([Skill Libraries](skills-libraries.md)) | You select skills from a composable library. An orchestrating mode selects them based on the request. |
 | **A lifecycle library** | A lifecycle library maps skills to fixed stages you invoke by name (`/spec`, `/build`). An orchestrating mode classifies free-form requests and routes dynamically — there's no fixed command per stage. |
 | **A native runtime** | A runtime (Claude Code, Codex CLI, Cursor) executes tool calls and manages sessions; it has no opinion about which skill applies to a request. `poteto-mode` runs inside a runtime and supplies the classification logic the runtime itself doesn't provide. |
-| **A methodology** (such as [Superpowers](superpowers.md)) | A methodology enforces a mandatory sequence end to end — you cannot skip brainstorming before planning. `poteto-mode` dispatches per request but does not own a full development lifecycle the way Superpowers does; it is closer to a methodology in spirit than a library, but its dispatch is layered on top of an otherwise-composable set of skills rather than being the entire product. |
+| **A methodology** (such as [Superpowers](superpowers.md)) | Superpowers prescribes an end-to-end sequence, including brainstorming before planning. `poteto-mode` selects skills per request without owning the full development lifecycle. |
 
 ## Connection to the long-horizon model thesis
 
-Orchestrating modes are a data point for the site's broader three-layer thesis (see the [overview](../overview.md#the-three-layer-model-model-runtime-methodology)), not a counterexample to it. As models get better at classifying a request's shape themselves, some of what a dispatcher like `poteto-mode` does by hand — "is this an architecture decision or a quick fix?" — becomes something a sufficiently capable model handles inside its own reasoning, reducing the need for an explicit routing skill for simple cases. That does not make orchestrating modes, or harnesses generally, obsolete: `poteto-mode`'s value is concentrated in request types where the "right playbook" depends on project-specific judgment (contested designs, cross-boundary architecture) that a generic model call doesn't reliably infer on its own, and the category is still new enough that its long-run durability against model improvement hasn't been tested. Treat orchestrating modes as a bet that dispatch logic remains useful at the margin, not as a permanent architectural requirement.
+Our interpretation follows the [three-layer model](../overview.md#the-three-layer-model-model-runtime-methodology): as models improve at classifying requests, they may need less explicit routing for simple tasks. Routing may remain useful where playbook selection depends on project-specific judgment, such as contested designs or cross-boundary architecture.
+
+The category is too new to establish how long that advantage will last. Adopt an orchestrating mode for a demonstrated routing need, not as a permanent architectural requirement.
 
 ## Related pages
 

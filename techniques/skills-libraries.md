@@ -1,10 +1,10 @@
 # Skill libraries
 
-> **Observation date:** October 27, 2026. Release numbers, skill counts, and install paths move quickly — treat anything not labeled Verified as a snapshot.
+> **Observation date:** October 27, 2026. Release numbers, skill counts, and install paths are dated snapshots, including those labeled Verified.
 
-A skill library supplies content: a collection of `SKILL.md` packages you select, install, and adapt. It is not a methodology — nothing in this category enforces a sequence or a mandatory workflow. For that, see [Superpowers](superpowers.md) or the orchestrating-mode category in [Orchestrating Modes](skills-orchestrating-modes.md). For the operational mechanics of installing, versioning, and governing any of these, see [Distribution and Governance](skills-management.md).
+A skill library is a collection of `SKILL.md` packages you select, install, and adapt. It does not enforce a development sequence. [Superpowers](superpowers.md) adds a mandatory methodology; [Orchestrating Modes](skills-orchestrating-modes.md) select skills based on the request. See [Distribution and Governance](skills-management.md) for installation, versioning, and controls.
 
-This page compares the four libraries with the deepest documentation available to this research pass — `mattpocock/skills`, `addyosmani/agent-skills`, `anthropics/skills`, and `vercel-labs/agent-skills` — and lists two credible watchlist collections.
+This page compares four libraries covered in the research pass: `mattpocock/skills`, `addyosmani/agent-skills`, `anthropics/skills`, and `vercel-labs/agent-skills`. Two other collections appear on the watchlist.
 
 ## At a glance
 
@@ -15,7 +15,7 @@ This page compares the four libraries with the deepest documentation available t
 | [`anthropics/skills`](https://github.com/anthropics/skills) | Anthropic | Reference implementation and demonstration material | Unversioned reference repo (no single semver release tracked) | Mixed — Apache-2.0 for most skills; `docx`, `pdf`, `pptx`, `xlsx` are source-available, not open source |
 | [`vercel-labs/agent-skills`](https://github.com/vercel-labs/agent-skills) | Vercel | Domain-specific — Vercel/React/Next.js/React Native audits and writing-handbook checks | Unversioned at time of observation; distributed via `npx skills add vercel-labs/agent-skills` | MIT (per repository badge) |
 
-Distinct from the content libraries above: [`vercel-labs/skills`](https://github.com/vercel-labs/skills) is the CLI behind [skills.sh](https://skills.sh) — the installer, not a skill collection. The two repositories share a maintainer but serve different roles; don't confuse "Vercel's skills CLI" with "Vercel's skill library."
+[`vercel-labs/skills`](https://github.com/vercel-labs/skills) is the CLI behind [skills.sh](https://skills.sh), not a skill collection. Vercel maintains both repositories, but one installs skills and the other supplies them.
 
 ## Composition
 
@@ -28,7 +28,7 @@ Distinct from the content libraries above: [`vercel-labs/skills`](https://github
 
 Only `addyosmani/agent-skills` claims explicit lifecycle-stage mapping. `mattpocock/skills` and `vercel-labs/agent-skills` are both composable: you select a skill for a task, with no stage model behind it. `anthropics/skills` is neither — it's a reference set, not a workflow.
 
-A lifecycle-mapped command set is still not a mandatory lifecycle: `addyosmani/agent-skills` documents `/build auto` as an automation shortcut, but nothing stops you from invoking `/build` without ever running `/spec` first. That's the structural line between a lifecycle library and a methodology like Superpowers, which enforces the sequence.
+Lifecycle mapping does not enforce a sequence. `addyosmani/agent-skills` documents `/build auto` as an automation shortcut, but you can invoke `/build` without running `/spec` first. Superpowers prescribes a sequence instead.
 
 ## Evaluation
 
@@ -54,7 +54,7 @@ A prior cross-runtime compatibility pass (cited in [State of the Skills Market](
 ## Maintenance
 
 - `mattpocock/skills`: active, versioned releases with a visible staging-to-graduation process for new skills.
-- `addyosmani/agent-skills`: active, with release notes describing specific bug fixes rather than only feature additions — a sign of real usage feedback.
+- `addyosmani/agent-skills`: active, with release notes describing specific bug fixes as well as feature additions.
 - `anthropics/skills`: maintained as reference material; update cadence is tied to the specification and Claude Code plugin ecosystem rather than a standalone release train.
 - `vercel-labs/agent-skills`: maintained alongside Vercel's own engineering practice documents; no public changelog was found this pass.
 
@@ -66,7 +66,7 @@ None of the four libraries provide cryptographic signing, attestation, or lockfi
 
 ## Dependency completeness
 
-`addyosmani/agent-skills` documents a known gap: a per-skill `npx skills add` install copies only `skills/<name>/`, not the repository-level `references/` directory, so shared checklists another skill depends on can go missing unless you do a whole-repo integration (tracked as [issue #361](https://github.com/addyosmani/agent-skills/issues/361)). This is a general risk for any library that splits shared references across skill directories — check for it before trusting a partial install from any of the four.
+`addyosmani/agent-skills` documents an incomplete-install problem in [issue #361](https://github.com/addyosmani/agent-skills/issues/361). A per-skill `npx skills add` install copies `skills/<name>/` but omits the repository-level `references/` directory. Shared checklists can go missing without a whole-repo integration. Check dependencies when installing individual skills from any library with shared references.
 
 ## Distribution
 
@@ -86,7 +86,7 @@ None of the four libraries provide cryptographic signing, attestation, or lockfi
 | `anthropics/skills` | Canonical reference for the specification; useful templates and starter examples | Mixed licensing within one repo; explicitly not production-audited; not meant as a general-purpose catalog |
 | `vercel-labs/agent-skills` | Deep, narrow domain expertise (Vercel/React/Next.js/React Native/writing); high rule-count specificity | Single-vendor domain scope; no native-marketplace listing; no public changelog found this pass |
 
-## Credible watchlist collections
+## Watchlist collections
 
 - **[`numman-ali/openskills`](https://github.com/numman-ali/openskills)** helped establish cross-agent skill installation early, but had not been pushed since January 18, 2026 when last observed, and its license metadata conflicted with its README badge at that time. Not re-checked this pass — treat as historical, not current, pending re-verification.
 - **[`github/awesome-copilot`](https://github.com/github/awesome-copilot)** is a GitHub-owned curated channel (agents, instructions, skills, plugins, cookbook content) with a pre-registered Copilot marketplace listing. GitHub explicitly distinguishes the channel's official status from its community-sourced content — treat it as strong Copilot integration with limited cross-runtime portability, not a vetted content library.
@@ -97,4 +97,4 @@ None of the four libraries provide cryptographic signing, attestation, or lockfi
 - [Orchestrating Modes](skills-orchestrating-modes.md) — dispatchers that route into a library's skills
 - [Distribution and Governance](skills-management.md) — installation, versioning, and provenance mechanics
 - [Choosing a Skills Approach](skills-choosing.md) — decision guide across the whole skills layer
-- [Superpowers](superpowers.md) — the skill-driven methodology these libraries are not
+- [Superpowers](superpowers.md) — a mandatory workflow built from skills

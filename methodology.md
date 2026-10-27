@@ -2,7 +2,7 @@
 
 ## Purpose and scope
 
-This page explains how the comparison is researched, what counts as evidence, and how entries get added, updated, or removed. Read it before citing a claim from this site or before asking why a project is included, excluded, or described a certain way.
+This page explains the research sources, evidence labels, and criteria for adding, updating, or removing entries. Use it to interpret claims and inclusion decisions.
 
 The scope is **techniques for directing AI coding agents** — methodologies, skill libraries, orchestrating modes, and the supporting skills-distribution layer. It is not a review of AI models, IDEs, or general-purpose agent runtimes, except where those are needed to explain the three-layer model (model, runtime, methodology) referenced throughout the site.
 
@@ -12,7 +12,7 @@ The scope is **techniques for directing AI coding agents** — methodologies, sk
 
 - A dated snapshot of publicly observable information — READMEs, release notes, changelogs, issue trackers, and primary-source blog posts.
 - A structural comparison: what a technique does, what it requires, and what trade-offs it documents about itself.
-- A living document, revised in discrete research passes with a recorded observation date.
+- A comparison revised in research passes, each with a recorded observation date.
 
 **This is not:**
 
@@ -20,13 +20,13 @@ The scope is **techniques for directing AI coding agents** — methodologies, sk
 - An adoption survey. Star counts and install figures are awareness signals, not evidence of production use.
 - A benchmark of model or agent capability.
 - An endorsement of any project, author, or vendor.
-- The output of an advisory board, editorial committee, or formal review process. One person does this research and is responsible for its errors.
+- A formal review process. One person does this research and is responsible for its errors.
 
 ## Definitions
 
 **Technique.** A documented, named approach to structuring how a human directs one or more AI coding agents — a methodology, a workflow, or a skill-based system with its own install path and maintained source.
 
-**Ecosystem layer.** Infrastructure the techniques above plug into but that is not itself a technique — the Agent Skills specification, skill libraries, orchestrating modes, installer CLIs, and native plugin marketplaces. These are covered under [Skills and Agent Frameworks](techniques/skills-ecosystem.md) rather than as Tier 1 entries.
+**Ecosystem layer.** Supporting formats, content, and distribution tools: the Agent Skills specification, skill libraries, orchestrating modes, installer CLIs, and native plugin marketplaces. These are covered under [Skills and Agent Frameworks](techniques/skills-ecosystem.md) rather than as Tier 1 entries.
 
 **Tier 1 inclusion.** A technique earns a dedicated comparison page when it meets all of the following:
 
@@ -35,7 +35,7 @@ The scope is **techniques for directing AI coding agents** — methodologies, sk
 3. Independent verifiability: someone other than the author can install it and observe the behavior it claims.
 4. Enough adoption signal (releases, usage, community activity, or institutional backing) to justify research time, while adoption signal alone never substitutes for criteria 1-3.
 
-Projects that fail this bar are not dismissed — they appear on the "projects to consider next" watchlist in the overview, with an explicit note on why they weren't promoted.
+Projects that do not meet these criteria appear on the "projects to consider next" watchlist in the overview, with a reason for their watchlist status.
 
 ## Inclusion and exclusion criteria
 
@@ -50,11 +50,11 @@ Exclusion is a statement about verification budget and current evidence, not a j
 
 ## Canonical-source preference
 
-When a project is distributed through multiple mirrors, ports, or community adaptations, the canonical upstream source is the primary citation. Community ports are noted — often with real adoption signal of their own — but are clearly labeled as unofficial, and any drift from the canonical source's behavior is flagged rather than assumed to track it.
+When a project has mirrors, ports, or community adaptations, the canonical upstream source is the primary citation. Community ports are labeled as unofficial. Differences from upstream behavior are noted; parity is not assumed.
 
 ## Evidence labels
 
-Every non-trivial claim on this site is implicitly or explicitly one of:
+Claims use these evidence labels, explicitly or by attribution:
 
 - **Verified.** Confirmed directly against a primary source during the current research pass — a README, release note, changelog entry, or the project's own canonical documentation.
 - **Reported.** Stated by the project itself (release notes, blog posts, vendor claims) but not independently reproduced. Vendor-reported benchmark numbers and "N/N tests passed" release notes fall here.
@@ -64,7 +64,7 @@ Where a page doesn't label a claim explicitly, assume **Reported** for anything 
 
 ## Observation dates and volatile metrics
 
-Every page that cites metrics states an observation date. Star counts, install counts, release numbers, and plugin-marketplace contents change quickly and are treated as perishable: a figure from an earlier pass is marked as such rather than silently carried forward as current. If a metric could not be re-verified in the current pass, the page says so instead of restating the old number without qualification.
+Pages that cite metrics state an observation date. Star counts, install counts, release numbers, and marketplace contents change quickly. Figures from earlier passes are labeled with that limitation rather than presented as current.
 
 ## Handling conflicting evidence and uncertainty
 
@@ -72,7 +72,7 @@ When sources disagree — a README claim contradicts an issue tracker, or a chan
 
 ## Update process
 
-Updates happen in dated research passes, not on a fixed calendar. A pass re-checks canonical sources for the techniques and ecosystem layers in scope, records what changed, and logs the result in [Market Updates](market-updates.md). There is no promised cadence — passes happen when enough material has changed to justify one, and the site does not claim to track every release the moment it ships.
+Updates happen in dated research passes, not on a fixed schedule. Each pass rechecks canonical sources within its scope and records changes in [Market Updates](market-updates.md). Passes happen when enough material has changed to justify one; the site does not track every release as it ships.
 
 ## Non-ranking policy
 

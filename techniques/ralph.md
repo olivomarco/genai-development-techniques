@@ -1,6 +1,6 @@
 # Ralph (Wiggum)
 
-## At a Glance
+## At a glance
 
 | Field              | Value                         |
 |--------------------|-------------------------------|
@@ -14,7 +14,7 @@
 | Stars / Popularity | No single repo — canonical guide ~1.7K stars; ralph-orchestrator ~3.1K stars |
 | Supported Tools    | Tool-agnostic: Claude Code, Copilot CLI, Cursor, Codex, OpenCode, or any AI coding CLI that doesn't cap tool calls |
 
-## Compatible Coding Agents
+## Compatible coding agents
 
 Ralph is tool-agnostic by design — it works with any AI coding CLI that supports autonomous tool use.
 
@@ -36,32 +36,32 @@ Ralph is a development methodology — not a tool or framework — for running A
 
 At its simplest, Ralph is a bash one-liner: `while :; do cat PROMPT.md | claude-code ; done`. The developer writes a spec-like prompt file, feeds it to an AI coding CLI in a loop, and lets the agent work through tasks iteratively. Each loop iteration gets a fresh context window, avoiding the "context rot" that degrades LLM output quality in long sessions. Git commits and progress files serve as memory between iterations.
 
-The technique emerged from Geoffrey Huntley's observation that one-shot AI coding (single context window, single attempt) doesn't scale for substantial projects. Ralph trades elegance for relentlessness — it is, in Huntley's own words, "deterministically bad in an undeterministic world. It's better to fail predictably than succeed unpredictably."
+Geoffrey Huntley developed the technique to continue work beyond a single context window and attempt. He describes it as "deterministically bad in an undeterministic world. It's better to fail predictably than succeed unpredictably."
 
-## Pros & Cons at a Glance
+## Pros & cons at a glance
 
 | Pros | Cons |
 |------|------|
-| ✅ Extreme simplicity — a bash one-liner, zero dependencies | ❌ Can be expensive — $50-100+ per long run in API costs |
+| ✅ Simple loop — a bash one-liner, no framework dependencies | ❌ Can be expensive — $50-100+ per long run in API costs |
 | ✅ Tool-agnostic — works with any AI CLI | ❌ Non-convergence risk — some loops burn iterations without progress |
 | ✅ Solves context rot (fresh window each iteration) | ❌ Poor fit for judgment-heavy work (architecture, security, ambiguity) |
-| ✅ Overnight/AFK productivity — set it and sleep | ❌ Huntley's own warning: not for brownfield/existing codebases |
-| ✅ Proven results — CURSED language, YC hackathon repos | ❌ Requires crisp completion criteria; vague prompts → infinite loops |
-| ✅ Battle-tested community, official Claude Code plugin | ❌ Nondeterministic search is Achilles' heel — agents may create duplicates |
+| ✅ Supports overnight/AFK runs | ❌ Huntley's own warning: not for brownfield/existing codebases |
+| ✅ Reported outputs — CURSED language, YC hackathon repos | ❌ Requires clear completion criteria; vague prompts can cause non-converging loops |
+| ✅ Community tools and an official Claude Code plugin | ❌ Nondeterministic search can lead agents to create duplicates |
 
-> **In one sentence:** Ralph is AI coding on autopilot — radical simplicity and overnight productivity for greenfield work with clear specs, but trust your test suite because nobody's watching.
+> Ralph is a simple autonomous loop for greenfield or mechanical work with clear specs. Tests provide its quality checks; unattended runs can still fail to converge.
 
-## Core Concepts
+## Core concepts
 
 - **Autonomous iteration loop** — A bash loop repeatedly feeds the same prompt to an AI agent. Each iteration is a fresh context window, and the agent picks up where the last one left off via git history and file state.
-- **Backpressure engineering** — Tests, type checks, and linting run after each iteration. Failures must be fixed before the agent can continue, creating a quality gate that prevents drift.
+- **Backpressure engineering** — Tests, type checks, and linting run after each iteration. The agent must fix failures before continuing.
 - **Progress persistence through git** — The agent commits after each completed feature and appends updates to a `progress.txt` file, so the next iteration knows what's done.
 - **Completion promise** — A specific string (e.g., `<promise>COMPLETE</promise>`) that the agent emits when all tasks are finished, signaling the loop to exit.
 - **fix_plan.md** — A prioritized TODO list the agent maintains and works through across iterations.
 - **AGENT.md self-improvement** — The agent can update its own instructions file when it discovers something new about the codebase or workflow.
 - **Subagents** — The main context window can act as a scheduler, spawning subagents for expensive or parallel operations.
 
-## How It Works
+## How it works
 
 1. **Define success criteria** — Write a `PROMPT.md` with clear specifications and completion conditions.
 2. **Run the loop** — Execute the bash loop, feeding the prompt to an AI coding CLI.
@@ -80,11 +80,11 @@ The technique emerged from Geoffrey Huntley's observation that one-shot AI codin
 
 ## Strengths
 
-- **Extreme simplicity.** No framework, no dependencies, no configuration — it's a bash loop. The barrier to entry is near zero.
+- **Simple setup.** The loop needs no framework beyond bash, an AI coding CLI, and a prompt file.
 - **Tool-agnostic.** Works with any AI coding CLI (Claude Code, Copilot CLI, Cursor, Codex, OpenCode), making it portable across the entire AI coding ecosystem.
-- **Solves context rot.** Fresh context each iteration avoids the degradation that plagues long LLM sessions, a problem every other framework also tries to address.
+- **Fresh context.** Each iteration starts without the accumulated conversation from a long session.
 - **Overnight productivity.** Ralph is designed for AFK runs. Reports of Y Combinator teams shipping 6+ repositories overnight for $297 are anecdotal and were not re-verified in this refresh.
-- **Battle-tested community.** Official Claude Code plugin, community tools (ralph-claude-code, ralph-orchestrator), VentureBeat coverage, and public advocates like Matt Pocock ("Ralph Wiggum + Opus 4.5 is really, really good").
+- **Community resources.** An official Claude Code plugin, community tools (ralph-claude-code, ralph-orchestrator), VentureBeat coverage, and public advocates such as Matt Pocock ("Ralph Wiggum + Opus 4.5 is really, really good").
 - **Proof-of-concept output.** Huntley used Ralph to build "CURSED" — a complete programming language with LLVM compilation, standard library, and partial editor support — over 3 months.
 
 ## Limitations
@@ -92,11 +92,11 @@ The technique emerged from Geoffrey Huntley's observation that one-shot AI codin
 - **Cost.** A 50-iteration loop on a large codebase can cost $50–100+ in API credits. Longer runs compound this.
 - **Non-convergence risk.** Not every loop converges. Some burn through iterations without meaningful progress, wasting time and money.
 - **Poor fit for judgment-heavy work.** Architectural decisions, security-sensitive code, ambiguous requirements, and exploratory tasks are not suited for autonomous iteration.
-- **Requires crisp completion criteria.** Vague prompts lead to infinite loops or premature "done" declarations.
+- **Requires clear completion criteria.** Vague prompts can cause non-converging loops or premature "done" declarations.
 - **Best for greenfield.** Huntley explicitly states: "There's no way in heck would I use Ralph in an existing code base" — though community experience with brownfield is emerging.
 - **Nondeterministic search.** Ralph's biggest weakness: the agent sometimes draws incorrect conclusions from `ripgrep` searches about what's already implemented, leading to duplicate code.
 
-## Best For
+## Best for
 
 - **Greenfield projects** with well-defined specs where the agent can work through a feature checklist.
 - **Mechanical bulk tasks** — migrations, test generation, boilerplate creation — where the work is repetitive and the success criteria are clear.
@@ -104,7 +104,7 @@ The technique emerged from Geoffrey Huntley's observation that one-shot AI codin
 - **Rapid prototyping** where cost is secondary to speed and the developer plans to review and refactor the output.
 - **Teams already using Claude Code or similar CLIs** who want a low-overhead iteration pattern without adopting a full framework.
 
-## Not Ideal For
+## Not ideal for
 
 - **Existing (brownfield) codebases** with complex interdependencies — the agent may create duplicates or misunderstand existing patterns.
 - **Security-sensitive or compliance-heavy work** where every change needs human review before it lands.
@@ -112,9 +112,9 @@ The technique emerged from Geoffrey Huntley's observation that one-shot AI codin
 - **Cost-constrained environments** — the per-iteration API cost adds up, especially on large codebases or long loops.
 - **Enterprise teams requiring governance, audit trails, or structured review processes.**
 
-## Community & Ecosystem
+## Community & ecosystem
 
-Ralph has achieved broad recognition in the AI coding community as of early 2026. Key ecosystem elements:
+The Ralph ecosystem includes method documentation, plugins, and separate implementations:
 
 - **Canonical documentation:** [ghuntley/how-to-ralph-wiggum](https://github.com/ghuntley/how-to-ralph-wiggum) (~1.7K stars, 145 forks) — best read as static method documentation; its last push was January 11, 2026, and no license metadata was reported.
 - **Official Claude Code plugin:** `/plugin install ralph-wiggum@claude-plugins-official`
@@ -125,7 +125,7 @@ Ralph has achieved broad recognition in the AI coding community as of early 2026
 - **Media coverage:** VentureBeat headline, BetterStack YouTube (60K views), AwesomeClaude, DeepWiki.
 - **Community maturity:** Grassroots and growing. No corporate backing, but strong developer advocacy.
 
-## Comparison Notes
+## Comparison notes
 
 **vs. GSD:** Both solve context rot through fresh context windows, but GSD Core provides a structured five-step workflow with verification, while Ralph is deliberately minimal. GSD suits developers who want process; Ralph suits those who want simplicity. GSD Core targets multiple runtimes; Ralph is a tool-agnostic loop pattern.
 
@@ -133,6 +133,6 @@ Ralph has achieved broad recognition in the AI coding community as of early 2026
 
 **vs. Squad:** Squad uses multi-agent orchestration with named agents, persistent memory, and structured coordination. Ralph uses a single agent in a loop with git as memory. Squad optimizes for team-scale development with routing and ceremonies; Ralph optimizes for individual throughput on well-scoped tasks. Note: Squad includes a built-in "Ralph" agent (Work Monitor) inspired by this technique but functionally different — Squad's Ralph monitors work queues, while the original Ralph is an autonomous coding loop.
 
-**vs. Superpowers:** Both are individual-developer tools that work with CLI-based coding agents, but with opposite philosophies. Ralph is deliberately minimal — a bash loop with no framework. Superpowers is a comprehensive skill-based methodology with mandatory TDD, code review, brainstorming, and planning phases. Ralph trusts iteration and test suites as backpressure; Superpowers trusts behavioral skills and persuasion-tested compliance. Ralph is tool-agnostic (any CLI); Superpowers supports six specific tools. Ralph excels at AFK overnight runs; Superpowers excels at disciplined, human-guided development sessions.
+**vs. Superpowers:** Ralph uses a minimal loop with tests as backpressure. Superpowers prescribes brainstorming, planning, TDD, and code review through mandatory skills. Ralph works across AI coding CLIs and supports unattended iteration; Superpowers provides documented tool integrations for a structured, human-guided workflow.
 
 **vs. BMAD `bmad-loop`:** BMAD's `bmad-build-auto` skill runs unattended single-iteration development inside the method's own artifacts, and the separate `bmad-loop` project runs full stories unattended through a deterministic Python control loop. Ralph remains the simpler and more tool-agnostic pattern; both BMAD options add structured artifacts and process assumptions that Ralph lacks.

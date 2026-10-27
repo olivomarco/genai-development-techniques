@@ -36,9 +36,9 @@ nav:
   - Guide:
       - Home: index.md
       - Overview: overview.md
-      - Choosing Your Approach: techniques/choosing-your-approach.md
-      - Research Methodology: methodology.md
-      - Market Updates: market-updates.md
+      - Choosing your approach: techniques/choosing-your-approach.md
+      - Research methodology: methodology.md
+      - Market updates: market-updates.md
   - Techniques:
       - GSD: techniques/gsd.md
       - Spec Kit: techniques/spec-kit.md
@@ -47,14 +47,14 @@ nav:
       - BMAD Method: techniques/bmad.md
       - Ralph: techniques/ralph.md
       - HVE: techniques/hve.md
-      - Context Engineering: techniques/context-engineering.md
-  - Skills and Agent Frameworks:
-      - State of the Skills Market: techniques/skills-ecosystem.md
-      - Skill Libraries: techniques/skills-libraries.md
-      - Orchestrating Modes: techniques/skills-orchestrating-modes.md
+      - Context engineering: techniques/context-engineering.md
+  - Skills and agent frameworks:
+      - State of the skills market: techniques/skills-ecosystem.md
+      - Skill libraries: techniques/skills-libraries.md
+      - Orchestrating modes: techniques/skills-orchestrating-modes.md
       - Superpowers: techniques/superpowers.md
-      - Distribution and Governance: techniques/skills-management.md
-      - Choosing a Skills Approach: techniques/skills-choosing.md
+      - Distribution and governance: techniques/skills-management.md
+      - Choosing a skills approach: techniques/skills-choosing.md
 
 markdown_extensions:
   - admonition

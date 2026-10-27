@@ -1,6 +1,6 @@
 # Squad
 
-## At a Glance
+## At a glance
 
 | Field              | Value                         |
 |--------------------|-------------------------------|
@@ -14,7 +14,7 @@
 | Stars / Popularity | ~3,300 stars · 490+ forks; repository activity continued after the release |
 | Supported Tools    | GitHub Copilot (CLI and VS Code) |
 
-## Compatible Coding Agents
+## Compatible coding agents
 
 | Agent | Support |
 |-------|--------|
@@ -29,36 +29,36 @@
 
 ## Overview
 
-Squad is an AI agent orchestration system that creates a persistent, coordinated team of AI agents working within your repository. Created by Brady Gaster at Microsoft, it shifts AI-assisted development from "one brain talking to one brain" to a multi-agent architecture where specialized agents — frontend, backend, testing, documentation — work in parallel with explicit roles, clear boundaries, and written coordination.
+Squad creates a persistent team of AI agents within your repository. Created by Brady Gaster at Microsoft, it assigns explicit roles and work boundaries to agents for frontend, backend, testing, documentation, and other tasks. Agents can work in parallel and coordinate through repository files.
 
-The system applies Conway's Law to AI development: rather than trying to produce better output from a single agent through better prompts, Squad changes the structure. It introduces role separation, shared memory, decision tracking, and autonomous work monitoring. The agents don't just execute tasks — they accumulate knowledge, follow team decisions, and coordinate through a shared repository-based state.
+Squad applies Conway's Law through role separation, shared memory, decision tracking, and autonomous work monitoring. Agent histories and team decisions persist across sessions.
 
-## Pros & Cons at a Glance
+## Pros & cons at a glance
 
 | Pros | Cons |
 |------|------|
-| ✅ True parallel multi-agent orchestration | ❌ Copilot-only — doesn't work with Claude Code, Cursor, etc. |
+| ✅ Parallel multi-agent orchestration | ❌ Copilot-only — doesn't work with Claude Code, Cursor, etc. |
 | ✅ Persistent memory across sessions (decisions, history, governed memory) | ❌ Stable since v1.0.0, but the v2.0.0 prerelease line is already reworking the gh-aw lifecycle — pin a version before standardizing |
 | ✅ Autonomous work management via Ralph (Work Monitor) | ❌ Requires GitHub CLI authentication for full feature set |
 | ✅ Full GitHub lifecycle integration (issues → PRs → merge) | ❌ Node.js dependency for the CLI |
-| ✅ Reviewer rejection protocol enforces genuine review | |
+| ✅ Reviewer rejection protocol assigns revisions to a different agent | |
 | ✅ Extensible — human members, @copilot agent, custom agents | |
 
-> **In one sentence:** Squad is Conway's Law applied to AI — persistent teams with real coordination, effective for GitHub-centric Copilot users from solo developers to teams of 10+ who want agents that remember, coordinate, and never stop working.
+> Squad coordinates persistent AI teams for GitHub-centric Copilot users, with shared decisions, parallel work, and autonomous queue monitoring.
 
-## Core Concepts
+## Core concepts
 
 **Coordinator Pattern.** A central Coordinator orchestrates all work. It receives user requests, routes them to the appropriate agent(s), manages parallel fan-out, and synthesizes results. The Coordinator never does domain work itself — it delegates.
 
 **Persistent Agent Identity.** Each agent has a charter (`charter.md`) defining its role and boundaries, and a personal history (`history.md`) where it accumulates learnings. These files live in the repo and persist across sessions, giving agents continuity that ephemeral AI sessions lack.
 
-**Decisions-as-Memory and Governed Memory.** A shared `decisions.md` file acts as the team's collective brain. When an agent makes a decision that affects others (architecture choices, naming conventions, library selections), it gets recorded here. All agents read this file at spawn time, ensuring consistency. Version 0.10.0 added more explicit governed memory, provider boundaries, diagnostics, and CLI validation.
+**Decisions-as-Memory and Governed Memory.** A shared `decisions.md` file records architecture choices, naming conventions, library selections, and other decisions that affect multiple agents. All agents read it when spawned. Version 0.10.0 added governed memory, provider boundaries, diagnostics, and CLI validation.
 
 **Casting System.** Agents receive character names drawn from fictional universes — an easter egg naming convention that makes the team feel distinct without introducing role-play or character behavior. Names are persistent identifiers, not personas.
 
 **Ralph (Work Monitor).** An autonomous agent that continuously scans GitHub for issues, PRs needing review, CI failures, and untriaged work. Ralph keeps the pipeline moving by routing work to the right agents without waiting for human direction.
 
-## How It Works
+## How it works
 
 Squad creates a `.squad/` directory in the repository containing the team's state:
 
@@ -89,43 +89,43 @@ Additional features include **Ceremonies** (structured team meetings — design 
 
 ## Strengths
 
-- **True parallel orchestration.** Multiple agents work simultaneously on different parts of a problem, each in their own context. This is not sequential delegation — it is concurrent fan-out with dependency-aware scheduling.
+- **Parallel orchestration.** Multiple agents work simultaneously in separate contexts, with dependency-aware scheduling.
 - **Persistent memory across sessions.** Agent histories, team decisions, governed memory, and orchestration logs persist in the repository. An agent picking up an issue today has access to what the team decided and learned yesterday. This is unique among the techniques compared here.
 - **Autonomous work management (Ralph).** Ralph continuously scans for work — untriaged issues, CI failures, stalled PRs, approved merges — and routes it without human prompting. This enables a degree of autonomy that other frameworks leave to the user.
 - **Full GitHub lifecycle integration.** Issues, branches, PRs, and merges are part of the core workflow, not an afterthought. Squad agents interact with GitHub natively via the CLI.
-- **Reviewer rejection protocol.** Rejected work must be revised by a *different* agent — the original author is locked out. This enforces genuine review rather than rubber-stamping.
+- **Reviewer rejection protocol.** A different agent must revise rejected work; the original author is locked out.
 - **Extensible team composition.** Human team members, the GitHub Copilot coding agent (@copilot), and new AI agents can be added to the roster at any time.
 
 ## Limitations
 
 - **Copilot-only.** Squad is tightly coupled to the GitHub Copilot ecosystem — CLI and VS Code. It does not work with Claude Code, Cursor, or other AI coding tools directly.
-- **Stable but young, with a prerelease already in flight.** v1.1.0 is the first stable line, so battle-tested history is short. The parallel v2.0.0 prerelease channel (`gh-aw` lifecycle work) means teams standardizing on Squad should pin a version rather than track `dev`.
+- **Short stable-release history.** Squad reached 1.0 in October 2026. The parallel v2.0.0 prerelease channel (`gh-aw` lifecycle work) means teams standardizing on it should pin a version rather than track `dev`.
 - **Directory overhead.** The `.squad/` directory contains team files, agent charters, histories, decision ledgers, orchestration logs, casting state, and session logs. The setup is automated by the Coordinator, but the infrastructure footprint is nontrivial.
 - **Requires GitHub authentication.** The full feature set (Ralph, issue routing, PR lifecycle) depends on GitHub CLI authentication. Without it, Squad loses its autonomous capabilities.
 - **Node.js dependency.** The CLI requires npm and Node.js, which may be a friction point for teams not already in the Node ecosystem.
 
-## Best For
+## Best for
 
 - **Teams building with GitHub Copilot** who want structured multi-agent orchestration with persistent memory and autonomous work management.
 - **Projects managed through GitHub Issues and PRs.** Squad's lifecycle integration (issue → branch → PR → merge) is most valuable when GitHub is the central project management platform.
 - **Medium-to-large projects with multiple concerns.** Projects where frontend, backend, testing, and documentation are all active simultaneously benefit from Squad's parallel agent model.
 - **Teams that want autonomous background work.** Ralph's continuous monitoring and work routing is valuable for teams that want their AI agents to pick up work proactively, not just when prompted.
 
-## Not Ideal For
+## Not ideal for
 
 - **Non-Copilot environments.** If the team uses Claude Code, Cursor, or another AI tool as their primary agent, Squad's Copilot dependency is a hard blocker.
 - **Projects without GitHub.** Squad's strengths — work routing, Ralph, issue lifecycle — assume a workflow centered on GitHub. Without issues and PRs, much of Squad's value is unused.
 - **Teams needing enterprise governance.** Squad has reviewer protocols but lacks the formal constraint enforcement, policy-as-code, and audit trail capabilities of HVE.
 
-## Community & Ecosystem
+## Community & ecosystem
 
 Squad is backed by Brady Gaster at Microsoft and offers a CLI, SDK, documentation site, and workshop materials. The project reached 1.0.0 on October 3, 2026, and v1.1.0 followed on October 20. The repository had roughly 3.3K stars and 490 forks on October 27, 2026. A v2.0.0 prerelease channel is active in parallel, focused on `gh-aw` (GitHub Agentic Workflows) lifecycle integration — issue-triggered teams that open PRs for human merge before their workflows go live.
 
-## Comparison Notes
+## Comparison notes
 
-**vs. BMAD:** Both use multi-agent architectures, but the implementation is fundamentally different. BMAD simulates a team through agent personas within a user's AI session. Squad creates parallel agent instances with persistent memory, shared decision ledgers, and autonomous work monitoring. BMAD is richer in structured agile process; Squad is richer in coordination infrastructure.
+**vs. BMAD:** BMAD simulates roles through agent personas within a user's session. Squad creates parallel agent instances with persistent memory, shared decisions, and autonomous work monitoring. BMAD provides more agile process structure; Squad provides more coordination infrastructure.
 
-**vs. GSD:** Different paradigms solving different problems. GSD is spec-driven, focused on context engineering and parallel task execution within a structured lifecycle. Squad is orchestration-focused, managing a persistent team with roles, memory, and autonomous work routing. GSD is lighter and documents multiple host integrations, with Claude Code as its deepest integration; Squad is heavier and Copilot-native. They occupy different categories entirely — Spec-Driven vs. Multi-Agent Orchestration.
+**vs. GSD:** GSD structures project work through specs, fresh context, and planned execution. Squad manages a persistent team with roles, memory, and autonomous work routing. GSD is lighter and documents multiple hosts, with Claude Code as its deepest integration. Squad adds coordination infrastructure and requires Copilot.
 
 **vs. HVE:** Both target structured, multi-agent development but at different scales. HVE is enterprise-grade with a large repository inventory of agents, instructions, prompts, and skills plus the RPI workflow. Squad is team-scale with persistent memory and GitHub-centric work management. HVE emphasizes governance and audit trails; Squad emphasizes coordination and work routing.
 

@@ -4,23 +4,23 @@
 
 ## 1. Executive summary
 
-As of October 27, 2026, AI-assisted development spans structured methodologies, multi-agent frameworks, autonomous loops, and enterprise workflows. The central question is no longer whether an agent can write code, but how you direct it with repeatable context, artifacts, verification, and governance.
+As of October 27, 2026, AI-assisted development includes structured methodologies, multi-agent frameworks, autonomous loops, and enterprise workflows. This comparison examines how each approach directs coding agents through context, artifacts, verification, and governance.
 
 The comparison retains ten Tier 1 approaches across five categories, with **context engineering** as a cross-cutting practice.
 
-Alongside them sits the [skills ecosystem](techniques/skills-ecosystem.md). Reusable skills are becoming versioned, updatable packages instead of loose file collections.
+The [skills ecosystem](techniques/skills-ecosystem.md) supports these approaches. Reusable skills are becoming versioned, updatable packages instead of loose file collections.
 
 Two channels distribute them. Cross-agent installer CLIs — skills.sh's `npx skills` — vendor editable files into any agent. Native plugin marketplaces, such as those for Claude Code, GitHub Copilot, and Codex, auto-update a managed bundle inside one runtime instead. `mattpocock/skills` and `addyosmani/agent-skills` ship through both paths; pick one per agent, because installing both duplicates every skill.
 
 Some libraries now bundle an orchestrating mode alongside their skills. `pstack/poteto-mode` (canonically the `pstack/` directory in [`cursor/plugins`](https://github.com/cursor/plugins)) reads an incoming request, selects from a set of playbooks, and dispatches the library's other skills as each step needs them. That blurs the line between a skill library and a workflow framework.
 
-What's missing: signing, attestation, and lockfile-style pinning. Most of what we examined lacks all three. None of this makes the skills layer an eleventh technique or a sixth methodology category — it's market infrastructure the methodologies above increasingly plug into. Star counts remain dated awareness signals; they do not establish production adoption.
+Most of what we examined lacks signing, attestation, and lockfile-style pinning. The skills layer is supporting infrastructure, not an additional methodology category. Star counts are dated awareness signals; they do not establish production adoption.
 
-The choice between these approaches is not about which is "best" — it's about matching the technique to your situation. A solo developer prototyping a weekend project has fundamentally different needs than an enterprise team shipping regulated software with audit requirements. This document provides the data and decision frameworks to make that match.
+Choose an approach based on the task, coordination needs, and governance requirements. A solo prototype and a regulated enterprise project need different levels of structure.
 
 ### The three-layer model: model, runtime, methodology
 
-Every setup in this comparison stacks three layers, and the techniques below only occupy the top one:
+The comparison distinguishes three layers:
 
 1. **Model capability** — what the underlying LLM can reason about, plan, and execute reliably, holding everything else constant.
 2. **Execution runtime / harness** — the tool loop around the model: context assembly, tool calls, retries and recovery, permissions, sandboxing, and state across turns. This layer itself spans a range:
@@ -29,11 +29,11 @@ Every setup in this comparison stacks three layers, and the techniques below onl
    - **First-party runtime** — a vendor-maintained product such as Claude Code, Codex CLI, or GitHub Copilot, which bundles tool access, sandboxing, approval modes, and multi-turn state behind a single surface.
 3. **Development methodology** — the structured process layered on top: GSD's phases, Squad's charters, HVE's RPI workflow, BMAD's agile simulation, and so on. This is what the rest of this document compares, including the fourth harness variant: an **opinionated methodology**, which adds mandatory sequencing or enforcement (Superpowers' mandatory skills, HVE's constraint-based gates) on top of whichever runtime executes it.
 
-**Our view.** As models improve, checkable tasks need less rigid upfront workflow. For a bounded repository task with a clear check — tests, lint, a reviewable diff — a capable model inside a competent runtime increasingly plans and sequences tools on its own, work that used to require an explicit methodology layer.
+**Our view.** As models improve, checkable tasks need less rigid upfront workflow. For a bounded repository task with tests, lint, or a reviewable diff, a capable model and runtime increasingly handle planning and tool sequencing without an added methodology.
 
-That doesn't make execution harnesses unnecessary, and it doesn't make every harness thin. First-party runtimes hide this work rather than remove it. Claude Code and Codex CLI still manage sandboxing, approval modes, and conversation state on your behalf ([Claude Code docs](https://code.claude.com/docs/en/overview); [Codex CLI](https://github.com/openai/codex)). They just don't require you to write that logic yourself the way a thin harness does. The structure moved; it didn't disappear.
+Execution harnesses still do necessary work. Claude Code and Codex CLI manage sandboxing, approval modes, and conversation state ([Claude Code docs](https://code.claude.com/docs/en/overview); [Codex CLI](https://github.com/openai/codex)). Unlike a thin harness, they do not require you to implement that logic yourself.
 
-**What the headline numbers do and don't say.** METR's time-horizon figures measure task *difficulty at a fixed success threshold*, not unattended autonomy or merge-ready work. The figure is the length of task, measured by human completion time, that a model can complete at a given reliability — commonly 50%.
+**Interpreting capability metrics.** METR's time-horizon figures measure task *difficulty at a fixed success threshold*, not unattended autonomy or merge-ready work. The figure is the length of task, measured by human completion time, that a model can complete at a given reliability — commonly 50%.
 
 METR fits a logistic success curve against human task duration and reports where that curve crosses the chosen probability. The method says nothing about whether a human reviewer would accept the output.
 
@@ -41,7 +41,7 @@ METR also ran a companion study of SWE-bench Verified PRs. Roughly half of the p
 
 Treat any single capability figure — time horizon, benchmark score, vendor-reported repository result — as one data point about task difficulty. None of them is a verdict on unattended autonomy or mergeability.
 
-**Current examples, with caveats.** GPT-6 Astra and Claude Opus 5.5 are the current frontier models most often cited for strong repository-task results. Each result comes from the vendor's own agent runtime, not a bare model call, so it reflects the runtime as much as the model. No same-harness, same-benchmark comparison between the two exists that we could find. No independent METR-style time-horizon figure exists for either exact model at the time of writing. Read vendor-reported repository scores as a lower-confidence signal shaped by the runtime that produced them, not an independently reproduced capability measurement.
+**Examples from this research pass.** GPT-6 Astra and Claude Opus 5.5 are frequently cited for strong repository-task results. Each result comes from the vendor's own agent runtime, not a bare model call, so it reflects both model and runtime. We found no same-harness, same-benchmark comparison between them, or an independent METR-style time-horizon figure for either exact model. Treat the vendor-reported scores as lower-confidence signals, not independently reproduced capability measurements.
 
 **A practical decision rule:**
 
@@ -50,7 +50,7 @@ Treat any single capability figure — time horizon, benchmark score, vendor-rep
 3. Add a methodology when the gap is coordination or decision traceability — multiple agents, multiple people, or a need to reconstruct *why* a change was made.
 4. Strengthen controls — governance, audit trails, approval gates, cost caps — as autonomy, task duration, blast radius, or compliance risk rises, not by default.
 
-This rule doesn't replace the comparison below; it explains when reaching for a row in it is worth the overhead that row documents. See [Choosing Your Approach](techniques/choosing-your-approach.md#layer-check-model-runtime-or-methodology-first) for this rule applied scenario by scenario.
+Use the comparison below when the added structure addresses a gap in your workflow. See [Choosing Your Approach](techniques/choosing-your-approach.md#layer-check-model-runtime-or-methodology-first) for examples by scenario.
 
 ---
 
@@ -88,9 +88,7 @@ Frameworks with GitHub repositories — star growth over time:
 
 ## 4. Decision guide
 
-> **For a comprehensive decision guide by team size, project type, industry, and development activity, see [Choosing Your Approach](techniques/choosing-your-approach.md).**
->
-> The table below is a quick reference. The full guide covers solo developers, teams of 3, teams of 10, regulated environments (finance, healthcare, government), agile workflows, brownfield vs. greenfield, and more. Before picking a row, run the [layer check](techniques/choosing-your-approach.md#layer-check-model-runtime-or-methodology-first): confirm the model and its native runtime can't already do the job before adding a methodology on top.
+For guidance by team size, project type, industry, and activity, see [Choosing Your Approach](techniques/choosing-your-approach.md). Before choosing a methodology, run the [layer check](techniques/choosing-your-approach.md#layer-check-model-runtime-or-methodology-first): check whether the model and its native runtime already meet your needs.
 
 | If you want... | Use | Why |
 |----------------|-----|-----|
@@ -98,9 +96,9 @@ Frameworks with GitHub repositories — star growth over time:
 | Structured solo development with clear phases | **GSD** | Five-step Discuss → Plan → Execute → Verify → Ship workflow with fresh task context. |
 | A full agile team simulation | **BMAD** | Specialized roles, modular workflows, scale-adaptive planning, and optional unattended iteration. |
 | GitHub-backed spec-driven development | **Spec Kit** | GitHub's official SDD toolkit. Works with Copilot, Claude Code, Gemini CLI. Minimal footprint, strong institutional backing. |
-| Parallel multi-agent orchestration with persistent memory | **Squad** | Named agents with charters, shared decisions, ceremonies, and Ralph-style work monitoring. Conway's Law for AI teams. |
+| Parallel multi-agent orchestration with persistent memory | **Squad** | Named agents with charters, shared decisions, ceremonies, and Ralph-style work monitoring. |
 | Enterprise governance and audit trails | **HVE** | Microsoft ISE's constraint-based RPI workflow, validated artifacts, and policy-as-code. |
-| To improve any AI tool's output without adopting a framework | **Context Engineering** | Rules files (copilot-instructions.md, .cursorrules, CLAUDE.md) work everywhere. Start here before committing to a framework. |
+| To improve an AI tool's context without adopting a framework | **Context Engineering** | Rules files (copilot-instructions.md, .cursorrules, CLAUDE.md) record project conventions. Start here before committing to a framework. |
 | A disciplined individual workflow with TDD and reusable skills | **Superpowers** | Mandatory skills enforce systematic development across several tools. |
 | Reusable skills without a mandatory methodology | **[Skills and Agent Frameworks](techniques/skills-ecosystem.md)** | Choose a library, installer, and distribution model independently of your development process — see [Choosing a Skills Approach](techniques/skills-choosing.md). |
 | To run AI agents overnight on mechanical tasks | **Ralph** | AFK mode with max-iteration and cost caps. |
@@ -111,39 +109,43 @@ Frameworks with GitHub repositories — star growth over time:
 
 ## 5. Category summaries
 
-### Spec-Driven Development — GSD, Spec Kit, OpenSpec
+### Spec-driven development — GSD, Spec Kit, OpenSpec
 
 **GSD Core** continues the archived original project with a five-step loop and a multi-runtime installer. **Spec Kit** is GitHub's project-level specification toolkit, now past 1.0 at v1.2.3 with composable extensions for integrations, hooks, and bundled bug-fixing and idea-assessment processes. **OpenSpec** is the v1.15.0 brownfield specialist, using change folders and delta specs, and now ships standalone binaries that don't require Node.js. OpenSpec writes vendor-neutral skills to `.agents/skills/`, but remains a spec-driven methodology rather than a skills library.
 
-### Skill-Based Development — Superpowers
+### Skill-based development — Superpowers
 
 Superpowers uses skills as mandatory workflow controls. Version 7.0.1 rebuilt its brainstorming skill to size work after it understands the request, delegate design review to a subagent that reads the spec as its future builder, and ship as a native Antigravity Marketplace plugin. This differs from `mattpocock/skills`, `addyosmani/agent-skills`, and other independently selectable libraries that offer capabilities without an enforced lifecycle.
 
-### Multi-Agent Orchestration — Squad, BMAD
+### Multi-agent orchestration — Squad, BMAD
 
 **BMAD** uses specialized roles, structured phases, and modules; v6.12.4 followed v6.12.0, which moved Build's ceremony decision to after it investigates a change and added evidence-backed review triage. **Squad** reached 1.0 in October and sits at v1.1.0 stable, with a v2.0.0 prerelease channel already hardening GitHub Actions workflow (`gh-aw`) lifecycle integration. Both trade simplicity for coordination.
 
-### Autonomous Iteration — Ralph
+### Autonomous iteration — Ralph
 
-Ralph stands alone in its category: a bash one-liner that runs an AI coding agent in a loop, using tests as backpressure and git commits as memory between iterations. Created by Geoffrey Huntley and named after Ralph Wiggum from *The Simpsons* ("keep going despite always making mistakes"), it's the philosophical opposite of enterprise frameworks. There is no governance, no agent roles, no structured phases — just a prompt, a loop, and a test suite. Its power lies in simplicity and overnight productivity: set it running before bed, wake up to completed features. The trade-off is unpredictability — Huntley himself calls it "deterministically bad in a nondeterministic world" — and it works best on greenfield projects with clear completion criteria.
+Ralph runs an AI coding agent in a bash loop, using tests as backpressure and git commits as memory between iterations. Geoffrey Huntley created it and named it after Ralph Wiggum from *The Simpsons* ("keep going despite always making mistakes"). It has no built-in governance, agent roles, or structured phases. It supports unattended runs, but results are unpredictable — Huntley calls it "deterministically bad in a nondeterministic world". It works best on greenfield projects with clear completion criteria.
 
-### Enterprise AI-Native SDLC — HVE
+### Enterprise AI-native SDLC — HVE
 
 HVE is the enterprise end of the spectrum. Its latest stable release remains v3.2.2, while v3.3 prereleases and newer repository activity exist separately. The August 8 repository tree contained 70 agent files, 80 instruction files, 67 prompt files, and 58 `SKILL.md` files; these counts were not re-verified for this update and should not be read as current stable-package contents.
 
-### Cross-cutting: Context Engineering
+### Cross-cutting: context engineering
 
 Context engineering remains the foundational practice. Rules files are still fragmented by tool, but skills packaging has converged on the vendor-neutral [Agent Skills](https://agentskills.io) specification. Basic skill content is portable; optional features and execution semantics still vary across runtimes.
 
-### Skills and Agent Frameworks
+### Skills and agent frameworks
 
-The [skills market](techniques/skills-ecosystem.md) sits beside the methodology taxonomy. Agent Skills defines the format; `mattpocock/skills`, `addyosmani/agent-skills`, and `anthropics/skills` supply content (see [Skill Libraries](techniques/skills-libraries.md)); skills.sh and native plugin marketplaces (Claude Code, Copilot, Codex) provide discovery, installation, and updates (see [Distribution and Governance](techniques/skills-management.md)); runtimes execute the result. The two distribution paths carry different trade-offs: a plugin marketplace keeps a bundle current automatically but hands upstream changes to you unreviewed, while a CLI-vendored copy (`npx skills@latest add ...`) stays editable but only updates when you ask. Some libraries now blur further into framework territory — `pstack/poteto-mode`, distributed as the `pstack/` directory in [`cursor/plugins`](https://github.com/cursor/plugins), reads a request and dispatches across 23 playbooks and the library's other skills, acting as an orchestrating layer rather than a single capability (see [Orchestrating Modes](techniques/skills-orchestrating-modes.md)). Provenance remains immature across all of it: the examined surfaces lacked signing, attestation, and lockfile-style pinning. Superpowers, profiled on its own page, is this category's lead skill-driven methodology. For a decision guide across the whole layer, see [Choosing a Skills Approach](techniques/skills-choosing.md).
+The [skills market](techniques/skills-ecosystem.md) supports the methodologies in this comparison. Agent Skills defines the format; `mattpocock/skills`, `addyosmani/agent-skills`, and `anthropics/skills` supply content (see [Skill Libraries](techniques/skills-libraries.md)). skills.sh and native plugin marketplaces provide discovery, installation, and updates (see [Distribution and Governance](techniques/skills-management.md)); runtimes execute the skills.
+
+A managed plugin can update automatically without local review. A CLI-vendored copy (`npx skills@latest add ...`) stays editable but updates only when requested. The examined distribution paths lacked signing, attestation, and lockfile-style pinning.
+
+Some libraries also add routing. `pstack/poteto-mode`, distributed in the `pstack/` directory in [`cursor/plugins`](https://github.com/cursor/plugins), dispatches requests across 23 playbooks and the library's other skills (see [Orchestrating Modes](techniques/skills-orchestrating-modes.md)). Superpowers adds a mandatory development methodology. See [Choosing a Skills Approach](techniques/skills-choosing.md) to compare these options.
 
 ---
 
 ## 6. Complexity vs. speed spectrum
 
-The spectrum below follows the accepted OpenSpec scoping decision: OpenSpec sits between Superpowers and Spec Kit because it is more structured than a skill layer but lighter and more change-centric than Spec Kit's project-level phase gates.
+OpenSpec sits between Superpowers and Spec Kit in this comparison: it adds change-level specifications but is lighter and more change-centric than Spec Kit's project-level phase gates.
 
 ```text
                         COMPLEXITY vs. SPEED SPECTRUM
@@ -179,32 +181,32 @@ GSD negotiates dispatch against documented host capabilities. The spectrum's “
 
 ## 7. Navigation — deep-dive documents
 
-Each technique has a dedicated deep-dive document following a consistent template (At a Glance → Overview → **Pros & Cons at a Glance** → Core Concepts → How It Works → Strengths → Limitations → Best For → Not Ideal For → Community & Ecosystem → Comparison Notes).
+Each technique page covers its workflow, strengths, limitations, suitable uses, ecosystem, and comparisons.
 
 ### Decision guide
 
 - [Choosing Your Approach](techniques/choosing-your-approach.md) — Which technique for which situation. By team size, project type, industry, and development activity.
 
-### Spec-Driven Development
+### Spec-driven development
 
 - [GSD (Get Shit Done)](techniques/gsd.md) — Active successor workflow at `open-gsd/gsd-core`; original repository archived.
 - [Spec Kit](techniques/spec-kit.md) — GitHub's official SDD toolkit at v1.2.3.
 - [OpenSpec](techniques/openspec.md) — Change-centric SDD with delta specs and broad multi-tool support.
 
-### Multi-Agent Orchestration
+### Multi-agent orchestration
 
 - [Squad](techniques/squad.md) — Coordinator-based multi-agent orchestration with persistent memory and casting.
 - [BMAD](techniques/bmad.md) — AI-driven agile framework with specialized roles and modular workflows.
 
-### Autonomous Iteration
+### Autonomous iteration
 
 - [Ralph](techniques/ralph.md) — Autonomous bash-loop methodology. Tests as backpressure, git as memory.
 
-### Skill-Based Development
+### Skill-based development
 
 - [Superpowers](techniques/superpowers.md) — Mandatory skills methodology with TDD and review enforcement.
 
-### Enterprise AI-Native SDLC
+### Enterprise AI-native SDLC
 
 - [HVE (Hypervelocity Engineering)](techniques/hve.md) — Microsoft ISE's RPI workflow and constraint-based governance.
 
@@ -212,7 +214,7 @@ Each technique has a dedicated deep-dive document following a consistent templat
 
 - [Context Engineering](techniques/context-engineering.md) — The practice of structuring project context via rules files across an 8-layer model.
 
-### Skills and Agent Frameworks
+### Skills and agent frameworks
 
 - [State of the Skills Market](techniques/skills-ecosystem.md) — Taxonomy, what's changing, and links into the rest of this category.
 - [Skill Libraries](techniques/skills-libraries.md) — `mattpocock/skills`, `addyosmani/agent-skills`, `anthropics/skills`, `vercel-labs/agent-skills`, and watchlist collections.
@@ -233,7 +235,7 @@ These projects were relevant to the August 8, 2026 research pass and have not be
 | Priority | Projects | Why to watch |
 |----------|----------|--------------|
 | Must consider | [OpenHands](https://github.com/OpenHands/OpenHands), [Open SWE](https://github.com/langchain-ai/open-swe), [Goose](https://github.com/aaif-goose/goose), [Cline](https://github.com/cline/cline) | Active products, platforms, runtimes, or architectures. None exposed a portable methodology in this research pass. Open SWE had no releases or tags. |
-| Maybe | Aider, OpenCode, Continue, Kilo Code, Pythagora/GPT Pilot, Roo Code | Significant ecosystem substrates or historically important coding-agent workflows. Include if future research finds distinct methodology beyond tool usage. Roo Code also needs verification because the observed repo was archived. |
-| Watchlist | AutoGPT, SWE-agent | Important autonomous-agent lineage and benchmark/repair-agent context, but broader or less freshly verified than the core comparison scope. |
+| Maybe | Aider, OpenCode, Continue, Kilo Code, Pythagora/GPT Pilot, Roo Code | Runtimes or historically important coding-agent workflows. Include if future research finds distinct methodology beyond tool usage. Roo Code also needs verification because the observed repo was archived. |
+| Watchlist | AutoGPT, SWE-agent | Relevant to autonomous-agent history, benchmarks, and code repair, but broader in scope or less recently verified than the techniques compared here. |
 
 OpenHands is now past 1.0, Goose moved to the `aaif-goose` organization, and Cline ships separate core and desktop release trains. These status changes do not by themselves justify methodology pages.

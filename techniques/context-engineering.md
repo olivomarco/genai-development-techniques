@@ -1,6 +1,6 @@
-# Context Engineering
+# Context engineering
 
-## At a Glance
+## At a glance
 
 | Field              | Value                         |
 |--------------------|-------------------------------|
@@ -14,7 +14,7 @@
 | Stars / Popularity | No dedicated repo — the practice permeates every major AI development framework |
 | Supported Tools    | All: Claude Code (CLAUDE.md), Cursor (.cursorrules), GitHub Copilot (copilot-instructions.md), Gemini, and any tool supporting context/rules files |
 
-## Compatible Coding Agents
+## Compatible coding agents
 
 Context engineering is a universal practice — any agent that supports rules files or system-level instructions benefits from it.
 
@@ -31,29 +31,29 @@ Context engineering is a universal practice — any agent that supports rules fi
 
 ## Overview
 
-Context engineering is the practice of structuring, curating, and managing the information that fills an AI model's context window during development. It has replaced "prompt engineering" as the core skill for AI-assisted software development: prompt engineering focuses on crafting individual prompts, while context engineering focuses on building systems that consistently deliver the right information to the right agent at the right time.
+Context engineering is the practice of structuring, curating, and managing the information in an AI model's context window. Prompt engineering focuses on individual prompts; context engineering also covers the rules, retrieved files, memory, and tool outputs supplied throughout a task.
 
-Andrej Karpathy articulated the foundational mental model in June 2025: "The LLM is a CPU, the context window is RAM, and you are the operating system responsible for loading exactly the right information for each task." This framing recast the developer's role — from someone who writes clever prompts to someone who designs information architectures for AI agents.
+Andrej Karpathy described it in June 2025: "The LLM is a CPU, the context window is RAM, and you are the operating system responsible for loading exactly the right information for each task."
 
-Context engineering is not a framework, a tool, or a product. It is a cross-cutting discipline that underlies every framework in this comparison. GSD, BMAD, Squad, HVE, Ralph, and Spec Kit all implement context engineering in their own ways. Understanding context engineering as a standalone practice helps developers make informed choices about which framework to adopt — or whether to build their own approach from first principles.
+Context engineering is a practice, not a framework or product. GSD, BMAD, Squad, HVE, Ralph, and Spec Kit apply it in different ways. You can also use rules files and curated context without adopting a framework.
 
-## Pros & Cons at a Glance
+## Pros & cons at a glance
 
 | Pros | Cons |
 |------|------|
 | ✅ Universal — works with every AI coding tool | ❌ No structure by itself — a practice, not a workflow |
-| ✅ Zero barrier to entry — create a rules file in 5 minutes | ❌ Rules files remain fragmented across tools |
+| ✅ Low setup cost — create a rules file in 5 minutes | ❌ Rules files remain fragmented across tools |
 | ✅ Compounds over time — knowledge accumulates in rules files | ❌ Quality depends entirely on the practitioner's curation |
 | ✅ Foundation for other techniques — GSD, BMAD, Squad, and HVE each implement it differently | ❌ No built-in quality gates or enforcement mechanisms |
 | ✅ Version-controllable — lives in git, reviewed in PRs | ❌ Birgitta Böckeler's warning: "Illusion of control" — AI may still ignore instructions |
 | ✅ Model-portable — principles transfer across LLM families | ❌ Invisible when done well — hard to demonstrate or get buy-in for |
 
-> **In one sentence:** Context engineering is the foundational skill behind every AI coding framework in this comparison — the rules files, memory structures, and context budgets you design today are what GSD's fresh windows, Squad's charters, and HVE's instructions each build on.
+> Context engineering supplies the project information and constraints that agents need, through rules files, memory, retrieved material, and tool outputs.
 
-## Core Concepts
+## Core concepts
 
 - **Context rot** — The gradual degradation of AI output quality as context windows fill up during long sessions. This is the core problem that every framework in this comparison attempts to solve, whether through fresh windows (GSD, Ralph), phased workflows (HVE), or structured memory files (Squad).
-- **Where this sits in the three-layer model** — Context engineering operates inside the execution runtime/harness and development methodology layers of the [three-layer model](../overview.md#the-three-layer-model-model-runtime-methodology) (model capability → runtime/harness → methodology). Rules files and skills are layer-two and layer-three artifacts riding on top of layer-one model capability: the model still has to apply what the context describes. The three-layer model asks who manages context. The 8-layer model below asks where context comes from within a single session — a different question.
+- **Where this sits in the three-layer model** — Runtimes and methodologies curate context for the model (see the [three-layer model](../overview.md#the-three-layer-model-model-runtime-methodology)). The model still has to apply the supplied instructions. That model describes who manages context; the 8-layer model below describes where context comes from within a session.
 - **The 8-layer context model** — Context arrives at an AI agent through multiple layers, each under different control:
   1. **System/platform instructions** (set by the AI provider)
   2. **Organization rules** (set by IT/admin)
@@ -65,9 +65,9 @@ Context engineering is not a framework, a tool, or a product. It is a cross-cutt
   8. **Tool outputs** (results from MCP servers, terminal commands, API calls)
 - **Prompt-as-code** — Treating prompts and rules files as source code: version-controlled, reviewed, tested, and iterated.
 - **Model-specific preferences** — Different model families (Claude, GPT, Gemini) respond differently to the same context. Context engineering requires understanding these differences rather than assuming one-size-fits-all.
-- **Context budget** — The finite capacity of the context window. Context engineering is fundamentally about allocation: which information earns its place in the window, and which doesn't.
+- **Context budget** — The finite capacity of the context window. Select the information needed for the task rather than loading everything available.
 
-## How It Works
+## How it works
 
 Context engineering operates through rules files — persistent, version-controlled documents that AI tools read before every session. Each major tool has its own format:
 
@@ -82,7 +82,7 @@ Rules files remain tool-specific, but skills packaging has converged further. [A
 
 This convergence applies to packaging, not complete execution semantics. In the `skills` CLI compatibility matrix observed on August 8, 2026, basic skills worked across all 18 compared agents, `allowed-tools` across 16, hooks across 4, and `context: fork` in 1. Treat skills as a portable context-delivery layer with runtime-specific capabilities.
 
-**How much the runtime interprets for you varies by harness.** A thin generic harness such as [`SWE-agent/mini-swe-agent`](https://github.com/SWE-agent/mini-swe-agent) — a deliberately minimal, roughly 100-line agent loop — passes your context through with little independent interpretation. A first-party runtime such as Claude Code or GitHub Copilot applies its own retrieval, summarization, permission checks, and state management on top of whatever rules file you supply ([Claude Code docs](https://code.claude.com/docs/en/overview)). Identical `CLAUDE.md` or `copilot-instructions.md` content can therefore behave differently across runtimes — not because the format changed, but because the harness around it does more, or less, on your behalf.
+**Runtime behavior matters.** A thin harness such as [`SWE-agent/mini-swe-agent`](https://github.com/SWE-agent/mini-swe-agent), a roughly 100-line agent loop, passes context through with little independent interpretation. Claude Code and GitHub Copilot add retrieval, summarization, permission checks, and state management ([Claude Code docs](https://code.claude.com/docs/en/overview)). The same `CLAUDE.md` or `copilot-instructions.md` content can therefore produce different behavior across runtimes.
 
 **Practical implementation layers:**
 
@@ -103,11 +103,11 @@ This convergence applies to packaging, not complete execution semantics. In the 
 
 ## Strengths
 
-- **Universal applicability.** Context engineering works with every AI coding tool. It's the one practice that transfers completely between Claude Code, Cursor, Copilot, and any future tool.
+- **Portable principles.** Context curation, budgeting, and scoping apply across AI coding tools, even where formats and behavior differ.
 - **Low barrier to entry.** Creating a `CLAUDE.md` or `.cursorrules` file requires no installation, no framework, and no dependencies. A developer can start in five minutes.
 - **Compounds over time.** Well-maintained rules files accumulate project knowledge that benefits every session and every team member, human or AI.
-- **Foundation for everything else.** Understanding context engineering makes every framework in this comparison more effective. It's the "why" behind GSD's fresh windows, Squad's charters, HVE's instructions, and Ralph's prompt files.
-- **Version-controllable.** Rules files live in git, are reviewed in PRs, and evolve with the project. This makes AI behavior auditable and reproducible.
+- **Useful across frameworks.** GSD's fresh windows, Squad's charters, HVE's instructions, and Ralph's prompt files all apply context-engineering principles.
+- **Version-controllable.** Rules files live in git and can be reviewed in PRs. Their history records which instructions changed, though it does not guarantee reproducible agent behavior.
 - **Model-portable.** While specific file formats differ between tools, the underlying principles (curate context, manage the budget, scope appropriately) are universal.
 
 ## Limitations
@@ -119,7 +119,7 @@ This convergence applies to packaging, not complete execution semantics. In the 
 - **Partial standardization.** Agent Skills provides a canonical format and implementor guidance for reusable skill packages. Broader context-engineering practices, rules files, and certification remain fragmented.
 - **Invisible when done well.** Context engineering is hard to demonstrate or showcase because its success looks like "the AI just worked." This makes it harder to get organizational buy-in compared to frameworks with visible workflows.
 
-## Best For
+## Best for
 
 - **Any developer using AI coding tools** who wants to improve output quality without adopting a full framework.
 - **Teams evaluating frameworks** — understanding context engineering clarifies what each framework actually does and helps compare them on equal footing.
@@ -127,16 +127,16 @@ This convergence applies to packaging, not complete execution semantics. In the 
 - **Early-stage projects** where a lightweight rules file is sufficient and a full framework would be premature.
 - **Organizations building custom AI workflows** who want to design their own approach from first principles.
 
-## Not Ideal For
+## Not ideal for
 
 - **Teams that need a complete development methodology** — context engineering is a skill, not a process. It won't tell you how to decompose work, manage agents, or run reviews.
 - **Developers who want a turnkey solution** — there's no installer, no CLI, no single repo to clone.
 - **Projects requiring governance and audit trails** — context engineering provides no enforcement mechanism. Combine with HVE, BMAD, or Squad for governance needs.
 - **Situations where the problem is workflow, not context** — if the issue is how work is organized rather than what the AI knows, a framework like GSD or BMAD is the right answer.
 
-## Community & Ecosystem
+## Community & ecosystem
 
-Context engineering is practiced universally but has no single community hub:
+Context engineering has no single community hub. Resources include:
 
 - **Key voices:** Andrej Karpathy (foundational framing), the-ai-corner.com (guides), fungies.io (developer guides), Thomas Wiegold (best practices blog).
 - **Academic research:** arXiv:2509.13196 on the effects of over-prompting with examples.
@@ -146,15 +146,15 @@ Context engineering is practiced universally but has no single community hub:
 - **Industry adoption:** Universal — every team using AI coding tools practices context engineering to some degree, whether they use the term or not.
 - **Educational resources:** [Denis2054/Context-Engineering-for-Multi-Agent-Systems](https://github.com/Denis2054/Context-Engineering-for-Multi-Agent-Systems) — an active book companion repo with roughly 251 stars, 85 forks, MCP integration, and workshop material — is a useful community educational resource, but not a dominant framework. No dominant "context engineering framework" has emerged; the practice remains diffuse and is increasingly embedded inside concrete systems such as GSD runtime-specific skills, Spec Kit extension catalogs, Squad governed memory, Superpowers skills, and HVE instruction collections.
 
-## Comparison Notes
+## Comparison notes
 
-**vs. GSD:** GSD Core is an explicit implementation of context engineering principles in a structured five-step workflow. Its fresh-task context and verification gates package context-engineering decisions into a repeatable process. Context engineering is the "why"; GSD is one "how."
+**vs. GSD:** GSD Core applies context engineering in a five-step workflow, using fresh task context and verification gates.
 
-**vs. Squad:** Squad implements context engineering through charter files, decision ledgers, agent history files, and routing rules — a persistent memory system designed for multi-agent coordination. Context engineering principles explain why Squad's architecture works; Squad provides the orchestration layer that context engineering alone lacks.
+**vs. Squad:** Squad uses charter files, decision ledgers, agent histories, and routing rules for persistent multi-agent context. It adds orchestration that context engineering alone does not provide.
 
 **vs. HVE:** HVE implements context engineering through repository-level instruction collections, the RPI phased workflow, and constraint-based governance. HVE's research phase directly applies the context engineering principle that AI should gather verified information before acting. Among the Tier 1 techniques, HVE is the dedicated enterprise implementation of these practices.
 
-**vs. Superpowers:** Superpowers puts context engineering into practice more thoroughly than most Tier 1 techniques. Its composable skills *are* context engineering — each skill is a behavioral module that shapes the AI's context with methodology, constraints, and workflow patterns. The token-light bootstrap (~2K tokens) and lazy skill loading via CLI search demonstrate advanced context budget management. Where context engineering is the theory, Superpowers turns it into a skills-based system that enforces TDD, code review, and systematic development across multiple tools.
+**vs. Superpowers:** Superpowers supplies methodology, constraints, and workflows through composable skills. Its ~2K-token bootstrap and on-demand CLI skill loading manage context use. It adds mandatory TDD, code review, and development sequencing to the underlying context-engineering practice.
 
 **vs. the skills ecosystem:** Context engineering is the broad discipline. [Agent Skills and skill libraries](skills-ecosystem.md) package selected context into discoverable, reusable units. A library delivers capabilities; a methodology such as Superpowers adds sequencing and enforcement.
 

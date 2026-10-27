@@ -1,6 +1,6 @@
 # HVE (Hypervelocity Engineering)
 
-## At a Glance
+## At a glance
 
 | Field              | Value                         |
 |--------------------|-------------------------------|
@@ -14,7 +14,7 @@
 | Stars / Popularity | ~1,580 stars · 343 forks |
 | Supported Tools    | GitHub Copilot (VS Code extension and CLI) |
 
-## Compatible Coding Agents
+## Compatible coding agents
 
 | Agent | Support |
 |-------|--------|
@@ -29,36 +29,36 @@
 
 ## Overview
 
-Hypervelocity Engineering (HVE) is Microsoft's enterprise methodology and tooling framework for AI-native application development. Created by the ISE (Industry Solutions Engineering) team — the same group that shipped 140+ AI solutions in two years — HVE provides a structured approach to integrating AI agents across the entire software development lifecycle.
+Hypervelocity Engineering (HVE) is Microsoft's enterprise methodology and tooling framework for AI-native application development. The ISE (Industry Solutions Engineering) team created it after delivering a reported 140+ AI solutions in two years. HVE structures the use of AI agents across the software development lifecycle.
 
 Unlike lighter-weight approaches that focus on a single developer's workflow, HVE targets multidisciplinary teams of 4–5 people working on enterprise software. Its signature contribution is the RPI workflow (Research → Plan → Implement → Review), a four-phase development cycle where specialized AI agents handle each phase under constraint-based governance. The core insight, as the HVE documentation states: "When AI knows it cannot implement, it stops optimizing for 'plausible code' and starts optimizing for 'verified truth.' The constraint changes the goal."
 
-HVE ships as a VS Code extension and a GitHub repository. On October 27, 2026, the `main` branch contained 71 `*.agent.md`, 60 `*.instructions.md`, zero `*.prompt.md`, and 88 `SKILL.md` files — a marked shift from the 70/80/67/58 split observed on August 8, 2026, with the entire `.prompt.md` category emptied out in favor of `SKILL.md` packages. These are repository-level counts, not verified contents of the v3.2.2 stable package. It is explicitly built for — and tightly coupled to — the GitHub Copilot ecosystem.
+HVE ships as a VS Code extension and a GitHub repository, both built for the GitHub Copilot ecosystem. On October 27, 2026, the `main` branch contained 71 `*.agent.md`, 60 `*.instructions.md`, zero `*.prompt.md`, and 88 `SKILL.md` files. The August 8, 2026 counts were 70, 80, 67, and 58, respectively; reusable prompt files have moved to skill packages. These are repository counts, not verified contents of the v3.2.2 stable package.
 
-## Pros & Cons at a Glance
+## Pros & cons at a glance
 
 | Pros | Cons |
 |------|------|
 | ✅ Enterprise-grade governance — audit trails, validated artifacts, policy-as-code | ❌ Copilot lock-in — no support for Claude Code, Cursor, or other tools |
-| ✅ Research-first philosophy prevents costly rework | ❌ Large agent and instruction inventory can overwhelm small teams |
-| ✅ Comprehensive tooling — domain-specific skill collections across the lifecycle | ❌ Manual context clearing between RPI phases adds operational burden |
+| ✅ Research before implementation | ❌ Large agent and instruction inventory can overwhelm small teams |
+| ✅ Domain-specific skill collections across the lifecycle | ❌ Manual context clearing between RPI phases adds operational burden |
 | ✅ Supply-chain security (SBOM, attestation, CodeQL, OpenSSF) | ❌ Some collections still experimental/preview |
-| ✅ Proven at enterprise scale (AT&T, KT Corporation) | ❌ No autonomous iteration — each phase needs human initiation |
+| ✅ Reported enterprise use (AT&T, KT Corporation) | ❌ No autonomous iteration — each phase needs human initiation |
 | ✅ Multi-stack support (no-code → pro-code) | ❌ Microsoft ecosystem tilt (Azure, M365, Power Platform) |
 
-> **In one sentence:** HVE is the enterprise-governance choice — built from Microsoft ISE's experience shipping 140+ AI solutions, it trades simplicity for audit trails, validated artifacts, and research-first rigor that regulated industries require.
+> HVE adds research, validation gates, audit trails, and policy-as-code for enterprise teams, at the cost of more setup and manual phase transitions.
 
-## Core Concepts
+## Core concepts
 
-- **Velocity-as-Vector** — Speed alone is insufficient. HVE measures velocity as speed + direction + quality combined. Moving fast in the wrong direction is not progress.
-- **Constraint-Based Workflows** — Constraints (repository access controls, environment promotion rules, deployment targets, policy enforcement) don't slow teams down — they enable safe autonomy by defining bounded exploration spaces.
+- **Velocity-as-Vector** — HVE defines velocity as a combination of speed, direction, and quality.
+- **Constraint-Based Workflows** — Repository access controls, environment promotion rules, deployment targets, and policy enforcement define the boundaries within which agents can work.
 - **Validated Artifacts** — Every output, whether from a human or an AI agent, must pass formal validation gates: automated tests, static analysis, security scans, and compliance checks.
 - **Repeatable Patterns of Integration (RPI)** — Standardized integration patterns reduce fragility and make scaling predictable. The RPI acronym also names the core workflow.
 - **Collection-based architecture** — Domain-specific bundles (hve-core, coding-standards, project-planning, security, design-thinking, data-science-engineering, rai, accessibility, and others) that teams adopt selectively. The `.github/skills/` tree held 15 top-level collection directories on October 27, 2026, up from the 10 named in earlier documentation; some additions (accessibility, engagement-reporting, hve-slides) are new domains rather than renames.
 
-## How It Works
+## How it works
 
-The RPI workflow transforms complex coding tasks through four structured phases. Each phase uses a dedicated AI agent with specialized instructions, and context is explicitly cleared between phases.
+The RPI workflow divides tasks into four phases. Each uses a dedicated AI agent with specialized instructions, with context cleared between phases.
 
 ```
 Uncertainty → Knowledge → Strategy → Working Code → Validated Code
@@ -66,12 +66,12 @@ Uncertainty → Knowledge → Strategy → Working Code → Validated Code
 
 | Phase | Agent | What It Does | Output |
 |-------|-------|-------------|--------|
-| 🔬 **Research** | Task Researcher | Investigates codebase, APIs, documentation. Documents findings with evidence and sources. Creates one recommended approach. | `{date}-{topic}-research.md` |
-| 📋 **Plan** | Task Planner | Creates planning files with checkboxes and line number references. Validates that research exists before proceeding. | Plan and details files |
-| ⚡ **Implement** | Task Implementor | Executes the plan task by task with verification at each step. Tracks all changes in a changes log. | Working code + `{date}-{topic}-changes.md` |
-| ✅ **Review** | Task Reviewer | Validates the implementation against the research and plan. Checks convention compliance. Runs lint, build, and test suites. | `{date}-{topic}-review.md` |
+| Research | Task Researcher | Investigates the codebase, APIs, and documentation. Records evidence and sources, then recommends one approach. | `{date}-{topic}-research.md` |
+| Plan | Task Planner | Creates planning files with checkboxes and line number references. Checks that research exists before proceeding. | Plan and details files |
+| Implement | Task Implementor | Executes the plan task by task, verifying each step and recording changes. | Working code + `{date}-{topic}-changes.md` |
+| Review | Task Reviewer | Checks the implementation against the research, plan, and conventions. Runs lint, build, and test suites. | `{date}-{topic}-review.md` |
 
-**Critical operational rule:** Always clear context (`/clear` or new chat) between phases. Each agent operates under different instructions, and accumulated context from prior phases causes confusion and quality degradation.
+Clear context (`/clear` or new chat) between phases. Each agent has different instructions; prior-phase context can interfere with them.
 
 Beyond the RPI workflow, HVE includes:
 
@@ -87,11 +87,11 @@ These counts describe the repository tree observed on October 27, 2026. The cont
 ## Strengths
 
 - **Enterprise-grade governance.** Constraint-based workflows, validated artifacts, audit trails, and policy-as-code provide the kind of structured oversight that regulated industries require.
-- **Research-first philosophy.** The Research phase forces the AI to investigate before implementing, producing higher-quality code and reducing rework. The separation of concerns between phases is its most distinctive contribution.
-- **Comprehensive repository inventory.** The `main` branch contains 71 agent files, 60 instruction files, and 88 skills — and, as of October 27, 2026, zero remaining prompt files. HVE has moved essentially all of its reusable task templates onto the Agent Skills primitive.
+- **Research before implementation.** A separate Research phase requires investigation and documented findings before planning or code changes.
+- **Repository coverage.** The `main` branch contains 71 agent files, 60 instruction files, and 88 skills as of October 27, 2026, with no remaining prompt files. Reusable task templates now use Agent Skills packages.
 - **Multi-stack support.** Works across no-code (Copilot Studio), low-code (Power Platform), and pro-code (Azure, custom frameworks), making it suitable for organizations with mixed technology stacks.
 - **Supply-chain security.** SBOM generation, attestation, OpenSSF Scorecard, and CodeQL analysis address enterprise security requirements.
-- **Proven at scale.** Evolved from Microsoft's internal delivery of 140+ AI solutions. Enterprise adoption by AT&T, KT Corporation, and other telcos provides real-world validation.
+- **Reported enterprise use.** HVE grew out of Microsoft's delivery of 140+ AI solutions. AT&T, KT Corporation, and other telcos are reported adopters; these reports are not independent outcome measurements.
 
 ## Limitations
 
@@ -102,15 +102,15 @@ These counts describe the repository tree observed on October 27, 2026. The cont
 - **No autonomous iteration.** Unlike Ralph, HVE does not include an autonomous loop. Each phase requires explicit human initiation, which limits AFK productivity.
 - **Microsoft ecosystem tilt.** While not exclusive to Microsoft tools, HVE has a natural bias toward Azure, Microsoft 365, and Power Platform.
 
-## Best For
+## Best for
 
 - **Enterprise teams (4–10+ developers)** building production software with governance, compliance, and audit requirements.
 - **Organizations already invested in GitHub Copilot** who want a structured methodology around their existing tooling.
 - **Multi-stack projects** mixing no-code, low-code, and pro-code components that need consistent quality standards.
-- **Regulated industries** (financial services, healthcare, telecom) where traceability and validated artifacts are non-negotiable.
-- **Teams onboarding new developers** who benefit from codified instruction sets over tribal knowledge.
+- **Regulated industries** (financial services, healthcare, telecom) that require traceability and validated artifacts.
+- **Teams onboarding new developers** who need documented conventions and instructions.
 
-## Not Ideal For
+## Not ideal for
 
 - **Solo developers or small teams** who find a large enterprise agent and instruction inventory excessive.
 - **Teams committed to non-Copilot tools** (Claude Code, Cursor, Aider) — HVE's tight Copilot coupling makes portability impractical.
@@ -118,19 +118,19 @@ These counts describe the repository tree observed on October 27, 2026. The cont
 - **Projects needing autonomous overnight iteration** — HVE's phased approach requires human presence at each phase transition.
 - **Cost-sensitive teams** — the combination of GitHub Copilot subscription and Azure infrastructure may exceed the budget of smaller organizations.
 
-## Community & Ecosystem
+## Community & ecosystem
 
-HVE has an ecosystem anchored by Microsoft's backing. The latest stable release remains v3.2.2 from March 23, 2026; prereleases have since continued past v3.3.101 (April 25, 2026) without a new stable tag. Keep stable, prerelease, and unreleased repository activity distinct.
+The latest verified stable release is v3.2.2 from March 23, 2026. Prereleases have continued past v3.3.101 (April 25, 2026) without a new stable tag. Keep stable releases, prereleases, and unreleased repository activity distinct.
 
 - **GitHub:** ~1,580 stars and 343 forks on October 27, 2026.
 - **VS Code Extension:** Available on the VS Code Marketplace as "HVE Core" (ise-hve-essentials.hve-core), providing one-click install.
-- **Microsoft Learn:** Featured on the HVE Accelerators Hub, giving it institutional credibility.
+- **Microsoft Learn:** Featured on the HVE Accelerators Hub.
 - **Public advocacy:** Robin Cole (VP Engineering, Microsoft) has presented at TMForum and on the Telco in 20 podcast (Ep 122). Valentina Alto published an end-to-end Medium walkthrough (April 2026). Paul Yuknewicz called it "rad" for Azure Functions development.
 - **Enterprise adoption:** AT&T (using GitHub Copilot on Azure), KT Corporation (building development capability on Microsoft stack).
 - **Documentation quality:** The official docs site (microsoft.github.io/hve-core/) is comprehensive. Valentina Alto's Medium article and Dave Davis's blog post provide third-party walkthroughs.
 - **Ecosystem maturity:** Stable core with experimental edges. The collection-based architecture allows incremental adoption, but some collections need more time to mature.
 
-## Comparison Notes
+## Comparison notes
 
 **vs. Ralph:** Opposite ends of the autonomy-governance spectrum. Ralph is a bash loop with minimal structure; HVE has a large repository inventory and constraint-based governance. Ralph is tool-agnostic; HVE is Copilot-locked. Ralph enables AFK runs; HVE requires human presence at phase boundaries.
 
@@ -140,4 +140,4 @@ HVE has an ecosystem anchored by Microsoft's backing. The latest stable release 
 
 **vs. Superpowers:** Both enforce structured development workflows at different scales. HVE uses agents, constraint-based governance, validated artifacts, and audit trails for enterprise environments. Superpowers uses composable behavioral skills for individual developer discipline. HVE is Copilot-only; Superpowers is multi-tool. HVE provides formal governance that Superpowers lacks.
 
-HVE's growth from 11 previously documented skills to 88 `SKILL.md` files on `main` — alongside its `.prompt.md` files dropping to zero — connects it to the [skills ecosystem](skills-ecosystem.md). That repository activity shows HVE consolidating onto the skills primitive, but it does not prove those files shipped in the latest stable VSIX.
+HVE's growth from 11 previously documented skills to 88 `SKILL.md` files on `main`, with `.prompt.md` files dropping to zero, reflects its move toward the [skills ecosystem](skills-ecosystem.md). It does not establish which files shipped in the latest stable VSIX.

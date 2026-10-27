@@ -1,6 +1,6 @@
 # OpenSpec
 
-## At a Glance
+## At a glance
 
 | Field              | Value                         |
 |--------------------|-------------------------------|
@@ -14,7 +14,7 @@
 | Stars / Popularity | ~73,100 stars · 5,000 forks |
 | Supported Tools    | 30+ AI assistants via slash commands, including a vendor-neutral `agents` target, Zed Agent, MiniMax Code, Rovo Dev CLI, and — as of v1.14.0 — GSD |
 
-## Compatible Coding Agents
+## Compatible coding agents
 
 | Agent | Support |
 |-------|--------|
@@ -47,42 +47,42 @@
 | Antigravity | ✅ Supported |
 | CodeBuddy | ✅ Supported |
 
-OpenSpec presents its supported tools as native/pre-baked integrations rather than community ports. Its own README claims 30+ AI assistants via slash commands; v1.14.0 added ten more tools (including GSD — the spec-driven technique covered elsewhere on this site — as an installable target), so the exact current total moves release to release and identical feature depth across runtimes isn't verified.
+OpenSpec documents native/pre-baked integrations rather than community ports. Its README lists 30+ AI assistants via slash commands; v1.14.0 added ten tools, including GSD as an installable target. Counts vary by release, and identical feature depth across runtimes is unverified.
 
 ## Overview
 
 OpenSpec is a lightweight, spec-driven development framework for AI coding assistants by Fission AI (Y Combinator W26). It organizes development around **changes** — each feature, bug fix, or modification gets its own folder containing a proposal, specs, design doc, and task checklist. The core workflow is three steps: propose a change, apply it, then archive it. This creates what OpenSpec calls "version control for intent" — a traceable record of not just *what* changed in the code, but *why* it changed.
 
-The core problem OpenSpec addresses is brownfield development with AI. Most spec-driven tools assume you're starting fresh or building a complete project plan. OpenSpec starts from the opposite end: you have an existing codebase, and you need to make targeted changes without breaking what's already there. It uses **delta specs** — lightweight specifications annotated with ADDED, MODIFIED, and REMOVED markers — to track how changes affect existing functionality, not just what new code is being written.
+OpenSpec focuses on brownfield development: targeted changes to an existing codebase. Its **delta specs** use ADDED, MODIFIED, and REMOVED markers to describe how a change affects existing functionality.
 
 At roughly 73K GitHub stars and v1.15.0, OpenSpec is the third spec-driven technique in this comparison (alongside GSD and Spec Kit) and the only one built explicitly for brownfield workflows. It now installs as a single standalone binary (no Node.js required) or via npm/Homebrew, requires no API keys or MCP servers, and offers broad native/pre-baked support across many AI coding tools. The default profile is now intentionally minimal — just `/opsx:explore` and `/opsx:propose` — with the fuller command set available as an opt-in "expanded" profile.
 
-## Pros & Cons at a Glance
+## Pros & cons at a glance
 
 | Pros | Cons |
 |------|------|
 | ✅ Broad native/pre-baked tool support (30+ assistants) | ❌ Static specs — don't update during implementation (drift risk on long tasks) |
 | ✅ Brownfield-first — built for existing codebases, not just greenfield | ❌ No multi-agent orchestration or parallel execution |
 | ✅ Lightest weight in SDD category (~250 lines, minutes setup) | ❌ Cross-repo team workspaces ("Stores") are in beta, not production-proven |
-| ✅ Delta specs make code review about intent, not just diffs | ❌ Requires manual discipline to archive completed changes |
+| ✅ Delta specs record intent alongside code diffs | ❌ Requires manual discipline to archive completed changes |
 | ✅ Proposal approval gate — no code until human reviews | ❌ Limited enterprise compliance — no SSO/SCIM, no policy-as-code |
 | ✅ YC W26-backed with active, frequent releases (weekly cadence) | ❌ Default profile now covers only explore/propose — the expanded workflow needs explicit opt-in |
 
-> **In one sentence:** OpenSpec is a lightweight spec-driven framework for brownfield codebases where you need to track *why* things changed across a broad set of AI coding tools, with cross-repo team planning now arriving as a beta feature.
+> OpenSpec tracks change proposals, requirements, and rationale for existing codebases across multiple AI tools. Cross-repo team planning is in beta.
 
-## Core Concepts
+## Core concepts
 
 **Change Folders.** Every feature, fix, or modification gets its own folder under `openspec/changes/<name>/`. Each folder contains a proposal, specs (with GIVEN/WHEN/THEN scenarios), a design doc, and a task checklist. The change folder is the atomic unit of work — it captures everything about a single change in one place.
 
-**Delta Specs.** Rather than writing a complete specification from scratch, OpenSpec uses delta markers — `ADDED`, `MODIFIED`, `REMOVED` — to annotate how a change affects existing functionality. This is unique in the comparison: GSD writes full task specs, Spec Kit writes full project specs, but OpenSpec writes *change* specs that explicitly reference the existing codebase. This makes code review about reviewing intent ("what are we changing and why?") rather than just reviewing code diffs.
+**Delta Specs.** The markers `ADDED`, `MODIFIED`, and `REMOVED` describe how a change affects existing functionality. GSD writes task specs and Spec Kit writes project specs; OpenSpec writes change specs that reference the existing codebase. Reviewers can compare the stated intent with the code diff.
 
 **Propose → Apply → Archive.** The core state machine. You **propose** a change (creating the change folder with specs and tasks), get human approval, **apply** it (implement the code), then **archive** it (move the completed change to the archive for audit trail). No code is generated until the proposal is reviewed and approved — this is the human-in-the-loop gate.
 
 **Brownfield-First.** OpenSpec is built for codebases that already exist. Where GSD Core's five-step workflow and Spec Kit's spec → plan → tasks flow are oriented toward building things from a plan, OpenSpec's change folder model assumes you already have working software and need to evolve it without breaking it.
 
-**Artifact-Guided Workflow.** The `opsx` workflow (a rebuilt, expanded version of the original OpenSpec commands) treats each artifact — proposal, spec, design, tasks — as a living document that can be updated at any time. There are no rigid phase gates; you can revisit and refine artifacts fluidly as understanding evolves.
+**Artifact-Guided Workflow.** The `opsx` workflow lets you update proposals, specs, designs, and tasks as your understanding changes, rather than locking each artifact after a phase.
 
-## How It Works
+## How it works
 
 As of v1.15.0, OpenSpec ships every workflow as both an **Agent Skill** (`.agents/skills/openspec-*`, auto-invoked when relevant) and a **slash command** (`/opsx:*`, typed explicitly) — delivery is configurable per project (`skills`, `commands`, or `both`, default `both`).
 
@@ -112,13 +112,13 @@ For validation, `openspec validate --strict` catches missing GIVEN/WHEN/THEN sce
 ## Strengths
 
 - **Broad tool compatibility.** Native/pre-baked integrations across 30+ assistants reduce tool lock-in, while exact feature parity across every runtime remains unverified.
-- **Dual-form skills and commands ecosystem.** Every workflow installs as both an Agent Skill under `.agents/skills/openspec-*` and a slash command, directly participating in the shared [skills ecosystem](skills-ecosystem.md) rather than only exposing OpenSpec-specific commands. v1.10.0 added a dedicated Zed Agent target that is skills-only.
+- **Skills and commands.** Every workflow can install as an Agent Skill under `.agents/skills/openspec-*` and as a slash command. This connects OpenSpec to the shared [skills ecosystem](skills-ecosystem.md). v1.10.0 added a skills-only Zed Agent target.
 - **Lightest weight in the SDD category.** ~250 lines of configuration, minutes to set up. v1.15.0 added a standalone binary install (`curl ... | sh`, no Node.js needed) alongside the existing npm and Homebrew paths. No API keys, no MCP server, no complex scaffolding.
 - **Brownfield-first design.** The only framework in this comparison built explicitly for evolving existing codebases. Delta markers (ADDED/MODIFIED/REMOVED) are a unique mechanism for tracking change impact.
-- **Intent-level code review.** Delta specs shift code review from "what code changed?" to "what was the intent and how does it affect existing functionality?" This is a meaningful workflow improvement for teams that review PRs.
-- **Proposal-before-code gate.** Explicit human approval before any code generation. The AI cannot proceed until the human reviews and approves the proposal — a strong HITL mechanism.
-- **YC-backed with commercial trajectory and a cross-repo beta.** Y Combinator W26 backing funds weekly releases. **Stores** (beta) — a separate OpenSpec repo shared across multiple code repos via `git push` — is the first concrete answer to the team-workspace gap called out in earlier reviews.
-- **Zero-dependency setup.** A single install command (binary, npm, or Homebrew) and `openspec init`. No additional configuration, no API keys, no server process.
+- **Intent-level code review.** Delta specs give reviewers the intended behavior change to compare with the implementation.
+- **Proposal-before-code gate.** The workflow requires human review and approval before code generation.
+- **Cross-repo planning in beta.** The Y Combinator W26-backed project releases roughly weekly. **Stores** (beta) shares a separate OpenSpec repo across code repos via `git push`.
+- **Simple setup.** Install a binary, use npm, or use Homebrew, then run `openspec init`. No API keys or server process are required.
 
 ## Limitations
 
@@ -129,16 +129,16 @@ For validation, `openspec validate --strict` catches missing GIVEN/WHEN/THEN sce
 - **Limited enterprise governance.** No SSO/SCIM, no policy-as-code, no constraint enforcement, no compliance features. The archive provides a lightweight audit trail, but it's not enterprise-grade governance.
 - **Default profile is now narrower.** Only `explore` and `propose` plus the implicit `apply`/`archive`/`update`/`sync` core six are installed by default; teams that want `verify`, `bulk-archive`, `new`/`continue`/`ff`, or `onboard` must explicitly switch to the expanded `custom` profile.
 
-## Best For
+## Best for
 
 - **Brownfield development.** Teams evolving an existing codebase who need to track how changes affect existing functionality. OpenSpec's delta markers are purpose-built for this.
 - **Multi-tool teams.** Organizations where different developers use different AI coding tools. OpenSpec's broad native/pre-baked support, including dual skill/command delivery, lets many teams share the same spec workflow.
 - **Lightweight spec-driven development.** Developers who want the discipline of spec-driven development without the overhead of a full lifecycle framework. OpenSpec is lighter than GSD Core's five-step workflow and Spec Kit's three-process toolkit.
-- **Solo developers and small teams.** The current sweet spot — fast setup, low ceremony, no team infrastructure required.
+- **Solo developers and small teams.** Fast setup and low ceremony, with no team infrastructure required.
 - **Early adopters of cross-repo planning.** Teams that want to pilot Stores for shared, cross-repo specs, understanding it's a beta feature.
 - **Intent-level code review workflows.** Teams that want to review *why* a change was made, not just *what* code changed. Delta specs make this native to the workflow.
 
-## Not Ideal For
+## Not ideal for
 
 - **Large-scale parallel development.** No multi-agent orchestration, no wave-based parallelism. For parallel execution across multiple agents, GSD or Squad are better choices.
 - **Enterprise environments requiring compliance.** No SSO, SCIM, policy-as-code, or enterprise audit features. HVE is the dedicated enterprise approach.
@@ -146,22 +146,22 @@ For validation, `openspec validate --strict` catches missing GIVEN/WHEN/THEN sce
 - **Greenfield projects needing full lifecycle structure.** OpenSpec is change-centric, not project-centric. For structured greenfield builds with phase gates and project-level planning, GSD or Spec Kit provide more scaffolding.
 - **Teams needing strict governance.** The archive provides a lightweight audit trail, but there's no constraint enforcement, no mandatory checks beyond the proposal gate, and no policy-as-code.
 
-## Community & Ecosystem
+## Community & ecosystem
 
-OpenSpec had roughly 73K GitHub stars and 5K forks as of late October 2026, with a release cadence close to weekly since v1.8.0. v1.14.0 added ten new tool targets (including GSD itself as an installable target — one spec-driven technique now supports generating artifacts for another). v1.15.0 added a standalone, Node.js-free install path with signed binaries for macOS, Linux, and Windows. Cross-repo **Stores** shipped as a beta feature with its own documentation section, directly addressing the earlier "team workspace unproven" gap, though it remains beta rather than GA.
+OpenSpec had roughly 73K GitHub stars and 5K forks as of late October 2026, with releases close to weekly since v1.8.0. v1.14.0 added ten tool targets, including GSD. v1.15.0 added signed standalone binaries for macOS, Linux, and Windows without a Node.js requirement. Cross-repo **Stores** shipped with documentation as a beta feature, not a generally available release.
 
-## Community Ports & Unofficial Adaptations
+## Community ports & unofficial adaptations
 
 OpenSpec ships native/pre-baked configurations for 30+ tools, reducing the need for community ports. Recent additions include a vendor-neutral `agents` target, a dedicated Zed Agent target, MiniMax Code, Rovo Dev CLI, Command Code, SourceCraft, and GSD. OpenSpec's own docs describe third-party schema bundles (distributed as standalone repositories) as directly comparable to [Spec Kit's community extension catalog](https://github.com/github/spec-kit/tree/main/extensions). Treat all of this as documented support breadth, not proof of runtime parity.
 
-## Comparison Notes
+## Comparison notes
 
 **vs. GSD:** Both are spec-driven, but they target different workflows. GSD Core uses a five-step project loop and fresh task contexts; OpenSpec organizes targeted brownfield changes around delta specs. As of v1.14.0, OpenSpec can even generate GSD-formatted artifacts as one of its installable tool targets — the two techniques now interoperate at the tooling level even though they remain distinct in scope. Both document broad runtime targets, but parity is unverified. Choose GSD for structured project execution and OpenSpec for lightweight change governance.
 
 **vs. Spec Kit:** Both are spec-driven and multi-tool, and both are now stable, non-experimental releases (OpenSpec v1.15.0, Spec Kit v1.2.3, both past 1.0). Spec Kit is the heavier toolkit — three separate processes (spec-driven development, bug fixing, idea assessment) plus a full extension/preset/bundle/catalog system. OpenSpec stays lightweight and change-centric, with delta specs and a six-workflow core profile. Spec Kit emphasizes upfront specification quality across more scenario types; OpenSpec emphasizes proposal approval, brownfield change records, and now cross-repo Stores.
 
-**vs. Context Engineering:** OpenSpec is a concrete implementation of context engineering principles applied to change management. Change folders are curated context — each one scopes what the AI sees to a single change and its relevant specs, design, and tasks. Delta markers are a form of structured context annotation — they tell the AI not just what to build, but what already exists and how it's being modified. The proposal → approval → apply flow is a context quality gate — ensuring the AI works from reviewed, human-approved context rather than raw prompts. Where context engineering is the underlying practice, OpenSpec turns it into a working system for brownfield spec-driven development.
+**vs. Context Engineering:** OpenSpec applies context engineering to change management. Each change folder supplies the relevant specs, design, and tasks. Delta markers identify existing behavior and the proposed modifications. Proposal review gives the agent human-approved context before implementation.
 
-**vs. the managed-skills layer:** OpenSpec is a lifecycle framework, not a skill library — its job is deciding what changes to make and when, not supplying general-purpose reusable capabilities. But its distribution mechanism now overlaps directly with the skills layer: every core workflow installs as an Agent Skill under `.agents/skills/openspec-*` (alongside a slash command), and the Zed Agent target is skills-only. This makes OpenSpec a *producer* that feeds the shared `.agents/skills/` convention described in the [skills ecosystem](skills-ecosystem.md) page, alongside the `skills` CLI and Spec Kit's Codex integration — without OpenSpec itself becoming a skill library like `mattpocock/skills` or a skill-based methodology like Superpowers.
+**vs. the managed-skills layer:** OpenSpec delivers its own workflow as skills under `.agents/skills/openspec-*`, alongside slash commands. The Zed Agent target is skills-only. It uses the shared `.agents/skills/` convention described in the [skills ecosystem](skills-ecosystem.md), as do the `skills` CLI and Spec Kit's Codex integration. OpenSpec remains a change-management framework, not a general-purpose library such as `mattpocock/skills` or an implementation methodology such as Superpowers.
 
 **vs. Superpowers:** Superpowers is a skill-based methodology that teaches agents *how* to develop. OpenSpec defines *what* changes to make and *why*. OpenSpec's workflows are also now delivered as Agent Skills by default, so the two projects both use the Agent Skills format — but for different ends: Superpowers' skills encode mandatory development discipline, while OpenSpec's skills encode its own lifecycle commands.

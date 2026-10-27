@@ -1,24 +1,24 @@
-# GenAI development techniques — comparison
+# GenAI development techniques
 
-An evidence-based comparison of techniques, methodologies, and frameworks for structured AI-assisted software development. The focus is on **how humans organize and direct AI coding agents** — not on the AI models or tools themselves.
+A comparison of techniques, methodologies, and frameworks for organizing and directing AI coding agents. It focuses on development practices, not the models or tools themselves.
 
-## TL;DR
+## What this site covers
 
-AI-assisted development is shifting from standalone frameworks toward a managed stack of frontier models, native runtimes, reusable skills, and governance controls. This site is a dated, evidence-based market map of that stack — not a ranking, and not an adoption survey.
-
-Start with [Choosing Your Approach](techniques/choosing-your-approach.md) to match a technique to your situation, read the [Overview](overview.md) for the full comparison and three-layer model, and check [Market Updates](market-updates.md) for what changed in the most recent research pass.
+AI-assisted development is shifting from standalone frameworks toward models, runtimes, reusable skills, and governance controls that work together. This site compares those layers using dated research findings. It is not a ranking or an adoption survey.
 
 ---
 
 ## Start here
 
-**[Choosing Your Approach](techniques/choosing-your-approach.md)** — Which technique fits your situation? Decision guide by team size, project type, industry, and development activity.
+**[Choosing Your Approach](techniques/choosing-your-approach.md)** — Match a technique to your team size, project type, industry, and development activity.
 
 **[Overview and comparison matrix](overview.md)** — Executive summary, full comparison table, and category analysis.
 
+**[Market Updates](market-updates.md)** — Changes recorded in each research pass.
+
 ---
 
-## Deep-dive documents
+## Detailed guides
 
 ### Guide
 
@@ -29,7 +29,7 @@ Start with [Choosing Your Approach](techniques/choosing-your-approach.md) to mat
 | [Research Methodology](methodology.md) | How this comparison is researched, inclusion criteria, evidence labels, and update policy |
 | [Market Updates](market-updates.md) | Dated log of research passes and the documentation changes that followed them |
 
-### Spec-Driven Development
+### Spec-driven development
 
 Star counts are snapshots observed on October 27, 2026. They are awareness signals, not adoption evidence.
 
@@ -41,26 +41,26 @@ Star counts are snapshots observed on October 27, 2026. They are awareness signa
 
 \* GSD migrated from an archived repository with ~64.7K stars to `open-gsd/gsd-core`; the successor repository started its own count.
 
-### Multi-Agent Orchestration
+### Multi-agent orchestration
 
 | Technique | Description | Stars |
 |-----------|-------------|-------|
 | [Squad](techniques/squad.md) | Coordinator-based multi-agent orchestration with persistent memory, casting, and ceremonies | ~3.3K |
 | [BMAD](techniques/bmad.md) | AI-driven agile framework with specialized roles, structured phases, and modular workflows | ~55K |
 
-### Skill-Based Development
+### Skill-based development
 
 | Technique | Description | Stars |
 |-----------|-------------|-------|
 | [Superpowers](techniques/superpowers.md) | Mandatory skills methodology — TDD, subagent-driven development, and review enforcement | ~306K |
 
-### Autonomous Iteration
+### Autonomous iteration
 
 | Technique | Description | Stars |
 |-----------|-------------|-------|
 | [Ralph](techniques/ralph.md) | Autonomous bash-loop methodology — tests as backpressure, git as memory, tool-agnostic | Community |
 
-### Enterprise AI-Native SDLC
+### Enterprise AI-native SDLC
 
 | Technique | Description | Stars |
 |-----------|-------------|-------|
@@ -72,9 +72,9 @@ Star counts are snapshots observed on October 27, 2026. They are awareness signa
 |-----------|-------------|
 | [Context Engineering](techniques/context-engineering.md) | The practice of structuring project context via rules files across an 8-layer model |
 
-### Skills and Agent Frameworks
+### Skills and agent frameworks
 
-This supporting market layer is not an eleventh Tier 1 technique or a sixth methodology category. Superpowers, the layer's lead skill-driven methodology, is profiled above under Skill-Based Development.
+These pages cover the infrastructure and libraries that support the techniques above. Superpowers is listed under skill-based development because it adds a mandatory workflow.
 
 | Document | Description |
 |----------|-------------|
@@ -88,4 +88,4 @@ This supporting market layer is not an eleventh Tier 1 technique or a sixth meth
 
 **Audience:** Developers, tech leads, and engineering managers evaluating structured approaches to AI-assisted development.
 
-**What this is not:** A ranking. Each technique serves different needs. The [Decision Guide](overview.md#4-decision-guide) in the overview helps match techniques to situations.
+The [Decision Guide](overview.md#4-decision-guide) provides a short selection table.

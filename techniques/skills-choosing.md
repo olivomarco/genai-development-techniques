@@ -2,9 +2,9 @@
 
 > **Observation date:** October 27, 2026. See [State of the Skills Market](skills-ecosystem.md) for the taxonomy this guide applies, and [Choosing Your Approach](choosing-your-approach.md) for the technique-level decision guide this page complements.
 
-"Skills" today covers at least six structurally different things. Before adopting any of them, identify which one you actually need — they compose, but they are not substitutes for each other.
+Skills-related offerings serve different purposes. Identify the gap you need to address before choosing a library, routing mode, methodology, marketplace, or internal catalog.
 
-## What kind of thing are you actually choosing?
+## What are you choosing?
 
 | Category | Example | Choose it when... | Trade-off |
 |---|---|---|---|
@@ -15,25 +15,25 @@
 | **Native runtime** | Claude Code, Codex CLI, GitHub Copilot plugin marketplaces | You want the simplest path: subscribe to a managed, auto-updating skill bundle inside the agent you already use | Convenient, but you're trusting the publisher's next push over a reviewed, pinned copy |
 | **Custom internal catalog** | A team- or org-maintained internal skills repository | You need house conventions, proprietary domain knowledge, or compliance-specific instructions that no public library provides | You own all the maintenance, evaluation, and governance work a public library's maintainer would otherwise do |
 
-These categories compose. A specification framework like Spec Kit can install skills as one of its extension types; a multi-agent runtime like Squad can equip individual agents with Superpowers-style skills; an orchestrating mode is only useful layered on a library it can dispatch into; a custom internal catalog can wrap or fork public skills rather than starting from nothing. Pick the row that matches your immediate need, then check whether you also need a layer above or below it.
+You can combine these options. Spec Kit can install skills through extensions; Squad agents can use Superpowers-style skills; orchestrating modes depend on a library; internal catalogs can adapt public skills. Start with the option that meets the immediate need.
 
 ## Decision criteria
 
-Before adopting any skill library, orchestrating mode, methodology, or internal catalog, check it against these criteria. Full detail on each is in [Distribution and Governance](skills-management.md).
+Check these criteria before adoption. See [Distribution and Governance](skills-management.md) for details.
 
 | Criterion | Question to ask | Why it matters |
 |---|---|---|
 | **Task shape** | Is the gap "the model doesn't know a convention," or "there's no reconstructable record of why a decision was made"? | The first is a skills gap; the second is a methodology gap. Don't reach for a methodology to solve a skills problem or vice versa. |
-| **Workflow ownership** | Do you want to select individual practices yourself, or have something else decide the sequence for you? | Composable libraries hand you the wheel; lifecycle libraries and methodologies take varying degrees of it from you. |
+| **Workflow ownership** | Do you want to select practices yourself or delegate sequencing? | Composable libraries leave selection to you. Lifecycle libraries organize practices by stage; methodologies prescribe more of the sequence. |
 | **Update channel** | Does it auto-update through a native plugin marketplace, or do you pull updates manually via a CLI? | Auto-update is convenient but hands you upstream changes unreviewed. A vendored copy is reviewable but only as current as your last update run. |
-| **Portability** | Does the `SKILL.md` just parse in your runtime, or do the hooks, scripts, and `context: fork` features it depends on actually execute there? | Format portability and behavioral portability are different claims — a skill can install everywhere and work almost nowhere beyond its primary runtime. |
+| **Portability** | Does the runtime parse `SKILL.md` and execute the hooks, scripts, or `context: fork` features the skill needs? | Successful installation does not establish support for optional runtime features. |
 | **Provenance** | Is there signing, attestation, or lockfile-style pinning — or just a repository URL and a star count? | As of this observation date, nothing examined across the skills layer provides signing or attestation. Pin a revision if reproducibility matters. |
 | **Evaluation** | Is quality evidence independently verified, or vendor-reported release-note testing? | Treat "N/N runs passed" as a signal from the maintainer, not third-party proof. |
 | **Dependency completeness** | Does a per-skill install pull everything that skill needs, or only the named directory? | Partial installs can silently drop shared dependencies — a documented failure mode in at least one lifecycle library's issue tracker. |
 | **Compatibility** | Is the skill's current version the same across every agent and install path you use it from? | The same library can be current in one runtime's marketplace and stale in a vendored copy, with no cross-channel version signal today. |
 | **Policy and control** | Who decided whether this auto-updates, and does that match your change-control policy? | Auto-update-by-default versus manual-update-by-default is a policy choice — make it explicitly, especially in regulated or audited environments. |
 | **Team coordination** | Does the choice need to work the same way for every person on a team using different tools? | A runtime-locked methodology (Squad, HVE are both Copilot-only) creates friction on a mixed-tool team; a portable specification or skills layer avoids it. |
-| **Risk** | What's the blast radius if the skill does something unexpected — a bad suggestion, an executed script, a leaked secret? | Skills can bundle scripts and tool permissions. Registry presence or an audit badge is not a substitute for source review, permission limits, and pinning. |
+| **Risk** | Could unexpected behavior cause a bad suggestion, unwanted script execution, or a leaked secret? | Skills can bundle scripts and tool permissions. Registry presence or an audit badge does not replace source review, permission limits, and pinning. |
 
 ## Practical guidance by need
 
@@ -53,11 +53,11 @@ Skills are additive: you can use a library, a lifecycle library, or an orchestra
 
 ## The decision rule
 
-The same rule that governs the technique-level choice in [Choosing Your Approach](choosing-your-approach.md#layer-check-model-runtime-or-methodology-first) applies one layer down, inside the skills decision itself:
+Apply the selection rule from [Choosing Your Approach](choosing-your-approach.md#layer-check-model-runtime-or-methodology-first):
 
 1. **Start with the model and its native runtime.** For a bounded, well-specified, independently verifiable task, this is often sufficient on its own — no skill required.
 2. **Add skills when the gap is reusable expertise** the model doesn't reliably apply on its own — a missing convention, a domain pattern, a house style. Pick a composable or lifecycle library, or write your own, based on how much structure you want imposed.
-3. **Add a methodology when the gap is coordination or traceability** — multiple agents, multiple people, or a need to reconstruct why a change was made. This is when a skill-driven methodology like Superpowers, or a heavier specification framework, earns its overhead.
+3. **Add a methodology when you need more workflow structure or traceability.** Superpowers prescribes individual implementation practices. Specification frameworks record intent and plans; team coordination needs an approach such as Squad or BMAD.
 4. **Strengthen controls as autonomy, duration, cost, or risk increase.** Governance, audit trails, approval gates, and pinned/reviewed installs should scale with blast radius and compliance exposure — not be the default starting posture for every skill you try.
 
 ## Related pages
